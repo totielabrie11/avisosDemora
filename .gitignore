@@ -1,0 +1,13 @@
+# Node modules en subdirectorios (backend y frontend)
+node_modules/
+frontend/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Directorio de distribución de producción
+dist/
+build/

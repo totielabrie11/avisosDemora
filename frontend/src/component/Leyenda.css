@@ -1,0 +1,52 @@
+.leyenda {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+  }
+  
+  .leyenda h4 {
+    margin-top: 0;
+  }
+  
+  .leyenda ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .leyenda li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .verde .circle {
+    background-color:  rgb(31, 232, 31);
+  }
+  
+  .amarillo .circle {
+    background-color: #f6ff00;
+  }
+  
+  .naranja .circle {
+    background-color: #ff9412;
+  }
+  
+  .rojo .circle {
+    background-color: #ff0a0a;
+  }
+  
