@@ -45,11 +45,21 @@ const App = () => {
       return 'item-amarillo';
     } else if (diffInDays <= -15 && diffInDays > -30) {
       return 'item-naranja';
-    } else if (diffInDays <= -45) {
+    } else if (diffInDays <= -30) {
       return 'item-rojo';
     } else {
       return '';
     }
+  };
+
+  const shouldShowDemoraAlert = (fechaVencida) => {
+    const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
+    return diffInDays < 0; // Mostrar "Alerta Demora" si el pedido ya está vencido
+  };
+
+  const shouldShowProximoVencimientoAlert = (fechaVencida) => {
+    const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
+    return diffInDays > 0 && diffInDays <= 10; // Mostrar "Vencimiento Próximo" si el pedido está próximo a vencer
   };
 
   return (
@@ -57,20 +67,19 @@ const App = () => {
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
-      <form onSubmit={handleSubmit} className="form-inline mb-3 d-flex">
+      <form onSubmit={handleSubmit} className="form-inline mb-3">
         <label>
           Mostrar pedidos en los próximos o últimos:
           <input
             type="number"
             value={diasPrevios}
             onChange={handleDiasPreviosChange}
-            placeholder="Días"
             className="form-control ml-2 mr-2"
           />
-        
+          días
         </label>
 
-        <label className="ms-4">
+        <label className="ml-4">
           Cliente:
           <input
             type="text"
@@ -80,6 +89,8 @@ const App = () => {
             className="form-control ml-2 mr-2"
           />
         </label>
+
+        <button type="submit" className="btn btn-primary ml-2">Filtrar</button>
       </form>
 
       <ul className="list-group mt-3">
@@ -91,10 +102,18 @@ const App = () => {
             <ul>
               {pedido.Items.map((item, itemIdx) => (
                 <li key={itemIdx} className={`item ${getItemClass(item.Fecha_vencida)}`}>
-                  {item.Descripcion} - Cantidad: {item.Cantidad} -  Vence: {item.Fecha_vencida}
+                  {item.Descripcion} - Cantidad: {item.Cantidad} - Vence: {item.Fecha_vencida}
                 </li>
               ))}
             </ul>
+            {/* Mostrar el botón "Alerta Demora" si hay algún item vencido */}
+            {pedido.Items.some(item => shouldShowDemoraAlert(item.Fecha_vencida)) && (
+              <button className="btn btn-alerta-demora mt-2">Alerta Demora</button>
+            )}
+            {/* Mostrar el botón "Vencimiento Próximo" si hay algún item próximo a vencer */}
+            {pedido.Items.some(item => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
+              <button className="btn btn-vencimiento-proximo mt-2">Vencimiento Próximo</button>
+            )}
           </li>
         ))}
       </ul>
