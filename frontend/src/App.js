@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Leyenda from './component/Leyenda';
+import Estadisticas from './component/Estadisticas';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -19,6 +20,25 @@ const App = () => {
         setFechaActualizacion(data.Fecha_actualizacion || '');
       })
       .catch(error => console.error(error));
+  };
+
+  const fetchCSV = () => {
+    axios.get(`http://localhost:3000/api/v1/exportar-csv?diasPrevios=${diasPrevios}&cliente=${cliente}`, {
+      responseType: 'blob'
+    })
+      .then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'pedidos.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch(error => {
+        console.error('Error exportando CSV:', error.message);
+        alert('Error exportando CSV. Verifique los logs para más detalles.');
+      });
   };
 
   useEffect(fetchPedidos, [diasPrevios, cliente]);
@@ -91,6 +111,7 @@ const App = () => {
         </label>
 
         <button type="submit" className="btn btn-primary ml-2">Filtrar</button>
+        <button type="button" onClick={fetchCSV} className="btn btn-success ml-2">Exportar CSV</button>
       </form>
 
       <ul className="list-group mt-3">
@@ -106,11 +127,9 @@ const App = () => {
                 </li>
               ))}
             </ul>
-            {/* Mostrar el botón "Alerta Demora" si hay algún item vencido */}
             {pedido.Items.some(item => shouldShowDemoraAlert(item.Fecha_vencida)) && (
               <button className="btn btn-alerta-demora mt-2">Alerta Demora</button>
             )}
-            {/* Mostrar el botón "Vencimiento Próximo" si hay algún item próximo a vencer */}
             {pedido.Items.some(item => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
               <button className="btn btn-vencimiento-proximo mt-2">Vencimiento Próximo</button>
             )}
@@ -119,6 +138,7 @@ const App = () => {
       </ul>
 
       <Leyenda />
+      <Estadisticas />
     </div>
   );
 };
