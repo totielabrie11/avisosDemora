@@ -7,6 +7,7 @@ import './App.css';
 import Leyenda from './component/Leyenda';
 import Estadisticas from './component/Estadisticas';
 import Login from './component/Login';
+import ModalText from './component/ModalText';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -16,6 +17,8 @@ const App = () => {
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
   const [role, setRole] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
 
   const fetchPedidos = useCallback(() => {
     console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}`);
@@ -89,6 +92,11 @@ const App = () => {
     return diffInDays > 0 && diffInDays <= 10; // Mostrar "Vencimiento Próximo" si el pedido está próximo a vencer
   };
 
+  const handleModalSubmit = (reclamo) => {
+    console.log('Reclamo enviado:', reclamo);
+    // Lógica para enviar el reclamo al backend si es necesario
+  };
+
   if (!token) {
     return <Login onLogin={handleLogin} />;
   }
@@ -149,7 +157,15 @@ const App = () => {
               <button className="btn btn-alerta-demora mt-2">Alerta Demora</button>
             )}
             {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
-              <button className="btn btn-vencimiento-proximo mt-2">Vencimiento Próximo</button>
+              <button
+                className="btn btn-vencimiento-proximo mt-2"
+                onClick={() => {
+                  setPedidoSeleccionado(pedido);
+                  setShowModal(true);
+                }}
+              >
+                Vencimiento Próximo
+              </button>
             )}
           </li>
         ))}
@@ -157,6 +173,15 @@ const App = () => {
 
       <Leyenda />
       <Estadisticas token={token} />
+
+      {pedidoSeleccionado && (
+        <ModalText
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          pedido={pedidoSeleccionado}
+          onSubmit={handleModalSubmit}
+        />
+      )}
     </div>
   );
 };

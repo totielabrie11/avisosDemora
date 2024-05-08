@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 
 const app = express();
 const PORT = 3000;
-const JWT_SECRET = 'your_secret_key'; // Reemplaza esto con una clave secreta segura
+const JWT_SECRET = 'your_secret_key';
 
 app.use(cors());
 app.use(express.json());
@@ -41,6 +41,28 @@ const readUsers = () => {
   }
 };
 
+const readReclamos = () => {
+  const filePath = path.join(process.cwd(), 'data/pedidosReclamos.json');
+  if (!fs.existsSync(filePath)) {
+    return [];
+  }
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (error) {
+    console.error('Error leyendo pedidosReclamos.json:', error.message, error.stack);
+    return [];
+  }
+};
+
+const writeReclamos = (reclamos) => {
+  const filePath = path.join(process.cwd(), 'data/pedidosReclamos.json');
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(reclamos, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error escribiendo pedidosReclamos.json:', error.message, error.stack);
+  }
+};
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -64,7 +86,6 @@ app.post('/api/v1/login', (req, res) => {
   const data = readUsers();
   const user = data.users.find((u) => u.username === username);
 
-  // Compara la contraseña en texto plano
   if (user && user.password === password) {
     const accessToken = jwt.sign({ username: user.username, role: user.role }, JWT_SECRET, {
       expiresIn: '1h',
@@ -157,6 +178,35 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   }
 });
 
+// Endpoint para recibir reclamos
+app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
+  try {
+    const { id, cliente, prioridad, mensaje, fecha } = req.body;
+    if (!id || !cliente || !prioridad || !mensaje || !fecha) {
+      return res.status(400).json({ error: 'Faltan campos obligatorios' });
+    }
+
+    const reclamos = readReclamos();
+
+    // Verifica si el reclamo ya existe
+    const reclamoExistente = reclamos.find((reclamo) => reclamo.id === id && reclamo.cliente === cliente);
+
+    if (reclamoExistente) {
+      return res.status(409).json({ error: 'El reclamo ya existe para este pedido y cliente' });
+    }
+
+    reclamos.push({ id, cliente, prioridad, mensaje, fecha });
+    writeReclamos(reclamos);
+
+    res.status(201).json({ message: 'Reclamo recibido' });
+  } catch (err) {
+    console.error('Error al recibir el reclamo:', err.message, err.stack);
+    res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
