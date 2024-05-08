@@ -1,16 +1,19 @@
-// Estadisticas.jsx
+// src/component/Estadisticas.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Estadisticas.css';
 
-const Estadisticas = () => {
+const Estadisticas = ({ token }) => {
   const [stats, setStats] = useState({ pedidosPorCliente: {}, pedidosPorMes: {} });
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/estadisticas')
-      .then(response => setStats(response.data))
-      .catch(error => console.error(error));
-  }, []);
+    axios
+      .get('http://localhost:3000/api/v1/estadisticas', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => setStats(response.data))
+      .catch((error) => console.error('Error fetching estadisticas:', error));
+  }, [token]);
 
   return (
     <div className="estadisticas-container mt-4">
