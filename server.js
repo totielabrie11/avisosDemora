@@ -189,31 +189,54 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   }
 });
 
-// Endpoint para recibir reclamos
+
+// Añadir función para obtener el próximo ID
+const getNextReclamoID = () => {
+  const reclamos = readReclamos();
+  return reclamos.length ? Math.max(...reclamos.map(r => r.id)) + 1 : 1;
+};
+
 app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const { id, cliente, prioridad, mensaje } = req.body;
-    if (!id || !cliente || !prioridad || !mensaje) {
+    const { pedido, cliente, prioridad, mensaje } = req.body;
+    if (!pedido || !cliente || !prioridad || !mensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
     const reclamos = readReclamos();
-    const username = req.user.username; // Obtén el nombre del usuario logueado
+    const username = req.user.username;
 
-    // Añadir el nombre del usuario al objeto reclamo
-    const nuevoReclamo = {
-      id,
-      cliente,
+    // Formatear la fecha
+    const fecha = moment().format('DD-MM-YYYY [a las] HH:mm [hs]');
+
+    // Crear nuevo sub-reclamo
+    const nuevoSubReclamo = {
+      id: `sub-${new Date().getTime()}`,
       prioridad,
       mensaje,
-      fecha: new Date().toISOString(), // Fecha actual en formato ISO 8601
-      username // Incluye el nombre del usuario en el reclamo
+      fecha,
+      username
     };
 
-    reclamos.push(nuevoReclamo); // Añadir el nuevo reclamo a la lista
-    writeReclamos(reclamos); // Escribir en el archivo JSON
+    // Encuentra el reclamo existente para el mismo pedido
+    let reclamoExistente = reclamos.find((reclamo) => reclamo.pedido === pedido);
 
-    res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoReclamo });
+    if (reclamoExistente) {
+      reclamoExistente.reclamos.push(nuevoSubReclamo);
+    } else {
+      const nuevoReclamo = {
+        id: getNextReclamoID(),
+        pedido,
+        cliente,
+        reclamos: [nuevoSubReclamo]
+      };
+
+      reclamos.push(nuevoReclamo);
+    }
+
+    writeReclamos(reclamos);
+
+    res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoSubReclamo });
   } catch (err) {
     console.error('Error al recibir el reclamo:', err.message, err.stack);
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });

@@ -1,4 +1,3 @@
-// src/component/ModalText.jsx
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -9,7 +8,6 @@ const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Resetear los campos del formulario cada vez que se muestre el modal
     if (show) {
       setPrioridad('Regular');
       setMensaje('');
@@ -27,15 +25,13 @@ const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
 
   const handleSubmit = async () => {
     const reclamo = {
-      id: pedido.Pedido,
+      pedido: pedido.Pedido,
       cliente: pedido.Cliente,
       prioridad,
-      mensaje,
-      fecha: new Date().toISOString(),
+      mensaje
     };
 
     try {
-      // Enviar el reclamo al servidor
       await axios.post(
         'http://localhost:3000/api/v1/reclamos',
         reclamo,
@@ -44,7 +40,7 @@ const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
         }
       );
       onSubmit(reclamo);
-      onHide(); // Cerrar el modal después de enviar el mensaje
+      onHide();
     } catch (error) {
       console.error('Error enviando el reclamo:', error);
       setError('Error enviando el reclamo');
