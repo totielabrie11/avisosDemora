@@ -94,7 +94,7 @@ const App = () => {
 
   const handleModalSubmit = (reclamo) => {
     console.log('Reclamo enviado:', reclamo);
-    // Lógica para enviar el reclamo al backend si es necesario
+    fetchPedidos(); // Recargar los pedidos después de enviar el reclamo
   };
 
   if (!token) {
@@ -107,8 +107,8 @@ const App = () => {
         <div>
           <span className="mr-3"><strong>Usuario:</strong> {username} ({role})</span>
           <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
-          <h1>Pedidos Próximos a Vencer o Vencidos</h1>
         </div>
+        <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       </div>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
@@ -180,6 +180,7 @@ const App = () => {
           onHide={() => setShowModal(false)}
           pedido={pedidoSeleccionado}
           onSubmit={handleModalSubmit}
+          token={token}
         />
       )}
     </div>

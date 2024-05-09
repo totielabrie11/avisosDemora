@@ -1,16 +1,19 @@
 // src/component/ModalText.jsx
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import axios from 'axios';
 
-const ModalText = ({ show, onHide, pedido, onSubmit }) => {
+const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
   const [prioridad, setPrioridad] = useState('Regular');
   const [mensaje, setMensaje] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     // Resetear los campos del formulario cada vez que se muestre el modal
     if (show) {
       setPrioridad('Regular');
       setMensaje('');
+      setError('');
     }
   }, [show]);
 
@@ -22,7 +25,7 @@ const ModalText = ({ show, onHide, pedido, onSubmit }) => {
     setMensaje(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const reclamo = {
       id: pedido.Pedido,
       cliente: pedido.Cliente,
@@ -31,9 +34,21 @@ const ModalText = ({ show, onHide, pedido, onSubmit }) => {
       fecha: new Date().toISOString(),
     };
 
-    // Llamar al callback pasado como prop
-    onSubmit(reclamo);
-    onHide(); // Cerrar el modal después de enviar el mensaje
+    try {
+      // Enviar el reclamo al servidor
+      await axios.post(
+        'http://localhost:3000/api/v1/reclamos',
+        reclamo,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      onSubmit(reclamo);
+      onHide(); // Cerrar el modal después de enviar el mensaje
+    } catch (error) {
+      console.error('Error enviando el reclamo:', error);
+      setError('Error enviando el reclamo');
+    }
   };
 
   return (
@@ -42,6 +57,7 @@ const ModalText = ({ show, onHide, pedido, onSubmit }) => {
         <Modal.Title>Vencimiento Próximo - Pedido {pedido.Pedido}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {error && <p className="text-danger">{error}</p>}
         <Form>
           <Form.Group>
             <Form.Label>Cliente</Form.Label>
@@ -78,3 +94,4 @@ const ModalText = ({ show, onHide, pedido, onSubmit }) => {
 };
 
 export default ModalText;
+

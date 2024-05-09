@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": 38444,
+    "cliente": "TERNIUM ARGENTINA S A",
+    "prioridad": "Urgente",
+    "mensaje": "preparar remito urgente",
+    "fecha": "2024-05-09T02:09:58.694Z"
+  },
+  {
+    "id": 38510,
+    "cliente": "DIMOTEC SA",
+    "prioridad": "Urgente",
+    "mensaje": "cliente pide bomba con urgencia",
+    "fecha": "2024-05-09T02:10:42.838Z"
+  },
+  {
+    "id": 38442,
+    "cliente": "CERVECERIA Y MALTERIA QUILMES",
+    "prioridad": "Regular",
+    "mensaje": "por favor atender este reclamo",
+    "fecha": "2024-05-09T02:17:54.428Z"
+  },
+  {
+    "id": 38445,
+    "cliente": "TERNIUM ARGENTINA S A",
+    "prioridad": "Urgente",
+    "mensaje": "por favor atender",
+    "fecha": "2024-05-09T02:22:53.991Z",
+    "username": "CarlosM"
+  },
+  {
+    "id": 38536,
+    "cliente": "DOSIBOM SRL",
+    "prioridad": "Urgente",
+    "mensaje": "enviar",
+    "fecha": "2024-05-09T02:32:49.920Z",
+    "username": "CarlosM"
+  },
+  {
+    "id": 38442,
+    "cliente": "CERVECERIA Y MALTERIA QUILMES",
+    "prioridad": "Urgente",
+    "mensaje": "cliente vuelve a reclamr",
+    "fecha": "2024-05-09T02:34:06.292Z",
+    "username": "CarlosM"
+  }
+]

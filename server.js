@@ -13,14 +13,29 @@ const JWT_SECRET = 'your_secret_key';
 app.use(cors());
 app.use(express.json());
 
-const readOrders = () => {
-  const filePath = path.join(process.cwd(), 'data/orders.json');
-  if (!fs.existsSync(filePath)) {
-    console.warn('Archivo orders.json no encontrado');
-    return { Pedidos: [], Fecha_actualizacion: '' };
+// Definición de rutas para archivos JSON
+const filePaths = {
+  reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
+  orders: path.join(process.cwd(), 'data/orders.json'),
+  users: path.join(process.cwd(), 'data/us.json'),
+};
+
+// Inicializa archivos si no existen
+const initializeFiles = () => {
+  if (!fs.existsSync(filePaths.reclamos)) {
+    fs.writeFileSync(filePaths.reclamos, '[]', 'utf8');
   }
+  if (!fs.existsSync(filePaths.orders)) {
+    fs.writeFileSync(filePaths.orders, JSON.stringify({ Pedidos: [], Fecha_actualizacion: '' }), 'utf8');
+  }
+  if (!fs.existsSync(filePaths.users)) {
+    fs.writeFileSync(filePaths.users, JSON.stringify({ users: [] }), 'utf8');
+  }
+};
+
+const readOrders = () => {
   try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return JSON.parse(fs.readFileSync(filePaths.orders, 'utf8'));
   } catch (error) {
     console.error('Error leyendo orders.json:', error.message, error.stack);
     return { Pedidos: [], Fecha_actualizacion: '' };
@@ -28,13 +43,8 @@ const readOrders = () => {
 };
 
 const readUsers = () => {
-  const filePath = path.join(process.cwd(), 'data/us.json');
-  if (!fs.existsSync(filePath)) {
-    console.warn('Archivo us.json no encontrado');
-    return { users: [] };
-  }
   try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return JSON.parse(fs.readFileSync(filePaths.users, 'utf8'));
   } catch (error) {
     console.error('Error leyendo us.json:', error.message, error.stack);
     return { users: [] };
@@ -42,12 +52,8 @@ const readUsers = () => {
 };
 
 const readReclamos = () => {
-  const filePath = path.join(process.cwd(), 'data/pedidosReclamos.json');
-  if (!fs.existsSync(filePath)) {
-    return [];
-  }
   try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return JSON.parse(fs.readFileSync(filePaths.reclamos, 'utf8'));
   } catch (error) {
     console.error('Error leyendo pedidosReclamos.json:', error.message, error.stack);
     return [];
@@ -55,18 +61,18 @@ const readReclamos = () => {
 };
 
 const writeReclamos = (reclamos) => {
-  const filePath = path.join(process.cwd(), 'data/pedidosReclamos.json');
   try {
-    fs.writeFileSync(filePath, JSON.stringify(reclamos, null, 2), 'utf8');
+    fs.writeFileSync(filePaths.reclamos, JSON.stringify(reclamos, null, 2), 'utf8');
   } catch (error) {
     console.error('Error escribiendo pedidosReclamos.json:', error.message, error.stack);
   }
 };
 
+// Middleware de autenticación
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
-  if (token == null) return res.sendStatus(401);
+  if (!token) return res.sendStatus(401);
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
@@ -79,6 +85,9 @@ const authenticateToken = (req, res, next) => {
 const formatDate = (date) => {
   return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
 };
+
+// Inicializa los archivos necesarios
+initializeFiles();
 
 // Endpoint para iniciar sesión
 app.post('/api/v1/login', (req, res) => {
@@ -144,6 +153,8 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
   }
 });
 
+// Resto del archivo server.js
+
 // Endpoint para estadísticas de pedidos
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   try {
@@ -181,24 +192,28 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
 // Endpoint para recibir reclamos
 app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const { id, cliente, prioridad, mensaje, fecha } = req.body;
-    if (!id || !cliente || !prioridad || !mensaje || !fecha) {
+    const { id, cliente, prioridad, mensaje } = req.body;
+    if (!id || !cliente || !prioridad || !mensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
     const reclamos = readReclamos();
+    const username = req.user.username; // Obtén el nombre del usuario logueado
 
-    // Verifica si el reclamo ya existe
-    const reclamoExistente = reclamos.find((reclamo) => reclamo.id === id && reclamo.cliente === cliente);
+    // Añadir el nombre del usuario al objeto reclamo
+    const nuevoReclamo = {
+      id,
+      cliente,
+      prioridad,
+      mensaje,
+      fecha: new Date().toISOString(), // Fecha actual en formato ISO 8601
+      username // Incluye el nombre del usuario en el reclamo
+    };
 
-    if (reclamoExistente) {
-      return res.status(409).json({ error: 'El reclamo ya existe para este pedido y cliente' });
-    }
+    reclamos.push(nuevoReclamo); // Añadir el nuevo reclamo a la lista
+    writeReclamos(reclamos); // Escribir en el archivo JSON
 
-    reclamos.push({ id, cliente, prioridad, mensaje, fecha });
-    writeReclamos(reclamos);
-
-    res.status(201).json({ message: 'Reclamo recibido' });
+    res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoReclamo });
   } catch (err) {
     console.error('Error al recibir el reclamo:', err.message, err.stack);
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
@@ -206,7 +221,19 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
 });
 
 
+
+
+// Endpoint para obtener todos los reclamos
+app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
+  try {
+    const reclamos = readReclamos();
+    res.json(reclamos);
+  } catch (err) {
+    console.error('Error obteniendo reclamos:', err.message, err.stack);
+    res.status(500).json({ error: 'Error obteniendo reclamos', message: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
