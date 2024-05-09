@@ -51,6 +51,7 @@ const readUsers = () => {
   }
 };
 
+// Función para leer reclamos desde un archivo JSON
 const readReclamos = () => {
   try {
     return JSON.parse(fs.readFileSync(filePaths.reclamos, 'utf8'));
@@ -77,6 +78,7 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
     req.user = user;
+    req.role = user.role;
     next();
   });
 };
@@ -152,8 +154,6 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error obteniendo pedidos', message: err.message });
   }
 });
-
-// Resto del archivo server.js
 
 // Endpoint para estadísticas de pedidos
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
@@ -243,19 +243,30 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   }
 });
 
-
-
-
-// Endpoint para obtener todos los reclamos
+// Endpoint para obtener todos los reclamos (solo para "deposito")
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const reclamos = readReclamos();
+    if (req.role !== 'deposito') {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const reclamos = readReclamos().flatMap(reclamo =>
+      reclamo.reclamos.map(subReclamo => ({
+        pedido: reclamo.pedido,
+        cliente: reclamo.cliente,
+        prioridad: subReclamo.prioridad,
+        mensaje: subReclamo.mensaje,
+        fecha: subReclamo.fecha,
+        username: subReclamo.username
+      }))
+    );
     res.json(reclamos);
   } catch (err) {
     console.error('Error obteniendo reclamos:', err.message, err.stack);
     res.status(500).json({ error: 'Error obteniendo reclamos', message: err.message });
   }
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

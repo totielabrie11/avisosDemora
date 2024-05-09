@@ -7,7 +7,9 @@ import './App.css';
 import Leyenda from './component/Leyenda';
 import Estadisticas from './component/Estadisticas';
 import Login from './component/Login';
+import UserState from './component/UserState';
 import ModalText from './component/ModalText';
+import GestorAlmacenes from './component/GestorAlmacenes';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -101,13 +103,14 @@ const App = () => {
     return <Login onLogin={handleLogin} />;
   }
 
+  if (role === 'deposito') {
+    return <GestorAlmacenes token={token} username={username} role={role} onLogout={handleLogout} />;
+  }
+
   return (
     <div className="container">
       <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-        <div>
-          <span className="mr-3"><strong>Usuario:</strong> {username} ({role})</span>
-          <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
-        </div>
+        <UserState username={username} role={role} onLogout={handleLogout} />
         <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       </div>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
@@ -188,3 +191,4 @@ const App = () => {
 };
 
 export default App;
+
