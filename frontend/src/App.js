@@ -71,7 +71,7 @@ const App = () => {
   const getItemClass = (fechaVencida) => {
     const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
 
-    if (diffInDays > 0 && diffInDays <= 10) {
+    if (diffInDays > -1 && diffInDays <= 10) {
       return 'item-verde';
     } else if (diffInDays < 0 && diffInDays > -15) {
       return 'item-amarillo';
@@ -91,7 +91,7 @@ const App = () => {
 
   const shouldShowProximoVencimientoAlert = (fechaVencida) => {
     const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
-    return diffInDays > 0 && diffInDays <= 10; // Mostrar "Vencimiento Próximo" si el pedido está próximo a vencer
+    return diffInDays > -1 && diffInDays <= 10; // Mostrar "Vencimiento Próximo" si el pedido está próximo a vencer
   };
 
   const handleModalSubmit = (reclamo) => {
