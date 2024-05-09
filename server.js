@@ -198,8 +198,8 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const { pedido, cliente, prioridad, mensaje } = req.body;
-    if (!pedido || !cliente || !prioridad || !mensaje) {
+    const { pedido, cliente, estado, prioridad, mensaje } = req.body;
+    if (!pedido || !cliente || !estado || !prioridad || !mensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
@@ -212,6 +212,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
     // Crear nuevo sub-reclamo
     const nuevoSubReclamo = {
       id: `sub-${new Date().getTime()}`,
+      estado,
       prioridad,
       mensaje,
       fecha,
@@ -242,6 +243,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
   }
 });
+
 
 // Endpoint para obtener todos los reclamos (solo para "deposito")
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {

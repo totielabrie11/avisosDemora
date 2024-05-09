@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 
-const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
+const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
   const [prioridad, setPrioridad] = useState('Regular');
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
@@ -27,6 +27,7 @@ const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
     const reclamo = {
       pedido: pedido.Pedido,
       cliente: pedido.Cliente,
+      estado, // Add estado to the complaint object
       prioridad,
       mensaje
     };
@@ -50,7 +51,9 @@ const ModalText = ({ show, onHide, pedido, onSubmit, token }) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Vencimiento Próximo - Pedido {pedido.Pedido}</Modal.Title>
+        <Modal.Title>
+          {estado === 'vencido' ? 'Alerta Demora' : 'Vencimiento Próximo'} - Pedido {pedido.Pedido}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {error && <p className="text-danger">{error}</p>}

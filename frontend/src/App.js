@@ -21,6 +21,20 @@ const App = () => {
   const [role, setRole] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
+  const [estadoReclamo, setEstadoReclamo] = useState('');
+
+  const handleVencimientoProximoClick = (pedido) => {
+    setPedidoSeleccionado(pedido);
+    setEstadoReclamo('no vencido');
+    setShowModal(true);
+  };
+  
+  const handleAlertaDemoraClick = (pedido) => {
+    setPedidoSeleccionado(pedido);
+    setEstadoReclamo('vencido');
+    setShowModal(true);
+  };
+
 
   const fetchPedidos = useCallback(() => {
     console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}`);
@@ -157,18 +171,21 @@ const App = () => {
               ))}
             </ul>
             {pedido.Items.some((item) => shouldShowDemoraAlert(item.Fecha_vencida)) && (
-              <button className="btn btn-alerta-demora mt-2">Alerta Demora</button>
-            )}
-            {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
               <button
-                className="btn btn-vencimiento-proximo mt-2"
-                onClick={() => {
-                  setPedidoSeleccionado(pedido);
-                  setShowModal(true);
-                }}
-              >
-                Vencimiento Próximo
-              </button>
+              className="btn btn-alerta-demora mt-2"
+              onClick={() => handleAlertaDemoraClick(pedido)}
+            >
+              Alerta Demora
+            </button>
+          )}
+          
+          {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
+            <button
+              className="btn btn-vencimiento-proximo mt-2"
+              onClick={() => handleVencimientoProximoClick(pedido)}
+            >
+              Vencimiento Próximo
+            </button>
             )}
           </li>
         ))}
@@ -182,6 +199,7 @@ const App = () => {
           show={showModal}
           onHide={() => setShowModal(false)}
           pedido={pedidoSeleccionado}
+          estado={estadoReclamo} 
           onSubmit={handleModalSubmit}
           token={token}
         />
