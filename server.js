@@ -256,6 +256,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         pedido: reclamo.pedido,
         cliente: reclamo.cliente,
         prioridad: subReclamo.prioridad,
+        estado: subReclamo.estado,
         mensaje: subReclamo.mensaje,
         fecha: subReclamo.fecha,
         username: subReclamo.username
