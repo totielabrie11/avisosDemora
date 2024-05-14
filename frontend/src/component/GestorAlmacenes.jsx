@@ -108,20 +108,25 @@ useEffect(() => {
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
-      <h1>Gestor de Reclamos - Almacenes</h1>
+      <h1>Gestor de Reclamos - Almacenes</h1> <h2>Total Reclamos: {reclamos.length}</h2> 
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Urgente: {urgenteCount}</h2>
-        <h2>Regular: {regularCount}</h2>
-        <h2>Vencido: {vencidoCount}</h2>
-        <h2>No Vencido: {noVencidoCount}</h2>
-        <h2>Abiertos: {abiertosCount}</h2>
+     
+          <h2>Urgente: {urgenteCount}</h2>
+          <h2>Regular: {regularCount}</h2>
+          <h2>Vencido: {vencidoCount}</h2>
+       
+          <h2>No Vencido: {noVencidoCount}</h2>
+          <h2>Sin Responder: {abiertosCount}</h2>
+    
+         
+      
       </div>
       <div className="row">
         {reclamos.map((reclamo, idx) => (
           <div
             key={idx}
             className={`col-md-4 mb-4 card ${
-              reclamo.estado === 'respondido' ? 'bg-info' :
+              reclamo.estado === 'respondido' ? 'bg-success' :
               reclamo.prioridad === 'Urgente' ? 'bg-danger' :
               'bg-warning'
             } text-white`}
@@ -170,6 +175,7 @@ useEffect(() => {
       </Modal>
     </div>
   );
+  
    
 };
 
