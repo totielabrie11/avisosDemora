@@ -12,6 +12,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [urgenteCount, setUrgenteCount] = useState(0);
   const [regularCount, setRegularCount] = useState(0);
   const [vencidoCount, setVencidoCount] = useState(0);
+  const [abiertosCount, setAbiertosCount] = useState(0);
   const [noVencidoCount, setNoVencidoCount] = useState(0);
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState(null);
@@ -29,38 +30,39 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   }
   
 
-  useEffect(() => {
-    const fetchReclamos = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = response.data;
-  
-        // Asegurarse de que cada reclamo tiene un ID y otros datos necesarios antes de procesarlos
-        const reclamosConId = data.map(reclamo => ({
-          ...reclamo,
-          id: reclamo.id || generateId()  // Generar un ID si falta, aunque lo ideal es que siempre venga desde la API
-        }));
-  
-        const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
-        const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
-        const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
-        const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
-  
-        setReclamos(reclamosConId);
-        setUrgenteCount(urgenteReclamos.length);
-        setRegularCount(regularReclamos.length);
-        setVencidoCount(vencidoReclamos.length);
-        setNoVencidoCount(noVencidoReclamos.length);
-      } catch (error) {
-        console.error('Error fetching reclamos:', error);
-      }
-    };
-  
-    fetchReclamos();
-  }, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
-  
+useEffect(() => {
+  const fetchReclamos = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = response.data;
+
+      const reclamosConId = data.map(reclamo => ({
+        ...reclamo,
+        id: reclamo.id || generateId()  // Generar un ID si falta
+      }));
+
+      const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
+      const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
+      const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
+      const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
+      const abiertosReclamos = reclamosConId.filter(r => r.estado !== 'respondido');
+
+      setReclamos(reclamosConId);
+      setUrgenteCount(urgenteReclamos.length);
+      setRegularCount(regularReclamos.length);
+      setVencidoCount(vencidoReclamos.length);
+      setNoVencidoCount(noVencidoReclamos.length);
+      setAbiertosCount(abiertosReclamos.length);
+    } catch (error) {
+      console.error('Error fetching reclamos:', error);
+    }
+  };
+
+  fetchReclamos();
+}, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
+
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -112,13 +114,16 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         <h2>Regular: {regularCount}</h2>
         <h2>Vencido: {vencidoCount}</h2>
         <h2>No Vencido: {noVencidoCount}</h2>
+        <h2>Abiertos: {abiertosCount}</h2>
       </div>
       <div className="row">
         {reclamos.map((reclamo, idx) => (
           <div
             key={idx}
             className={`col-md-4 mb-4 card ${
-              reclamo.prioridad === 'Urgente' ? 'bg-danger' : 'bg-warning'
+              reclamo.estado === 'respondido' ? 'bg-info' :
+              reclamo.prioridad === 'Urgente' ? 'bg-danger' :
+              'bg-warning'
             } text-white`}
           >
             <div className="card-body">
@@ -139,7 +144,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         ))}
       </div>
-
+  
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
@@ -165,6 +170,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       </Modal>
     </div>
   );
+   
 };
 
 export default GestorAlmacenes;

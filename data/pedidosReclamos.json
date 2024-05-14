@@ -6,11 +6,12 @@
     "reclamos": [
       {
         "id": "sub-1715706826342",
-        "estado": "no vencido",
+        "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "xbffdv",
         "fecha": "14-05-2024 a las 14:13 hs",
-        "username": "CarlosM"
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 28/5/2024"
       }
     ]
   },
@@ -21,11 +22,12 @@
     "reclamos": [
       {
         "id": "sub-1715706863868",
-        "estado": "vencido",
+        "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "todo mal",
         "fecha": "14-05-2024 a las 14:14 hs",
-        "username": "CarlosM"
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 25/5/2024"
       }
     ]
   },
@@ -41,7 +43,55 @@
         "mensaje": "super vencido y urgente",
         "fecha": "14-05-2024 a las 14:15 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024"
+        "respuesta": "Se entregará en la fecha 24/5/2024"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": 38761,
+    "cliente": "LUBCHEM ARGENTINA S.R.L",
+    "reclamos": [
+      {
+        "id": "sub-1715709773654",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "necesita si o si",
+        "fecha": "14-05-2024 a las 15:02 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 31/5/2024"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "pedido": 38766,
+    "cliente": "PECOM SERVICIOS ENERGIA S A",
+    "reclamos": [
+      {
+        "id": "sub-1715709788188",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "vence pronto podremos cumplir al cliente?",
+        "fecha": "14-05-2024 a las 15:03 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 31/5/2024"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "pedido": 38125,
+    "cliente": "HIDROMECANICA MEDITERRANEA S.R.L.",
+    "reclamos": [
+      {
+        "id": "sub-1715709917598",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "se prendio fuego la cosa",
+        "fecha": "14-05-2024 a las 15:05 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 31/5/2024"
       }
     ]
   }
