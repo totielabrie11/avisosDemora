@@ -1,68 +1,40 @@
 [
   {
-    "id": 11,
-    "pedido": 38550,
-    "cliente": "DOSISUR S.R.L",
+    "id": 1,
+    "pedido": 38305,
+    "cliente": "YPF ENERGIA ELECTRICA S.A.",
     "reclamos": [
       {
-        "id": "sub-1715261018734",
-        "prioridad": "Regular",
-        "mensaje": "se está por vencer.  el cliente lo necesita",
-        "fecha": "09-05-2024 a las 10:23 hs",
-        "username": "CarlosM"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "pedido": 38228,
-    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
-    "reclamos": [
-      {
-        "id": "sub-1715276983627",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "cliente reclama pedido",
-        "fecha": "09-05-2024 a las 14:49 hs",
-        "username": "CarlosM"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "pedido": 38442,
-    "cliente": "CERVECERIA Y MALTERIA QUILMES",
-    "reclamos": [
-      {
-        "id": "sub-1715277025826",
+        "id": "sub-1715612668195",
         "estado": "no vencido",
-        "prioridad": "Regular",
-        "mensaje": "cliente eleva reclamo",
-        "fecha": "09-05-2024 a las 14:50 hs",
+        "prioridad": "Urgente",
+        "mensaje": "hola",
+        "fecha": "13-05-2024 a las 12:04 hs",
+        "username": "CarlosM"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 38540,
+    "cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
+    "reclamos": [
+      {
+        "id": "sub-1715612676010",
+        "estado": "vencido",
+        "prioridad": "Urgente",
+        "mensaje": "malisimo",
+        "fecha": "13-05-2024 a las 12:04 hs",
         "username": "CarlosM"
       },
       {
-        "id": "sub-1715277130633",
-        "estado": "no vencido",
-        "prioridad": "Regular",
-        "mensaje": "saber si se va a cumplir con la fecha",
-        "fecha": "09-05-2024 a las 14:52 hs",
-        "username": "CarlosM"
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "pedido": 38600,
-    "cliente": "CAPEX SA Y PETROMINERA CHUBUT SOC.DEL ESTADO UTE.PAMPA DEL CASTILLO LA GUITARRA",
-    "reclamos": [
-      {
-        "id": "sub-1715277146563",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "se reprograma la fecha?",
-        "fecha": "09-05-2024 a las 14:52 hs",
-        "username": "CarlosM"
+        "id": "sub-1715615355572",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "sacalo ya",
+        "fecha": "13-05-2024 a las 12:49 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 15/5/2024"
       }
     ]
   }

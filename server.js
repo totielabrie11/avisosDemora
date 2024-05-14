@@ -5,13 +5,16 @@ import path from 'path';
 import cors from 'cors';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
+import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = 3000;
-const JWT_SECRET = 'your_secret_key';
+const JWT_SECRET = 'charly';
 
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.json());
 
 // Definición de rutas para archivos JSON
 const filePaths = {
@@ -198,8 +201,8 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje } = req.body;
-    if (!pedido || !cliente || !estado || !prioridad || !mensaje) {
+    const { pedido, cliente, estado, prioridad, mensaje, id } = req.body;
+    if (!id || !pedido || !cliente || !estado || !prioridad || !mensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
@@ -253,19 +256,55 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
     }
     const reclamos = readReclamos().flatMap(reclamo =>
       reclamo.reclamos.map(subReclamo => ({
+        id: reclamo.id,
         pedido: reclamo.pedido,
         cliente: reclamo.cliente,
         prioridad: subReclamo.prioridad,
         estado: subReclamo.estado,
         mensaje: subReclamo.mensaje,
         fecha: subReclamo.fecha,
-        username: subReclamo.username
+        username: subReclamo.username,
+        subId: subReclamo.id
       }))
     );
     res.json(reclamos);
   } catch (err) {
     console.error('Error obteniendo reclamos:', err.message, err.stack);
     res.status(500).json({ error: 'Error obteniendo reclamos', message: err.message });
+  }
+});
+
+app.put('/api/v1/reclamos/:id', async (req, res) => {
+  const { id } = req.params;
+  const { estado, respuesta, subId } = req.body;
+
+  try {
+    let reclamos = await readReclamos();
+    let found = false;
+
+    reclamos = reclamos.map(reclamo => {
+      if (reclamo.id === parseInt(id)) {  // Asegurar que el id coincide
+        reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
+          if (subReclamo.id === subId) {  // Comprobar subId
+            subReclamo.estado = estado;
+            subReclamo.respuesta = respuesta;
+            found = true;
+          }
+          return subReclamo;
+        });
+      }
+      return reclamo;
+    });
+
+    if (!found) {
+      return res.status(404).json({ error: 'Reclamo o sub-reclamo no encontrado' });
+    }
+
+    await writeReclamos(reclamos);
+    res.status(200).json({ message: 'Reclamo actualizado exitosamente!' });
+  } catch (error) {
+    console.error('Error al procesar la solicitud:', error);
+    res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
 

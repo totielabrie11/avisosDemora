@@ -1,8 +1,11 @@
-// src/component/GestorAlmacenes.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserState from './UserState';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -10,8 +13,22 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [regularCount, setRegularCount] = useState(0);
   const [vencidoCount, setVencidoCount] = useState(0);
   const [noVencidoCount, setNoVencidoCount] = useState(0);
+  const [selectedReclamo, setSelectedReclamo] = useState(null);
+  const [fechaEntrega, setFechaEntrega] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  // Fetch información de reclamos
+  function generateId() {
+    // Generar un número aleatorio de cuatro cifras
+    const randomNumber = Math.floor(1000 + Math.random() * 9000);
+    
+    // Generar una letra aleatoria
+    const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+  
+    // Combinar el número y la letra para formar el ID
+    return `${randomNumber}${randomLetter}`;
+  }
+  
+
   useEffect(() => {
     const fetchReclamos = async () => {
       try {
@@ -19,17 +36,19 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data;
-        console.log("🚀 ~ fetchReclamos ~ data:", data)
-
-        // Filtrado por prioridad
-        const urgenteReclamos = data.filter((r) => r.prioridad === 'Urgente');
-        const regularReclamos = data.filter((r) => r.prioridad === 'Regular');
-
-        // Filtrado por estado
-        const vencidoReclamos = data.filter((r) => r.estado === 'vencido');
-        const noVencidoReclamos = data.filter((r) => r.estado === 'no vencido');
-
-        setReclamos(data);
+  
+        // Asegurarse de que cada reclamo tiene un ID y otros datos necesarios antes de procesarlos
+        const reclamosConId = data.map(reclamo => ({
+          ...reclamo,
+          id: reclamo.id || generateId()  // Generar un ID si falta, aunque lo ideal es que siempre venga desde la API
+        }));
+  
+        const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
+        const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
+        const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
+        const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
+  
+        setReclamos(reclamosConId);
         setUrgenteCount(urgenteReclamos.length);
         setRegularCount(regularReclamos.length);
         setVencidoCount(vencidoReclamos.length);
@@ -38,15 +57,52 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         console.error('Error fetching reclamos:', error);
       }
     };
-
+  
     fetchReclamos();
-  }, [token]);
+  }, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
+  
 
-  const handleResponder = (reclamo) => {
-    console.log('Respondiendo reclamo:', reclamo);
-    // Aquí puedes añadir la lógica para responder al reclamo
+  const handleResponder = reclamo => {
+    setSelectedReclamo(reclamo);
+    setShowModal(true);
   };
 
+  const handleFechaEntregaChange = date => {
+    setFechaEntrega(date);
+  };
+
+  const handleEnviarRespuesta = async () => {
+    console.log("Selected Reclamo:", selectedReclamo);  // Esto mostrará el objeto seleccionado
+    setShowModal(false);
+    if (selectedReclamo && fechaEntrega) {
+      const updatedReclamo = {
+        estado: 'respondido',
+        respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`
+      };
+  
+      // Asegurarse de usar el `id` correcto y también enviar `subId` si necesario
+      try {
+        const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
+          ...updatedReclamo,
+          subId: selectedReclamo.subId
+        }, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+  
+        if (response.status === 200) {
+          setReclamos(prev => 
+            prev.map(r => (r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r))
+          );
+          setSelectedReclamo(null);
+          setFechaEntrega(null);
+        }
+      } catch (error) {
+        console.error('Error enviando la respuesta:', error);
+        alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
+      }
+    }
+  };
+  
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
@@ -83,6 +139,30 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         ))}
       </div>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <DatePicker
+            selected={fechaEntrega}
+            onChange={handleFechaEntregaChange}
+            minDate={new Date()}
+            placeholderText="Selecciona una fecha de entrega"
+            dateFormat="dd-MM-yyyy"
+            className="form-control mb-2"
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cerrar
+          </Button>
+          <Button variant="success" onClick={handleEnviarRespuesta}>
+            Enviar Respuesta
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
