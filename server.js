@@ -64,14 +64,15 @@ const readReclamos = () => {
   }
 };
 
-const writeReclamos = (reclamos) => {
+// Función para escribir reclamos en un archivo JSON de manera asincrónica
+const writeReclamos = async (reclamos) => {
   try {
-    fs.writeFileSync(filePaths.reclamos, JSON.stringify(reclamos, null, 2), 'utf8');
+    await fs.promises.writeFile(filePaths.reclamos, JSON.stringify(reclamos, null, 2), 'utf8');
   } catch (error) {
-    console.error('Error escribiendo pedidosReclamos.json:', error.message, error.stack);
+    console.error('Error escribiendo pedidosReclamos.json:', error.message);
+    throw error;  // Rethrow the error to be caught by the calling function
   }
 };
-
 // Middleware de autenticación
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -201,8 +202,8 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje, id } = req.body;
-    if (!id || !pedido || !cliente || !estado || !prioridad || !mensaje) {
+    const { pedido, cliente, estado, prioridad, mensaje } = req.body;
+    if (!pedido || !cliente || !estado || !prioridad || !mensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 

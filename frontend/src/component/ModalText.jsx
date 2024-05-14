@@ -24,29 +24,33 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
   };
 
   const handleSubmit = async () => {
+    // Definir el objeto reclamo dentro de la función handleSubmit para asegurar su ámbito
     const reclamo = {
-      pedido: pedido.Pedido,
-      cliente: pedido.Cliente,
-      estado, // Add estado to the complaint object
-      prioridad,
-      mensaje
+      pedido: pedido.Pedido,  // Asegúrate de que esta propiedad existe en el objeto pedido
+      cliente: pedido.Cliente,  // Asegúrate de que esta propiedad existe en el objeto pedido
+      estado,  // Asegúrate de que esta prop se pasa correctamente al componente
+      prioridad,  // Estado interno del componente
+      mensaje  // Estado interno del componente
     };
-
+  
     try {
-      await axios.post(
+      const response = await axios.post(
         'http://localhost:3000/api/v1/reclamos',
         reclamo,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      // Usar la variable reclamo directamente en onSubmit
       onSubmit(reclamo);
       onHide();
     } catch (error) {
-      console.error('Error enviando el reclamo:', error);
-      setError('Error enviando el reclamo');
+      console.error('Error enviando el reclamo:', error.response ? error.response.data : error);
+      setError(`Error enviando el reclamo: ${error.response ? error.response.data.error : 'Desconocido'}`);
     }
   };
+  
+
 
   return (
     <Modal show={show} onHide={onHide} centered>
