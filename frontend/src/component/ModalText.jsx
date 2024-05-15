@@ -41,7 +41,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      // Usar la variable reclamo directamente en onSubmit
+      console.log('Respuesta del servidor:', response.data);
       onSubmit(reclamo);
       onHide();
     } catch (error) {
