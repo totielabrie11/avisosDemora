@@ -254,7 +254,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
 // Endpoint para obtener todos los reclamos (solo para "deposito")
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    if (req.role !== 'deposito') {
+    if (req.role !== 'deposito' && req.role !== 'administrador' ) {
       return res.status(403).json({ error: 'Access denied' });
     }
     const reclamos = readReclamos().flatMap(reclamo =>
@@ -267,6 +267,8 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         mensaje: subReclamo.mensaje,
         fecha: subReclamo.fecha,
         username: subReclamo.username,
+        usernameAlmacen: subReclamo.usernameAlmacen,
+        respuesta: subReclamo.respuesta,
         subId: subReclamo.id
       }))
     );
@@ -279,7 +281,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
 
 app.put('/api/v1/reclamos/:id', async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -291,6 +293,7 @@ app.put('/api/v1/reclamos/:id', async (req, res) => {
           if (subReclamo.id === subId) {  // Comprobar subId
             subReclamo.estado = estado;
             subReclamo.respuesta = respuesta;
+            subReclamo.usernameAlmacen = usernameAlmacen
             found = true;
           }
           return subReclamo;

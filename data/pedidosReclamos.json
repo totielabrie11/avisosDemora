@@ -5,242 +5,61 @@
     "cliente": "YPF SOCIEDAD ANONIMA",
     "reclamos": [
       {
-        "id": "sub-1715706826342",
+        "id": "sub-1715796875994",
         "estado": "respondido",
         "prioridad": "Regular",
-        "mensaje": "xbffdv",
-        "fecha": "14-05-2024 a las 14:13 hs",
+        "mensaje": "d",
+        "fecha": "15-05-2024 a las 15:14 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 28/5/2024"
-      },
-      {
-        "id": "sub-1715711417172",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "relcamo potente",
-        "fecha": "14-05-2024 a las 15:30 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 24/5/2024"
-      },
-      {
-        "id": "sub-1715711536006",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "se pudrió todo",
-        "fecha": "14-05-2024 a las 15:32 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 15/5/2024"
-      },
-      {
-        "id": "sub-1715711833568",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "no anda la cosa bien con cliente . ",
-        "fecha": "14-05-2024 a las 15:37 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 15/5/2024"
-      },
-      {
-        "id": "sub-1715711941199",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "todo mal",
-        "fecha": "14-05-2024 a las 15:39 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 15/5/2024"
-      },
-      {
-        "id": "sub-1715721330827",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "hacemelo",
-        "fecha": "14-05-2024 a las 18:15 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
+        "respuesta": "Se entregará en la fecha 22/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 2,
-    "pedido": 38228,
-    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "pedido": 38305,
+    "cliente": "YPF ENERGIA ELECTRICA S.A.",
     "reclamos": [
       {
-        "id": "sub-1715706863868",
-        "estado": "respondido",
+        "id": "sub-1715796891728",
+        "estado": "no vencido",
         "prioridad": "Regular",
-        "mensaje": "todo mal",
-        "fecha": "14-05-2024 a las 14:14 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 25/5/2024"
+        "mensaje": "ss",
+        "fecha": "15-05-2024 a las 15:14 hs",
+        "username": "CarlosM"
       }
     ]
   },
   {
     "id": 3,
-    "pedido": 37904,
-    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "pedido": 38569,
+    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
     "reclamos": [
       {
-        "id": "sub-1715706933317",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "super vencido y urgente",
-        "fecha": "14-05-2024 a las 14:15 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 24/5/2024"
+        "id": "sub-1715796903213",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "malisimo",
+        "fecha": "15-05-2024 a las 15:15 hs",
+        "username": "CarlosM"
       }
     ]
   },
   {
     "id": 4,
-    "pedido": 38761,
-    "cliente": "LUBCHEM ARGENTINA S.R.L",
-    "reclamos": [
-      {
-        "id": "sub-1715709773654",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "necesita si o si",
-        "fecha": "14-05-2024 a las 15:02 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 5,
     "pedido": 38766,
     "cliente": "PECOM SERVICIOS ENERGIA S A",
     "reclamos": [
       {
-        "id": "sub-1715709788188",
+        "id": "sub-1715796964522",
         "estado": "respondido",
         "prioridad": "Regular",
-        "mensaje": "vence pronto podremos cumplir al cliente?",
-        "fecha": "14-05-2024 a las 15:03 hs",
+        "mensaje": "vence pronto",
+        "fecha": "15-05-2024 a las 15:16 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "pedido": 38125,
-    "cliente": "HIDROMECANICA MEDITERRANEA S.R.L.",
-    "reclamos": [
-      {
-        "id": "sub-1715709917598",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "se prendio fuego la cosa",
-        "fecha": "14-05-2024 a las 15:05 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "pedido": 38540,
-    "cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
-    "reclamos": [
-      {
-        "id": "sub-1715721376634",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "esto vence pronto.. podrán entregar?",
-        "fecha": "14-05-2024 a las 18:16 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 16/5/2024"
-      },
-      {
-        "id": "sub-1715722546497",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "hola",
-        "fecha": "14-05-2024 a las 18:35 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "pedido": 38003,
-    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
-    "reclamos": [
-      {
-        "id": "sub-1715721525369",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "solicito urgente saquen este equipo",
-        "fecha": "14-05-2024 a las 18:18 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 16/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "pedido": 38705,
-    "cliente": "SAL PARK S R L",
-    "reclamos": [
-      {
-        "id": "sub-1715721632449",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "este pedido, se va a poder cumplir?",
-        "fecha": "14-05-2024 a las 18:20 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 31/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "pedido": 34743,
-    "cliente": "YPF SOCIEDAD ANONIMA",
-    "reclamos": [
-      {
-        "id": "sub-1715731984933",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "macho no podes deber esto hace más de un año. lo tenias que entregar el año pasado ",
-        "fecha": "14-05-2024 a las 21:13 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "pedido": 38767,
-    "cliente": "E-INTRA S. R. L.",
-    "reclamos": [
-      {
-        "id": "sub-1715732073933",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "vence pronto, podremos entregar en termino?",
-        "fecha": "14-05-2024 a las 21:14 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 29/5/2024"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "pedido": 38284,
-    "cliente": "CERVECERIA Y MALTERIA QUILMES",
-    "reclamos": [
-      {
-        "id": "sub-1715784462794",
-        "estado": "vencido",
-        "prioridad": "Urgente",
-        "mensaje": "cliente llama y quiere saber si la vamos a entregar",
-        "fecha": "15-05-2024 a las 11:47 hs",
-        "username": "CarlosM"
+        "respuesta": "Se entregará en la fecha 25/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }

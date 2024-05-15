@@ -79,7 +79,8 @@ useEffect(() => {
     if (selectedReclamo && fechaEntrega) {
       const updatedReclamo = {
         estado: 'respondido',
-        respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`
+        respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`,
+        usernameAlmacen: username
       };
   
       // Asegurarse de usar el `id` correcto y también enviar `subId` si necesario

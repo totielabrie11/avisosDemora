@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ManejadorReclamosVentas = ({ token }) => {
   const [reclamos, setReclamos] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchReclamos = async () => {
@@ -13,28 +15,47 @@ const ManejadorReclamosVentas = ({ token }) => {
         const reclamosRespondidos = response.data.filter(r => r.estado === 'respondido');
         setReclamos(reclamosRespondidos);
       } catch (error) {
-        console.error('Error al obtener reclamos:', error);
+        if (error.response && error.response.status === 403) {
+          setError('Acceso denegado. No tiene permiso para ver esta información.');
+        } else {
+          console.error('Error al obtener reclamos:', error);
+          setError('Error al obtener reclamos.');
+        }
       }
     };
 
     fetchReclamos();
   }, [token]);
 
+  if (error) {
+    return <div className="alert alert-danger" role="alert">{error}</div>;
+  }
+
   return (
-    <div>
-      <h2>Reclamos Respondidos</h2>
-      <ul>
+    <div className="container mt-5">
+      <h1>Reclamos Respondidos</h1>
+      <div className="row">
         {reclamos.map((reclamo, index) => (
-          <li key={index}>
-            <strong>Pedido:</strong> {reclamo.pedido} - <strong>Cliente:</strong> {reclamo.cliente}<br/>
-            <strong>Mensaje:</strong> {reclamo.mensaje}<br/>
-            <strong>Estado:</strong> {reclamo.estado} - <strong>Fecha:</strong> {reclamo.fecha}<br/>
-            <strong>Atendido por:</strong> {reclamo.username}
-          </li>
+          <div key={index} className={`col-md-4 mb-4 card bg-secondary text-white`}>
+            <div className="card-body">
+              <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
+              <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
+              <small><strong>Emitido por:</strong> {reclamo.username}</small>
+              <p className="card-text">
+                <small>
+                  <strong>Estado:</strong> {reclamo.estado}<br />
+                  <strong>Fecha:</strong> {reclamo.respuesta}<br />
+                  <strong>Atendido por:</strong> {reclamo.usernameAlmacen}
+                </small>
+              </p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 export default ManejadorReclamosVentas;
+
+
