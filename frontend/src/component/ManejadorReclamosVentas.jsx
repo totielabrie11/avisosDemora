@@ -40,11 +40,11 @@ const ManejadorReclamosVentas = ({ token }) => {
             <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
               <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
-              <small><strong>Emitido por:</strong> {reclamo.username}</small>
+              <small><strong>Reclamo emitido por:</strong> {reclamo.username}</small>
               <p className="card-text">
                 <small>
                   <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Fecha:</strong> {reclamo.respuesta}<br />
+                  <strong>Respuesta:</strong> {reclamo.respuesta}<br />
                   <strong>Atendido por:</strong> {reclamo.usernameAlmacen}
                 </small>
               </p>
