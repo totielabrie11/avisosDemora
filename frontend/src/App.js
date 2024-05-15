@@ -22,6 +22,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
   const [estadoReclamo, setEstadoReclamo] = useState('');
+  const [showEstadisticas, setShowEstadisticas] = useState(false);
 
   const handleVencimientoProximoClick = (pedido) => {
     setPedidoSeleccionado(pedido);
@@ -35,6 +36,13 @@ const App = () => {
     setShowModal(true);
   };
 
+  const handleShowEstadisticas = () => {
+    setShowEstadisticas(true);
+  };
+
+  const handleHideEstadisticas = () => {
+    setShowEstadisticas(false);
+  };
 
   const fetchPedidos = useCallback(() => {
     console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}`);
@@ -121,10 +129,21 @@ const App = () => {
     return <GestorAlmacenes token={token} username={username} role={role} onLogout={handleLogout} />;
   }
 
+  if (showEstadisticas) {
+    // Mostrar el componente Estadísticas con botón para volver
+    return (
+      <div>
+        <button className="btn btn-secondary" onClick={handleHideEstadisticas}>Volver al Menú Principal</button>
+        <Estadisticas token={token} />
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
         <UserState username={username} role={role} onLogout={handleLogout} />
+        <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
         <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       </div>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
@@ -192,7 +211,7 @@ const App = () => {
       </ul>
 
       <Leyenda />
-      <Estadisticas token={token} />
+      
 
       {pedidoSeleccionado && (
         <ModalText
