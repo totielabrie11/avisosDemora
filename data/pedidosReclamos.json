@@ -23,11 +23,13 @@
     "reclamos": [
       {
         "id": "sub-1715796891728",
-        "estado": "no vencido",
+        "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "ss",
         "fecha": "15-05-2024 a las 15:14 hs",
-        "username": "CarlosM"
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 23/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -38,11 +40,13 @@
     "reclamos": [
       {
         "id": "sub-1715796903213",
-        "estado": "vencido",
+        "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "malisimo",
         "fecha": "15-05-2024 a las 15:15 hs",
-        "username": "CarlosM"
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 28/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },

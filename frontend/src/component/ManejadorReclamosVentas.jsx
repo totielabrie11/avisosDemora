@@ -27,6 +27,24 @@ const ManejadorReclamosVentas = ({ token }) => {
     fetchReclamos();
   }, [token]);
 
+  const cerrarReclamo = (reclamoId) => {
+    const remito = prompt("Indique número de remito que cierra el reclamo:");
+    if (!remito) {
+      alert("No se ingresó ningún número de remito.");
+      return;
+    }
+
+    const remitoNumero = Number(remito);
+    if (isNaN(remitoNumero)) {
+      alert("El valor ingresado no es un número válido.");
+      return;
+    }
+
+    // Aquí puedes agregar lógica para interactuar con la API o base de datos
+    alert("Reclamo cerrado exitosamente");
+    // Actualizar estado o refrescar lista de reclamos aquí si es necesario
+  };
+
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;
   }
@@ -36,18 +54,19 @@ const ManejadorReclamosVentas = ({ token }) => {
       <h1>Reclamos Respondidos</h1>
       <div className="row">
         {reclamos.map((reclamo, index) => (
-          <div key={index} className={`col-md-4 mb-4 card bg-secondary text-white`}>
+          <div key={index} className="col-md-4 mb-4 card bg-secondary text-white">
             <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
-              <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
-              <small><strong>Reclamo emitido por:</strong> {reclamo.username}</small>
+              <p className="card-text"><strong>Reclamo:</strong> {reclamo.mensaje}</p>
+              <small><strong>Emitido por:</strong> {reclamo.username}</small>
               <p className="card-text">
                 <small>
                   <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Respuesta:</strong> {reclamo.respuesta}<br />
+                  <strong>Fecha:</strong> {reclamo.respuesta}<br />
                   <strong>Atendido por:</strong> {reclamo.usernameAlmacen}
                 </small>
               </p>
+              <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo.id)}>Cerrar Reclamo</button>
             </div>
           </div>
         ))}
@@ -57,5 +76,6 @@ const ManejadorReclamosVentas = ({ token }) => {
 };
 
 export default ManejadorReclamosVentas;
+
 
 
