@@ -170,6 +170,7 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
 
     const pedidosPorCliente = {};
     const pedidosPorMes = {};
+    let totalPedidos = 0; // Contador para el total de pedidos
 
     Pedidos.forEach((order) => {
       const cliente = order.Cliente;
@@ -184,9 +185,10 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
         pedidosPorMes[mes] = 0;
       }
       pedidosPorMes[mes]++;
+      totalPedidos++; // Incrementa el total de pedidos
     });
 
-    res.json({ pedidosPorCliente, pedidosPorMes });
+    res.json({ pedidosPorCliente, pedidosPorMes, totalPedidos });
   } catch (err) {
     console.error('Error generando estadísticas:', err.message, err.stack);
     res.status(500).json({ error: 'Error generando estadísticas', message: err.message });
