@@ -87,7 +87,7 @@
 /* Leyenda */
 .leyenda {
   position: absolute;
-  top: 10px;
+  top: 80px !important;
   right: 10px;
   background-color: #f9f9f9;
   padding: 10px;

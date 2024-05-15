@@ -10,6 +10,7 @@ import Login from './component/Login';
 import UserState from './component/UserState';
 import ModalText from './component/ModalText';
 import GestorAlmacenes from './component/GestorAlmacenes';
+import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -23,6 +24,16 @@ const App = () => {
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
   const [estadoReclamo, setEstadoReclamo] = useState('');
   const [showEstadisticas, setShowEstadisticas] = useState(false);
+  const [showManejadorReclamos, setShowManejadorReclamos] = useState(false);
+
+  const handleShowManejadorReclamos = () => {
+    setShowManejadorReclamos(true);
+  };
+  
+  const handleHideManejadorReclamos = () => {
+    setShowManejadorReclamos(false);
+  };
+  
 
   const handleVencimientoProximoClick = (pedido) => {
     setPedidoSeleccionado(pedido);
@@ -129,6 +140,16 @@ const App = () => {
     return <GestorAlmacenes token={token} username={username} role={role} onLogout={handleLogout} />;
   }
 
+  if (showManejadorReclamos) {
+    // Mostrar el componente ManejadorReclamosVentas con botón para volver
+    return (
+      <div>
+        <button className="btn btn-secondary" onClick={handleHideManejadorReclamos}>Volver al Menú Principal</button>
+        <ManejadorReclamosVentas token={token} />
+      </div>
+    );
+  }
+
   if (showEstadisticas) {
     // Mostrar el componente Estadísticas con botón para volver
     return (
@@ -144,8 +165,9 @@ const App = () => {
       <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
         <UserState username={username} role={role} onLogout={handleLogout} />
         <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
-        <h1>Pedidos Próximos a Vencer o Vencidos</h1>
+        <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
       </div>
+        <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
       <form onSubmit={handleSubmit} className="form-inline mb-3">
