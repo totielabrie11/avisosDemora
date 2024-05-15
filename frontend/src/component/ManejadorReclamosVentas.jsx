@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ManejadorReclamosVentas = ({ token, username }) => {  // Ahora también aceptamos username como prop
+const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar role como prop
   const [reclamos, setReclamos] = useState([]);
   const [error, setError] = useState(null);
 
@@ -13,9 +13,12 @@ const ManejadorReclamosVentas = ({ token, username }) => {  // Ahora también ac
         const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        // Filtro para obtener sólo reclamos respondidos y iniciados por el usuario logueado
-        const reclamosUsuario = response.data.filter(r => r.estado === 'respondido' && r.username === username);
-        setReclamos(reclamosUsuario);
+        // Verifica si el usuario es administrador para filtrar los reclamos
+        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido');
+        if (role !== 'administrador') {
+          reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
+        }
+        setReclamos(reclamosFiltrados);
       } catch (error) {
         if (error.response && error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver esta información.');
@@ -27,7 +30,7 @@ const ManejadorReclamosVentas = ({ token, username }) => {  // Ahora también ac
     };
 
     fetchReclamos();
-  }, [token, username]);  // Agrega username a la lista de dependencias
+  }, [token, username, role]);  // Incluye role en las dependencias del useEffect
 
   const cerrarReclamo = (reclamoId) => {
     const remito = prompt("Indique número de remito que cierra el reclamo:");
@@ -77,6 +80,7 @@ const ManejadorReclamosVentas = ({ token, username }) => {  // Ahora también ac
 };
 
 export default ManejadorReclamosVentas;
+
 
 
 

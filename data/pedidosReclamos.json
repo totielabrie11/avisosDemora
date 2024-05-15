@@ -98,5 +98,37 @@
         "usernameAlmacen": "MatiasG"
       }
     ]
+  },
+  {
+    "id": 7,
+    "pedido": 38540,
+    "cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
+    "reclamos": [
+      {
+        "id": "sub-1715801603782",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "no se puede vencer este pedido por que nos pueden demandar",
+        "fecha": "15-05-2024 a las 16:33 hs",
+        "username": "LeonardoD",
+        "respuesta": "Se entregará en la fecha 16/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "pedido": 37731,
+    "cliente": "NANOTICA AGRO S.A.S.",
+    "reclamos": [
+      {
+        "id": "sub-1715801737867",
+        "estado": "vencido",
+        "prioridad": "Urgente",
+        "mensaje": "Esto que carajo es?",
+        "fecha": "15-05-2024 a las 16:35 hs",
+        "username": "CarlosR"
+      }
+    ]
   }
 ]

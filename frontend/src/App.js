@@ -145,7 +145,7 @@ const App = () => {
     return (
       <div>
         <button className="btn btn-secondary" onClick={handleHideManejadorReclamos}>Volver al Menú Principal</button>
-        <ManejadorReclamosVentas token={token} username={username} />
+        <ManejadorReclamosVentas token={token} username={username} role={role} />
       </div>
     );
   }

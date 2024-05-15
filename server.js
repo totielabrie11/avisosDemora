@@ -162,6 +162,11 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
 // Endpoint para estadísticas de pedidos
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   try {
+    // Solo permitir acceso al rol de "administrador"
+    if (req.role !== 'administrador') {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+
     const data = readOrders();
     const { Pedidos } = data;
     if (!Pedidos || !Array.isArray(Pedidos)) {

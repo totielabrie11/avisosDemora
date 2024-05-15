@@ -3,12 +3,12 @@
       {
         "username": "CarlosR",
         "password": "123456R",
-        "role": "Jefe"
+        "role": "administrador"
       },
       {
         "username": "CarlosM",
         "password": "123456M",
-        "role": "administrador"
+        "role": "vendedor"
       },
       {
         "username": "LeonardoD",
