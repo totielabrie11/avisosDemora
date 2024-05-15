@@ -19,6 +19,11 @@
         "username": "FernanditoG",
         "password": "123456G",
         "role": "deposito"
+      },
+      {
+        "username": "MatiasG",
+        "password": "123456G",
+        "role": "deposito"
       }
     ]
   }

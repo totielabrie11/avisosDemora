@@ -254,7 +254,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
 // Endpoint para obtener todos los reclamos (solo para "deposito")
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    if (req.role !== 'deposito' && req.role !== 'administrador' ) {
+    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor' ) {
       return res.status(403).json({ error: 'Access denied' });
     }
     const reclamos = readReclamos().flatMap(reclamo =>

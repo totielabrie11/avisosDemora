@@ -1,8 +1,9 @@
+// ManejadorReclamosVentas.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ManejadorReclamosVentas = ({ token }) => {
+const ManejadorReclamosVentas = ({ token, username }) => {  // Ahora también aceptamos username como prop
   const [reclamos, setReclamos] = useState([]);
   const [error, setError] = useState(null);
 
@@ -12,8 +13,9 @@ const ManejadorReclamosVentas = ({ token }) => {
         const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        const reclamosRespondidos = response.data.filter(r => r.estado === 'respondido');
-        setReclamos(reclamosRespondidos);
+        // Filtro para obtener sólo reclamos respondidos y iniciados por el usuario logueado
+        const reclamosUsuario = response.data.filter(r => r.estado === 'respondido' && r.username === username);
+        setReclamos(reclamosUsuario);
       } catch (error) {
         if (error.response && error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver esta información.');
@@ -25,7 +27,7 @@ const ManejadorReclamosVentas = ({ token }) => {
     };
 
     fetchReclamos();
-  }, [token]);
+  }, [token, username]);  // Agrega username a la lista de dependencias
 
   const cerrarReclamo = (reclamoId) => {
     const remito = prompt("Indique número de remito que cierra el reclamo:");
@@ -40,9 +42,8 @@ const ManejadorReclamosVentas = ({ token }) => {
       return;
     }
 
-    // Aquí puedes agregar lógica para interactuar con la API o base de datos
     alert("Reclamo cerrado exitosamente");
-    // Actualizar estado o refrescar lista de reclamos aquí si es necesario
+    // Aquí podrías llamar a una API para cerrar el reclamo y luego actualizar el estado de reclamos
   };
 
   if (error) {
@@ -76,6 +77,7 @@ const ManejadorReclamosVentas = ({ token }) => {
 };
 
 export default ManejadorReclamosVentas;
+
 
 
 
