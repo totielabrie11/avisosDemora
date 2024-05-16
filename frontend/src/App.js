@@ -33,7 +33,6 @@ const App = () => {
   const handleHideManejadorReclamos = () => {
     setShowManejadorReclamos(false);
   };
-  
 
   const handleVencimientoProximoClick = (pedido) => {
     setPedidoSeleccionado(pedido);
@@ -119,17 +118,17 @@ const App = () => {
 
   const shouldShowDemoraAlert = (fechaVencida) => {
     const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
-    return diffInDays < 0; // Mostrar "Alerta Demora" si el pedido ya está vencido
+    return diffInDays < 0;
   };
 
   const shouldShowProximoVencimientoAlert = (fechaVencida) => {
     const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
-    return diffInDays > -1 && diffInDays <= 10; // Mostrar "Vencimiento Próximo" si el pedido está próximo a vencer
+    return diffInDays > -1 && diffInDays <= 10;
   };
 
   const handleModalSubmit = (reclamo) => {
     console.log('Reclamo enviado:', reclamo);
-    fetchPedidos(); // Recargar los pedidos después de enviar el reclamo
+    fetchPedidos();
   };
 
   if (!token) {
@@ -141,7 +140,6 @@ const App = () => {
   }
 
   if (showManejadorReclamos) {
-    // Mostrar el componente ManejadorReclamosVentas con botón para volver
     return (
       <div>
         <button className="btn btn-secondary" onClick={handleHideManejadorReclamos}>Volver al Menú Principal</button>
@@ -151,7 +149,6 @@ const App = () => {
   }
 
   if (showEstadisticas) {
-    // Mostrar el componente Estadísticas con botón para volver
     return (
       <div>
         <button className="btn btn-secondary" onClick={handleHideEstadisticas}>Volver al Menú Principal</button>
@@ -167,7 +164,7 @@ const App = () => {
         <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
         <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
       </div>
-        <h1>Pedidos Próximos a Vencer o Vencidos</h1>
+      <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
       <form onSubmit={handleSubmit} className="form-inline mb-3">
@@ -195,9 +192,6 @@ const App = () => {
           </label>
         
         </div>
-       
-
-       
       </form>
 
       <ul className="list-group mt-3">
@@ -215,27 +209,26 @@ const App = () => {
             </ul>
             {pedido.Items.some((item) => shouldShowDemoraAlert(item.Fecha_vencida)) && (
               <button
-              className="btn btn-alerta-demora mt-2"
-              onClick={() => handleAlertaDemoraClick(pedido)}
-            >
-              Alerta Demora
-            </button>
-          )}
+                className="btn btn-alerta-demora mt-2"
+                onClick={() => handleAlertaDemoraClick(pedido)}
+              >
+                Alerta Demora
+              </button>
+            )}
           
-          {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
-            <button
-              className="btn btn-vencimiento-proximo mt-2"
-              onClick={() => handleVencimientoProximoClick(pedido)}
-            >
-              Vencimiento Próximo
-            </button>
+            {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
+              <button
+                className="btn btn-vencimiento-proximo mt-2"
+                onClick={() => handleVencimientoProximoClick(pedido)}
+              >
+                Vencimiento Próximo
+              </button>
             )}
           </li>
         ))}
       </ul>
 
       <Leyenda />
-      
 
       {pedidoSeleccionado && (
         <ModalText
@@ -252,4 +245,5 @@ const App = () => {
 };
 
 export default App;
+
 

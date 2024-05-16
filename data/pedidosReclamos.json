@@ -33,6 +33,98 @@
         "username": "CarlosM",
         "respuesta": "Reclamo cerrado con remito número: 102524",
         "usernameAlmacen": "CarlosR"
+      },
+      {
+        "id": "sub-1715890812415",
+        "estado": "no vencido",
+        "prioridad": "Regular",
+        "mensaje": "esto lo vamos a poder cumplir?",
+        "fecha": "16-05-2024 a las 17:20 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "R460100-CTT0",
+            "cantidad": 10
+          },
+          {
+            "codigo": "R460100-PTT0",
+            "cantidad": 15
+          },
+          {
+            "codigo": "R190001-0420",
+            "cantidad": 70
+          },
+          {
+            "codigo": "B2094/0-10",
+            "cantidad": 10
+          },
+          {
+            "codigo": "B1693/1",
+            "cantidad": 8
+          },
+          {
+            "codigo": "R430101-IIT0",
+            "cantidad": 10
+          },
+          {
+            "codigo": "B1994/0-10",
+            "cantidad": 10
+          },
+          {
+            "codigo": "B1994/0-15",
+            "cantidad": 10
+          }
+        ]
+      },
+      {
+        "id": "sub-1715891844463",
+        "estado": "no vencido",
+        "prioridad": "Regular",
+        "mensaje": "vamos a poder cumplir con el cliente?",
+        "fecha": "16-05-2024 a las 17:37 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "R460100-CTT0",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL COMPL DD 150-300 PVC/PTFE"
+          },
+          {
+            "codigo": "R460100-PTT0",
+            "cantidad": 15,
+            "descripcion": "KIT CABEZAL COMPL DD 150-300 PP/PTFE"
+          },
+          {
+            "codigo": "R190001-0420",
+            "cantidad": 70,
+            "descripcion": "KIT VALVULAS C/EXTRACCION DEC/DEPP/DEN - DECI (O RING)"
+          },
+          {
+            "codigo": "B2094/0-10",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DECI 10 C/EMPAQ. AS. ELASTOMERO"
+          },
+          {
+            "codigo": "B1693/1",
+            "cantidad": 8,
+            "descripcion": "DISTRIBUIDOR DEN/S      (BIELA S"
+          },
+          {
+            "codigo": "R430101-IIT0",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL COMPL DDI - INOX"
+          },
+          {
+            "codigo": "B1994/0-10",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DEC 10 C/EMPAQ. AS. ELASTOMERO"
+          },
+          {
+            "codigo": "B1994/0-15",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DEC 15 C/EMPAQ. AS. ELASTOMERO"
+          }
+        ]
       }
     ]
   },
@@ -76,6 +168,14 @@
         "fecha": "16-05-2024 a las 13:54 hs",
         "username": "CarlosM",
         "respuesta": "Reclamo cerrado con remito número: 102587"
+      },
+      {
+        "id": "sub-1715889233163",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "podremos entregar este material?",
+        "fecha": "16-05-2024 a las 16:53 hs",
+        "username": "CarlosM"
       }
     ]
   },
@@ -284,6 +384,16 @@
         "username": "CarlosR",
         "respuesta": "Se entregará en la fecha 25/7/2024",
         "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1715891658801",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "van a preparar algo de esto?",
+        "fecha": "16-05-2024 a las 17:34 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -318,6 +428,72 @@
         "username": "CarlosR",
         "respuesta": "Se entregará en la fecha 14/5/2024",
         "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "pedido": 38576,
+    "cliente": "EROSTARBE INGENIERIA SRL",
+    "reclamos": [
+      {
+        "id": "sub-1715889764397",
+        "estado": "no vencido",
+        "prioridad": "Regular",
+        "mensaje": "vamos a poder cumplir con el cliente?",
+        "fecha": "16-05-2024 a las 17:02 hs",
+        "username": "CarlosM"
+      },
+      {
+        "id": "sub-1715890407982",
+        "estado": "no vencido",
+        "prioridad": "Regular",
+        "mensaje": "hola",
+        "fecha": "16-05-2024 a las 17:13 hs",
+        "username": "CarlosM"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "pedido": 38670,
+    "cliente": "CURTIEMBRE ARLEI S.A.",
+    "reclamos": [
+      {
+        "id": "sub-1715890730177",
+        "estado": "no vencido",
+        "prioridad": "Regular",
+        "mensaje": "solo esto quiere el cliente",
+        "fecha": "16-05-2024 a las 17:18 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "B421351-PN00",
+            "cantidad": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "pedido": 38599,
+    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "reclamos": [
+      {
+        "id": "sub-1715891935063",
+        "estado": "no vencido",
+        "prioridad": "Urgente",
+        "mensaje": "pide que enviemos parte del material",
+        "fecha": "16-05-2024 a las 17:38 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "031ET0A-MET0",
+            "cantidad": 2,
+            "descripcion": "EMD  16003 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          }
+        ]
       }
     ]
   }

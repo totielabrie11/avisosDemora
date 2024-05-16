@@ -54,12 +54,13 @@ const readUsers = () => {
   }
 };
 
-// Función para leer reclamos desde un archivo JSON
+// Función para leer reclamos de un archivo JSON de manera sincrónica
 const readReclamos = () => {
   try {
-    return JSON.parse(fs.readFileSync(filePaths.reclamos, 'utf8'));
+    const data = fs.readFileSync(filePaths.reclamos, 'utf8');
+    return JSON.parse(data);
   } catch (error) {
-    console.error('Error leyendo pedidosReclamos.json:', error.message, error.stack);
+    console.error('Error leyendo reclamos:', error.message);
     return [];
   }
 };
@@ -69,7 +70,7 @@ const writeReclamos = async (reclamos) => {
   try {
     await fs.promises.writeFile(filePaths.reclamos, JSON.stringify(reclamos, null, 2), 'utf8');
   } catch (error) {
-    console.error('Error escribiendo pedidosReclamos.json:', error.message);
+    console.error('Error escribiendo reclamos:', error.message);
     throw error;  // Rethrow the error to be caught by the calling function
   }
 };
@@ -207,10 +208,11 @@ const getNextReclamoID = () => {
   return reclamos.length ? Math.max(...reclamos.map(r => r.id)) + 1 : 1;
 };
 
-app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
+app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje } = req.body;
-    if (!pedido || !cliente || !estado || !prioridad || !mensaje) {
+    const { pedido, cliente, estado, prioridad, mensaje, material } = req.body;
+
+    if (!pedido || !cliente || !estado || !prioridad || !mensaje || !material || !Array.isArray(material)) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
@@ -227,7 +229,8 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
       prioridad,
       mensaje,
       fecha,
-      username
+      username,
+      material // Añadir el campo material
     };
 
     // Encuentra el reclamo existente para el mismo pedido
@@ -246,7 +249,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
       reclamos.push(nuevoReclamo);
     }
 
-    writeReclamos(reclamos);
+    await writeReclamos(reclamos);
 
     res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoSubReclamo });
   } catch (err) {
@@ -254,6 +257,7 @@ app.post('/api/v1/reclamos', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
   }
 });
+
 
 
 // Endpoint para obtener todos los reclamos (solo para "deposito")
@@ -284,21 +288,22 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   }
 });
 
-app.put('/api/v1/reclamos/:id', async (req, res) => {
+app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen, material } = req.body;
 
   try {
     let reclamos = await readReclamos();
     let found = false;
 
     reclamos = reclamos.map(reclamo => {
-      if (reclamo.id === parseInt(id)) {  // Asegurar que el id coincide
+      if (reclamo.id === parseInt(id)) {
         reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
-          if (subReclamo.id === subId) {  // Comprobar subId
+          if (subReclamo.id === subId) {
             subReclamo.estado = estado;
             subReclamo.respuesta = respuesta;
-            subReclamo.usernameAlmacen = usernameAlmacen
+            subReclamo.usernameAlmacen = usernameAlmacen;
+            subReclamo.material = material; // Actualizar el campo material
             found = true;
           }
           return subReclamo;

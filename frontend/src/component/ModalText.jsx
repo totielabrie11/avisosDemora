@@ -6,12 +6,14 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
   const [prioridad, setPrioridad] = useState('Regular');
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
+  const [selectedItems, setSelectedItems] = useState({});
 
   useEffect(() => {
     if (show) {
       setPrioridad('Regular');
       setMensaje('');
       setError('');
+      setSelectedItems({});
     }
   }, [show]);
 
@@ -23,16 +25,39 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
     setMensaje(e.target.value);
   };
 
+  const handleItemChange = (item, cantidad) => {
+    setSelectedItems((prevSelectedItems) => ({
+      ...prevSelectedItems,
+      [item.Codigo]: { ...item, cantidad }, // Guardar el objeto del item completo
+    }));
+  };
+
+  const handleSelectAll = () => {
+    const allItems = {};
+    pedido.Items.forEach((item) => {
+      allItems[item.Codigo] = { ...item, cantidad: item.Cantidad }; // Guardar el objeto del item completo
+    });
+    setSelectedItems(allItems);
+  };
+
   const handleSubmit = async () => {
-    // Definir el objeto reclamo dentro de la función handleSubmit para asegurar su ámbito
+    const material = Object.values(selectedItems)
+      .filter(item => item.cantidad > 0)
+      .map(item => ({
+        codigo: item.Codigo,
+        cantidad: item.cantidad,
+        descripcion: item.Descripcion // Incluir la descripción
+      }));
+
     const reclamo = {
-      pedido: pedido.Pedido,  // Asegúrate de que esta propiedad existe en el objeto pedido
-      cliente: pedido.Cliente,  // Asegúrate de que esta propiedad existe en el objeto pedido
-      estado,  // Asegúrate de que esta prop se pasa correctamente al componente
-      prioridad,  // Estado interno del componente
-      mensaje  // Estado interno del componente
+      pedido: pedido.Pedido,
+      cliente: pedido.Cliente,
+      estado,
+      prioridad,
+      mensaje,
+      material // Añadir el campo material
     };
-  
+
     try {
       const response = await axios.post(
         'http://localhost:3000/api/v1/reclamos',
@@ -49,8 +74,6 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
       setError(`Error enviando el reclamo: ${error.response ? error.response.data.error : 'Desconocido'}`);
     }
   };
-  
-
 
   return (
     <Modal show={show} onHide={onHide} centered>
@@ -81,6 +104,32 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
               value={mensaje}
               onChange={handleMensajeChange}
             />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Items del Pedido</Form.Label>
+            <Button variant="link" onClick={handleSelectAll}>
+              Seleccionar Todo
+            </Button>
+            {pedido.Items.map((item) => (
+              <div key={item.Codigo} className="mb-2">
+                <Form.Check
+                  type="checkbox"
+                  label={`${item.Descripcion} - Cantidad: ${item.Cantidad}`}
+                  onChange={(e) => handleItemChange(item, e.target.checked ? item.Cantidad : 0)}
+                  checked={!!selectedItems[item.Codigo]}
+                />
+                {selectedItems[item.Codigo]?.cantidad > 0 && (
+                  <Form.Control
+                    type="number"
+                    value={selectedItems[item.Codigo].cantidad}
+                    min="1"
+                    max={item.Cantidad}
+                    onChange={(e) => handleItemChange(item, Number(e.target.value))}
+                    className="mt-1"
+                  />
+                )}
+              </div>
+            ))}
           </Form.Group>
         </Form>
       </Modal.Body>
