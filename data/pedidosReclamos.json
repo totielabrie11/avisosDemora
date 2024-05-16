@@ -67,6 +67,16 @@
         "username": "CarlosM",
         "respuesta": "Se entregará en la fecha 28/5/2024",
         "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1715878446068",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "por favor atender urgente",
+        "fecha": "16-05-2024 a las 13:54 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "MatiasG"
       }
     ]
   },
@@ -198,7 +208,7 @@
         "mensaje": "el cliente necesita este pedido con urgencia",
         "fecha": "16-05-2024 a las 12:46 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 27/6/2024",
+        "respuesta": "Se entregará en la fecha 15/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
@@ -216,6 +226,23 @@
         "fecha": "16-05-2024 a las 12:51 hs",
         "username": "LeonardoD",
         "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "MatiasG"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "pedido": 37991,
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "reclamos": [
+      {
+        "id": "sub-1715878471235",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "se podrá respetar esta fecha",
+        "fecha": "16-05-2024 a las 13:54 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 30/5/2024",
         "usernameAlmacen": "MatiasG"
       }
     ]

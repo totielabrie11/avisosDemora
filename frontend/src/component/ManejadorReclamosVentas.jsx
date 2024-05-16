@@ -1,6 +1,6 @@
-// ManejadorReclamosVentas.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { parse, isBefore, startOfDay } from 'date-fns';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
@@ -74,6 +74,20 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     return <div className="alert alert-danger" role="alert">{error}</div>;
   }
 
+  const validarFecha = (reclamo) => {
+    const fechaActual = startOfDay(new Date());
+    const fechaMatch = reclamo.respuesta.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
+    if (fechaMatch) {
+      const fechaRespuesta = parse(fechaMatch[0], 'd/M/yyyy', new Date());
+      const fechaRespuestaStartOfDay = startOfDay(fechaRespuesta);
+      if (isBefore(fechaRespuestaStartOfDay, fechaActual)) {
+        alert(`Tienes la fecha del PV ${reclamo.pedido} vencida - requiere su atención`);
+        return 'text-danger'; // Clases de Bootstrap para texto rojo
+      }
+    }
+    return '';
+  };
+
   return (
     <div className="container mt-5">
       <h1>En situación de Reclamo</h1>
@@ -84,21 +98,24 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
               <p className="card-text"><strong>Reclamo:</strong> {reclamo.mensaje}</p>
               <small><strong>Emitido por:</strong> {reclamo.username}</small>
-              <p className="card-text">
-                <small>
-                  <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Fecha:</strong> {reclamo.fecha}<br />
-                  <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
-                  <strong>Respuesta:</strong> {reclamo.respuesta}
-                </small>
+              <p className='card-text'>
+              <small>
+                <strong>Estado:</strong> {reclamo.estado}<br />
+                <strong>Fecha:</strong> {reclamo.fecha}<br />
+                <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
+                <strong>
+                  Respuesta:
+                  <span className={`card-text ${validarFecha(reclamo)}`}>{reclamo.respuesta}</span>
+                </strong>
+              </small>
               </p>
-            <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+              <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+            </div>
           </div>
-        </div>
-      ))}
-  </div>
-</div>
-);
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ManejadorReclamosVentas;
