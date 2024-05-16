@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { parse, isBefore, startOfDay } from 'date-fns';
+import VistaDetalleAlmacen from './VistaDetalleAlmacen'; // Importar el nuevo componente
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -18,6 +19,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showDetalleModal, setShowDetalleModal] = useState(false); // Estado para el modal de detalles
 
   function generateId() {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -111,6 +113,12 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     return false;
   };
 
+  const handleVerDetalle = reclamo => {
+    console.log('Reclamo seleccionado para ver detalle:', reclamo);
+    setSelectedReclamo(reclamo);
+    setShowDetalleModal(true);
+  };
+
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
@@ -156,8 +164,10 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                   Responder
                 </button>
               )}
+              <button className="btn btn-secondary" onClick={() => handleVerDetalle(reclamo)}>
+                Ver Detalle
+              </button>
             </div>
-
           </div>
         ))}
       </div>
@@ -185,6 +195,12 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <VistaDetalleAlmacen
+        show={showDetalleModal}
+        onHide={() => setShowDetalleModal(false)}
+        reclamo={selectedReclamo}
+      />
     </div>
   );
 };

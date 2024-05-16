@@ -278,7 +278,8 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         username: subReclamo.username,
         usernameAlmacen: subReclamo.usernameAlmacen,
         respuesta: subReclamo.respuesta,
-        subId: subReclamo.id
+        subId: subReclamo.id,
+        material: subReclamo.material // Añadir el campo material
       }))
     );
     res.json(reclamos);
