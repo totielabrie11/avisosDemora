@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { parse, isBefore, startOfDay } from 'date-fns';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -19,13 +20,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [showModal, setShowModal] = useState(false);
 
   function generateId() {
-    // Generar un número aleatorio de cuatro cifras
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
-    
-    // Generar una letra aleatoria
     const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-  
-    // Combinar el número y la letra para formar el ID
     return `${randomNumber}${randomLetter}`;
   }
 
@@ -38,10 +34,10 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         const data = response.data;
 
         const reclamosConId = data
-          .filter(reclamo => reclamo.estado !== 'cerrado')  // Filtrar reclamos con estado "cerrado"
+          .filter(reclamo => reclamo.estado !== 'cerrado')
           .map(reclamo => ({
             ...reclamo,
-            id: reclamo.id || generateId()  // Generar un ID si falta
+            id: reclamo.id || generateId()
           }));
 
         const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
@@ -62,7 +58,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     };
 
     fetchReclamos();
-  }, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
+  }, [token]);
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -74,7 +70,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const handleEnviarRespuesta = async () => {
-    console.log("Selected Reclamo:", selectedReclamo);  // Esto mostrará el objeto seleccionado
     setShowModal(false);
     if (selectedReclamo && fechaEntrega) {
       const updatedReclamo = {
@@ -83,7 +78,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         usernameAlmacen: username
       };
 
-      // Asegurarse de usar el `id` correcto y también enviar `subId` si necesario
       try {
         const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
           ...updatedReclamo,
@@ -106,6 +100,17 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     }
   };
 
+  const validarFecha = (respuesta) => {
+    const fechaActual = startOfDay(new Date());
+    const fechaMatch = respuesta ? respuesta.match(/(\d{1,2}\/\d{1,2}\/\d{4})/) : null;
+    if (fechaMatch) {
+      const fechaRespuesta = parse(fechaMatch[0], 'd/M/yyyy', new Date());
+      const fechaRespuestaStartOfDay = startOfDay(fechaRespuesta);
+      return isBefore(fechaRespuestaStartOfDay, fechaActual);
+    }
+    return false;
+  };
+
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
@@ -118,17 +123,17 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         <h2>No Vencido: {noVencidoCount}</h2>
         <h2>Sin Responder: {abiertosCount}</h2>
       </div>
-      <div className="row">
-        {reclamos.map((reclamo, idx) => (
-          <div
-            key={idx}
-            className={`col-md-4 mb-4 card ${
-              reclamo.estado === 'respondido' ? 'bg-success' :
-              reclamo.prioridad === 'Urgente' ? 'bg-danger' :
-              'bg-warning'
-            } text-white`}
-          >
-                        <div className="card-body">
+        <div className="row">
+          {reclamos.map((reclamo, idx) => (
+            <div
+              key={idx}
+              className={`col-md-4 mb-4 card ${
+                reclamo.estado === 'respondido' ? 'bg-success' :
+                reclamo.prioridad === 'Urgente' ? 'bg-danger' :
+                'bg-warning'
+              } text-white`}
+            >
+            <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
               <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
               <p className="card-text">
@@ -136,13 +141,23 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                   <strong>Estado:</strong> {reclamo.estado}<br />
                   <strong>Prioridad:</strong> {reclamo.prioridad}<br />
                   <strong>Fecha:</strong> {reclamo.fecha}<br />
-                  <strong>Reportado por:</strong> {reclamo.username}
+                  <strong>Reportado por:</strong> {reclamo.username}<br />
+                  <strong>Respuesta:</strong> 
+                  <span className={`card-text ${validarFecha(reclamo.respuesta) ? 'text-danger' : ''}`}>
+                    {reclamo.respuesta || 'No hay respuesta aún'}
+                  </span>
                 </small>
               </p>
-              <button className="btn btn-primary" onClick={() => handleResponder(reclamo)}>
-                Responder
-              </button>
+              {validarFecha(reclamo.respuesta) && (
+                <p className="text-danger">La respuesta enviada se encuentra vencida</p>
+              )}
+              {!reclamo.respuesta && (
+                <button className="btn btn-primary" onClick={() => handleResponder(reclamo)}>
+                  Responder
+                </button>
+              )}
             </div>
+
           </div>
         ))}
       </div>

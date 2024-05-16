@@ -70,13 +70,12 @@
       },
       {
         "id": "sub-1715878446068",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "por favor atender urgente",
         "fecha": "16-05-2024 a las 13:54 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "MatiasG"
+        "respuesta": "Reclamo cerrado con remito número: 102587"
       }
     ]
   },
@@ -109,6 +108,16 @@
         "mensaje": "necesito que le den prioridad",
         "fecha": "15-05-2024 a las 15:19 hs",
         "username": "CarlosM"
+      },
+      {
+        "id": "sub-1715881690692",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "que fecha podemos entregar esto, se necesita urgente",
+        "fecha": "16-05-2024 a las 14:48 hs",
+        "username": "CarlosR",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -203,13 +212,12 @@
     "reclamos": [
       {
         "id": "sub-1715874402144",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "el cliente necesita este pedido con urgencia",
         "fecha": "16-05-2024 a las 12:46 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 15/5/2024",
-        "usernameAlmacen": "FernanditoG"
+        "respuesta": "Reclamo cerrado con remito número: 102587"
       }
     ]
   },
@@ -237,13 +245,43 @@
     "reclamos": [
       {
         "id": "sub-1715878471235",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "se podrá respetar esta fecha",
         "fecha": "16-05-2024 a las 13:54 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 30/5/2024",
-        "usernameAlmacen": "MatiasG"
+        "respuesta": "Reclamo cerrado con remito número: 102587"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "pedido": 38716,
+    "cliente": "DIMOTEC SA",
+    "reclamos": [
+      {
+        "id": "sub-1715881044241",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "podremos entregar?",
+        "fecha": "16-05-2024 a las 14:37 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 1025158"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "pedido": 37904,
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "reclamos": [
+      {
+        "id": "sub-1715881917347",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "voy a necesitar entregar esto cuanto antes",
+        "fecha": "16-05-2024 a las 14:51 hs",
+        "username": "CarlosR"
       }
     ]
   }

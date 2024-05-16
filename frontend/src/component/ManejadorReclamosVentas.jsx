@@ -104,8 +104,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                 <strong>Fecha:</strong> {reclamo.fecha}<br />
                 <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
                 <strong>
-                  Respuesta:
-                  <span className={`card-text ${validarFecha(reclamo)}`}>{reclamo.respuesta}</span>
+                Respuesta:
+                  <span className={`card-text ${validarFecha(reclamo)}`}> {reclamo.respuesta}</span>
                 </strong>
               </small>
               </p>
