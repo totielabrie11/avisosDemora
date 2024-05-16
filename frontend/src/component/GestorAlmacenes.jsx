@@ -28,41 +28,41 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     // Combinar el número y la letra para formar el ID
     return `${randomNumber}${randomLetter}`;
   }
-  
 
-useEffect(() => {
-  const fetchReclamos = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = response.data;
+  useEffect(() => {
+    const fetchReclamos = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = response.data;
 
-      const reclamosConId = data.map(reclamo => ({
-        ...reclamo,
-        id: reclamo.id || generateId()  // Generar un ID si falta
-      }));
+        const reclamosConId = data
+          .filter(reclamo => reclamo.estado !== 'cerrado')  // Filtrar reclamos con estado "cerrado"
+          .map(reclamo => ({
+            ...reclamo,
+            id: reclamo.id || generateId()  // Generar un ID si falta
+          }));
 
-      const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
-      const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
-      const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
-      const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
-      const abiertosReclamos = reclamosConId.filter(r => r.estado !== 'respondido');
+        const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
+        const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
+        const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
+        const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
+        const abiertosReclamos = reclamosConId.filter(r => r.estado !== 'respondido');
 
-      setReclamos(reclamosConId);
-      setUrgenteCount(urgenteReclamos.length);
-      setRegularCount(regularReclamos.length);
-      setVencidoCount(vencidoReclamos.length);
-      setNoVencidoCount(noVencidoReclamos.length);
-      setAbiertosCount(abiertosReclamos.length);
-    } catch (error) {
-      console.error('Error fetching reclamos:', error);
-    }
-  };
+        setReclamos(reclamosConId);
+        setUrgenteCount(urgenteReclamos.length);
+        setRegularCount(regularReclamos.length);
+        setVencidoCount(vencidoReclamos.length);
+        setNoVencidoCount(noVencidoReclamos.length);
+        setAbiertosCount(abiertosReclamos.length);
+      } catch (error) {
+        console.error('Error fetching reclamos:', error);
+      }
+    };
 
-  fetchReclamos();
-}, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
-
+    fetchReclamos();
+  }, [token]);  // Dependencia en token para re-ejecutar cuando el token cambie
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -82,7 +82,7 @@ useEffect(() => {
         respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`,
         usernameAlmacen: username
       };
-  
+
       // Asegurarse de usar el `id` correcto y también enviar `subId` si necesario
       try {
         const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
@@ -91,7 +91,7 @@ useEffect(() => {
         }, {
           headers: { Authorization: `Bearer ${token}` }
         });
-  
+
         if (response.status === 200) {
           setReclamos(prev => 
             prev.map(r => (r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r))
@@ -105,22 +105,18 @@ useEffect(() => {
       }
     }
   };
-  
+
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
-      <h1>Gestor de Reclamos - Almacenes</h1> <h2>Total Reclamos: {reclamos.length}</h2> 
+      <h1>Gestor de Reclamos - Almacenes</h1>
+      <h2>Total Reclamos: {reclamos.length}</h2>
       <div className="d-flex justify-content-between align-items-center mb-4">
-     
-          <h2>Urgente: {urgenteCount}</h2>
-          <h2>Regular: {regularCount}</h2>
-          <h2>Vencido: {vencidoCount}</h2>
-       
-          <h2>No Vencido: {noVencidoCount}</h2>
-          <h2>Sin Responder: {abiertosCount}</h2>
-    
-         
-      
+        <h2>Urgente: {urgenteCount}</h2>
+        <h2>Regular: {regularCount}</h2>
+        <h2>Vencido: {vencidoCount}</h2>
+        <h2>No Vencido: {noVencidoCount}</h2>
+        <h2>Sin Responder: {abiertosCount}</h2>
       </div>
       <div className="row">
         {reclamos.map((reclamo, idx) => (
@@ -132,9 +128,9 @@ useEffect(() => {
               'bg-warning'
             } text-white`}
           >
-            <div className="card-body">
+                        <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
-              <p className="card-text">{reclamo.mensaje}</p>
+              <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
               <p className="card-text">
                 <small>
                   <strong>Estado:</strong> {reclamo.estado}<br />
@@ -150,7 +146,7 @@ useEffect(() => {
           </div>
         ))}
       </div>
-  
+
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
@@ -176,8 +172,6 @@ useEffect(() => {
       </Modal>
     </div>
   );
-  
-   
 };
 
 export default GestorAlmacenes;

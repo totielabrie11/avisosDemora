@@ -171,31 +171,33 @@ const App = () => {
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
       <form onSubmit={handleSubmit} className="form-inline mb-3">
-        <label>
-          Mostrar pedidos en los próximos o últimos:
-          <input
-            type="number"
-            value={diasPrevios}
-            onChange={handleDiasPreviosChange}
-            className="form-control ml-2 mr-2"
-          />
-          días
-        </label>
+        <div className='container d-flex'>
+          <label>
+            Mostrar pedidos en los próximos o últimos:
+            <input
+              type="number"
+              value={diasPrevios}
+              onChange={handleDiasPreviosChange}
+              className="form-control ml-2 mr-2"
+            />
+            días
+          </label>
 
-        <label className="ml-4">
-          Cliente:
-          <input
-            type="text"
-            value={cliente}
-            onChange={handleClienteChange}
-            placeholder="Nombre del cliente"
-            className="form-control ml-2 mr-2"
-          />
-        </label>
+          <label className="ms-4">
+            Cliente:
+            <input
+              type="text"
+              value={cliente}
+              onChange={handleClienteChange}
+              placeholder="Nombre del cliente"
+              className="form-control ml-2 mr-2"
+            />
+          </label>
+        
+        </div>
+       
 
-        <button type="submit" className="btn btn-primary ml-2">
-          Filtrar
-        </button>
+       
       </form>
 
       <ul className="list-group mt-3">

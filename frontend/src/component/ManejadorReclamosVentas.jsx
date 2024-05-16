@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar role como prop
+const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
+  const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar rol
         const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        // Verifica si el usuario es administrador para filtrar los reclamos
+
         let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido');
         if (role !== 'administrador') {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
@@ -30,9 +31,9 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar rol
     };
 
     fetchReclamos();
-  }, [token, username, role]);  // Incluye role en las dependencias del useEffect
+  }, [token, username, role]);
 
-  const cerrarReclamo = (reclamoId) => {
+  const cerrarReclamo = async (reclamo) => {
     const remito = prompt("Indique número de remito que cierra el reclamo:");
     if (!remito) {
       alert("No se ingresó ningún número de remito.");
@@ -45,8 +46,28 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar rol
       return;
     }
 
-    alert("Reclamo cerrado exitosamente");
-    // Aquí podrías llamar a una API para cerrar el reclamo y luego actualizar el estado de reclamos
+    const updatedReclamo = {
+      estado: 'cerrado',
+      respuesta: `Reclamo cerrado con remito número: ${remitoNumero}`,
+      subId: reclamo.subId // Asegurarnos de que el subId esté presente
+    };
+
+    try {
+      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.status === 200) {
+        setReclamos(prev =>
+          prev.map(r => (r.id === reclamo.id ? { ...r, ...updatedReclamo } : r))
+        );
+        setSelectedReclamo(null);
+        alert("Reclamo cerrado exitosamente");
+      }
+    } catch (error) {
+      console.error('Error cerrando el reclamo:', error);
+      alert('No se pudo cerrar el reclamo. Por favor, intente de nuevo.');
+    }
   };
 
   if (error) {
@@ -55,7 +76,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar rol
 
   return (
     <div className="container mt-5">
-      <h1>Reclamos Respondidos</h1>
+      <h1>En situación de Reclamo</h1>
       <div className="row">
         {reclamos.map((reclamo, index) => (
           <div key={index} className="col-md-4 mb-4 card bg-secondary text-white">
@@ -66,17 +87,18 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {  // Aceptar rol
               <p className="card-text">
                 <small>
                   <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Fecha:</strong> {reclamo.respuesta}<br />
-                  <strong>Atendido por:</strong> {reclamo.usernameAlmacen}
+                  <strong>Fecha:</strong> {reclamo.fecha}<br />
+                  <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
+                  <strong>Respuesta:</strong> {reclamo.respuesta}
                 </small>
               </p>
-              <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo.id)}>Cerrar Reclamo</button>
-            </div>
+            <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
           </div>
-        ))}
-      </div>
-    </div>
-  );
+        </div>
+      ))}
+  </div>
+</div>
+);
 };
 
 export default ManejadorReclamosVentas;

@@ -2,17 +2,37 @@
   {
     "id": 1,
     "pedido": 38158,
-    "cliente": "YPF SOCIEDAD ANONIMA",
+    "cliente": "CHARLY",
     "reclamos": [
       {
         "id": "sub-1715796875994",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "d",
         "fecha": "15-05-2024 a las 15:14 hs",
         "username": "CarlosM",
         "respuesta": "Se entregará en la fecha 22/5/2024",
         "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1715871022707",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "hola ",
+        "fecha": "16-05-2024 a las 11:50 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 1",
+        "usernameAlmacen": "CarlosR"
+      },
+      {
+        "id": "sub-1715871889732",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "se pudrio",
+        "fecha": "16-05-2024 a las 12:04 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 102524",
+        "usernameAlmacen": "CarlosR"
       }
     ]
   },
@@ -23,7 +43,7 @@
     "reclamos": [
       {
         "id": "sub-1715796891728",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "ss",
         "fecha": "15-05-2024 a las 15:14 hs",
@@ -40,7 +60,7 @@
     "reclamos": [
       {
         "id": "sub-1715796903213",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "malisimo",
         "fecha": "15-05-2024 a las 15:15 hs",
@@ -57,7 +77,7 @@
     "reclamos": [
       {
         "id": "sub-1715796964522",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "vence pronto",
         "fecha": "15-05-2024 a las 15:16 hs",
@@ -74,7 +94,7 @@
     "reclamos": [
       {
         "id": "sub-1715797147339",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "necesito que le den prioridad",
         "fecha": "15-05-2024 a las 15:19 hs",
@@ -89,7 +109,7 @@
     "reclamos": [
       {
         "id": "sub-1715800165568",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "tengo este reclamo",
         "fecha": "15-05-2024 a las 16:09 hs",
@@ -106,7 +126,7 @@
     "reclamos": [
       {
         "id": "sub-1715801603782",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "no se puede vencer este pedido por que nos pueden demandar",
         "fecha": "15-05-2024 a las 16:33 hs",
@@ -123,11 +143,80 @@
     "reclamos": [
       {
         "id": "sub-1715801737867",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "Esto que carajo es?",
         "fecha": "15-05-2024 a las 16:35 hs",
         "username": "CarlosR"
+      },
+      {
+        "id": "sub-1715873678512",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "Prendido fuego.  llamo lo necesita o cancela la orden",
+        "fecha": "16-05-2024 a las 12:34 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 102587",
+        "usernameAlmacen": "CarlosM"
+      },
+      {
+        "id": "sub-1715873957255",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "se pudrió todo",
+        "fecha": "16-05-2024 a las 12:39 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 102501"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "pedido": 37940,
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "reclamos": [
+      {
+        "id": "sub-1715873935586",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "viene un tanto demorado",
+        "fecha": "16-05-2024 a las 12:38 hs",
+        "username": "CarlosM",
+        "respuesta": "Reclamo cerrado con remito número: 105878"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "pedido": 37516,
+    "cliente": "R C CONSULTORES S R L",
+    "reclamos": [
+      {
+        "id": "sub-1715874402144",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "el cliente necesita este pedido con urgencia",
+        "fecha": "16-05-2024 a las 12:46 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 27/6/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "pedido": 36884,
+    "cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
+    "reclamos": [
+      {
+        "id": "sub-1715874688480",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "necesito que me saquen este remito . situación de cliente critica",
+        "fecha": "16-05-2024 a las 12:51 hs",
+        "username": "LeonardoD",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "MatiasG"
       }
     ]
   }
