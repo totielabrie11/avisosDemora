@@ -277,11 +277,47 @@
     "reclamos": [
       {
         "id": "sub-1715881917347",
-        "estado": "vencido",
+        "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "voy a necesitar entregar esto cuanto antes",
         "fecha": "16-05-2024 a las 14:51 hs",
-        "username": "CarlosR"
+        "username": "CarlosR",
+        "respuesta": "Se entregará en la fecha 25/7/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "pedido": 34089,
+    "cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+    "reclamos": [
+      {
+        "id": "sub-1715882258811",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "esto lo van a sacar?  necesito urgente",
+        "fecha": "16-05-2024 a las 14:57 hs",
+        "username": "CarlosR",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "pedido": 38799,
+    "cliente": "HIDROMECANICA LESA SA",
+    "reclamos": [
+      {
+        "id": "sub-1715882302236",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "esto sale pronto",
+        "fecha": "16-05-2024 a las 14:58 hs",
+        "username": "CarlosR",
+        "respuesta": "Se entregará en la fecha 14/5/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }
