@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { parse, isBefore, startOfDay } from 'date-fns';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
+import EnvioDeRemito from './EnvioDeRemito';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -22,6 +23,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDetalleModal, setShowDetalleModal] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
+  const [showEnvioModal, setShowEnvioModal] = useState(false);
 
   function generateId() {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -155,7 +157,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
       <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
-
+  
       <div className="mb-4">
         <h3>Prioridad:</h3>
         <div className="row text-center">
@@ -185,7 +187,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-
+  
       <div className="mb-4">
         <h3>Estado del Pedido:</h3>
         <div className="row text-center">
@@ -215,7 +217,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-
+  
       <div className="mb-4">
         <h3>Fecha Prometida:</h3>
         <div className="row text-center">
@@ -229,7 +231,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-
+  
       <div className="row">
         {filtrarReclamos().map((reclamo, idx) => (
           <div
@@ -258,19 +260,24 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
               {validarFecha(reclamo.respuesta) && (
                 <p className="text-danger">La respuesta enviada se encuentra vencida</p>
               )}
-              {!reclamo.respuesta && (
-                <button className="btn btn-primary" onClick={() => handleResponder(reclamo)}>
-                  Responder
+              <div className="d-flex flex-column">
+                {!reclamo.respuesta && (
+                  <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
+                    Responder
+                  </button>
+                )}
+                <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
+                  Ver Detalle
                 </button>
-              )}
-              <button className="btn btn-secondary" onClick={() => handleVerDetalle(reclamo)}>
-                Ver Detalle
-              </button>
+                <button className="btn btn-primary" onClick={() => setShowEnvioModal(true)}>
+                  Enviar Remito
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
-
+  
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
@@ -294,7 +301,21 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-
+  
+      <Modal show={showEnvioModal} onHide={() => setShowEnvioModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Enviar Remito</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EnvioDeRemito />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowEnvioModal(false)}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+  
       <VistaDetalleAlmacen
         show={showDetalleModal}
         onHide={() => setShowDetalleModal(false)}
@@ -302,6 +323,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       />
     </div>
   );
+  
+  
+  
 };
 
 export default GestorAlmacenes;

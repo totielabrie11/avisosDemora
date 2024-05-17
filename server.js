@@ -6,6 +6,7 @@ import cors from 'cors';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
+import multer from 'multer';
 
 const app = express();
 const PORT = 3000;
@@ -16,11 +17,12 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 
-// Definición de rutas para archivos JSON
+// Definición de rutas para archivos JSON y carpeta document
 const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
   orders: path.join(process.cwd(), 'data/orders.json'),
   users: path.join(process.cwd(), 'data/us.json'),
+  document: path.join(process.cwd(), 'data/document') // Añadimos la ruta de la carpeta document
 };
 
 // Inicializa archivos si no existen
@@ -34,7 +36,22 @@ const initializeFiles = () => {
   if (!fs.existsSync(filePaths.users)) {
     fs.writeFileSync(filePaths.users, JSON.stringify({ users: [] }), 'utf8');
   }
+  // Comprobación si no existe la carpeta document
+  if (!fs.existsSync(filePaths.document)) {
+    fs.mkdirSync(filePaths.document, { recursive: true });
+  }
 };
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, filePaths.document);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage });
 
 const readOrders = () => {
   try {
@@ -111,6 +128,15 @@ app.post('/api/v1/login', (req, res) => {
     res.status(401).json({ error: 'Credenciales inválidas' });
   }
 });
+
+// Endpoint para enviar remitos a mi servidor
+app.post('/upload', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No se ha subido ningún archivo.');
+  }
+  res.status(200).send('Archivo subido con éxito.');
+});
+
 
 // Endpoint para obtener los pedidos filtrados
 app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
