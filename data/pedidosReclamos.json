@@ -1,440 +1,171 @@
 [
   {
     "id": 1,
-    "pedido": 38158,
-    "cliente": "CHARLY",
+    "pedido": 38584,
+    "cliente": "DIMOTEC SA",
     "reclamos": [
       {
-        "id": "sub-1715796875994",
+        "id": "sub-1715899828467",
         "estado": "cerrado",
         "prioridad": "Regular",
-        "mensaje": "d",
-        "fecha": "15-05-2024 a las 15:14 hs",
+        "mensaje": "podremos adelantar una parte de este pedido?",
+        "fecha": "16-05-2024 a las 19:50 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 22/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      },
-      {
-        "id": "sub-1715871022707",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "hola ",
-        "fecha": "16-05-2024 a las 11:50 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 1",
-        "usernameAlmacen": "CarlosR"
-      },
-      {
-        "id": "sub-1715871889732",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "se pudrio",
-        "fecha": "16-05-2024 a las 12:04 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102524",
-        "usernameAlmacen": "CarlosR"
-      },
-      {
-        "id": "sub-1715890812415",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "esto lo vamos a poder cumplir?",
-        "fecha": "16-05-2024 a las 17:20 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      },
-      {
-        "id": "sub-1715891844463",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "vamos a poder cumplir con el cliente?",
-        "fecha": "16-05-2024 a las 17:37 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 18/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 1052014",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 2,
-    "pedido": 38305,
-    "cliente": "YPF ENERGIA ELECTRICA S.A.",
+    "pedido": 38158,
+    "cliente": "YPF SOCIEDAD ANONIMA",
     "reclamos": [
       {
-        "id": "sub-1715796891728",
-        "estado": "cerrado",
+        "id": "sub-1715900404155",
+        "estado": "respondido",
         "prioridad": "Regular",
-        "mensaje": "ss",
-        "fecha": "15-05-2024 a las 15:14 hs",
+        "mensaje": "preparar todoo",
+        "fecha": "16-05-2024 a las 20:00 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 23/5/2024",
+        "respuesta": "Se entregará en la fecha 31/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1715900940001",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "quiero todo",
+        "fecha": "16-05-2024 a las 20:09 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1715901443522",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "preparar todo",
+        "fecha": "16-05-2024 a las 20:17 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "R460100-CTT0",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL COMPL DD 150-300 PVC/PTFE"
+          },
+          {
+            "codigo": "R460100-PTT0",
+            "cantidad": 15,
+            "descripcion": "KIT CABEZAL COMPL DD 150-300 PP/PTFE"
+          },
+          {
+            "codigo": "R190001-0420",
+            "cantidad": 70,
+            "descripcion": "KIT VALVULAS C/EXTRACCION DEC/DEPP/DEN - DECI (O RING)"
+          },
+          {
+            "codigo": "B2094/0-10",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DECI 10 C/EMPAQ. AS. ELASTOMERO"
+          },
+          {
+            "codigo": "B1693/1",
+            "cantidad": 8,
+            "descripcion": "DISTRIBUIDOR DEN/S      (BIELA S"
+          },
+          {
+            "codigo": "R430101-IIT0",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL COMPL DDI - INOX"
+          },
+          {
+            "codigo": "B1994/0-10",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DEC 10 C/EMPAQ. AS. ELASTOMERO"
+          },
+          {
+            "codigo": "B1994/0-15",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DEC 15 C/EMPAQ. AS. ELASTOMERO"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 17/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 3,
-    "pedido": 38569,
-    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "pedido": 38588,
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
     "reclamos": [
       {
-        "id": "sub-1715796903213",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "malisimo",
-        "fecha": "15-05-2024 a las 15:15 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 28/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      },
-      {
-        "id": "sub-1715878446068",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "por favor atender urgente",
-        "fecha": "16-05-2024 a las 13:54 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102587"
-      },
-      {
-        "id": "sub-1715889233163",
+        "id": "sub-1715900415864",
         "estado": "respondido",
         "prioridad": "Regular",
-        "mensaje": "podremos entregar este material?",
-        "fecha": "16-05-2024 a las 16:53 hs",
+        "mensaje": "esto vence pronto",
+        "fecha": "16-05-2024 a las 20:00 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 18/5/2024",
+        "respuesta": "Se entregará en la fecha 30/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 4,
-    "pedido": 38766,
-    "cliente": "PECOM SERVICIOS ENERGIA S A",
+    "pedido": 38596,
+    "cliente": "BSI GROUP S.A.S.",
     "reclamos": [
       {
-        "id": "sub-1715796964522",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "vence pronto",
-        "fecha": "15-05-2024 a las 15:16 hs",
+        "id": "sub-1715900431061",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "lo tendrán listo",
+        "fecha": "16-05-2024 a las 20:00 hs",
         "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 25/5/2024",
+        "respuesta": "Se entregará en la fecha 17/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 5,
-    "pedido": 37619,
-    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "pedido": 38618,
+    "cliente": "DOSISUR S.R.L",
     "reclamos": [
       {
-        "id": "sub-1715797147339",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "necesito que le den prioridad",
-        "fecha": "15-05-2024 a las 15:19 hs",
-        "username": "CarlosM"
-      },
-      {
-        "id": "sub-1715881690692",
+        "id": "sub-1715900452488",
         "estado": "respondido",
         "prioridad": "Urgente",
-        "mensaje": "que fecha podemos entregar esto, se necesita urgente",
-        "fecha": "16-05-2024 a las 14:48 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
+        "mensaje": "necesito que preparen todo",
+        "fecha": "16-05-2024 a las 20:00 hs",
+        "username": "CarlosM",
+        "respuesta": "Se entregará en la fecha 30/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 6,
-    "pedido": 38745,
-    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "pedido": 36921,
+    "cliente": "YPF SA - CIA DE HIDROCARBUROS NO CONVENCIONAL SRL AREA LOMA CAMPANA UTE",
     "reclamos": [
       {
-        "id": "sub-1715800165568",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "tengo este reclamo",
-        "fecha": "15-05-2024 a las 16:09 hs",
-        "username": "LeonardoD",
-        "respuesta": "Se entregará en la fecha 22/5/2024",
-        "usernameAlmacen": "MatiasG"
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "pedido": 38540,
-    "cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
-    "reclamos": [
-      {
-        "id": "sub-1715801603782",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "no se puede vencer este pedido por que nos pueden demandar",
-        "fecha": "15-05-2024 a las 16:33 hs",
-        "username": "LeonardoD",
-        "respuesta": "Se entregará en la fecha 16/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "pedido": 37731,
-    "cliente": "NANOTICA AGRO S.A.S.",
-    "reclamos": [
-      {
-        "id": "sub-1715801737867",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "Esto que carajo es?",
-        "fecha": "15-05-2024 a las 16:35 hs",
-        "username": "CarlosR"
-      },
-      {
-        "id": "sub-1715873678512",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "Prendido fuego.  llamo lo necesita o cancela la orden",
-        "fecha": "16-05-2024 a las 12:34 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102587",
-        "usernameAlmacen": "CarlosM"
-      },
-      {
-        "id": "sub-1715873957255",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "se pudrió todo",
-        "fecha": "16-05-2024 a las 12:39 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102501"
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "pedido": 37940,
-    "cliente": "YPF SOCIEDAD ANONIMA",
-    "reclamos": [
-      {
-        "id": "sub-1715873935586",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "viene un tanto demorado",
-        "fecha": "16-05-2024 a las 12:38 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 105878"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "pedido": 37516,
-    "cliente": "R C CONSULTORES S R L",
-    "reclamos": [
-      {
-        "id": "sub-1715874402144",
-        "estado": "cerrado",
-        "prioridad": "Urgente",
-        "mensaje": "el cliente necesita este pedido con urgencia",
-        "fecha": "16-05-2024 a las 12:46 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102587"
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "pedido": 36884,
-    "cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
-    "reclamos": [
-      {
-        "id": "sub-1715874688480",
+        "id": "sub-1715904360080",
         "estado": "respondido",
         "prioridad": "Regular",
-        "mensaje": "necesito que me saquen este remito . situación de cliente critica",
-        "fecha": "16-05-2024 a las 12:51 hs",
-        "username": "LeonardoD",
+        "mensaje": "quiero que me preparen esto urgente o me hace un reclamo ypf y los hechos a todos",
+        "fecha": "16-05-2024 a las 21:06 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "014201T-ME50",
+            "cantidad": 5,
+            "descripcion": "DE 20/140 SIMPLE MOT TRIF SERIE ¨E¨"
+          }
+        ],
         "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "MatiasG"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "pedido": 37991,
-    "cliente": "YPF SOCIEDAD ANONIMA",
-    "reclamos": [
-      {
-        "id": "sub-1715878471235",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "se podrá respetar esta fecha",
-        "fecha": "16-05-2024 a las 13:54 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 102587"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "pedido": 38716,
-    "cliente": "DIMOTEC SA",
-    "reclamos": [
-      {
-        "id": "sub-1715881044241",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "podremos entregar?",
-        "fecha": "16-05-2024 a las 14:37 hs",
-        "username": "CarlosM",
-        "respuesta": "Reclamo cerrado con remito número: 1025158"
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "pedido": 37904,
-    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
-    "reclamos": [
-      {
-        "id": "sub-1715881917347",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "voy a necesitar entregar esto cuanto antes",
-        "fecha": "16-05-2024 a las 14:51 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 25/7/2024",
-        "usernameAlmacen": "FernanditoG"
-      },
-      {
-        "id": "sub-1715891658801",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "van a preparar algo de esto?",
-        "fecha": "16-05-2024 a las 17:34 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "pedido": 34089,
-    "cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
-    "reclamos": [
-      {
-        "id": "sub-1715882258811",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "esto lo van a sacar?  necesito urgente",
-        "fecha": "16-05-2024 a las 14:57 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 16,
-    "pedido": 38799,
-    "cliente": "HIDROMECANICA LESA SA",
-    "reclamos": [
-      {
-        "id": "sub-1715882302236",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "esto sale pronto",
-        "fecha": "16-05-2024 a las 14:58 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 14/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 17,
-    "pedido": 38576,
-    "cliente": "EROSTARBE INGENIERIA SRL",
-    "reclamos": [
-      {
-        "id": "sub-1715889764397",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "vamos a poder cumplir con el cliente?",
-        "fecha": "16-05-2024 a las 17:02 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      },
-      {
-        "id": "sub-1715890407982",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "hola",
-        "fecha": "16-05-2024 a las 17:13 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 18,
-    "pedido": 38670,
-    "cliente": "CURTIEMBRE ARLEI S.A.",
-    "reclamos": [
-      {
-        "id": "sub-1715890730177",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "solo esto quiere el cliente",
-        "fecha": "16-05-2024 a las 17:18 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "pedido": 38599,
-    "cliente": "ORTOLOCHIPI HUGO CARLOS",
-    "reclamos": [
-      {
-        "id": "sub-1715891935063",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "pide que enviemos parte del material",
-        "fecha": "16-05-2024 a las 17:38 hs",
-        "username": "CarlosR",
-        "respuesta": "Se entregará en la fecha 17/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 20,
-    "pedido": 37721,
-    "cliente": "YACIMIENTO LINDERO ATRAVESADO",
-    "reclamos": [
-      {
-        "id": "sub-1715893823186",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "cliente necesita al menos 1 de este material de 3 que pide",
-        "fecha": "16-05-2024 a las 18:10 hs",
-        "username": "CarlosM",
-        "respuesta": "Se entregará en la fecha 20/6/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]

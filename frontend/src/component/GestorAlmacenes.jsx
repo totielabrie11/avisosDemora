@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { parse, isBefore, startOfDay } from 'date-fns';
-import VistaDetalleAlmacen from './VistaDetalleAlmacen'; // Importar el nuevo componente
+import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -16,10 +16,12 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [vencidoCount, setVencidoCount] = useState(0);
   const [abiertosCount, setAbiertosCount] = useState(0);
   const [noVencidoCount, setNoVencidoCount] = useState(0);
+  const [fechaVencidaCount, setFechaVencidaCount] = useState(0);
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [showDetalleModal, setShowDetalleModal] = useState(false); // Estado para el modal de detalles
+  const [showDetalleModal, setShowDetalleModal] = useState(false);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
 
   function generateId() {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -42,18 +44,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             id: reclamo.id || generateId()
           }));
 
-        const urgenteReclamos = reclamosConId.filter(r => r.prioridad === 'Urgente');
-        const regularReclamos = reclamosConId.filter(r => r.prioridad === 'Regular');
-        const vencidoReclamos = reclamosConId.filter(r => r.estado === 'vencido');
-        const noVencidoReclamos = reclamosConId.filter(r => r.estado === 'no vencido');
-        const abiertosReclamos = reclamosConId.filter(r => r.estado !== 'respondido');
-
         setReclamos(reclamosConId);
-        setUrgenteCount(urgenteReclamos.length);
-        setRegularCount(regularReclamos.length);
-        setVencidoCount(vencidoReclamos.length);
-        setNoVencidoCount(noVencidoReclamos.length);
-        setAbiertosCount(abiertosReclamos.length);
+        actualizarContadores(reclamosConId);
       } catch (error) {
         console.error('Error fetching reclamos:', error);
       }
@@ -61,6 +53,22 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 
     fetchReclamos();
   }, [token]);
+
+  const actualizarContadores = (reclamos) => {
+    const urgenteReclamos = reclamos.filter(r => r.prioridad === 'Urgente');
+    const regularReclamos = reclamos.filter(r => r.prioridad === 'Regular');
+    const vencidoReclamos = reclamos.filter(r => r.estado === 'vencido');
+    const noVencidoReclamos = reclamos.filter(r => r.estado === 'no vencido');
+    const abiertosReclamos = reclamos.filter(r => r.estado !== 'respondido');
+    const fechaVencidaReclamos = reclamos.filter(r => validarFecha(r.respuesta));
+
+    setUrgenteCount(urgenteReclamos.length);
+    setRegularCount(regularReclamos.length);
+    setVencidoCount(vencidoReclamos.length);
+    setNoVencidoCount(noVencidoReclamos.length);
+    setAbiertosCount(abiertosReclamos.length);
+    setFechaVencidaCount(fechaVencidaReclamos.length);
+  };
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -89,9 +97,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         });
 
         if (response.status === 200) {
-          setReclamos(prev => 
-            prev.map(r => (r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r))
-          );
+          const updatedReclamos = reclamos.map(r => (r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r));
+          setReclamos(updatedReclamos);
+          actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setFechaEntrega(null);
         }
@@ -119,28 +127,119 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     setShowDetalleModal(true);
   };
 
+  const handleCategoriaClick = categoria => {
+    setCategoriaSeleccionada(categoria);
+  };
+
+  const filtrarReclamos = () => {
+    switch (categoriaSeleccionada) {
+      case 'urgente':
+        return reclamos.filter(r => r.prioridad === 'Urgente');
+      case 'regular':
+        return reclamos.filter(r => r.prioridad === 'Regular');
+      case 'vencido':
+        return reclamos.filter(r => r.estado === 'vencido');
+      case 'noVencido':
+        return reclamos.filter(r => r.estado === 'no vencido');
+      case 'sinResponder':
+        return reclamos.filter(r => r.estado !== 'respondido');
+      case 'fechaVencida':
+        return reclamos.filter(r => validarFecha(r.respuesta));
+      case 'todos':
+      default:
+        return reclamos;
+    }
+  };
+
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
-      <h1>Gestor de Reclamos - Almacenes</h1>
-      <h2>Total Reclamos: {reclamos.length}</h2>
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Urgente: {urgenteCount}</h2>
-        <h2>Regular: {regularCount}</h2>
-        <h2>Vencido: {vencidoCount}</h2>
-        <h2>No Vencido: {noVencidoCount}</h2>
-        <h2>Sin Responder: {abiertosCount}</h2>
+      <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
+
+      <div className="mb-4">
+        <h3>Prioridad:</h3>
+        <div className="row text-center">
+          <div className="col-md-2" onClick={() => handleCategoriaClick('todos')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-primary text-white">
+              <div className="card-body">
+                <h5 className="card-title">Total Reclamos</h5>
+                <p className="card-text">{reclamos.length}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('urgente')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-danger text-white">
+              <div className="card-body">
+                <h5 className="card-title">Urgente</h5>
+                <p className="card-text">{urgenteCount}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('regular')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-warning text-white">
+              <div className="card-body">
+                <h5 className="card-title">Regular</h5>
+                <p className="card-text">{regularCount}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-        <div className="row">
-          {reclamos.map((reclamo, idx) => (
-            <div
-              key={idx}
-              className={`col-md-4 mb-4 card ${
-                reclamo.estado === 'respondido' ? 'bg-success' :
-                reclamo.prioridad === 'Urgente' ? 'bg-danger' :
-                'bg-warning'
-              } text-white`}
-            >
+
+      <div className="mb-4">
+        <h3>Estado del Pedido:</h3>
+        <div className="row text-center">
+          <div className="col-md-2" onClick={() => handleCategoriaClick('vencido')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-dark text-white">
+              <div className="card-body">
+                <h5 className="card-title">Vencido</h5>
+                <p className="card-text">{vencidoCount}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('noVencido')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-secondary text-white">
+              <div className="card-body">
+                <h5 className="card-title">No Vencido</h5>
+                <p className="card-text">{noVencidoCount}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('sinResponder')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-info text-white">
+              <div className="card-body">
+                <h5 className="card-title">Sin Responder</h5>
+                <p className="card-text">{abiertosCount}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <h3>Fecha Prometida:</h3>
+        <div className="row text-center">
+          <div className="col-md-2" onClick={() => handleCategoriaClick('fechaVencida')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-danger text-white">
+              <div className="card-body">
+                <h5 className="card-title">Fecha Vencida</h5>
+                <p className="card-text">{fechaVencidaCount}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        {filtrarReclamos().map((reclamo, idx) => (
+          <div
+            key={idx}
+            className={`col-md-4 mb-4 card ${
+              reclamo.estado === 'respondido' ? 'bg-success' :
+              reclamo.prioridad === 'Urgente' ? 'bg-danger' :
+              'bg-warning'
+            } text-white`}
+          >
             <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
               <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>

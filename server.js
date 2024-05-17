@@ -291,7 +291,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
 
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen, material } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -301,10 +301,10 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
       if (reclamo.id === parseInt(id)) {
         reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
           if (subReclamo.id === subId) {
-            subReclamo.estado = estado;
-            subReclamo.respuesta = respuesta;
-            subReclamo.usernameAlmacen = usernameAlmacen;
-            subReclamo.material = material; // Actualizar el campo material
+            subReclamo.estado = estado || subReclamo.estado;
+            subReclamo.respuesta = respuesta || subReclamo.respuesta;
+            subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
+            // No actualizar el material aquí
             found = true;
           }
           return subReclamo;
@@ -324,6 +324,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 
 
