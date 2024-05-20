@@ -18,6 +18,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [abiertosCount, setAbiertosCount] = useState(0);
   const [noVencidoCount, setNoVencidoCount] = useState(0);
   const [fechaVencidaCount, setFechaVencidaCount] = useState(0);
+  const [conRemitoCount, setConRemitoCount] = useState(0); // Nuevo estado para contar los reclamos con remito
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -61,8 +62,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     const regularReclamos = reclamos.filter(r => r.prioridad === 'Regular');
     const vencidoReclamos = reclamos.filter(r => r.estado === 'vencido');
     const noVencidoReclamos = reclamos.filter(r => r.estado === 'no vencido');
-    const abiertosReclamos = reclamos.filter(r => r.estado !== 'respondido');
+    const abiertosReclamos = reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
     const fechaVencidaReclamos = reclamos.filter(r => validarFecha(r.respuesta));
+    const conRemitoReclamos = reclamos.filter(r => r.estado === 'remito enviado' && r.remito);
 
     setUrgenteCount(urgenteReclamos.length);
     setRegularCount(regularReclamos.length);
@@ -70,6 +72,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     setNoVencidoCount(noVencidoReclamos.length);
     setAbiertosCount(abiertosReclamos.length);
     setFechaVencidaCount(fechaVencidaReclamos.length);
+    setConRemitoCount(conRemitoReclamos.length); // Actualizar el nuevo contador
   };
 
   const handleResponder = reclamo => {
@@ -144,9 +147,11 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       case 'noVencido':
         return reclamos.filter(r => r.estado === 'no vencido');
       case 'sinResponder':
-        return reclamos.filter(r => r.estado !== 'respondido');
+        return reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
       case 'fechaVencida':
         return reclamos.filter(r => validarFecha(r.respuesta));
+      case 'conRemito':
+        return reclamos.filter(r => r.estado === 'remito enviado' && r.remito);
       case 'todos':
       default:
         return reclamos;
@@ -249,6 +254,14 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
               </div>
             </div>
           </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('conRemito')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-success text-white">
+              <div className="card-body">
+                <h5 className="card-title">Con Remito</h5>
+                <p className="card-text">{conRemitoCount}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -295,7 +308,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                 <p className="text-danger">La respuesta enviada se encuentra vencida</p>
               )}
               <div className="d-flex flex-column">
-                {!reclamo.respuesta && (
+                {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
                   <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
                     Responder
                   </button>

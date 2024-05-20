@@ -9,8 +9,10 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [error, setError] = useState(null);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
-  const [vencidosCount, setVencidosCount] = useState(0);
+  const [fechaPrometidaVencidaCount, setFechaPrometidaVencidaCount] = useState(0);
   const [todosCount, setTodosCount] = useState(0);
+  const [remitoCount, setRemitoCount] = useState(0);
+  const [cursoCount, setCursoCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -20,13 +22,28 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || 'remito enviado');
+        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || r.estado === 'remito enviado' || r.estado === 'en curso' || r.estado === 'no vencido' || r.estado === 'vencido');
         if (role !== 'administrador') {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
         }
+
+        const fechaActual = startOfDay(new Date());
+        const vencidosPrometida = reclamosFiltrados.filter(r => {
+          if (!r.respuesta) return false;
+          const fechaMatch = r.respuesta.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
+          if (fechaMatch) {
+            const fechaRespuesta = parse(fechaMatch[0], 'd/M/yyyy', new Date());
+            const fechaRespuestaStartOfDay = startOfDay(fechaRespuesta);
+            return isBefore(fechaRespuestaStartOfDay, fechaActual);
+          }
+          return false;
+        });
+
         setReclamos(reclamosFiltrados);
         setTodosCount(reclamosFiltrados.length);
-        setVencidosCount(reclamosFiltrados.filter(r => validarFecha(r)).length);
+        setFechaPrometidaVencidaCount(vencidosPrometida.length);
+        setRemitoCount(reclamosFiltrados.filter(r => r.estado === 'remito enviado').length);
+        setCursoCount(reclamosFiltrados.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido').length);
       } catch (error) {
         if (error.response && error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver esta información.');
@@ -77,7 +94,30 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     }
   };
 
-  const validarFecha = (reclamo) => {
+  const handleCategoriaClick = (categoria) => {
+    setCategoriaSeleccionada(categoria);
+  };
+
+  const filtrarReclamos = () => {
+    switch (categoriaSeleccionada) {
+      case 'vencidos':
+        return reclamos.filter(r => r.estado === 'vencido');
+      case 'fecha prometida vencida':
+        return reclamos.filter(r => validarFechaPrometida(r));
+      case 'con remito':
+        return reclamos.filter(r => r.estado === 'remito enviado');
+      case 'en curso':
+        return reclamos.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido');
+      case 'todos':
+      default:
+        return reclamos;
+    }
+  };
+
+  const validarFechaPrometida = (reclamo) => {
+    if (!reclamo.respuesta) {
+      return false;
+    }
     const fechaActual = startOfDay(new Date());
     const fechaMatch = reclamo.respuesta.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
     if (fechaMatch) {
@@ -86,20 +126,6 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
       return isBefore(fechaRespuestaStartOfDay, fechaActual);
     }
     return false;
-  };
-
-  const handleCategoriaClick = (categoria) => {
-    setCategoriaSeleccionada(categoria);
-  };
-
-  const filtrarReclamos = () => {
-    switch (categoriaSeleccionada) {
-      case 'vencidos':
-        return reclamos.filter(r => validarFecha(r));
-      case 'todos':
-      default:
-        return reclamos;
-    }
   };
 
   const handleShowModal = (reclamo) => {
@@ -129,11 +155,27 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-2" onClick={() => handleCategoriaClick('vencidos')} style={{ cursor: 'pointer' }}>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('fecha prometida vencida')} style={{ cursor: 'pointer' }}>
             <div className="card bg-danger text-white">
               <div className="card-body">
-                <h5 className="card-title">Vencidos</h5>
-                <p className="card-text">{vencidosCount}</p>
+                <h5 className="card-title">Fecha Prometida Vencida</h5>
+                <p className="card-text">{fechaPrometidaVencidaCount}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('con remito')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-success text-white">
+              <div className="card-body">
+                <h5 className="card-title">Con Remito</h5>
+                <p className="card-text">{remitoCount}</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('en curso')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-warning text-white">
+              <div className="card-body">
+                <h5 className="card-title">En Curso</h5>
+                <p className="card-text">{cursoCount}</p>
               </div>
             </div>
           </div>
@@ -141,24 +183,26 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
       </div>
       <div className="row">
         {filtrarReclamos().map((reclamo, index) => (
-          <div key={index} className="col-md-4 mb-4 card bg-secondary text-white">
-            <div className="card-body">
-              <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
-              <p className="card-text"><strong>Reclamo:</strong> {reclamo.mensaje}</p>
-              <small><strong>Emitido por:</strong> {reclamo.username}</small>
-              <p className='card-text'>
-                <small>
-                  <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Fecha:</strong> {reclamo.fecha}<br />
-                  <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
-                  <strong>
-                    Respuesta:
-                    <span className={`card-text ${validarFecha(reclamo) ? 'text-danger' : ''}`}> {reclamo.respuesta}</span>
-                  </strong>
-                </small>
-              </p>
-              <button className="btn btn-primary mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
-              <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+          <div key={index} className="col-md-4 mb-4">
+            <div className="card bg-secondary text-white">
+              <div className="card-body">
+                <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
+                <p className="card-text"><strong>Reclamo:</strong> {reclamo.mensaje}</p>
+                <small><strong>Emitido por:</strong> {reclamo.username}</small>
+                <p className='card-text'>
+                  <small>
+                    <strong>Estado:</strong> {reclamo.estado}<br />
+                    <strong>Fecha:</strong> {reclamo.fecha}<br />
+                    <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
+                    <strong>
+                      Respuesta:
+                      <span className={`card-text ${validarFechaPrometida(reclamo) ? 'text-danger' : ''}`}> {reclamo.respuesta}</span>
+                    </strong>
+                  </small>
+                </p>
+                <button className="btn btn-primary mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
+                <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+              </div>
             </div>
           </div>
         ))}
