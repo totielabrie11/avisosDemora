@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const EnvioDeRemito = () => {
+const EnvioDeRemito = ({ id, subId, onRemitoEnviado }) => {
   const [file, setFile] = useState(null);
+  const [numeroRemito, setNumeroRemito] = useState('');
   const [message, setMessage] = useState('');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
+  const handleNumeroRemitoChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value) && value.length <= 6) {
+      setNumeroRemito(value);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('numeroRemito', numeroRemito);
+    formData.append('id', id);  // Agregar el ID al formulario
+    formData.append('subId', subId);  // Agregar el subId al formulario
 
     try {
       const response = await axios.post('http://localhost:3000/upload', formData, {
@@ -24,6 +35,12 @@ const EnvioDeRemito = () => {
 
       if (response.status === 200) {
         setMessage('Archivo enviado con éxito.');
+        // Limpiar el estado después del éxito
+        setFile(null);
+        setNumeroRemito('');
+        if (onRemitoEnviado) {
+          onRemitoEnviado(numeroRemito);
+        }
       } else {
         setMessage('Error al enviar el archivo.');
       }
@@ -34,16 +51,24 @@ const EnvioDeRemito = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
+      <h1>Enviar Remito</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input type="file" onChange={handleFileChange} className="form-control-file" />
+        <div className="mb-3">
+          <label htmlFor="file" className="form-label">Archivo</label>
+          <input type="file" className="form-control" id="file" onChange={handleFileChange} />
         </div>
-        <button type="submit" className="btn btn-primary">Enviar Remito</button>
+        <div className="mb-3">
+          <label htmlFor="numeroRemito" className="form-label">Número de Remito</label>
+          <input type="text" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
+        </div>
+        <button type="submit" className="btn btn-primary">Enviar</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <div className="mt-3 alert alert-info">{message}</div>}
     </div>
   );
 };
 
 export default EnvioDeRemito;
+
+

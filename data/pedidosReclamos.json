@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "pedido": 38569,
+    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "reclamos": [
+      {
+        "id": "sub-1715945145805",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "preparar este material parcial del pedido. cliente necesita urgente.",
+        "fecha": "17-05-2024 a las 08:25 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "031QQ0A-MET0",
+            "cantidad": 5,
+            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          },
+          {
+            "codigo": "031TD0A-MET0",
+            "cantidad": 5,
+            "descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 18/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 38599,
+    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "reclamos": [
+      {
+        "id": "sub-1715945596707",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "podremos entregar?",
+        "fecha": "17-05-2024 a las 08:33 hs",
+        "username": "LeonardoD",
+        "material": [
+          {
+            "codigo": "031ET0A-MET0",
+            "cantidad": 5,
+            "descripcion": "EMD  16003 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 26/6/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 38596,
+    "cliente": "BSI GROUP S.A.S.",
+    "reclamos": [
+      {
+        "id": "sub-1715945780612",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "vamos a poder cumplir con esta bomba que vence mañana?",
+        "fecha": "17-05-2024 a las 08:36 hs",
+        "username": "LeonardoD",
+        "material": [
+          {
+            "codigo": "068045T-00B0",
+            "cantidad": 1,
+            "descripcion": "DSHC 4500 COMPACTA C/MOT TRIF FUND GRIS/BRONCE"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 31/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": 38003,
+    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "reclamos": [
+      {
+        "id": "sub-1715963167000",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "el cliente YPF me llama y me pide urgente el equipo solar.",
+        "fecha": "17-05-2024 a las 13:26 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "Q132306616",
+            "cantidad": 8,
+            "descripcion": "EQ 1000L SOLAR 2X280WP.- 3X220AH DES AP 06 DUPLEX"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 91502",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  }
+]
