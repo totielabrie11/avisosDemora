@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const EnvioDeRemito = ({ id, subId, onRemitoEnviado }) => {
+const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token }) => {
   const [file, setFile] = useState(null);
   const [numeroRemito, setNumeroRemito] = useState('');
   const [message, setMessage] = useState('');
@@ -23,19 +23,19 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado }) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('numeroRemito', numeroRemito);
-    formData.append('id', id);  // Agregar el ID al formulario
-    formData.append('subId', subId);  // Agregar el subId al formulario
+    formData.append('id', id);
+    formData.append('subId', subId);
 
     try {
       const response = await axios.post('http://localhost:3000/upload', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
         }
       });
 
       if (response.status === 200) {
         setMessage('Archivo enviado con éxito.');
-        // Limpiar el estado después del éxito
         setFile(null);
         setNumeroRemito('');
         if (onRemitoEnviado) {
@@ -63,12 +63,14 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado }) => {
           <input type="text" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
         </div>
         <button type="submit" className="btn btn-primary">Enviar</button>
-      </form>
-      {message && <div className="mt-3 alert alert-info">{message}</div>}
-    </div>
+        </form>
+    {message && <div className="mt-3 alert alert-info">{message}</div>}
+  </div>
   );
 };
 
 export default EnvioDeRemito;
+
+
 
 

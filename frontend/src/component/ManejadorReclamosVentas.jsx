@@ -20,7 +20,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido');
+        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || 'remito enviado');
         if (role !== 'administrador') {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
         }

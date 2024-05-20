@@ -24,7 +24,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [showDetalleModal, setShowDetalleModal] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
   const [showEnvioModal, setShowEnvioModal] = useState(false);
-
+  
   function generateId() {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
     const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -153,11 +153,45 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     }
   };
 
+  const handleRemitoSubmitSuccess = async (numeroRemito) => {
+    if (selectedReclamo) {
+      try {
+        const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
+          estado: 'remito enviado',
+          respuesta: `Remito enviado con número ${numeroRemito}`,
+          subId: selectedReclamo.subId,
+          usernameAlmacen: username,
+          remito: numeroRemito
+        }, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (response.status === 200) {
+          const updatedReclamos = reclamos.map(r => 
+            r.id === selectedReclamo.id 
+              ? { 
+                  ...r, 
+                  estado: 'remito enviado', 
+                  respuesta: `Remito enviado con número ${numeroRemito}`, 
+                  remito: numeroRemito 
+                } 
+              : r
+          );
+          setReclamos(updatedReclamos);
+          actualizarContadores(updatedReclamos);
+          setSelectedReclamo(null);
+        }
+      } catch (error) {
+        console.error('Error actualizando el reclamo:', error);
+        alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
+      }
+    }
+  };
+
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
       <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
-  
       <div className="mb-4">
         <h3>Prioridad:</h3>
         <div className="row text-center">
@@ -187,7 +221,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-  
+
       <div className="mb-4">
         <h3>Estado del Pedido:</h3>
         <div className="row text-center">
@@ -217,7 +251,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-  
+
       <div className="mb-4">
         <h3>Fecha Prometida:</h3>
         <div className="row text-center">
@@ -231,7 +265,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         </div>
       </div>
-  
+
       <div className="row">
         {filtrarReclamos().map((reclamo, idx) => (
           <div
@@ -269,7 +303,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                 <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
                   Ver Detalle
                 </button>
-                <button className="btn btn-primary" onClick={() => setShowEnvioModal(true)}>
+                <button className="btn btn-primary" onClick={() => {setSelectedReclamo(reclamo); setShowEnvioModal(true);}}>
                   Enviar Remito
                 </button>
               </div>
@@ -277,7 +311,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </div>
         ))}
       </div>
-  
+
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
@@ -301,13 +335,18 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-  
+
       <Modal show={showEnvioModal} onHide={() => setShowEnvioModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Enviar Remito</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EnvioDeRemito />
+        <EnvioDeRemito
+             id={selectedReclamo?.id}
+             subId={selectedReclamo?.subId}
+             onRemitoEnviado={handleRemitoSubmitSuccess}
+             token={token}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowEnvioModal(false)}>
@@ -315,7 +354,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-  
+
       <VistaDetalleAlmacen
         show={showDetalleModal}
         onHide={() => setShowDetalleModal(false)}
@@ -323,9 +362,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       />
     </div>
   );
-  
-  
-  
 };
 
 export default GestorAlmacenes;

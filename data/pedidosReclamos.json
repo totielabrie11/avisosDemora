@@ -1,101 +1,48 @@
 [
   {
     "id": 1,
-    "pedido": 38569,
-    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "pedido": 36384,
+    "cliente": "YPF SA - CIA DE HIDROCARBUROS NO CONVENCIONAL SRL AREA LOMA CAMPANA UTE",
     "reclamos": [
       {
-        "id": "sub-1715945145805",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "preparar este material parcial del pedido. cliente necesita urgente.",
-        "fecha": "17-05-2024 a las 08:25 hs",
+        "id": "sub-1716220475599",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "Cliente reclama estos cabezales varios días vencidos.",
+        "fecha": "20-05-2024 a las 12:54 hs",
         "username": "CarlosM",
         "material": [
           {
-            "codigo": "031QQ0A-MET0",
-            "cantidad": 5,
-            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG"
-          },
-          {
-            "codigo": "031TD0A-MET0",
-            "cantidad": 5,
-            "descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+            "codigo": "B1994/0-10",
+            "cantidad": 9,
+            "descripcion": "CONJUNTO CABEZAL DEC 10 C/EMPAQ. AS. ELASTOMERO"
           }
         ],
-        "respuesta": "Se entregará en la fecha 18/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 111115",
         "usernameAlmacen": "FernanditoG"
       }
     ]
   },
   {
     "id": 2,
-    "pedido": 38599,
-    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "pedido": 32505,
+    "cliente": "YPF SOCIEDAD ANONIMA",
     "reclamos": [
       {
-        "id": "sub-1715945596707",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "podremos entregar?",
-        "fecha": "17-05-2024 a las 08:33 hs",
-        "username": "LeonardoD",
-        "material": [
-          {
-            "codigo": "031ET0A-MET0",
-            "cantidad": 5,
-            "descripcion": "EMD  16003 (LED) 220 V -  PP-PVDF-EPDM   ARG"
-          }
-        ],
-        "respuesta": "Se entregará en la fecha 26/6/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "pedido": 38596,
-    "cliente": "BSI GROUP S.A.S.",
-    "reclamos": [
-      {
-        "id": "sub-1715945780612",
-        "estado": "respondido",
-        "prioridad": "Regular",
-        "mensaje": "vamos a poder cumplir con esta bomba que vence mañana?",
-        "fecha": "17-05-2024 a las 08:36 hs",
-        "username": "LeonardoD",
-        "material": [
-          {
-            "codigo": "068045T-00B0",
-            "cantidad": 1,
-            "descripcion": "DSHC 4500 COMPACTA C/MOT TRIF FUND GRIS/BRONCE"
-          }
-        ],
-        "respuesta": "Se entregará en la fecha 31/5/2024",
-        "usernameAlmacen": "FernanditoG"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "pedido": 38003,
-    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
-    "reclamos": [
-      {
-        "id": "sub-1715963167000",
+        "id": "sub-1716221300647",
         "estado": "cerrado",
         "prioridad": "Urgente",
-        "mensaje": "el cliente YPF me llama y me pide urgente el equipo solar.",
-        "fecha": "17-05-2024 a las 13:26 hs",
+        "mensaje": "den de baja este pedido",
+        "fecha": "20-05-2024 a las 13:08 hs",
         "username": "CarlosM",
         "material": [
           {
-            "codigo": "Q132306616",
-            "cantidad": 8,
-            "descripcion": "EQ 1000L SOLAR 2X280WP.- 3X220AH DES AP 06 DUPLEX"
+            "codigo": "Q121904363",
+            "cantidad": 2,
+            "descripcion": "MDI ALTO CAUDAL(NEW) CON TABLERO Y ACCESORIOS (24VCC)"
           }
         ],
-        "respuesta": "Reclamo cerrado con remito número: 91502",
+        "respuesta": "Reclamo cerrado con remito número: 5555555",
         "usernameAlmacen": "FernanditoG"
       }
     ]
