@@ -228,6 +228,14 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
               </div>
             </div>
           </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('noVencido')} style={{ cursor: 'pointer' }}>
+            <div className="card text-white" style={{ backgroundColor: '#1FE81F' }} >
+              <div className="card-body">
+                <h5 className="card-title">No Vencido</h5>
+                <p className="card-text">{noVencidoCount}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -239,14 +247,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
               <div className="card-body">
                 <h5 className="card-title">Vencido</h5>
                 <p className="card-text">{vencidoCount}</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-2" onClick={() => handleCategoriaClick('noVencido')} style={{ cursor: 'pointer' }}>
-            <div className="card bg-secondary text-white">
-              <div className="card-body">
-                <h5 className="card-title">No Vencido</h5>
-                <p className="card-text">{noVencidoCount}</p>
               </div>
             </div>
           </div>
@@ -289,9 +289,11 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             key={idx}
             className={`col-md-4 mb-4 card ${
               reclamo.estado === 'respondido' ? 'bg-success' :
+              reclamo.estado === 'no vencido' ? '' :
               reclamo.prioridad === 'Urgente' ? 'bg-danger' :
               'bg-warning'
             } text-white`}
+            style={reclamo.estado === 'no vencido' ? { backgroundColor: '#1FE81F' } : {}}
           >
             <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>

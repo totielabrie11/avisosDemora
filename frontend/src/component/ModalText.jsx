@@ -3,19 +3,19 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 
 const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
-  const [prioridad, setPrioridad] = useState('Regular');
+  const [prioridad, setPrioridad] = useState(estado === 'no vencido' ? 'Normal' : 'Regular');
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
   const [selectedItems, setSelectedItems] = useState({});
 
   useEffect(() => {
     if (show) {
-      setPrioridad('Regular');
+      setPrioridad(estado === 'no vencido' ? 'Normal' : 'Regular');
       setMensaje('');
       setError('');
       setSelectedItems({});
     }
-  }, [show]);
+  }, [show, estado]);
 
   const handlePrioridadChange = (e) => {
     setPrioridad(e.target.value);
@@ -91,9 +91,18 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
           </Form.Group>
           <Form.Group>
             <Form.Label>Prioridad</Form.Label>
-            <Form.Control as="select" value={prioridad} onChange={handlePrioridadChange}>
-              <option>Regular</option>
-              <option>Urgente</option>
+            <Form.Control as="select" value={prioridad} onChange={handlePrioridadChange} disabled={estado === 'no vencido'}>
+              {estado === 'no vencido' ? (
+                <>
+                  <option>Normal</option>
+                  <option>Regular</option>
+                </>
+              ) : (
+                <>
+                  <option>Regular</option>
+                  <option>Urgente</option>
+                </>
+              )}
             </Form.Control>
           </Form.Group>
           <Form.Group>
@@ -146,4 +155,5 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
 };
 
 export default ModalText;
+
 

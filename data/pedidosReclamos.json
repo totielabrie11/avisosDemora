@@ -54,7 +54,7 @@
     "reclamos": [
       {
         "id": "sub-1716224049066",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "podremos entregar estas cantidades?",
         "fecha": "20-05-2024 a las 13:54 hs",
@@ -71,9 +71,28 @@
             "descripcion": "DEN/S 10 - CARRERA RED-BAJA FREC.C/EMPAQ. ASIENTOS PTFE"
           }
         ],
-        "respuesta": "Remito enviado con número 9305",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "9305"
+        "respuesta": "Reclamo cerrado con remito número: 111441",
+        "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1716298262646",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "esta algo vendido",
+        "fecha": "21-05-2024 a las 10:31 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "B1693/1",
+            "cantidad": 4,
+            "descripcion": "DISTRIBUIDOR DEN/S      (BIELA S"
+          },
+          {
+            "codigo": "0161010-AT20",
+            "cantidad": 5,
+            "descripcion": "DEN/S 10 - CARRERA RED-BAJA FREC.C/EMPAQ. ASIENTOS PTFE"
+          }
+        ]
       }
     ]
   },
@@ -84,7 +103,7 @@
     "reclamos": [
       {
         "id": "sub-1716225185865",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "se puede remitir?",
         "fecha": "20-05-2024 a las 14:13 hs",
@@ -96,9 +115,8 @@
             "descripcion": "ACEITE P/DOSIFICADORA SAE 90 X 1 LITRO"
           }
         ],
-        "respuesta": "Remito enviado con número 100770",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "100770"
+        "respuesta": "Reclamo cerrado con remito número: 11111111",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -109,7 +127,7 @@
     "reclamos": [
       {
         "id": "sub-1716225361121",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "esto se puede adelantar una parte?.",
         "fecha": "20-05-2024 a las 14:16 hs",
@@ -121,9 +139,8 @@
             "descripcion": "MDN LORAWAN CON SOPORTE NUEVO PARA TOTE IBC"
           }
         ],
-        "respuesta": "Remito enviado con número 101573",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "101573"
+        "respuesta": "Reclamo cerrado con remito número: 1111111",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -134,7 +151,7 @@
     "reclamos": [
       {
         "id": "sub-1716226678042",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "podremos preparar esto para el cliente ?.",
         "fecha": "20-05-2024 a las 14:37 hs",
@@ -146,7 +163,7 @@
             "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE"
           }
         ],
-        "respuesta": "Se entregará en la fecha 24/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 11111111",
         "usernameAlmacen": "FernanditoG"
       }
     ]
@@ -158,7 +175,7 @@
     "reclamos": [
       {
         "id": "sub-1716226938745",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "preparar esta parte del pedido. el resto se arregla más adelante.",
         "fecha": "20-05-2024 a las 14:42 hs",
@@ -170,7 +187,7 @@
             "descripcion": "EMD PLUS  01515 SEGUIDORA (DISPLAY) 220V  PP-PVDF-EPDM   ARG"
           }
         ],
-        "respuesta": "Se entregará en la fecha 21/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 1414141",
         "usernameAlmacen": "FernanditoG"
       }
     ]
@@ -206,7 +223,7 @@
     "reclamos": [
       {
         "id": "sub-1716227699320",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "sacar todo el remito el cliente está en queja",
         "fecha": "20-05-2024 a las 14:54 hs",
@@ -223,9 +240,8 @@
             "descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX"
           }
         ],
-        "respuesta": "Remito enviado con número 9305",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "9305"
+        "respuesta": "Reclamo cerrado con remito número: 1111111",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -236,15 +252,163 @@
     "reclamos": [
       {
         "id": "sub-1716232891495",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "se puede preparar este material?  lo necesita urgente.",
         "fecha": "20-05-2024 a las 16:21 hs",
         "username": "CarlosM",
         "material": [],
-        "respuesta": "Remito enviado con número 1111",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "1111"
+        "respuesta": "Reclamo cerrado con remito número: 1111111111",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "pedido": 38569,
+    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "reclamos": [
+      {
+        "id": "sub-1716294536461",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "preparar parcial de bombas y todo lo que es manguera",
+        "fecha": "21-05-2024 a las 09:28 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "031QQ0A-MET0",
+            "cantidad": 5,
+            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          },
+          {
+            "codigo": "031TD0A-MET0",
+            "cantidad": 5,
+            "descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG"
+          },
+          {
+            "codigo": "B311792-DE00",
+            "cantidad": 10,
+            "descripcion": "VALVULA PUNTO INY. ELECTROM PVDF/EPDM   (NVO)"
+          },
+          {
+            "codigo": "R310101-MET0",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL EMD SIN CIL AL - MIX"
+          },
+          {
+            "codigo": "C250406/E",
+            "cantidad": 100,
+            "descripcion": "MANGUERA DE PEBD  C/UV Ø 4 X Ø 6 TRANSLUCIDA"
+          },
+          {
+            "codigo": "C250406/C",
+            "cantidad": 100,
+            "descripcion": "MANGUERA PVC CRISTAL Ø 4 X Ø 6"
+          },
+          {
+            "codigo": "RP00010",
+            "cantidad": 100,
+            "descripcion": "MANGUERA DE PEBD C/UV Ø 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA"
+          },
+          {
+            "codigo": "C250609/C",
+            "cantidad": 100,
+            "descripcion": "MANGUERA PVC CRISTAL Ø 6.35 X 9.5"
+          },
+          {
+            "codigo": "B311792-DE06",
+            "cantidad": 5,
+            "descripcion": "VALVULA PUNTO INY. MILENIO COMPACTO ø6 PVDF/EPDM   (NVO)"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 111111111"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "pedido": 38582,
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "reclamos": [
+      {
+        "id": "sub-1716296058205",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "está por vencer. me pueden pasar fecha",
+        "fecha": "21-05-2024 a las 09:54 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ]
+      },
+      {
+        "id": "sub-1716298221650",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "vence pronto",
+        "fecha": "21-05-2024 a las 10:30 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "pedido": 37940,
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "reclamos": [
+      {
+        "id": "sub-1716298288501",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "bastante más vencido",
+        "fecha": "21-05-2024 a las 10:31 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "19006/10",
+            "cantidad": 25,
+            "descripcion": "EMBOLO BUZO DE... Ø 10 MM CERAMICO"
+          },
+          {
+            "codigo": "B2094/0-10T",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DECI 10 C/EMPAQ. ASIENTOS PTFE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "pedido": 37731,
+    "cliente": "NANOTICA AGRO S.A.S.",
+    "reclamos": [
+      {
+        "id": "sub-1716298371298",
+        "estado": "vencido",
+        "prioridad": "Urgente",
+        "mensaje": "esto se prendió fuego. ",
+        "fecha": "21-05-2024 a las 10:32 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "NANO1",
+            "cantidad": 1,
+            "descripcion": "PILOTO NANOTICA"
+          }
+        ]
       }
     ]
   }

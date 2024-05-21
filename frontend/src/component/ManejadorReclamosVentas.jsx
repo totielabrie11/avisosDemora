@@ -102,7 +102,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     switch (categoriaSeleccionada) {
       case 'vencidos':
         return reclamos.filter(r => r.estado === 'vencido');
-      case 'fecha prometida vencida':
+      case 'promesa vencida':
         return reclamos.filter(r => validarFechaPrometida(r));
       case 'con remito':
         return reclamos.filter(r => r.estado === 'remito enviado');
@@ -155,10 +155,10 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-2" onClick={() => handleCategoriaClick('fecha prometida vencida')} style={{ cursor: 'pointer' }}>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('promesa vencida')} style={{ cursor: 'pointer' }}>
             <div className="card bg-danger text-white">
               <div className="card-body">
-                <h5 className="card-title">Fecha Prometida Vencida</h5>
+                <h5 className="card-title">Promesa vencida</h5>
                 <p className="card-text">{fechaPrometidaVencidaCount}</p>
               </div>
             </div>
