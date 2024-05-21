@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Estadisticas.css';
+import Historico from './Historico';
 
 const Estadisticas = ({ token }) => {
   const [stats, setStats] = useState({ pedidosPorCliente: {}, pedidosPorMes: {}, totalPedidos: 0 });
-  const [error, setError] = useState(null);  // Estado para almacenar el mensaje de error
+  const [error, setError] = useState(null);
+  const [mostrarHistorico, setMostrarHistorico] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/estadisticas', {
@@ -12,11 +14,12 @@ const Estadisticas = ({ token }) => {
     })
     .then((response) => {
       setStats(response.data);
-      setError(null);  // Limpiar errores previos si la solicitud es exitosa
+      setError(null);
+      // Guardar los datos en el archivo de histórico
+      guardarHistorico(response.data);
     })
     .catch((error) => {
       console.error('Error fetching estadisticas:', error);
-      // Manejo de errores según el código de estado HTTP
       if (error.response) {
         if (error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver estas estadísticas.');
@@ -28,6 +31,18 @@ const Estadisticas = ({ token }) => {
       }
     });
   }, [token]);
+
+  const guardarHistorico = (datos) => {
+    axios.post('http://localhost:3000/api/v1/historico', datos, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      console.log('Datos guardados en el histórico:', response.data);
+    })
+    .catch((error) => {
+      console.error('Error saving historico:', error);
+    });
+  };
 
   if (error) {
     return (
@@ -69,6 +84,10 @@ const Estadisticas = ({ token }) => {
           </div>
         </div>
       </div>
+      <button className="btn btn-primary mt-3" onClick={() => setMostrarHistorico(!mostrarHistorico)}>
+        {mostrarHistorico ? 'Ocultar Histórico' : 'Mostrar Histórico'}
+      </button>
+      {mostrarHistorico && <Historico token={token} />}
     </div>
   );
 };

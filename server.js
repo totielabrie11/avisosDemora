@@ -22,9 +22,11 @@ const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
   orders: path.join(process.cwd(), 'data/orders.json'),
   users: path.join(process.cwd(), 'data/us.json'),
-  document: path.join(process.cwd(), 'data/document') // Añadimos la ruta de la carpeta document
+  document: path.join(process.cwd(), 'data/document'), // Añadimos la ruta de la carpeta document
+  historico: path.join(process.cwd(), 'data/datosHistoricos.json'),
 };
 
+// Inicializa archivos si no existen
 // Inicializa archivos si no existen
 const initializeFiles = () => {
   if (!fs.existsSync(filePaths.reclamos)) {
@@ -35,6 +37,9 @@ const initializeFiles = () => {
   }
   if (!fs.existsSync(filePaths.users)) {
     fs.writeFileSync(filePaths.users, JSON.stringify({ users: [] }), 'utf8');
+  }
+  if (!fs.existsSync(filePaths.historico)) {
+    fs.writeFileSync(filePaths.historico, '[]', 'utf8');
   }
   // Comprobación si no existe la carpeta document
   if (!fs.existsSync(filePaths.document)) {
@@ -224,6 +229,49 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   } catch (err) {
     console.error('Error generando estadísticas:', err.message, err.stack);
     res.status(500).json({ error: 'Error generando estadísticas', message: err.message });
+  }
+});
+
+// Endpoint para obtener el histórico
+app.get('/api/v1/historico', authenticateToken, (req, res) => {
+  try {
+    if (req.role !== 'administrador') {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const historico = JSON.parse(fs.readFileSync(filePaths.historico, 'utf8'));
+    res.json(historico);
+  } catch (err) {
+    console.error('Error obteniendo el histórico:', err.message, err.stack);
+    res.status(500).json({ error: 'Error obteniendo el histórico', message: err.message });
+  }
+});
+
+// Endpoint para guardar datos en el histórico
+app.post('/api/v1/historico', authenticateToken, (req, res) => {
+  try {
+    if (req.role !== 'administrador') {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    const historico = JSON.parse(fs.readFileSync(filePaths.historico, 'utf8'));
+    const fechaActual = moment().format('DD/MM/YYYY');
+    
+    // Verificar si ya existe un registro para la fecha actual
+    const existeRegistroParaHoy = historico.some(registro => registro.fecha === fechaActual);
+    
+    if (existeRegistroParaHoy) {
+      return res.status(409).json({ error: 'El registro para la fecha actual ya existe.' });
+    }
+
+    const nuevoRegistro = {
+      fecha: fechaActual,
+      datos: req.body
+    };
+    historico.push(nuevoRegistro);
+    fs.writeFileSync(filePaths.historico, JSON.stringify(historico, null, 2), 'utf8');
+    res.status(201).json(nuevoRegistro);
+  } catch (err) {
+    console.error('Error guardando el histórico:', err.message, err.stack);
+    res.status(500).json({ error: 'Error guardando el histórico', message: err.message });
   }
 });
 

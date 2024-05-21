@@ -76,7 +76,7 @@
       },
       {
         "id": "sub-1716298262646",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "esta algo vendido",
         "fecha": "21-05-2024 a las 10:31 hs",
@@ -92,7 +92,9 @@
             "cantidad": 5,
             "descripcion": "DEN/S 10 - CARRERA RED-BAJA FREC.C/EMPAQ. ASIENTOS PTFE"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 9305",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -333,7 +335,7 @@
     "reclamos": [
       {
         "id": "sub-1716296058205",
-        "estado": "no vencido",
+        "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "está por vencer. me pueden pasar fecha",
         "fecha": "21-05-2024 a las 09:54 hs",
@@ -344,11 +346,13 @@
             "cantidad": 2,
             "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 100770",
+        "usernameAlmacen": "FernanditoG"
       },
       {
         "id": "sub-1716298221650",
-        "estado": "no vencido",
+        "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "vence pronto",
         "fecha": "21-05-2024 a las 10:30 hs",
@@ -359,7 +363,26 @@
             "cantidad": 2,
             "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 100770",
+        "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1716305710965",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "esto lo van a poder cumplir?",
+        "fecha": "21-05-2024 a las 12:35 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 10",
+        "usernameAlmacen": "MatiasG"
       }
     ]
   },
@@ -370,7 +393,7 @@
     "reclamos": [
       {
         "id": "sub-1716298288501",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "bastante más vencido",
         "fecha": "21-05-2024 a las 10:31 hs",
@@ -386,7 +409,9 @@
             "cantidad": 10,
             "descripcion": "CONJUNTO CABEZAL DECI 10 C/EMPAQ. ASIENTOS PTFE"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 100770",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -397,7 +422,7 @@
     "reclamos": [
       {
         "id": "sub-1716298371298",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "esto se prendió fuego. ",
         "fecha": "21-05-2024 a las 10:32 hs",
@@ -408,7 +433,33 @@
             "cantidad": 1,
             "descripcion": "PILOTO NANOTICA"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 100770",
+        "usernameAlmacen": "MatiasG"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "pedido": 36043,
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "reclamos": [
+      {
+        "id": "sub-1716305751427",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "Le debemos esto a chantiflow",
+        "fecha": "21-05-2024 a las 12:35 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "Q202305611",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L OLD DECI 10/70 PTFE MASICO + NIVEL WIRELESS"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 9305",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }
