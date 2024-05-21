@@ -155,6 +155,7 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
     const currentDate = moment();
     const diasPrevios = parseInt(req.query.diasPrevios) || 1;
     const clienteQuery = req.query.cliente ? req.query.cliente.toLowerCase() : '';
+    const numeroPedidoQuery = req.query.numeroPedido ? req.query.numeroPedido.toLowerCase() : '';
 
     const filteredPedidos = Pedidos.filter((order) => {
       const hasItemsMatchingDate = order.Items.some((item) => {
@@ -169,7 +170,9 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
       });
 
       const matchesCliente = clienteQuery ? order.Cliente.toLowerCase().includes(clienteQuery) : true;
-      return hasItemsMatchingDate && matchesCliente;
+      const matchesNumeroPedido = numeroPedidoQuery ? order.Pedido.toString().toLowerCase().includes(numeroPedidoQuery) : true;
+
+      return hasItemsMatchingDate && matchesCliente && matchesNumeroPedido;
     });
 
     filteredPedidos.forEach((order) => {
@@ -190,6 +193,7 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error obteniendo pedidos', message: err.message });
   }
 });
+
 
 // Endpoint para estadísticas de pedidos
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {

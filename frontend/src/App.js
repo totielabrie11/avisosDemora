@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -17,6 +16,7 @@ const App = () => {
   const [fechaActualizacion, setFechaActualizacion] = useState('');
   const [diasPrevios, setDiasPrevios] = useState(1);
   const [cliente, setCliente] = useState('');
+  const [numeroPedido, setNumeroPedido] = useState('');
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
   const [role, setRole] = useState('');
@@ -55,9 +55,9 @@ const App = () => {
   };
 
   const fetchPedidos = useCallback(() => {
-    console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}`);
+    console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}, numeroPedido=${numeroPedido}`);
     axios
-      .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}`, {
+      .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -66,7 +66,7 @@ const App = () => {
         setFechaActualizacion(data.Fecha_actualizacion || '');
       })
       .catch((error) => console.error('Error fetching pedidos:', error));
-  }, [diasPrevios, cliente, token]);
+  }, [diasPrevios, cliente, numeroPedido, token]);
 
   const handleLogin = (accessToken) => {
     setToken(accessToken);
@@ -93,6 +93,10 @@ const App = () => {
 
   const handleClienteChange = (e) => {
     setCliente(e.target.value);
+  };
+
+  const handleNumeroPedidoChange = (e) => {
+    setNumeroPedido(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -190,8 +194,19 @@ const App = () => {
               className="form-control ml-2 mr-2"
             />
           </label>
-        
+          
+          <label className="ms-4">
+            Número de Pedido:
+            <input
+              type="text"
+              value={numeroPedido}
+              onChange={handleNumeroPedidoChange}
+              placeholder="Número de Pedido"
+              className="form-control ml-2 mr-2"
+            />
+          </label>
         </div>
+        <button type="submit" className="btn btn-primary mt-2">Buscar</button>
       </form>
 
       <ul className="list-group mt-3">
@@ -245,5 +260,4 @@ const App = () => {
 };
 
 export default App;
-
 
