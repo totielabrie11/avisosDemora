@@ -121,9 +121,9 @@
             "descripcion": "MDN LORAWAN CON SOPORTE NUEVO PARA TOTE IBC"
           }
         ],
-        "respuesta": "Remito enviado con número 9310",
+        "respuesta": "Remito enviado con número 101573",
         "usernameAlmacen": "FernanditoG",
-        "remito": "9310"
+        "remito": "101573"
       }
     ]
   },
@@ -134,7 +134,7 @@
     "reclamos": [
       {
         "id": "sub-1716226678042",
-        "estado": "respondido",
+        "estado": "remito enviado",
         "prioridad": "Urgente",
         "mensaje": "podremos preparar esto para el cliente ?.",
         "fecha": "20-05-2024 a las 14:37 hs",
@@ -158,7 +158,7 @@
     "reclamos": [
       {
         "id": "sub-1716226938745",
-        "estado": "respondido",
+        "estado": "remito enviado",
         "prioridad": "Urgente",
         "mensaje": "preparar esta parte del pedido. el resto se arregla más adelante.",
         "fecha": "20-05-2024 a las 14:42 hs",
@@ -182,7 +182,7 @@
     "reclamos": [
       {
         "id": "sub-1716227664589",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "podremos cumplir con este encargo?",
         "fecha": "20-05-2024 a las 14:54 hs",
@@ -194,7 +194,7 @@
             "descripcion": "KIT DIAFRAGMA DD CHICA"
           }
         ],
-        "respuesta": "Se entregará en la fecha 10/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 101521",
         "usernameAlmacen": "FernanditoG"
       }
     ]
@@ -206,7 +206,7 @@
     "reclamos": [
       {
         "id": "sub-1716227699320",
-        "estado": "respondido",
+        "estado": "remito enviado",
         "prioridad": "Urgente",
         "mensaje": "sacar todo el remito el cliente está en queja",
         "fecha": "20-05-2024 a las 14:54 hs",
@@ -223,8 +223,28 @@
             "descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX"
           }
         ],
-        "respuesta": "Se entregará en la fecha 31/5/2024",
-        "usernameAlmacen": "FernanditoG"
+        "respuesta": "Remito enviado con número 9305",
+        "usernameAlmacen": "FernanditoG",
+        "remito": "9305"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "pedido": 38601,
+    "cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
+    "reclamos": [
+      {
+        "id": "sub-1716232891495",
+        "estado": "remito enviado",
+        "prioridad": "Regular",
+        "mensaje": "se puede preparar este material?  lo necesita urgente.",
+        "fecha": "20-05-2024 a las 16:21 hs",
+        "username": "CarlosM",
+        "material": [],
+        "respuesta": "Remito enviado con número 1111",
+        "usernameAlmacen": "FernanditoG",
+        "remito": "1111"
       }
     ]
   }

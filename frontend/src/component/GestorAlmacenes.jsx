@@ -64,7 +64,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     const noVencidoReclamos = reclamos.filter(r => r.estado === 'no vencido');
     const abiertosReclamos = reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
     const fechaVencidaReclamos = reclamos.filter(r => validarFecha(r.respuesta));
-    const conRemitoReclamos = reclamos.filter(r => r.estado === 'remito enviado' && r.remito);
+    const conRemitoReclamos = reclamos.filter(r => r.estado === 'remito enviado');
 
     setUrgenteCount(urgenteReclamos.length);
     setRegularCount(regularReclamos.length);
@@ -72,8 +72,10 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     setNoVencidoCount(noVencidoReclamos.length);
     setAbiertosCount(abiertosReclamos.length);
     setFechaVencidaCount(fechaVencidaReclamos.length);
-    setConRemitoCount(conRemitoReclamos.length); // Actualizar el nuevo contador
+    setConRemitoCount(conRemitoReclamos.length);
   };
+
+  
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -138,25 +140,26 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 
   const filtrarReclamos = () => {
     switch (categoriaSeleccionada) {
-      case 'urgente':
-        return reclamos.filter(r => r.prioridad === 'Urgente');
-      case 'regular':
-        return reclamos.filter(r => r.prioridad === 'Regular');
-      case 'vencido':
-        return reclamos.filter(r => r.estado === 'vencido');
-      case 'noVencido':
-        return reclamos.filter(r => r.estado === 'no vencido');
-      case 'sinResponder':
-        return reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
-      case 'fechaVencida':
-        return reclamos.filter(r => validarFecha(r.respuesta));
-      case 'conRemito':
-        return reclamos.filter(r => r.estado === 'remito enviado' && r.remito);
-      case 'todos':
-      default:
-        return reclamos;
+        case 'urgente':
+            return reclamos.filter(r => r.prioridad === 'Urgente');
+        case 'regular':
+            return reclamos.filter(r => r.prioridad === 'Regular');
+        case 'vencido':
+            return reclamos.filter(r => r.estado === 'vencido');
+        case 'noVencido':
+            return reclamos.filter(r => r.estado === 'no vencido');
+        case 'sinResponder':
+            return reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
+        case 'fechaVencida':
+            return reclamos.filter(r => validarFecha(r.respuesta));
+        case 'conRemito':
+            return reclamos.filter(r => r.estado === 'remito enviado');
+        case 'todos':
+        default:
+            return reclamos;
     }
-  };
+};
+
 
   const handleRemitoSubmitSuccess = async (numeroRemito) => {
     if (selectedReclamo) {
@@ -185,6 +188,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           setReclamos(updatedReclamos);
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
+          setShowEnvioModal(false);
         }
       } catch (error) {
         console.error('Error actualizando el reclamo:', error);
@@ -308,17 +312,19 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                 <p className="text-danger">La respuesta enviada se encuentra vencida</p>
               )}
               <div className="d-flex flex-column">
-                {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
-                  <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
-                    Responder
+                  {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
+                      <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
+                          Responder
+                      </button>
+                  )}
+                  <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
+                      Ver Detalle
                   </button>
-                )}
-                <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
-                  Ver Detalle
-                </button>
-                <button className="btn btn-primary" onClick={() => {setSelectedReclamo(reclamo); setShowEnvioModal(true);}}>
-                  Enviar Remito
-                </button>
+                  {reclamo.estado !== 'remito enviado' && (
+                      <button className="btn btn-primary" onClick={() => { setSelectedReclamo(reclamo); setShowEnvioModal(true); }}>
+                          Enviar Remito
+                      </button>
+                  )}
               </div>
             </div>
           </div>
