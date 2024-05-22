@@ -39,7 +39,7 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token }) => {
         setFile(null);
         setNumeroRemito('');
         if (onRemitoEnviado) {
-          onRemitoEnviado(numeroRemito);
+          onRemitoEnviado(numeroRemito, response.data.downloadUrl);
         }
       } else {
         setMessage('Error al enviar el archivo.');
@@ -60,17 +60,13 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token }) => {
         </div>
         <div className="mb-3">
           <label htmlFor="numeroRemito" className="form-label">Número de Remito</label>
-          <input type="text" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
+          <input type="number" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
         </div>
         <button type="submit" className="btn btn-primary">Enviar</button>
-        </form>
-    {message && <div className="mt-3 alert alert-info">{message}</div>}
-  </div>
+      </form>
+      {message && <div className="mt-3 alert alert-info">{message}</div>}
+    </div>
   );
 };
 
 export default EnvioDeRemito;
-
-
-
-

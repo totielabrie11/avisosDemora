@@ -17,6 +17,7 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 
+
 // Definición de rutas para archivos JSON y carpeta document
 const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
@@ -26,7 +27,8 @@ const filePaths = {
   historico: path.join(process.cwd(), 'data/datosHistoricos.json'),
 };
 
-// Inicializa archivos si no existen
+app.use('/document', express.static(filePaths.document));
+
 // Inicializa archivos si no existen
 const initializeFiles = () => {
   if (!fs.existsSync(filePaths.reclamos)) {
@@ -135,11 +137,43 @@ app.post('/api/v1/login', (req, res) => {
 });
 
 // Endpoint para enviar remitos a mi servidor
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/upload', upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha subido ningún archivo.');
   }
-  res.status(200).send('Archivo subido con éxito.');
+
+  const { numeroRemito, id, subId } = req.body;
+  const filePath = path.join(filePaths.document, req.file.filename);
+  const downloadUrl = `http://localhost:3000/document/${req.file.filename}`;
+
+  try {
+    let reclamos = readReclamos();
+    let found = false;
+
+    reclamos = reclamos.map(reclamo => {
+      if (reclamo.id === parseInt(id)) {
+        reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
+          if (subReclamo.id === subId) {
+            subReclamo.remito = numeroRemito;
+            subReclamo.downloadUrl = downloadUrl; // Añadir la URL de descarga
+            found = true;
+          }
+          return subReclamo;
+        });
+      }
+      return reclamo;
+    });
+
+    if (!found) {
+      return res.status(404).json({ error: 'Reclamo o sub-reclamo no encontrado' });
+    }
+
+    await writeReclamos(reclamos);
+    res.status(200).json({ message: 'Archivo subido con éxito.', downloadUrl });
+  } catch (error) {
+    console.error('Error al actualizar el reclamo:', error);
+    res.status(500).json({ error: 'Error interno del servidor', message: error.message });
+  }
 });
 
 
@@ -357,7 +391,8 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         usernameAlmacen: subReclamo.usernameAlmacen,
         respuesta: subReclamo.respuesta,
         subId: subReclamo.id,
-        material: subReclamo.material // Añadir el campo material
+        material: subReclamo.material, // Añadir el campo material
+        downloadUrl: subReclamo.downloadUrl
       }))
     );
     res.json(reclamos);

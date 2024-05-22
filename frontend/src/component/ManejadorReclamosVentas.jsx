@@ -200,6 +200,12 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     </strong>
                   </small>
                 </p>
+                {reclamo.estado === 'remito enviado' && (
+                  <>
+                    <p className="card-text">Remito enviado con número: {reclamo.remito}</p>
+                    <a href={reclamo.downloadUrl} className="btn btn-success mt-2" download>Descargar Remito</a>
+                  </>
+                )}
                 <button className="btn btn-primary mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
                 <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
               </div>
