@@ -34,6 +34,21 @@ const Historico = ({ token }) => {
     }
   };
 
+  const handleKeyUp = (event) => {
+    if (event.key === 'ArrowRight') {
+      handleNext();
+    } else if (event.key === 'ArrowLeft') {
+      handlePrev();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [currentIndex, historico]);
+
   if (error) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -93,4 +108,5 @@ const Historico = ({ token }) => {
     </div>
   );
 };
+
 export default Historico;
