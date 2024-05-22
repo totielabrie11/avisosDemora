@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "pedido": 36344,
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "reclamos": [
+      {
+        "id": "sub-1716396962496",
+        "estado": "vencido",
+        "prioridad": "Urgente",
+        "mensaje": "preparar los equipos . y dejar las bombas para más adelante.",
+        "fecha": "22-05-2024 a las 13:56 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "014151T-ME20",
+            "cantidad": 7,
+            "descripcion": "DE 15/140 SIMPLE MOT TRIF SERIE \" E \""
+          },
+          {
+            "codigo": "Q201709286",
+            "cantidad": 7,
+            "descripcion": "EQUIPO 1000L DESM P/DECI FILTRO Y PROB(BA) PARA TOTE SCHUTZ"
+          }
+        ]
+      }
+    ]
+  }
+]

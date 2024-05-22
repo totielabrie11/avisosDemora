@@ -54,44 +54,62 @@ const Estadisticas = ({ token }) => {
 
   return (
     <div className="estadisticas-container mt-4">
-      <h2 className="estadisticas-titulo">Estadísticas</h2>
-      <div className="row">
-        <div className="col-md-6">
-          <div className="estadisticas-total mb-3">
-            <h3>Total de Pedidos: {stats.totalPedidos}</h3>
-          </div>
-          <div className="estadisticas-seccion">
-            <h3 className="estadisticas-subtitulo">Pedidos por Cliente</h3>
-            <ul className="estadisticas-lista">
-              {Object.entries(stats.pedidosPorCliente).map(([cliente, count], idx) => (
-                <li key={idx} className="estadisticas-item">
-                  {cliente}: <span className="estadisticas-valor">{count}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="estadisticas-seccion">
-            <h3 className="estadisticas-subtitulo">Pedidos por Mes</h3>
-            <ul className="estadisticas-lista">
-              {Object.entries(stats.pedidosPorMes).map(([mes, count], idx) => (
-                <li key={idx} className="estadisticas-item">
-                  {mes}: <span className="estadisticas-valor">{count}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+      <div className="btn-group mb-3" role="group" aria-label="Navegación">
+        <button 
+          className={`btn ${!mostrarHistorico ? 'btn-primary' : 'btn-secondary'}`} 
+          onClick={() => setMostrarHistorico(false)}
+        >
+          Estadísticas
+        </button>
+        <button 
+          className={`btn ${mostrarHistorico ? 'btn-primary' : 'btn-secondary'}`} 
+          onClick={() => setMostrarHistorico(true)}
+        >
+          Histórico
+        </button>
       </div>
-      <button className="btn btn-primary mt-3" onClick={() => setMostrarHistorico(!mostrarHistorico)}>
-        {mostrarHistorico ? 'Ocultar Histórico' : 'Mostrar Histórico'}
-      </button>
-      {mostrarHistorico && <Historico token={token} />}
+
+      {!mostrarHistorico ? (
+        <>
+          <h2 className="estadisticas-titulo">Estadísticas</h2>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="estadisticas-total mb-3">
+                <h3>Total de Pedidos: {stats.totalPedidos}</h3>
+              </div>
+              <div className="estadisticas-seccion">
+                <h3 className="estadisticas-subtitulo">Pedidos por Cliente</h3>
+                <ul className="estadisticas-lista">
+                  {Object.entries(stats.pedidosPorCliente).map(([cliente, count], idx) => (
+                    <li key={idx} className="estadisticas-item">
+                      {cliente}: <span className="estadisticas-valor">{count}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="estadisticas-seccion">
+                <h3 className="estadisticas-subtitulo">Pedidos por Mes</h3>
+                <ul className="estadisticas-lista">
+                  {Object.entries(stats.pedidosPorMes).map(([mes, count], idx) => (
+                    <li key={idx} className="estadisticas-item">
+                      {mes}: <span className="estadisticas-valor">{count}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Historico token={token} />
+      )}
     </div>
   );
 };
 
 export default Estadisticas;
+
 
 
