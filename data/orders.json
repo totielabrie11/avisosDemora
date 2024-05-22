@@ -1,5 +1,5 @@
 {
-    "Fecha_actualizacion": "22-05-2024",
+    "Fecha_actualizacion": "2024-05-22",
     "Pedidos": [
         {
             "Pedido": 32505,
@@ -298,14 +298,6 @@
                     "Cantidad": 15,
                     "Fecha_vencida": "2023-05-30 00:00:00",
                     "Inicio": "2023-04-27 00:00:00"
-                },
-                {
-                    "Item": 59,
-                    "Codigo": "BA1929120",
-                    "Descripcion": "KIT RADIO REMOTO (YPF)",
-                    "Cantidad": 5,
-                    "Fecha_vencida": "2023-05-30 00:00:00",
-                    "Inicio": "2024-05-02 00:00:00"
                 }
             ],
             "Inicio": "2023-04-27 00:00:00"
@@ -1254,7 +1246,7 @@
                     "Item": 1,
                     "Codigo": "BA1234-0",
                     "Descripcion": "CONJ. MDN 3 (RADAR) SIN SENSOR",
-                    "Cantidad": 198,
+                    "Cantidad": 170,
                     "Fecha_vencida": "2024-02-06 00:00:00",
                     "Inicio": "2023-11-24 00:00:00"
                 }
@@ -1627,14 +1619,6 @@
             "Pedido": 37939,
             "Cliente": "TECNICA DE FLUIDOS SRL",
             "Items": [
-                {
-                    "Item": 2,
-                    "Codigo": "035ET0A-DVT0",
-                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 3,
-                    "Fecha_vencida": "2024-02-16 00:00:00",
-                    "Inicio": "2024-01-15 00:00:00"
-                },
                 {
                     "Item": 3,
                     "Codigo": "046301T-PTT0",
@@ -2261,21 +2245,6 @@
             "Inicio": "2024-02-16 00:00:00"
         },
         {
-            "Pedido": 38161,
-            "Cliente": "ORTOLOCHIPI HUGO CARLOS",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "068045T-00B0",
-                    "Descripcion": "DSHC 4500 COMPACTA C/MOT TRIF FUND GRIS/BRONCE",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-16 00:00:00",
-                    "Inicio": "2024-02-16 00:00:00"
-                }
-            ],
-            "Inicio": "2024-02-16 00:00:00"
-        },
-        {
             "Pedido": 38180,
             "Cliente": "TECMEC SRL",
             "Items": [
@@ -2672,21 +2641,6 @@
             "Inicio": "2024-03-11 00:00:00"
         },
         {
-            "Pedido": 38326,
-            "Cliente": "ORTOLOCHIPI HUGO CARLOS",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "035ET0A-DVT0",
-                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-01-26 00:00:00",
-                    "Inicio": "2024-03-11 00:00:00"
-                }
-            ],
-            "Inicio": "2024-03-11 00:00:00"
-        },
-        {
             "Pedido": 38328,
             "Cliente": "DOSIBOM SRL",
             "Items": [
@@ -2753,25 +2707,9 @@
             "Cliente": "SAL PARK S R L",
             "Items": [
                 {
-                    "Item": 2,
-                    "Codigo": "031QQSA-MET0",
-                    "Descripcion": "EMD PLUS  01515 SEGUIDORA (DISPLAY) 220V  PP-PVDF-EPDM   ARG",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-04-17 00:00:00",
-                    "Inicio": "2024-03-14 00:00:00"
-                },
-                {
                     "Item": 4,
                     "Codigo": "046151T-PTT0",
                     "Descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PP",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-17 00:00:00",
-                    "Inicio": "2024-03-14 00:00:00"
-                },
-                {
-                    "Item": 7,
-                    "Codigo": "R460200-PT00",
-                    "Descripcion": "KIT VALVULAS DD 150-300 PP/PTFE",
                     "Cantidad": 1,
                     "Fecha_vencida": "2024-04-17 00:00:00",
                     "Inicio": "2024-03-14 00:00:00"
@@ -3213,22 +3151,6 @@
             "Cliente": "SIMTECH LTDA.",
             "Items": [
                 {
-                    "Item": 1,
-                    "Codigo": "R420104-DVT0",
-                    "Descripcion": "KIT CABEZAL COMPL DD CH 95 PVDF",
-                    "Cantidad": 3,
-                    "Fecha_vencida": "2024-04-29 00:00:00",
-                    "Inicio": "2024-03-25 00:00:00"
-                },
-                {
-                    "Item": 2,
-                    "Codigo": "42070/2T",
-                    "Descripcion": "DIAFRAGMA DD CHICA - TEFLON FACETADO",
-                    "Cantidad": 10,
-                    "Fecha_vencida": "2024-04-29 00:00:00",
-                    "Inicio": "2024-03-25 00:00:00"
-                },
-                {
                     "Item": 3,
                     "Codigo": "043601T-DVT0",
                     "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB PVDF",
@@ -3264,85 +3186,6 @@
                     "Codigo": "031ET0A-MET0",
                     "Descripcion": "EMD  16003 (LED) 220 V -  PP-PVDF-EPDM   ARG",
                     "Cantidad": 10,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                }
-            ],
-            "Inicio": "2024-03-26 00:00:00"
-        },
-        {
-            "Pedido": 38461,
-            "Cliente": "A F INGENIERIA SRL",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "C01116/2",
-                    "Descripcion": "O RING 2-116         (DVR VALVULA - VISOR DOSIF)",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 2,
-                    "Codigo": "C09062",
-                    "Descripcion": "TAPON DE VENTEO 1/2\" (NARANJA)",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 3,
-                    "Codigo": "R190010-0500",
-                    "Descripcion": "KIT DE JUNTAS DEC - DD",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 4,
-                    "Codigo": "19004/K",
-                    "Descripcion": "CONJ. EMBOLO IMPULSOR DEC",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 5,
-                    "Codigo": "19023/1",
-                    "Descripcion": "PERILLA DEL REGULADOR - DEC",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 6,
-                    "Codigo": "R190000-0800",
-                    "Descripcion": "KIT NUMERADOR - DDI  / DECI - DD / DEC",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 7,
-                    "Codigo": "C01215/2",
-                    "Descripcion": "O RING 2-215",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 8,
-                    "Codigo": "42070/2T",
-                    "Descripcion": "DIAFRAGMA DD CHICA - TEFLON FACETADO",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-04-26 00:00:00",
-                    "Inicio": "2024-03-26 00:00:00"
-                },
-                {
-                    "Item": 9,
-                    "Codigo": "C04790/01",
-                    "Descripcion": "ACEITE P/DOSIFICADORA SAE 90 X 1 LITRO",
-                    "Cantidad": 4,
                     "Fecha_vencida": "2024-04-26 00:00:00",
                     "Inicio": "2024-03-26 00:00:00"
                 }
@@ -3560,21 +3403,6 @@
             "Inicio": "2024-04-03 00:00:00"
         },
         {
-            "Pedido": 38480,
-            "Cliente": "SAL PARK S R L",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "035ET0A-DVT0",
-                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-05-03 00:00:00",
-                    "Inicio": "2024-04-03 00:00:00"
-                }
-            ],
-            "Inicio": "2024-04-03 00:00:00"
-        },
-        {
             "Pedido": 38484,
             "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
             "Items": [
@@ -3768,21 +3596,6 @@
                     "Descripcion": "BOQUILLA DE INYECCION C/BRIDA 1 1/2\" # 600 HASTA \u00d810\"",
                     "Cantidad": 2,
                     "Fecha_vencida": "2024-06-10 00:00:00",
-                    "Inicio": "2024-04-08 00:00:00"
-                }
-            ],
-            "Inicio": "2024-04-08 00:00:00"
-        },
-        {
-            "Pedido": 38520,
-            "Cliente": "SIMTECH LTDA.",
-            "Items": [
-                {
-                    "Item": 3,
-                    "Codigo": "R420104-DVT0",
-                    "Descripcion": "KIT CABEZAL COMPL DD CH 95 PVDF",
-                    "Cantidad": 5,
-                    "Fecha_vencida": "2024-04-08 00:00:00",
                     "Inicio": "2024-04-08 00:00:00"
                 }
             ],
@@ -4143,14 +3956,6 @@
             "Cliente": "SAL PARK S R L",
             "Items": [
                 {
-                    "Item": 1,
-                    "Codigo": "031QQ0A-MET0",
-                    "Descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-                    "Cantidad": 5,
-                    "Fecha_vencida": "2024-05-13 00:00:00",
-                    "Inicio": "2024-04-12 00:00:00"
-                },
-                {
                     "Item": 2,
                     "Codigo": "031TD0A-MET0",
                     "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
@@ -4167,42 +3972,10 @@
                     "Inicio": "2024-04-12 00:00:00"
                 },
                 {
-                    "Item": 4,
-                    "Codigo": "035QQ0A-DVT0",
-                    "Descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-05-13 00:00:00",
-                    "Inicio": "2024-04-12 00:00:00"
-                },
-                {
-                    "Item": 5,
-                    "Codigo": "035TD0A-DVT0",
-                    "Descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-05-13 00:00:00",
-                    "Inicio": "2024-04-12 00:00:00"
-                },
-                {
                     "Item": 6,
                     "Codigo": "035DC0A-DVT0",
                     "Descripcion": "MI-EMD  10005 (LED) 220 V -  PVDF-VITON",
                     "Cantidad": 1,
-                    "Fecha_vencida": "2024-05-13 00:00:00",
-                    "Inicio": "2024-04-12 00:00:00"
-                },
-                {
-                    "Item": 7,
-                    "Codigo": "035ET0A-DVT0",
-                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-05-13 00:00:00",
-                    "Inicio": "2024-04-12 00:00:00"
-                },
-                {
-                    "Item": 8,
-                    "Codigo": "B421791-DV00",
-                    "Descripcion": "VALVULA PUNTO INY.\"DD' PVDF",
-                    "Cantidad": 2,
                     "Fecha_vencida": "2024-05-13 00:00:00",
                     "Inicio": "2024-04-12 00:00:00"
                 }
@@ -4283,21 +4056,6 @@
                     "Descripcion": "VALVULA PUNTO INY. MILENIO COMPACTO \u00f86 PVDF/EPDM   (NVO)",
                     "Cantidad": 5,
                     "Fecha_vencida": "2024-04-29 00:00:00",
-                    "Inicio": "2024-04-15 00:00:00"
-                }
-            ],
-            "Inicio": "2024-04-15 00:00:00"
-        },
-        {
-            "Pedido": 38578,
-            "Cliente": "SIMTECH LTDA.",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "035TD0A-DVT0",
-                    "Descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-04-15 00:00:00",
                     "Inicio": "2024-04-15 00:00:00"
                 }
             ],
@@ -4943,21 +4701,6 @@
                     "Item": 1,
                     "Codigo": "067025T-00B0",
                     "Descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-05-24 00:00:00",
-                    "Inicio": "2024-04-22 00:00:00"
-                }
-            ],
-            "Inicio": "2024-04-22 00:00:00"
-        },
-        {
-            "Pedido": 38641,
-            "Cliente": "MAROLA ATILIO ROBERTO",
-            "Items": [
-                {
-                    "Item": 7,
-                    "Codigo": "035ET0A-DVT0",
-                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
                     "Cantidad": 1,
                     "Fecha_vencida": "2024-05-24 00:00:00",
                     "Inicio": "2024-04-22 00:00:00"
@@ -6006,6 +5749,30 @@
                     "Cantidad": 2,
                     "Fecha_vencida": "2024-07-01 00:00:00",
                     "Inicio": "2024-05-10 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "R460510-0000",
+                    "Descripcion": "KIT DE JUNTAS DDI",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-07-01 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "46070",
+                    "Descripcion": "DIAFRAGMA EN PTFE - DD 150/300/600",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-07-01 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "R460200-IT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 INOX/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-07-01 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
                 }
             ],
             "Inicio": "2024-05-10 00:00:00"
@@ -6540,32 +6307,9 @@
             "Inicio": "2024-05-14 00:00:00"
         },
         {
-            "Pedido": 38813,
-            "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "R680001-00",
-                    "Descripcion": "KIT SELLO DSHC 3300/4500/6300+3000",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-05-29 00:00:00",
-                    "Inicio": "2024-05-15 00:00:00"
-                }
-            ],
-            "Inicio": "2024-05-15 00:00:00"
-        },
-        {
             "Pedido": 38814,
             "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
             "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "R680001-00",
-                    "Descripcion": "KIT SELLO DSHC 3300/4500/6300+3000",
-                    "Cantidad": 1,
-                    "Fecha_vencida": "2024-05-31 00:00:00",
-                    "Inicio": "2024-05-15 00:00:00"
-                },
                 {
                     "Item": 2,
                     "Codigo": "68262/1",
@@ -6917,6 +6661,399 @@
                 }
             ],
             "Inicio": "2024-05-20 00:00:00"
+        },
+        {
+            "Pedido": 38850,
+            "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "0650080-0II0",
+                    "Descripcion": "NaN",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38851,
+            "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "B310100-IVT0",
+                    "Descripcion": "CONJUNTO CABEZAL - EMD INOX - DAN/E SELLO FKM",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38852,
+            "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "R191000-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DEC-DEN-DEPP 10",
+                    "Cantidad": 24,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "R191500-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DEC-DEN-DEPP 15",
+                    "Cantidad": 36,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "27132/KZT",
+                    "Descripcion": "CONJ. VALVULAR C/CERAMICA Y PTFE  DEPP/DEC/DEN - DECI",
+                    "Cantidad": 36,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "27132/KZ",
+                    "Descripcion": "CONJ. VALVULAR C/CERAMICA  DEPP/DEC/DEN-DECI",
+                    "Cantidad": 12,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "R141500-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DE 15",
+                    "Cantidad": 25,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 6,
+                    "Codigo": "R141700-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DE 17",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 7,
+                    "Codigo": "R142000-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DE 20",
+                    "Cantidad": 7,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 8,
+                    "Codigo": "R142500-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DE 25",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 9,
+                    "Codigo": "R140000-2420",
+                    "Descripcion": "KIT VALVULAS P/CAB 20 MM\u00b2 (ASIENTO POSTIZO)",
+                    "Cantidad": 36,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 10,
+                    "Codigo": "R460200-PT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 PP/PTFE",
+                    "Cantidad": 12,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 11,
+                    "Codigo": "R180001-0420",
+                    "Descripcion": "KIT VALVULAS DE-AP; DENG",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 12,
+                    "Codigo": "R181301/030H",
+                    "Descripcion": "KIT DE EMPAQUETADURA MULTI-V 13 DURA - CAB. AP",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 13,
+                    "Codigo": "R140002-0600",
+                    "Descripcion": "KIT VISOR  Y TAPONES DE   (METALICO 1/2\")",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 14,
+                    "Codigo": "18070",
+                    "Descripcion": "DIAFRAGMA MOTOR - DENG",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 15,
+                    "Codigo": "R220200-0300",
+                    "Descripcion": "KIT EMPAQUETADURA P/DEON 1/4",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 16,
+                    "Codigo": "R220500-0300",
+                    "Descripcion": "KIT EMPAQUETADURA P/DEON 1/2",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 17,
+                    "Codigo": "R220401-0300",
+                    "Descripcion": "KIT EMPAQUETADURA P/DEON 3/8  - GRUESA",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 19,
+                    "Codigo": "R220000-0700",
+                    "Descripcion": "KIT OSCILADOR  DEON",
+                    "Cantidad": 6,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 20,
+                    "Codigo": "C04626",
+                    "Descripcion": "U PACKING AN-6226-16   (DEON)    ID 3/4\", OD 1 1/4\", W 1/4\"",
+                    "Cantidad": 8,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38853,
+            "Cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "R460100-ITT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD 150-300 INOX/PTFE",
+                    "Cantidad": 4,
+                    "Fecha_vencida": "2024-06-20 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38854,
+            "Cliente": "SIMTECH LTDA.",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "046151T-CTT0",
+                    "Descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PVC",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "043601T-DVT0",
+                    "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB PVDF",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "046601T-CTT0",
+                    "Descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PVC",
+                    "Cantidad": 3,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38855,
+            "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "046301T-PTT0",
+                    "Descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "043301T-MNT0",
+                    "Descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "046601T-PTT0",
+                    "Descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "035QQ0P-DVT0",
+                    "Descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON - PARAGUAY",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "035TD0P-DVT0",
+                    "Descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON - PARAGUAY",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 6,
+                    "Codigo": "035ET0P-DVT0",
+                    "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON - PARAGUAY",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 7,
+                    "Codigo": "043101T-MNT0",
+                    "Descripcion": "DDI 10 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 8,
+                    "Codigo": "R420104-MET0",
+                    "Descripcion": "KIT CABEZAL COMPL DD CH 95 MIX",
+                    "Cantidad": 4,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 9,
+                    "Codigo": "R460100-PTT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD 150-300 PP/PTFE",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 10,
+                    "Codigo": "R420104-DVT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD CH 95 PVDF",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 11,
+                    "Codigo": "R310101-MET0",
+                    "Descripcion": "KIT CABEZAL EMD SIN CIL AL - MIX",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 12,
+                    "Codigo": "RP00010",
+                    "Descripcion": "MANGUERA DE PEBD C/UV \u00d8 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA",
+                    "Cantidad": 150,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 13,
+                    "Codigo": "RP00008",
+                    "Descripcion": "MANGUERA DE PEBD C/UV \u00d8 9X12 - O - 3/8\"X1/2\"  TRANSLUCIDA",
+                    "Cantidad": 30,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 14,
+                    "Codigo": "B421791-PN00",
+                    "Descripcion": "VALVULA PUNTO INYECCION CAB 95",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 15,
+                    "Codigo": "B311792-DE06",
+                    "Descripcion": "VALVULA PUNTO INY. MILENIO COMPACTO \u00f86 PVDF/EPDM   (NVO)",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-21 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
+        },
+        {
+            "Pedido": 38856,
+            "Cliente": "INSUMOS S.R.L.",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "031QQ0A-MET0",
+                    "Descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-24 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "035QQ0A-DVT0",
+                    "Descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-24 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "066012T-00B0",
+                    "Descripcion": "DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-24 00:00:00",
+                    "Inicio": "2024-05-21 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-21 00:00:00"
         }
     ]
 }
