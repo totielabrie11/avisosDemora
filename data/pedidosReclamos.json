@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "pedido": 38582,
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "reclamos": [
+      {
+        "id": "sub-1716377935127",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "confirmación de entrega...",
+        "fecha": "22-05-2024 a las 08:38 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 7096",
+        "usernameAlmacen": "FernanditoG",
+        "downloadUrl": "http://localhost:3000/document/7096.pdf"
+      },
+      {
+        "id": "sub-1716379654577",
+        "estado": "remito enviado",
+        "prioridad": "Normal",
+        "mensaje": "podrán cumplir?",
+        "fecha": "22-05-2024 a las 09:07 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ],
+        "remito": "4",
+        "downloadUrl": "http://localhost:3000/document/G4.jpg",
+        "respuesta": "Remito enviado con número 4",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 37619,
+    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "reclamos": [
+      {
+        "id": "sub-1716377978125",
+        "estado": "cerrado",
+        "prioridad": "Urgente",
+        "mensaje": "podremos entregar este equipo?.",
+        "fecha": "22-05-2024 a las 08:39 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "Q202311631",
+            "cantidad": 12,
+            "descripcion": "EQUIPO 2500L DECI 10/140 APE BATEA, PROB, VALV ALIVIO, MDN"
+          }
+        ],
+        "downloadUrl": "http://localhost:3000/document/9305.pdf",
+        "respuesta": "Reclamo cerrado con remito número: 9305",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 38003,
+    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "reclamos": [
+      {
+        "id": "sub-1716378001421",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "esto cuando lo vamos a entregar?",
+        "fecha": "22-05-2024 a las 08:40 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "Q132306616",
+            "cantidad": 8,
+            "descripcion": "EQ 1000L SOLAR 2X280WP.- 3X220AH DES AP 06 DUPLEX"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 101573",
+        "usernameAlmacen": "FernanditoG",
+        "downloadUrl": "http://localhost:3000/document/101573.pdf"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": 38553,
+    "cliente": "R C CONSULTORES S R L",
+    "reclamos": [
+      {
+        "id": "sub-1716378066933",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "me podrán preparar un cabezal de este pedido. para pasar la emergencia.",
+        "fecha": "22-05-2024 a las 08:41 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "R410104-MET0",
+            "cantidad": 1,
+            "descripcion": "KIT CABEZAL MILENIO MIX"
+          }
+        ],
+        "downloadUrl": "http://localhost:3000/document/100770.pdf",
+        "respuesta": "Reclamo cerrado con remito número: 100770",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "pedido": 38732,
+    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "reclamos": [
+      {
+        "id": "sub-1716379764983",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "necesita este material con urgencia",
+        "fecha": "22-05-2024 a las 09:09 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "B410576-PE00",
+            "cantidad": 2,
+            "descripcion": "GRIFO DE PURGA MILENIO"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 20/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  }
+]

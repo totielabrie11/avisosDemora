@@ -17,6 +17,7 @@ const App = () => {
   const [diasPrevios, setDiasPrevios] = useState(1);
   const [cliente, setCliente] = useState('');
   const [numeroPedido, setNumeroPedido] = useState('');
+  const [material, setMaterial] = useState('');
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
   const [role, setRole] = useState('');
@@ -55,9 +56,9 @@ const App = () => {
   };
 
   const fetchPedidos = useCallback(() => {
-    console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}, numeroPedido=${numeroPedido}`);
+    console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}, numeroPedido=${numeroPedido}, material=${material}`);
     axios
-      .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}`, {
+      .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -66,7 +67,7 @@ const App = () => {
         setFechaActualizacion(data.Fecha_actualizacion || '');
       })
       .catch((error) => console.error('Error fetching pedidos:', error));
-  }, [diasPrevios, cliente, numeroPedido, token]);
+  }, [diasPrevios, cliente, numeroPedido, material, token]);
 
   const handleLogin = (accessToken) => {
     setToken(accessToken);
@@ -97,6 +98,10 @@ const App = () => {
 
   const handleNumeroPedidoChange = (e) => {
     setNumeroPedido(e.target.value);
+  };
+
+  const handleMaterialChange = (e) => {
+    setMaterial(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -205,6 +210,17 @@ const App = () => {
               className="form-control ml-2 mr-2"
             />
           </label>
+
+          <label className="ms-4">
+            Material:
+            <input
+              type="text"
+              value={material}
+              onChange={handleMaterialChange}
+              placeholder="Descripción del Material"
+              className="form-control ml-2 mr-2"
+            />
+          </label>
         </div>
         <button type="submit" className="btn btn-primary mt-2">Buscar</button>
       </form>
@@ -260,4 +276,5 @@ const App = () => {
 };
 
 export default App;
+
 

@@ -197,23 +197,27 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     <strong>
                       Respuesta:
                       <span className={`card-text ${validarFechaPrometida(reclamo) ? 'text-danger' : ''}`}> {reclamo.respuesta}</span>
+                      {validarFechaPrometida(reclamo) && (
+                        <div className="text-danger" style={{ fontSize: 'larger' }}>
+                          La fecha prometida se encuentra vencida
+                        </div>
+                      )}
                     </strong>
                   </small>
                 </p>
                 {reclamo.estado === 'remito enviado' && (
                   <>
-                    <p className="card-text">Remito enviado con número: {reclamo.remito}</p>
-                    <a href={reclamo.downloadUrl} className="btn btn-success mt-2" download>Descargar Remito</a>
+                    <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" download>Descargar Remito</a>
                   </>
                 )}
-                <button className="btn btn-primary mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
-                <button className="btn btn-danger mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+                <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
+                <button className="btn btn-danger w-100 d-block mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
               </div>
             </div>
           </div>
         ))}
       </div>
-
+  
       {selectedReclamo && (
         <VistaDetalleAlmacen
           show={showModal}
