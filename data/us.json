@@ -6,6 +6,11 @@
         "role": "administrador"
       },
       {
+        "username": "RodrigoP",
+        "password": "123456P",
+        "role": "administrador"
+      },
+      {
         "username": "CarlosM",
         "password": "123456M",
         "role": "vendedor"
@@ -13,6 +18,21 @@
       {
         "username": "LeonardoD",
         "password": "123456D",
+        "role": "vendedor"
+      },
+      {
+        "username": "PabloU",
+        "password": "123456U",
+        "role": "vendedor"
+      },
+      {
+        "username": "MelinaC",
+        "password": "123456C",
+        "role": "vendedor"
+      },
+      {
+        "username": "HugoV",
+        "password": "123456V",
         "role": "vendedor"
       },
       {

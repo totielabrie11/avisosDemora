@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Graficos from './Graficos';
 import './Historico.css';
 
 const Historico = ({ token }) => {
@@ -58,33 +59,38 @@ const Historico = ({ token }) => {
           Día Siguiente &rarr;
         </button>
       </div>
-      <ul className="historico-lista">
-        <li key={currentIndex} className="historico-item">
-          <strong>{registro.fecha}</strong>: 
-          <div>
-            <strong>Pedidos por Cliente:</strong>
-            <ul>
-              {Object.entries(registro.datos.pedidosPorCliente).map(([cliente, pedidos], index) => (
-                <li key={index}>{cliente}: {pedidos}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <strong>Pedidos por Mes:</strong>
-            <ul>
-              {Object.entries(registro.datos.pedidosPorMes).map(([mes, pedidos], index) => (
-                <li key={index}>{mes}: {pedidos}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <strong>Total Pedidos:</strong> {registro.datos.totalPedidos}
-          </div>
-        </li>
-      </ul>
+      <div className="historico-content">
+        <div className="historico-lista-container">
+          <ul className="historico-lista">
+            <li key={currentIndex} className="historico-item">
+              <strong>{registro.fecha}</strong>
+              <div>
+                <strong>Pedidos por Cliente:</strong>
+                <ul>
+                  {Object.entries(registro.datos.pedidosPorCliente).map(([cliente, pedidos], index) => (
+                    <li key={index}>{cliente}: {pedidos}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong>Pedidos por Mes:</strong>
+                <ul>
+                  {Object.entries(registro.datos.pedidosPorMes).map(([mes, pedidos], index) => (
+                    <li key={index}>{mes}: {pedidos}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong>Total Pedidos:</strong> {registro.datos.totalPedidos}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="graficos-container">
+          <Graficos datos={registro.datos} />
+        </div>
+      </div>
     </div>
   );
 };
-
 export default Historico;
-

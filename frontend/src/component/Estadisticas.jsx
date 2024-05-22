@@ -112,4 +112,3 @@ const Estadisticas = ({ token }) => {
 export default Estadisticas;
 
 
-
