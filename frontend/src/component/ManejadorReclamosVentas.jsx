@@ -3,6 +3,7 @@ import axios from 'axios';
 import { parse, isBefore, startOfDay } from 'date-fns';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
+import EnvioDeEmail from './EnvioDeEmail';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -212,6 +213,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                 )}
                 <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
                 <button className="btn btn-danger w-100 d-block mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+                <EnvioDeEmail reclamo={reclamo} token={token} />
               </div>
             </div>
           </div>

@@ -25,5 +25,29 @@
         ]
       }
     ]
+  },
+  {
+    "id": 2,
+    "pedido": 38582,
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "reclamos": [
+      {
+        "id": "sub-1716430091743",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "se puede preparar?",
+        "fecha": "22-05-2024 a las 23:08 hs",
+        "username": "RodrigoP",
+        "material": [
+          {
+            "codigo": "020101T-AT20",
+            "cantidad": 2,
+            "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 23/5/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
   }
 ]

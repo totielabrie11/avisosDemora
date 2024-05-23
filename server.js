@@ -7,6 +7,7 @@ import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 import multer from 'multer';
+import nodemailer from 'nodemailer';
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,33 @@ app.use(cors());
 app.use(express.json());
 
 app.use(bodyParser.json());
+
+// Configurar el transporte de nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // O el servicio de correo que uses
+  auth: {
+    user: 'martinezcarlosmanuel.1@gmail.com', // Tu correo
+    pass: 'ManzanaPipa282811', // Tu contraseña
+  },
+});
+
+// Función para enviar correo electrónico
+const sendEmail = (to, subject, text) => {
+  const mailOptions = {
+    from: 'martinezcarlosmanuel.1@gmail.com',
+    to,
+    subject,
+    text,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error enviando el correo:', error);
+    } else {
+      console.log('Correo enviado:', info.response);
+    }
+  });
+};
 
 
 // Definición de rutas para archivos JSON y carpeta document
@@ -111,6 +139,19 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+// Ruta para enviar correo electrónico
+app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
+  const { to, subject, text } = req.body;
+
+  if (!to || !subject || !text) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  sendEmail(to, subject, text);
+  res.status(200).json({ message: 'Correo enviado con éxito' });
+});
+
 
 // Formatea la fecha al formato "DD/MM/YYYY"
 const formatDate = (date) => {
