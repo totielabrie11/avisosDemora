@@ -9,9 +9,10 @@ const EnvioDeEmail = ({ reclamo, token }) => {
     }
 
     const emailData = {
-      to: 'martinezcarlosmanuel.1@gmail.com', // Reemplazar con el correo del cliente
+      to: 'veroraw230@lucvu.com', // Reemplazar con el correo del cliente
       subject: 'Actualización de Reclamo',
       text: `Estimado cliente,\n\nSu reclamo con el ID ${reclamo.id} ha sido actualizado.\n\nRespuesta: ${reclamo.respuesta}\n\nSaludos,\nEquipo de Soporte`,
+      html: `<h5>Estamos enviando una respuesta de forma automatica</h5>`
     };
 
     try {

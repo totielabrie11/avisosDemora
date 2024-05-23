@@ -20,20 +20,23 @@ app.use(bodyParser.json());
 
 // Configurar el transporte de nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // O el servicio de correo que uses
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: 'martinezcarlosmanuel.1@gmail.com', // Tu correo
-    pass: 'ManzanaPipa282811', // Tu contraseña
+    user: 'cotizaciones@dosivac.com', // Tu correo
+    pass: 'kzsu mdmt tkrl ngzr', // Tu contraseña
   },
 });
 
 // Función para enviar correo electrónico
-const sendEmail = (to, subject, text) => {
+const sendEmail = (to, subject, text, html) => {
   const mailOptions = {
-    from: 'martinezcarlosmanuel.1@gmail.com',
+    from: 'cotizaciones@dosivac.com',
     to,
     subject,
     text,
+    html,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

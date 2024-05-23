@@ -6,7 +6,7 @@
     "reclamos": [
       {
         "id": "sub-1716396962496",
-        "estado": "vencido",
+        "estado": "cerrado",
         "prioridad": "Urgente",
         "mensaje": "preparar los equipos . y dejar las bombas para más adelante.",
         "fecha": "22-05-2024 a las 13:56 hs",
@@ -22,7 +22,10 @@
             "cantidad": 7,
             "descripcion": "EQUIPO 1000L DESM P/DECI FILTRO Y PROB(BA) PARA TOTE SCHUTZ"
           }
-        ]
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 1",
+        "usernameAlmacen": "FernanditoG",
+        "downloadUrl": "http://localhost:3000/document/1.png"
       }
     ]
   },
@@ -33,7 +36,7 @@
     "reclamos": [
       {
         "id": "sub-1716430091743",
-        "estado": "respondido",
+        "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "se puede preparar?",
         "fecha": "22-05-2024 a las 23:08 hs",
@@ -45,7 +48,89 @@
             "descripcion": "DECI 10/25 C/MOT TRIF - ASIENTO PTFE"
           }
         ],
-        "respuesta": "Se entregará en la fecha 23/5/2024",
+        "respuesta": "Reclamo cerrado con remito número: 1",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 38768,
+    "cliente": "MAROLA ATILIO SRL",
+    "reclamos": [
+      {
+        "id": "sub-1716467741996",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "podremos entregar esto?",
+        "fecha": "23-05-2024 a las 09:35 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "R310101-DVT0",
+            "cantidad": 1,
+            "descripcion": "KIT CABEZAL EMD SIN CIL AL - PVDF"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 1",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": 38782,
+    "cliente": "R C CONSULTORES S R L",
+    "reclamos": [
+      {
+        "id": "sub-1716467758737",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "podremos entregar esto?",
+        "fecha": "23-05-2024 a las 09:35 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "B420576-DV00",
+            "cantidad": 3,
+            "descripcion": "GRIFO DE PURGA \"DD\" PVDF"
+          },
+          {
+            "codigo": "R430104-MET0",
+            "cantidad": 6,
+            "descripcion": "KIT CABEZAL COMPL DDI CH 95 MIX"
+          },
+          {
+            "codigo": "R420300-00T0",
+            "cantidad": 1,
+            "descripcion": "KIT DIAFRAGMA DD CHICA"
+          }
+        ],
+        "respuesta": "Reclamo cerrado con remito número: 1",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "pedido": 37721,
+    "cliente": "YACIMIENTO LINDERO ATRAVESADO",
+    "reclamos": [
+      {
+        "id": "sub-1716470090742",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "pueden preparar 1 equipo para este cliente?.",
+        "fecha": "23-05-2024 a las 10:14 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "Q142312632",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L, DE 10/140 APE, TOTE FORMI BATEA. MDNVEGA, FSWITCH"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/5/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]
