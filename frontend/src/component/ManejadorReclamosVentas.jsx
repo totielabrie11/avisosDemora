@@ -58,6 +58,18 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     fetchReclamos();
   }, [token, username, role]);
 
+  const fetchEmail = async (cliente) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/v1/getEmail?cliente=${cliente}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data.email || '';
+    } catch (error) {
+      console.error('Error fetching email:', error);
+      return '';
+    }
+  };
+
   const cerrarReclamo = async (reclamo) => {
     const remito = prompt("Indique número de remito que cierra el reclamo:");
     if (!remito) {
@@ -74,7 +86,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     const updatedReclamo = {
       estado: 'cerrado',
       respuesta: `Reclamo cerrado con remito número: ${remitoNumero}`,
-      subId: reclamo.subId // Asegurarnos de que el subId esté presente
+      subId: reclamo.subId
     };
 
     try {
@@ -137,6 +149,17 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const handleCloseModal = () => {
     setSelectedReclamo(null);
     setShowModal(false);
+  };
+
+  const handleSaveEmail = (reclamoId, newEmail) => {
+    setReclamos(prevReclamos =>
+      prevReclamos.map(r => {
+        if (r.id === reclamoId) {
+          return { ...r, email: newEmail };
+        }
+        return r;
+      })
+    );
   };
 
   if (error) {
@@ -208,18 +231,23 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                 </p>
                 {reclamo.estado === 'remito enviado' && (
                   <>
-                    <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" download>Descargar Remito</a>
+                    <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" rel="noopener noreferrer" download>Descargar Remito</a>
                   </>
                 )}
                 <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
                 <button className="btn btn-danger w-100 d-block mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
-                <EnvioDeEmail reclamo={reclamo} token={token} />
+                <EnvioDeEmail 
+                  reclamo={reclamo} 
+                  token={token} 
+                  onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)} 
+                  fetchEmail={fetchEmail} 
+                />
               </div>
             </div>
           </div>
         ))}
       </div>
-  
+
       {selectedReclamo && (
         <VistaDetalleAlmacen
           show={showModal}

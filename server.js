@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -15,21 +14,18 @@ const JWT_SECRET = 'charly';
 
 app.use(cors());
 app.use(express.json());
-
 app.use(bodyParser.json());
 
-// Configurar el transporte de nodemailer
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {
-    user: 'cotizaciones@dosivac.com', // Tu correo
-    pass: 'kzsu mdmt tkrl ngzr', // Tu contraseña
+    user: 'cotizaciones@dosivac.com',
+    pass: 'kzsu mdmt tkrl ngzr',
   },
 });
 
-// Función para enviar correo electrónico
 const sendEmail = (to, subject, text, html) => {
   const mailOptions = {
     from: 'cotizaciones@dosivac.com',
@@ -48,19 +44,17 @@ const sendEmail = (to, subject, text, html) => {
   });
 };
 
-
-// Definición de rutas para archivos JSON y carpeta document
 const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
   orders: path.join(process.cwd(), 'data/orders.json'),
   users: path.join(process.cwd(), 'data/us.json'),
-  document: path.join(process.cwd(), 'data/document'), // Añadimos la ruta de la carpeta document
+  document: path.join(process.cwd(), 'data/document'),
   historico: path.join(process.cwd(), 'data/datosHistoricos.json'),
+  mails: path.join(process.cwd(), 'data/dbMails.json'),
 };
 
 app.use('/document', express.static(filePaths.document));
 
-// Inicializa archivos si no existen
 const initializeFiles = () => {
   if (!fs.existsSync(filePaths.reclamos)) {
     fs.writeFileSync(filePaths.reclamos, '[]', 'utf8');
@@ -74,11 +68,15 @@ const initializeFiles = () => {
   if (!fs.existsSync(filePaths.historico)) {
     fs.writeFileSync(filePaths.historico, '[]', 'utf8');
   }
-  // Comprobación si no existe la carpeta document
+  if (!fs.existsSync(filePaths.mails)) {
+    fs.writeFileSync(filePaths.mails, '[]', 'utf8');
+  }
   if (!fs.existsSync(filePaths.document)) {
     fs.mkdirSync(filePaths.document, { recursive: true });
   }
 };
+
+initializeFiles();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -109,7 +107,6 @@ const readUsers = () => {
   }
 };
 
-// Función para leer reclamos de un archivo JSON de manera sincrónica
 const readReclamos = () => {
   try {
     const data = fs.readFileSync(filePaths.reclamos, 'utf8');
@@ -120,16 +117,35 @@ const readReclamos = () => {
   }
 };
 
-// Función para escribir reclamos en un archivo JSON de manera asincrónica
 const writeReclamos = async (reclamos) => {
   try {
     await fs.promises.writeFile(filePaths.reclamos, JSON.stringify(reclamos, null, 2), 'utf8');
   } catch (error) {
     console.error('Error escribiendo reclamos:', error.message);
-    throw error;  // Rethrow the error to be caught by the calling function
+    throw error;
   }
 };
-// Middleware de autenticación
+
+const readMails = () => {
+  try {
+    return JSON.parse(fs.readFileSync(filePaths.mails, 'utf8'));
+  } catch (error) {
+    console.error('Error leyendo dbMails.json:', error.message, error.stack);
+    return [];
+  }
+};
+
+const writeMails = async (mails) => {
+  try {
+    console.log('Escribiendo mails:', JSON.stringify(mails, null, 2)); // Log de depuración
+    await fs.promises.writeFile(filePaths.mails, JSON.stringify(mails, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error escribiendo dbMails.json:', error.message);
+    throw error;
+  }
+};
+
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -143,7 +159,6 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Ruta para enviar correo electrónico
 app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
   const { to, subject, text } = req.body;
 
@@ -155,16 +170,33 @@ app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
   res.status(200).json({ message: 'Correo enviado con éxito' });
 });
 
-
-// Formatea la fecha al formato "DD/MM/YYYY"
 const formatDate = (date) => {
   return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
 };
 
-// Inicializa los archivos necesarios
-initializeFiles();
+app.get('/api/v1/getEmail', authenticateToken, (req, res) => {
+  const cliente = req.query.cliente;
 
-// Endpoint para iniciar sesión
+  if (!cliente) {
+    return res.status(400).json({ error: 'Cliente no especificado' });
+  }
+
+  try {
+    const mails = readMails();
+    const mailEntry = mails.find(mail => mail.Cliente === cliente);
+
+    if (!mailEntry) {
+      return res.status(404).json({ error: 'Correo no encontrado' });
+    }
+
+    res.json({ email: mailEntry.mail });
+  } catch (error) {
+    console.error('Error obteniendo el correo:', error.message);
+    res.status(500).json({ error: 'Error obteniendo el correo', message: error.message });
+  }
+});
+
+
 app.post('/api/v1/login', (req, res) => {
   const { username, password } = req.body;
   const data = readUsers();
@@ -180,7 +212,6 @@ app.post('/api/v1/login', (req, res) => {
   }
 });
 
-// Endpoint para enviar remitos a mi servidor
 app.post('/upload', upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha subido ningún archivo.');
@@ -199,7 +230,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
         reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
           if (subReclamo.id === subId) {
             subReclamo.remito = numeroRemito;
-            subReclamo.downloadUrl = downloadUrl; // Añadir la URL de descarga
+            subReclamo.downloadUrl = downloadUrl;
             found = true;
           }
           return subReclamo;
@@ -220,8 +251,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
   }
 });
 
-
-// Endpoint para obtener los pedidos filtrados
 app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
   try {
     const data = readOrders();
@@ -255,6 +284,8 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
       return hasItemsMatchingDate && matchesCliente && matchesNumeroPedido && matchesMaterial;
     });
 
+    const mails = readMails();
+
     filteredPedidos.forEach((order) => {
       if (order.hasOwnProperty('Inicio')) {
         order.Inicio = formatDate(order.Inicio);
@@ -265,7 +296,20 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
           item.Inicio = formatDate(item.Inicio);
         }
       });
+
+      const cliente = order.Cliente;
+      const mailEntry = mails.find(mail => mail.Cliente === cliente);
+      if (!mailEntry) {
+        mails.push({ Cliente: cliente, mail: '' });
+        order.needsEmail = true;
+      } else if (!mailEntry.mail) {
+        order.needsEmail = true;
+      } else {
+        order.email = mailEntry.mail;
+      }
     });
+
+    writeMails(mails);
 
     res.json({ Fecha_actualizacion, Pedidos: filteredPedidos });
   } catch (err) {
@@ -274,10 +318,34 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
   }
 });
 
-// Endpoint para estadísticas de pedidos
+app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
+  const { cliente, email } = req.body;
+
+  if (!cliente || !email) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  try {
+    const mails = readMails();
+    const mailEntry = mails.find(mail => mail.Cliente === cliente);
+
+    if (mailEntry) {
+      mailEntry.mail = email;
+    } else {
+      mails.push({ Cliente: cliente, mail: email });
+    }
+
+    await writeMails(mails);
+    res.status(200).json({ message: 'Correo guardado con éxito' });
+  } catch (error) {
+    console.error('Error guardando el correo:', error.message);
+    res.status(500).json({ error: 'Error guardando el correo', message: error.message });
+  }
+});
+
+
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   try {
-    // Solo permitir acceso al rol de "administrador"
     if (req.role !== 'administrador') {
       return res.status(403).json({ error: 'Access denied' });
     }
@@ -290,7 +358,7 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
 
     const pedidosPorCliente = {};
     const pedidosPorMes = {};
-    let totalPedidos = 0; // Contador para el total de pedidos
+    let totalPedidos = 0;
 
     Pedidos.forEach((order) => {
       const cliente = order.Cliente;
@@ -305,7 +373,7 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
         pedidosPorMes[mes] = 0;
       }
       pedidosPorMes[mes]++;
-      totalPedidos++; // Incrementa el total de pedidos
+      totalPedidos++;
     });
 
     res.json({ pedidosPorCliente, pedidosPorMes, totalPedidos });
@@ -315,7 +383,6 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   }
 });
 
-// Endpoint para obtener el histórico
 app.get('/api/v1/historico', authenticateToken, (req, res) => {
   try {
     if (req.role !== 'administrador') {
@@ -329,7 +396,6 @@ app.get('/api/v1/historico', authenticateToken, (req, res) => {
   }
 });
 
-// Endpoint para guardar datos en el histórico
 app.post('/api/v1/historico', authenticateToken, (req, res) => {
   try {
     if (req.role !== 'administrador') {
@@ -338,7 +404,6 @@ app.post('/api/v1/historico', authenticateToken, (req, res) => {
     const historico = JSON.parse(fs.readFileSync(filePaths.historico, 'utf8'));
     const fechaActual = moment().format('DD/MM/YYYY');
     
-    // Verificar si ya existe un registro para la fecha actual
     const existeRegistroParaHoy = historico.some(registro => registro.fecha === fechaActual);
     
     if (existeRegistroParaHoy) {
@@ -358,8 +423,6 @@ app.post('/api/v1/historico', authenticateToken, (req, res) => {
   }
 });
 
-
-// Añadir función para obtener el próximo ID
 const getNextReclamoID = () => {
   const reclamos = readReclamos();
   return reclamos.length ? Math.max(...reclamos.map(r => r.id)) + 1 : 1;
@@ -376,10 +439,8 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
     const reclamos = readReclamos();
     const username = req.user.username;
 
-    // Formatear la fecha
     const fecha = moment().format('DD-MM-YYYY [a las] HH:mm [hs]');
 
-    // Crear nuevo sub-reclamo
     const nuevoSubReclamo = {
       id: `sub-${new Date().getTime()}`,
       estado,
@@ -387,10 +448,9 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
       mensaje,
       fecha,
       username,
-      material // Añadir el campo material
+      material
     };
 
-    // Encuentra el reclamo existente para el mismo pedido
     let reclamoExistente = reclamos.find((reclamo) => reclamo.pedido === pedido);
 
     if (reclamoExistente) {
@@ -415,12 +475,9 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   }
 });
 
-
-
-// Endpoint para obtener todos los reclamos (solo para "deposito")
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor' ) {
+    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor') {
       return res.status(403).json({ error: 'Access denied' });
     }
     const reclamos = readReclamos().flatMap(reclamo =>
@@ -436,7 +493,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         usernameAlmacen: subReclamo.usernameAlmacen,
         respuesta: subReclamo.respuesta,
         subId: subReclamo.id,
-        material: subReclamo.material, // Añadir el campo material
+        material: subReclamo.material,
         downloadUrl: subReclamo.downloadUrl
       }))
     );
@@ -462,8 +519,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.estado = estado || subReclamo.estado;
             subReclamo.respuesta = respuesta || subReclamo.respuesta;
             subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
-            subReclamo.remito = remito
-            // No actualizar el material aquí
+            subReclamo.remito = remito;
             found = true;
           }
           return subReclamo;
@@ -483,9 +539,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
