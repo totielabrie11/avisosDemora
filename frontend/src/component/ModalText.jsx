@@ -11,11 +11,20 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
   useEffect(() => {
     if (show) {
       setPrioridad(estado === 'no vencido' ? 'Normal' : 'Regular');
-      setMensaje('');
+      setMensaje(estado === 'no vencido' ? 'Vamos a poder cumplir con este pedido?' : 'Tenemos una demora de entrega en este pedido.');
       setError('');
-      setSelectedItems({});
+
+      if (estado === 'no vencido') {
+        const allItems = {};
+        pedido.Items.forEach((item) => {
+          allItems[item.Codigo] = { ...item, cantidad: item.Cantidad }; // Guardar el objeto del item completo
+        });
+        setSelectedItems(allItems);
+      } else {
+        setSelectedItems({});
+      }
     }
-  }, [show, estado]);
+  }, [show, estado, pedido.Items]);
 
   const handlePrioridadChange = (e) => {
     setPrioridad(e.target.value);
