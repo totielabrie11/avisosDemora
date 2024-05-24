@@ -11,7 +11,6 @@ const Estadisticas = ({ token }) => {
   const [mostrarHistorico, setMostrarHistorico] = useState(false);
   const [clienteSeleccionado, setClienteSeleccionado] = useState(null);
   const [mesSeleccionado, setMesSeleccionado] = useState(null);
-  const [copiedText, setCopiedText] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/estadisticas', {
@@ -37,7 +36,6 @@ const Estadisticas = ({ token }) => {
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text).then(() => {
-      setCopiedText(text);
       alert(`Pedido ${text} copiado al portapapeles`);
     }).catch(err => {
       console.error('Error copying to clipboard:', err);
