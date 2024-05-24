@@ -193,6 +193,21 @@
         ],
         "respuesta": "Se entregará en la fecha 30/5/2024",
         "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1716551462953",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "Vamos a poder cumplir con este pedido?",
+        "fecha": "24-05-2024 a las 08:51 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "067025T-00B0",
+            "cantidad": 1,
+            "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE"
+          }
+        ]
       }
     ]
   },
