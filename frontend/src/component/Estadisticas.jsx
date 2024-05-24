@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import './Estadisticas.css';
 import Historico from './Historico';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Estadisticas = ({ token }) => {
   const [stats, setStats] = useState({ pedidosPorCliente: {}, pedidosPorMes: {}, totalPedidos: 0 });
   const [error, setError] = useState(null);
   const [mostrarHistorico, setMostrarHistorico] = useState(false);
+  const [clienteSeleccionado, setClienteSeleccionado] = useState(null);
+  const [mesSeleccionado, setMesSeleccionado] = useState(null);
+  const [copiedText, setCopiedText] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/estadisticas', {
@@ -15,8 +20,6 @@ const Estadisticas = ({ token }) => {
     .then((response) => {
       setStats(response.data);
       setError(null);
-      // Guardar los datos en el archivo de histórico
-      guardarHistorico(response.data);
     })
     .catch((error) => {
       console.error('Error fetching estadisticas:', error);
@@ -32,16 +35,29 @@ const Estadisticas = ({ token }) => {
     });
   }, [token]);
 
-  const guardarHistorico = (datos) => {
-    axios.post('http://localhost:3000/api/v1/historico', datos, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      console.log('Datos guardados en el histórico:', response.data);
-    })
-    .catch((error) => {
-      console.error('Error saving historico:', error);
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedText(text);
+      alert(`Pedido ${text} copiado al portapapeles`);
+    }).catch(err => {
+      console.error('Error copying to clipboard:', err);
     });
+  };
+
+  const toggleClienteSeleccionado = (cliente) => {
+    if (clienteSeleccionado === cliente) {
+      setClienteSeleccionado(null);
+    } else {
+      setClienteSeleccionado(cliente);
+    }
+  };
+
+  const toggleMesSeleccionado = (mes) => {
+    if (mesSeleccionado === mes) {
+      setMesSeleccionado(null);
+    } else {
+      setMesSeleccionado(mes);
+    }
   };
 
   if (error) {
@@ -80,10 +96,41 @@ const Estadisticas = ({ token }) => {
               <div className="estadisticas-seccion">
                 <h3 className="estadisticas-subtitulo">Pedidos por Cliente</h3>
                 <ul className="estadisticas-lista">
-                  {Object.entries(stats.pedidosPorCliente).map(([cliente, count], idx) => (
-                    <li key={idx} className="estadisticas-item">
-                      {cliente}: <span className="estadisticas-valor">{count}</span>
-                    </li>
+                  {Object.entries(stats.pedidosPorCliente).map(([cliente, pedidos], idx) => (
+                    <OverlayTrigger
+                      key={idx}
+                      placement="top"
+                      overlay={
+                        <Tooltip id={`tooltip-cliente-${idx}`}>
+                          {pedidos.map((pedido, idx) => (
+                            <div key={idx} onClick={() => handleCopy(pedido)} style={{ cursor: 'pointer' }}>
+                              {pedido}
+                            </div>
+                          ))}
+                        </Tooltip>
+                      }
+                    >
+                      <li 
+                        className={`estadisticas-item ${clienteSeleccionado === cliente ? 'selected' : ''}`}
+                        onClick={() => toggleClienteSeleccionado(cliente)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {cliente}: <span className="estadisticas-valor">{pedidos.length}</span>
+                        {clienteSeleccionado === cliente && (
+                          <div className="pedidos-lista">
+                            {pedidos.map((pedido, idx) => (
+                              <div 
+                                key={idx} 
+                                className="pedido-item" 
+                                onClick={() => handleCopy(pedido)}
+                              >
+                                {pedido}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </li>
+                    </OverlayTrigger>
                   ))}
                 </ul>
               </div>
@@ -92,10 +139,41 @@ const Estadisticas = ({ token }) => {
               <div className="estadisticas-seccion">
                 <h3 className="estadisticas-subtitulo">Pedidos por Mes</h3>
                 <ul className="estadisticas-lista">
-                  {Object.entries(stats.pedidosPorMes).map(([mes, count], idx) => (
-                    <li key={idx} className="estadisticas-item">
-                      {mes}: <span className="estadisticas-valor">{count}</span>
-                    </li>
+                  {Object.entries(stats.pedidosPorMes).map(([mes, clientes], idx) => (
+                    <OverlayTrigger
+                      key={idx}
+                      placement="top"
+                      overlay={
+                        <Tooltip id={`tooltip-mes-${idx}`}>
+                          {Object.entries(clientes).map(([cliente, pedidos], idx) => (
+                            <div key={idx} onClick={() => handleCopy(cliente)} style={{ cursor: 'pointer' }}>
+                              {cliente}
+                            </div>
+                          ))}
+                        </Tooltip>
+                      }
+                    >
+                      <li 
+                        className={`estadisticas-item ${mesSeleccionado === mes ? 'selected' : ''}`}
+                        onClick={() => toggleMesSeleccionado(mes)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {mes}: <span className="estadisticas-valor">{Object.keys(clientes).length}</span>
+                        {mesSeleccionado === mes && (
+                          <div className="pedidos-lista">
+                            {Object.entries(clientes).map(([cliente, pedidos], idx) => (
+                              <div 
+                                key={idx} 
+                                className="pedido-item" 
+                                onClick={() => handleCopy(cliente)}
+                              >
+                                {cliente}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </li>
+                    </OverlayTrigger>
                   ))}
                 </ul>
               </div>
@@ -110,5 +188,6 @@ const Estadisticas = ({ token }) => {
 };
 
 export default Estadisticas;
+
 
 

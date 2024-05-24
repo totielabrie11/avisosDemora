@@ -364,14 +364,18 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
       const mes = moment(order.Inicio, 'YYYY-MM-DD').format('MM/YYYY');
 
       if (!pedidosPorCliente[cliente]) {
-        pedidosPorCliente[cliente] = 0;
+        pedidosPorCliente[cliente] = [];
       }
-      pedidosPorCliente[cliente]++;
+      pedidosPorCliente[cliente].push(order.Pedido);
 
       if (!pedidosPorMes[mes]) {
-        pedidosPorMes[mes] = 0;
+        pedidosPorMes[mes] = {};
       }
-      pedidosPorMes[mes]++;
+      if (!pedidosPorMes[mes][cliente]) {
+        pedidosPorMes[mes][cliente] = [];
+      }
+      pedidosPorMes[mes][cliente].push(order.Pedido);
+
       totalPedidos++;
     });
 
@@ -381,6 +385,7 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error generando estadísticas', message: err.message });
   }
 });
+
 
 app.get('/api/v1/historico', authenticateToken, (req, res) => {
   try {
