@@ -23,21 +23,34 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
   };
 
   const enviarCorreo = async () => {
-    if (!reclamo.respuesta) {
-      alert('El reclamo no cuenta con respuesta para enviar al cliente.');
-      return;
-    }
-
     if (!email || !validarEmail(email)) {
       setEmailError('Por favor, ingrese un correo electrónico válido.');
       return;
     }
 
+    const descripcionMaterial = reclamo.material && reclamo.material.length > 0
+                                ? reclamo.material[0].descripcion
+                                : 'el material solicitado';
+
+    let subject, text;
+
+    if (reclamo.estado === 'respondido') {
+      if (!reclamo.respuesta) {
+        alert('El reclamo no cuenta con respuesta para enviar al cliente.');
+        return;
+      }
+      subject = `Actualización de Reclamo - Pedido ${reclamo.pedido}`;
+      text = `Estimado cliente,\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. La nueva fecha de entrega ha sido actualizada.\n\nRespuesta: ${reclamo.respuesta}\n\nSaludos,\nEquipo de Soporte.`;
+    } else {
+      subject = `Actualización en Fecha de Entrega en Orden de Compra ${reclamo.pedido}`;
+      text = `Estimado cliente,\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
+    }
+
     const emailData = {
       to: email,
-      subject: 'Actualización de Reclamo',
-      text: `Estimado cliente,\n\nSu reclamo con el ID ${reclamo.id} ha sido actualizado.\n\nRespuesta: ${reclamo.respuesta}\n\nSaludos,\nEquipo de Soporte`,
-      html: `<h5>Estamos enviando una respuesta de forma automática</h5>`
+      subject: subject,
+      text: text,
+      html: `<p>${text.replace(/\n/g, '<br>')}</p>`,
     };
 
     try {
@@ -107,3 +120,6 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
 };
 
 export default EnvioDeEmail;
+
+
+
