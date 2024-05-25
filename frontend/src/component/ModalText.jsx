@@ -55,18 +55,19 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
       .map(item => ({
         codigo: item.Codigo,
         cantidad: item.cantidad,
-        descripcion: item.Descripcion // Incluir la descripción
+        descripcion: item.Descripcion,
+        fechaVencimiento: item.Fecha_vencida // Incluir la fecha de vencimiento
       }));
-
+  
     const reclamo = {
       pedido: pedido.Pedido,
       cliente: pedido.Cliente,
       estado,
       prioridad,
       mensaje,
-      material // Añadir el campo material
+      material
     };
-
+  
     try {
       const response = await axios.post(
         'http://localhost:3000/api/v1/reclamos',
@@ -83,7 +84,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
       setError(`Error enviando el reclamo: ${error.response ? error.response.data.error : 'Desconocido'}`);
     }
   };
-
+  
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>

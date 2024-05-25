@@ -75,8 +75,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     setConRemitoCount(conRemitoReclamos.length);
   };
 
-  
-
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
     setShowModal(true);
@@ -158,8 +156,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         default:
             return reclamos;
     }
-};
-
+  };
 
   const handleRemitoSubmitSuccess = async (numeroRemito) => {
     if (selectedReclamo) {
@@ -297,22 +294,39 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           >
             <div className="card-body">
               <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
-              <p className="card-text"><strong>Reclamo: </strong>{reclamo.mensaje}</p>
               <p className="card-text">
-                <small>
-                  <strong>Estado:</strong> {reclamo.estado}<br />
-                  <strong>Prioridad:</strong> {reclamo.prioridad}<br />
-                  <strong>Fecha:</strong> {reclamo.fecha}<br />
-                  <strong>Reportado por:</strong> {reclamo.username}<br />
-                  <strong>Respuesta:</strong> 
-                  <span className={`card-text ${validarFecha(reclamo.respuesta) ? 'text-danger' : ''}`}>
-                    {reclamo.respuesta || 'No hay respuesta aún'}
-                  </span>
-                </small>
+                <strong>Reclamo: </strong>{reclamo.mensaje}
               </p>
+              <p className="card-text">
+                <strong>Fecha vencimiento de entrega:</strong> {reclamo.material.map(m => m.fechaVencimiento).join(', ')}
+              </p>
+              <p className="card-text">
+                <strong>Fecha inicio reclamo:</strong> {reclamo.fecha}
+              </p>
+              <p className="card-text">
+                <strong>Estado:</strong> {reclamo.estado}
+              </p>
+              <p className="card-text">
+                <strong>Reportado por:</strong> {reclamo.username}
+              </p>
+              <p className="card-text">
+                <strong>Respuesta: </strong>
+                <strong><span className={`card-text ${validarFecha(reclamo.respuesta) ? 'text-danger' : ''}`}>
+                  {reclamo.respuesta || 'No hay respuesta aún'}
+                </span></strong>
+              </p>
+
               {validarFecha(reclamo.respuesta) && (
-                <p className="text-danger">La respuesta enviada se encuentra vencida</p>
+                <strong><p className="text-danger">La respuesta enviada se encuentra vencida</p></strong>
               )}
+              <p className="card-text">
+                {reclamo.estado === 'no vencido' && reclamo.material.some(m => new Date(m.fechaVencimiento) > new Date()) && (
+                  <span className="text-warning">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</span>
+                )}
+                {reclamo.estado === 'vencido' && (
+                  <span className="text-danger">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
+                )}
+              </p>
               <div className="d-flex flex-column">
                   {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
                       <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
@@ -386,3 +400,4 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 };
 
 export default GestorAlmacenes;
+
