@@ -161,3 +161,8 @@
 .estadisticas {
   margin-top: 30px;
 }
+
+.item-rojo {
+  background-color: red;
+  color: white; /* Este cambio asegura que el texto será blanco */
+}

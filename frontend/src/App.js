@@ -30,7 +30,7 @@ const App = () => {
   const handleShowManejadorReclamos = () => {
     setShowManejadorReclamos(true);
   };
-  
+
   const handleHideManejadorReclamos = () => {
     setShowManejadorReclamos(false);
   };
@@ -40,7 +40,7 @@ const App = () => {
     setEstadoReclamo('no vencido');
     setShowModal(true);
   };
-  
+
   const handleAlertaDemoraClick = (pedido) => {
     setPedidoSeleccionado(pedido);
     setEstadoReclamo('vencido');
@@ -199,7 +199,7 @@ const App = () => {
               className="form-control ml-2 mr-2"
             />
           </label>
-          
+
           <label className="ms-4">
             Número de Pedido:
             <input
