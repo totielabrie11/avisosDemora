@@ -1,5 +1,5 @@
 {
-    "Fecha_actualizacion": "24-05-2024",
+    "Fecha_actualizacion": "27-05-2024",
     "Pedidos": [
         {
             "Pedido": 32505,
@@ -1932,14 +1932,6 @@
                     "Inicio": "2024-02-16 00:00:00"
                 },
                 {
-                    "Item": 3,
-                    "Codigo": "043101T-DVT0",
-                    "Descripcion": "DDI 10 SIMPLE C/MOT TRIF CAB PVDF",
-                    "Cantidad": 5,
-                    "Fecha_vencida": "2024-04-29 00:00:00",
-                    "Inicio": "2024-02-16 00:00:00"
-                },
-                {
                     "Item": 5,
                     "Codigo": "0161010-AT20",
                     "Descripcion": "DEN/S 10 - CARRERA RED-BAJA FREC.C/EMPAQ. ASIENTOS PTFE",
@@ -2400,22 +2392,6 @@
             "Pedido": 38340,
             "Cliente": "DOSISUR S.R.L",
             "Items": [
-                {
-                    "Item": 3,
-                    "Codigo": "A19091812/D",
-                    "Descripcion": "CABEZAL INFERIOR P/COLUMNA \u00d8 TUBO 14 (PVDF) 1/4\"NPT FRONT.",
-                    "Cantidad": 50,
-                    "Fecha_vencida": "2024-03-29 00:00:00",
-                    "Inicio": "2024-03-14 00:00:00"
-                },
-                {
-                    "Item": 4,
-                    "Codigo": "C01009/2V",
-                    "Descripcion": "O RING 2-009 VITON   (VALVULAS DEC-DEPP)",
-                    "Cantidad": 2000,
-                    "Fecha_vencida": "2024-03-29 00:00:00",
-                    "Inicio": "2024-03-14 00:00:00"
-                },
                 {
                     "Item": 5,
                     "Codigo": "19006/10",
@@ -4724,21 +4700,6 @@
             "Inicio": "2024-05-08 00:00:00"
         },
         {
-            "Pedido": 38755,
-            "Cliente": "DIMOTEC SA",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "064004T-00B0",
-                    "Descripcion": "DSHC 400 C/MOT TRIF FUND GRIS/BRONCE",
-                    "Cantidad": 2,
-                    "Fecha_vencida": "2024-06-10 00:00:00",
-                    "Inicio": "2024-05-09 00:00:00"
-                }
-            ],
-            "Inicio": "2024-05-09 00:00:00"
-        },
-        {
             "Pedido": 38756,
             "Cliente": "DOSISUR S.R.L",
             "Items": [
@@ -6273,29 +6234,6 @@
             "Inicio": "2024-05-22 00:00:00"
         },
         {
-            "Pedido": 38865,
-            "Cliente": "LUBCHEM ARGENTINA S.R.L",
-            "Items": [
-                {
-                    "Item": 1,
-                    "Codigo": "C1801-D220",
-                    "Descripcion": "BATER\u00cdA MOURA CLEAN 12MF220 / SOLAR 12MS234",
-                    "Cantidad": 4,
-                    "Fecha_vencida": "2024-05-30 00:00:00",
-                    "Inicio": "2024-05-22 00:00:00"
-                },
-                {
-                    "Item": 2,
-                    "Codigo": "C1800-SL280M",
-                    "Descripcion": "PANEL FOTOVOLTAICO MONOCRISTALINO SUNLINK WP 280",
-                    "Cantidad": 4,
-                    "Fecha_vencida": "2024-05-30 00:00:00",
-                    "Inicio": "2024-05-22 00:00:00"
-                }
-            ],
-            "Inicio": "2024-05-22 00:00:00"
-        },
-        {
             "Pedido": 38868,
             "Cliente": "CHEVRON ARGENTINA SOCIEDAD DE RESPONSABILIDAD LIMITADA",
             "Items": [
@@ -6701,6 +6639,531 @@
                 }
             ],
             "Inicio": "2024-05-22 00:00:00"
+        },
+        {
+            "Pedido": 38881,
+            "Cliente": "DOSISUR S.R.L",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "C01113/2V",
+                    "Descripcion": "O RING 2-113 VITON   (A1420)",
+                    "Cantidad": 50,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "C01009/2V",
+                    "Descripcion": "O RING 2-009 VITON   (VALVULAS DEC-DEPP)",
+                    "Cantidad": 500,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "C02212/I",
+                    "Descripcion": "TUERCA BSW 1/4\" INOX",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "C02121/34I",
+                    "Descripcion": "TORNILLO C/EXA. 1/4\" X 3/4\" INOX",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "A19092212/D",
+                    "Descripcion": "CABEZAL SUPERIOR P/COLUMNA \u00d8 TUBO 14 (PVDF)",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 6,
+                    "Codigo": "R220000-0700",
+                    "Descripcion": "KIT OSCILADOR  DEON",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 7,
+                    "Codigo": "C01009/2T",
+                    "Descripcion": "O RING 2-009 TEFLON  (CAB. NUEVO DEC)",
+                    "Cantidad": 100,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 8,
+                    "Codigo": "R220401-0300",
+                    "Descripcion": "KIT EMPAQUETADURA P/DEON 3/8  - GRUESA",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 9,
+                    "Codigo": "C04626",
+                    "Descripcion": "U PACKING AN-6226-16   (DEON)    ID 3/4\", OD 1 1/4\", W 1/4\"",
+                    "Cantidad": 20,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 10,
+                    "Codigo": "22011/1",
+                    "Descripcion": "RESORTE DE RETORNO (CIL UNICO) - DEON",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 11,
+                    "Codigo": "B1693/1",
+                    "Descripcion": "DISTRIBUIDOR DEN/S      (BIELA S",
+                    "Cantidad": 9,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 12,
+                    "Codigo": "R420300-00T0",
+                    "Descripcion": "KIT DIAFRAGMA DD CHICA",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 13,
+                    "Codigo": "R420101-IIT0",
+                    "Descripcion": "KIT CABEZAL COMPL MD-DD CH INO",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-10 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38882,
+            "Cliente": "DOSISUR S.R.L",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "020101T-BT20",
+                    "Descripcion": "DECI 10/70 C/MOT TRIF - ASIENTO PTFE",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "0271010-0T20",
+                    "Descripcion": "DEPP 10 CAB 20 MM\u00b2 ASIENTOS PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "043301T-MNT0",
+                    "Descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "R430104-MET0",
+                    "Descripcion": "KIT CABEZAL COMPL DDI CH 95 MIX",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "R460100-ITT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD 150-300 INOX/PTFE",
+                    "Cantidad": 3,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38883,
+            "Cliente": "DOSISUR S.R.L",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "46008",
+                    "Descripcion": "BRIDA ACOPLE MOTOR (C105) - DDI MED",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "R200000-0700",
+                    "Descripcion": "KIT REGULADOR   DECI - DDI 150/300",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "C02941/70I",
+                    "Descripcion": "TORNILLO C/EXA. M 8 X 1.25 X 70 INOX.",
+                    "Cantidad": 10,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "46181",
+                    "Descripcion": "BASE - DDI (PINTADA) NEGRO SEMI-MATE",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "043601T-MNT0",
+                    "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 6,
+                    "Codigo": "046301T-PTT0",
+                    "Descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38884,
+            "Cliente": "SAL PARK S R L",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "R460200-PT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 PP/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38885,
+            "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "043601T-MNT0",
+                    "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "046301T-PTT0",
+                    "Descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "46070",
+                    "Descripcion": "DIAFRAGMA EN PTFE - DD 150/300/600",
+                    "Cantidad": 3,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "R460200-PT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 PP/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38886,
+            "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "068045T-00B0",
+                    "Descripcion": "DSHC 4500 COMPACTA C/MOT TRIF FUND GRIS/BRONCE",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "043101T-MNT0",
+                    "Descripcion": "DDI 10 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "043301T-MNT0",
+                    "Descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 4,
+                    "Codigo": "043601T-MNT0",
+                    "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+                    "Cantidad": 4,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 5,
+                    "Codigo": "043601T-DVT0",
+                    "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB PVDF",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 6,
+                    "Codigo": "046151T-PTT0",
+                    "Descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 7,
+                    "Codigo": "046151T-CTT0",
+                    "Descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PVC",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 8,
+                    "Codigo": "046601T-PTT0",
+                    "Descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 9,
+                    "Codigo": "R430104-MET0",
+                    "Descripcion": "KIT CABEZAL COMPL DDI CH 95 MIX",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 10,
+                    "Codigo": "R430104-DVT0",
+                    "Descripcion": "KIT CABEZAL COMPL DDI CH 95 PVDF",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 11,
+                    "Codigo": "R420300-00T0",
+                    "Descripcion": "KIT DIAFRAGMA DD CHICA",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 12,
+                    "Codigo": "R460100-PTT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD 150-300 PP/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 13,
+                    "Codigo": "R460100-CTT0",
+                    "Descripcion": "KIT CABEZAL COMPL DD 150-300 PVC/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 14,
+                    "Codigo": "R460200-PT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 PP/PTFE",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 15,
+                    "Codigo": "R460200-CT00",
+                    "Descripcion": "KIT VALVULAS DD 150-300 PVC/PTFE",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 16,
+                    "Codigo": "46070",
+                    "Descripcion": "DIAFRAGMA EN PTFE - DD 150/300/600",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 17,
+                    "Codigo": "R680001-05",
+                    "Descripcion": "KIT JUNTAS (TAB CHAPA) - DSHC 3300/4500/6300",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 18,
+                    "Codigo": "R680001-02",
+                    "Descripcion": "KIT VALVULA DE EXPULSION (TAB.CHAPA)-DSHC (G)",
+                    "Cantidad": 2,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 19,
+                    "Codigo": "R680001-00",
+                    "Descripcion": "KIT SELLO DSHC 3300/4500/6300+3000",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38887,
+            "Cliente": "MARTINEZ ALEJANDRO LUIS",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "R410104-MET0",
+                    "Descripcion": "KIT CABEZAL MILENIO MIX",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-24 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "B311792-DE06",
+                    "Descripcion": "VALVULA PUNTO INY. MILENIO COMPACTO \u00f86 PVDF/EPDM   (NVO)",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-24 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38893,
+            "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "046301T-PTT0",
+                    "Descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-28 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38894,
+            "Cliente": "DOSIBOM SRL",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "RS050FI",
+                    "Descripcion": "FILTRO PARA DS 500/700",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-05-31 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38895,
+            "Cliente": "GLACCO COMP PETRO SA - ROCH SA - AREAS CHOR PALE AIKE CA BRE MOY",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "B1793/1",
+                    "Descripcion": "DISTRIBUIDOR DEN/E      (BIELA S",
+                    "Cantidad": 5,
+                    "Fecha_vencida": "2024-06-14 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 2,
+                    "Codigo": "R190001-042T",
+                    "Descripcion": "KIT VALVULAS C/EXTRACCION DEC/DEPP/DEN - DECI (O\u00b4RING PTFE)",
+                    "Cantidad": 20,
+                    "Fecha_vencida": "2024-06-14 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                },
+                {
+                    "Item": 3,
+                    "Codigo": "R191000-0300",
+                    "Descripcion": "KIT DE EMPAQUETADURA P/DEC-DEN-DEPP 10",
+                    "Cantidad": 15,
+                    "Fecha_vencida": "2024-06-14 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
+        },
+        {
+            "Pedido": 38896,
+            "Cliente": "METALURGICA COLLA S A",
+            "Items": [
+                {
+                    "Item": 1,
+                    "Codigo": "0S130TX-ICAH",
+                    "Descripcion": "NaN",
+                    "Cantidad": 1,
+                    "Fecha_vencida": "2024-06-07 00:00:00",
+                    "Inicio": "2024-05-24 00:00:00"
+                }
+            ],
+            "Inicio": "2024-05-24 00:00:00"
         }
     ]
 }

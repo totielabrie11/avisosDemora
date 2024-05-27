@@ -19,6 +19,7 @@ const Estadisticas = ({ token }) => {
     .then((response) => {
       setStats(response.data);
       setError(null);
+      saveCurrentDayData(response.data);
     })
     .catch((error) => {
       console.error('Error fetching estadisticas:', error);
@@ -33,6 +34,22 @@ const Estadisticas = ({ token }) => {
       }
     });
   }, [token]);
+
+  const saveCurrentDayData = (data) => {
+    axios.post('http://localhost:3000/api/v1/historico', data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      console.log('Datos del día guardados:', response.data);
+    })
+    .catch(error => {
+      if (error.response && error.response.status === 409) {
+        console.log('Los datos del día ya existen.');
+      } else {
+        console.error('Error guardando los datos del día:', error);
+      }
+    });
+  };
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -151,7 +168,7 @@ const Estadisticas = ({ token }) => {
                         </Tooltip>
                       }
                     >
-                      <li 
+                                           <li 
                         className={`estadisticas-item ${mesSeleccionado === mes ? 'selected' : ''}`}
                         onClick={() => toggleMesSeleccionado(mes)}
                         style={{ cursor: 'pointer' }}
@@ -186,6 +203,3 @@ const Estadisticas = ({ token }) => {
 };
 
 export default Estadisticas;
-
-
-

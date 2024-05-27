@@ -405,6 +405,7 @@ app.post('/api/v1/historico', authenticateToken, (req, res) => {
     if (req.role !== 'administrador') {
       return res.status(403).json({ error: 'Access denied' });
     }
+    
     const historico = JSON.parse(fs.readFileSync(filePaths.historico, 'utf8'));
     const fechaActual = moment().format('DD/MM/YYYY');
     
@@ -414,9 +415,35 @@ app.post('/api/v1/historico', authenticateToken, (req, res) => {
       return res.status(409).json({ error: 'El registro para la fecha actual ya existe.' });
     }
 
+    // Transformar los datos al formato del 24/05/2024
+    const { pedidosPorCliente, pedidosPorMes, totalPedidos } = req.body;
+    const transformedData = {
+      pedidosPorCliente: {},
+      pedidosPorMes: {},
+      totalPedidos
+    };
+
+    // Transformar pedidosPorCliente
+    for (const cliente in pedidosPorCliente) {
+      if (Array.isArray(pedidosPorCliente[cliente])) {
+        transformedData.pedidosPorCliente[cliente] = pedidosPorCliente[cliente].length;
+      } else {
+        transformedData.pedidosPorCliente[cliente] = pedidosPorCliente[cliente];
+      }
+    }
+
+    // Transformar pedidosPorMes
+    for (const mes in pedidosPorMes) {
+      if (typeof pedidosPorMes[mes] === 'object') {
+        transformedData.pedidosPorMes[mes] = Object.keys(pedidosPorMes[mes]).length;
+      } else {
+        transformedData.pedidosPorMes[mes] = pedidosPorMes[mes];
+      }
+    }
+
     const nuevoRegistro = {
       fecha: fechaActual,
-      datos: req.body
+      datos: transformedData
     };
     historico.push(nuevoRegistro);
     fs.writeFileSync(filePaths.historico, JSON.stringify(historico, null, 2), 'utf8');
