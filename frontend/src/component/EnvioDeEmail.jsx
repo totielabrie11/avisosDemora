@@ -22,6 +22,11 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
     return regex.test(correo);
   };
 
+  const extraerNumeroRemito = (respuesta) => {
+    const match = respuesta.match(/número (\d{4,6})/);
+    return match ? match[1] : '';
+  };
+
   const enviarCorreo = async () => {
     if (!email || !validarEmail(email)) {
       setEmailError('Por favor, ingrese un correo electrónico válido.');
@@ -32,17 +37,19 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
                                 ? reclamo.material[0].descripcion
                                 : 'el material solicitado';
 
-    let subject, text;
+    let subject = `Actualización de Reclamo - Pedido ${reclamo.pedido}`;
+    let text = '';
 
-    if (reclamo.estado === 'respondido') {
-      if (!reclamo.respuesta) {
-        alert('El reclamo no cuenta con respuesta para enviar al cliente.');
-        return;
-      }
-      subject = `Actualización de Reclamo - Pedido ${reclamo.pedido}`;
-      text = `Estimado cliente,\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. La nueva fecha de entrega ha sido actualizada.\n\nRespuesta: ${reclamo.respuesta}\n\nSaludos,\nEquipo de Soporte.`;
+    const respuestaLower = reclamo.respuesta ? reclamo.respuesta.toLowerCase() : '';
+    const remitoNumero = reclamo.respuesta ? extraerNumeroRemito(reclamo.respuesta) : '';
+
+    if (!reclamo.respuesta) {
+      text = `Estimado cliente,\n\nEstamos trabajando de forma urgente en atender su reclamo. Le informaremos tan pronto como tengamos una actualización.\n\nSaludos,\nEquipo de Soporte.`;
+    } else if (respuestaLower.includes('remito')) {
+      text = `Estimado cliente,\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
+    } else if (respuestaLower.includes('fecha')) {
+      text = `Estimado cliente,\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\n Compromiso de Nueva Fecha de entrega: ${reclamo.respuesta}.\n\nSaludos,\nEquipo de Soporte.`;
     } else {
-      subject = `Actualización en Fecha de Entrega en Orden de Compra ${reclamo.pedido}`;
       text = `Estimado cliente,\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
     }
 
@@ -120,6 +127,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
 };
 
 export default EnvioDeEmail;
+
 
 
 
