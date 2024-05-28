@@ -324,7 +324,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
                   <span className="text-warning">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</span>
                 )}
                 {reclamo.estado === 'vencido' && (
-                  <span className="text-danger">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
+                  <span className="text-warning">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
                 )}
               </p>
               <div className="d-flex flex-column">
