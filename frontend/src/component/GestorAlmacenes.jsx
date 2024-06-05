@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserState from './UserState';
@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { parse, isBefore, startOfDay } from 'date-fns';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeRemito from './EnvioDeRemito';
+import ProblemaRemitoButton from './ProblemaRemitoButton';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -18,46 +19,21 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [abiertosCount, setAbiertosCount] = useState(0);
   const [noVencidoCount, setNoVencidoCount] = useState(0);
   const [fechaVencidaCount, setFechaVencidaCount] = useState(0);
-  const [conRemitoCount, setConRemitoCount] = useState(0); // Nuevo estado para contar los reclamos con remito
+  const [conRemitoCount, setConRemitoCount] = useState(0);
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showDetalleModal, setShowDetalleModal] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
   const [showEnvioModal, setShowEnvioModal] = useState(false);
-  
-  function generateId() {
+
+  const generateId = () => {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
     const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     return `${randomNumber}${randomLetter}`;
-  }
+  };
 
-  useEffect(() => {
-    const fetchReclamos = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = response.data;
-
-        const reclamosConId = data
-          .filter(reclamo => reclamo.estado !== 'cerrado')
-          .map(reclamo => ({
-            ...reclamo,
-            id: reclamo.id || generateId()
-          }));
-
-        setReclamos(reclamosConId);
-        actualizarContadores(reclamosConId);
-      } catch (error) {
-        console.error('Error fetching reclamos:', error);
-      }
-    };
-
-    fetchReclamos();
-  }, [token]);
-
-  const actualizarContadores = (reclamos) => {
+  const actualizarContadores = useCallback((reclamos) => {
     const urgenteReclamos = reclamos.filter(r => r.prioridad === 'Urgente');
     const regularReclamos = reclamos.filter(r => r.prioridad === 'Regular');
     const vencidoReclamos = reclamos.filter(r => r.estado === 'vencido');
@@ -73,7 +49,34 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     setAbiertosCount(abiertosReclamos.length);
     setFechaVencidaCount(fechaVencidaReclamos.length);
     setConRemitoCount(conRemitoReclamos.length);
-  };
+  }, []);
+
+  useEffect(() => {
+    const fetchReclamos = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = response.data;
+        console.log('Datos recibidos:', data);
+
+        const reclamosConId = data
+          .filter(reclamo => reclamo.estado !== 'cerrado')
+          .map(reclamo => ({
+            ...reclamo,
+            id: reclamo.id || generateId()
+          }));
+
+        setReclamos(reclamosConId);
+        actualizarContadores(reclamosConId);
+      } catch (error) {
+        console.error('Error fetching reclamos:', error);
+        setReclamos([]); // Asegúrate de que `reclamos` no sea undefined
+      }
+    };
+
+    fetchReclamos();
+  }, [token, actualizarContadores]);
 
   const handleResponder = reclamo => {
     setSelectedReclamo(reclamo);
@@ -137,24 +140,26 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const filtrarReclamos = () => {
+    console.log('Filtrando reclamos por categoría:', categoriaSeleccionada);
+    const reclamosFiltrados = reclamos ? reclamos : [];
     switch (categoriaSeleccionada) {
-        case 'urgente':
-            return reclamos.filter(r => r.prioridad === 'Urgente');
-        case 'regular':
-            return reclamos.filter(r => r.prioridad === 'Regular');
-        case 'vencido':
-            return reclamos.filter(r => r.estado === 'vencido');
-        case 'noVencido':
-            return reclamos.filter(r => r.estado === 'no vencido');
-        case 'sinResponder':
-            return reclamos.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
-        case 'fechaVencida':
-            return reclamos.filter(r => validarFecha(r.respuesta));
-        case 'conRemito':
-            return reclamos.filter(r => r.estado === 'remito enviado');
-        case 'todos':
-        default:
-            return reclamos;
+      case 'urgente':
+        return reclamosFiltrados.filter(r => r.prioridad === 'Urgente');
+      case 'regular':
+        return reclamosFiltrados.filter(r => r.prioridad === 'Regular');
+      case 'vencido':
+        return reclamosFiltrados.filter(r => r.estado === 'vencido');
+      case 'noVencido':
+        return reclamosFiltrados.filter(r => r.estado === 'no vencido');
+      case 'sinResponder':
+        return reclamosFiltrados.filter(r => r.estado !== 'respondido' && r.estado !== 'remito enviado');
+      case 'fechaVencida':
+        return reclamosFiltrados.filter(r => validarFecha(r.respuesta));
+      case 'conRemito':
+        return reclamosFiltrados.filter(r => r.estado === 'remito enviado');
+      case 'todos':
+      default:
+        return reclamosFiltrados;
     }
   };
 
@@ -172,14 +177,14 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         });
 
         if (response.status === 200) {
-          const updatedReclamos = reclamos.map(r => 
-            r.id === selectedReclamo.id 
-              ? { 
-                  ...r, 
-                  estado: 'remito enviado', 
-                  respuesta: `Remito enviado con número ${numeroRemito}`, 
-                  remito: numeroRemito 
-                } 
+          const updatedReclamos = reclamos.map(r =>
+            r.id === selectedReclamo.id
+              ? {
+                ...r,
+                estado: 'remito enviado',
+                respuesta: `Remito enviado con número ${numeroRemito}`,
+                remito: numeroRemito
+              }
               : r
           );
           setReclamos(updatedReclamos);
@@ -193,6 +198,89 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       }
     }
   };
+
+  const handleProblemaReportado = (updatedReclamo) => {
+    const updatedReclamos = reclamos.map(r =>
+      r.id === updatedReclamo.id ? updatedReclamo : r
+    );
+    setReclamos(updatedReclamos);
+    actualizarContadores(updatedReclamos);
+  };
+
+  const ReclamoCard = ({ reclamo }) => (
+    <div
+      className={`col-md-4 mb-4 card ${
+        reclamo.estado === 'respondido' ? 'bg-success' :
+        reclamo.estado === 'no vencido' ? '' :
+        reclamo.prioridad === 'Urgente' ? 'bg-danger' :
+        'bg-warning'
+      } text-white`}
+      style={reclamo.estado === 'no vencido' ? { backgroundColor: '#1FE81F' } : {}}
+    >
+      <div className="card-body">
+        <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
+        <p className="card-text">
+          <strong>Reclamo: </strong>{reclamo.mensaje}
+        </p>
+        <p className="card-text">
+          <strong>Fecha vencimiento de entrega:</strong> {reclamo.material.map(m => m.fechaVencimiento).join(', ')}
+        </p>
+        <p className="card-text">
+          <strong>Fecha inicio reclamo:</strong> {reclamo.fecha}
+        </p>
+        <p className="card-text">
+          <strong>Estado:</strong> {reclamo.estado}
+        </p>
+        <p className="card-text">
+          <strong>Reportado por:</strong> {reclamo.username}
+        </p>
+        <p className="card-text">
+          <strong>Respuesta: </strong>
+          <strong><span className={`card-text ${validarFecha(reclamo.respuesta) ? 'text-danger' : ''}`}>
+            {reclamo.respuesta || 'No hay respuesta aún'}
+          </span></strong>
+        </p>
+
+        {validarFecha(reclamo.respuesta) && (
+          <strong><p className="text-danger">La respuesta enviada se encuentra vencida</p></strong>
+        )}
+        <p className="card-text">
+          {reclamo.estado === 'no vencido' && reclamo.material.some(m => new Date(m.fechaVencimiento) > new Date()) && (
+            <span className="text-dark">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</span>
+          )}
+          {reclamo.estado === 'vencido' && (
+            <span className="text-dark">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
+          )}
+          {reclamo.estadoRemito === 'conflicto' && (
+            <span className="text-dark">Ha reportado inconveniente en la confección del remito, espere mientras administración lo libere.</span>
+          )}
+        </p>
+        <div className="d-flex flex-column">
+          {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
+            <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
+              Responder
+            </button>
+          )}
+          <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
+            Ver Detalle
+          </button>
+          {reclamo.estado !== 'remito enviado' && (
+            <button className="btn btn-primary mb-2" onClick={() => { setSelectedReclamo(reclamo); setShowEnvioModal(true); }}>
+              Enviar Remito
+            </button>
+          )}
+          <ProblemaRemitoButton
+            reclamo={reclamo}
+            token={token}
+            onProblemaReportado={handleProblemaReportado}
+          />
+        </div>
+      </div>
+    </div>
+  );
+
+  const reclamosFiltrados = filtrarReclamos();
+  console.log('Reclamos filtrados:', reclamosFiltrados);
 
   return (
     <div className="container mt-5">
@@ -281,69 +369,18 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       </div>
 
       <div className="row">
-        {filtrarReclamos().map((reclamo, idx) => (
-          <div
-            key={idx}
-            className={`col-md-4 mb-4 card ${
-              reclamo.estado === 'respondido' ? 'bg-success' :
-              reclamo.estado === 'no vencido' ? '' :
-              reclamo.prioridad === 'Urgente' ? 'bg-danger' :
-              'bg-warning'
-            } text-white`}
-            style={reclamo.estado === 'no vencido' ? { backgroundColor: '#1FE81F' } : {}}
-          >
-            <div className="card-body">
-              <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
-              <p className="card-text">
-                <strong>Reclamo: </strong>{reclamo.mensaje}
-              </p>
-              <p className="card-text">
-                <strong>Fecha vencimiento de entrega:</strong> {reclamo.material.map(m => m.fechaVencimiento).join(', ')}
-              </p>
-              <p className="card-text">
-                <strong>Fecha inicio reclamo:</strong> {reclamo.fecha}
-              </p>
-              <p className="card-text">
-                <strong>Estado:</strong> {reclamo.estado}
-              </p>
-              <p className="card-text">
-                <strong>Reportado por:</strong> {reclamo.username}
-              </p>
-              <p className="card-text">
-                <strong>Respuesta: </strong>
-                <strong><span className={`card-text ${validarFecha(reclamo.respuesta) ? 'text-danger' : ''}`}>
-                  {reclamo.respuesta || 'No hay respuesta aún'}
-                </span></strong>
-              </p>
-
-              {validarFecha(reclamo.respuesta) && (
-                <strong><p className="text-danger">La respuesta enviada se encuentra vencida</p></strong>
-              )}
-              <p className="card-text">
-                {reclamo.estado === 'no vencido' && reclamo.material.some(m => new Date(m.fechaVencimiento) > new Date()) && (
-                  <span className="text-warning">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</span>
-                )}
-                {reclamo.estado === 'vencido' && (
-                  <span className="text-warning">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
-                )}
-              </p>
-              <div className="d-flex flex-column">
-                  {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
-                      <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
-                          Responder
-                      </button>
-                  )}
-                  <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
-                      Ver Detalle
-                  </button>
-                  {reclamo.estado !== 'remito enviado' && (
-                      <button className="btn btn-primary" onClick={() => { setSelectedReclamo(reclamo); setShowEnvioModal(true); }}>
-                          Enviar Remito
-                      </button>
-                  )}
-              </div>
-            </div>
-          </div>
+        {reclamosFiltrados.map((reclamo, idx) => (
+          <ReclamoCard
+            key={`${idx}`}
+            reclamo={reclamo}
+            handleResponder={handleResponder}
+            handleVerDetalle={handleVerDetalle}
+            validarFecha={validarFecha}
+            setSelectedReclamo={setSelectedReclamo}
+            setShowEnvioModal={setShowEnvioModal}
+            token={token}
+            handleProblemaReportado={handleProblemaReportado}
+          />
         ))}
       </div>
 
@@ -376,11 +413,11 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           <Modal.Title>Enviar Remito</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <EnvioDeRemito
-             id={selectedReclamo?.id}
-             subId={selectedReclamo?.subId}
-             onRemitoEnviado={handleRemitoSubmitSuccess}
-             token={token}
+          <EnvioDeRemito
+            id={selectedReclamo?.id}
+            subId={selectedReclamo?.subId}
+            onRemitoEnviado={handleRemitoSubmitSuccess}
+            token={token}
           />
         </Modal.Body>
         <Modal.Footer>
