@@ -133,6 +133,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     console.log('Reclamo seleccionado para ver detalle:', reclamo);
     setSelectedReclamo(reclamo);
     setShowDetalleModal(true);
+    console.log(reclamo)
   };
 
   const handleCategoriaClick = categoria => {
@@ -240,7 +241,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             {reclamo.respuesta || 'No hay respuesta aún'}
           </span></strong>
         </p>
-
+  
         {validarFecha(reclamo.respuesta) && (
           <strong><p className="text-danger">La respuesta enviada se encuentra vencida</p></strong>
         )}
@@ -278,7 +279,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       </div>
     </div>
   );
-
+  
   const reclamosFiltrados = filtrarReclamos();
   console.log('Reclamos filtrados:', reclamosFiltrados);
 

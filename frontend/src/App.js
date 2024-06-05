@@ -10,6 +10,7 @@ import UserState from './component/UserState';
 import ModalText from './component/ModalText';
 import GestorAlmacenes from './component/GestorAlmacenes';
 import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
+import VistaAdministracion from './component/VistaAdministracion';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -142,6 +143,10 @@ const App = () => {
 
   if (!token) {
     return <Login onLogin={handleLogin} />;
+  }
+
+  if (role === 'administrativo') {
+    return <VistaAdministracion token={token} username={username} role={role} onLogout={handleLogout} />;
   }
 
   if (role === 'deposito') {

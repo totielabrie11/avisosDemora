@@ -461,7 +461,7 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje, material } = req.body;
+    const { pedido, cliente, estado, prioridad, mensaje, material, estadoRemito, problemaRemito } = req.body;
 
     if (!pedido || !cliente || !estado || !prioridad || !mensaje || !material || !Array.isArray(material)) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
@@ -479,7 +479,9 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
       mensaje,
       fecha,
       username,
-      material
+      material,
+      estadoRemito, // Asegurarse de incluir este campo
+      problemaRemito // Asegurarse de incluir este campo
     };
 
     let reclamoExistente = reclamos.find((reclamo) => reclamo.pedido === pedido);
@@ -506,9 +508,10 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   }
 });
 
+
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor') {
+    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor' && req.role !== 'administrativo') {
       return res.status(403).json({ error: 'Access denied' });
     }
     const reclamos = readReclamos().flatMap(reclamo =>
@@ -525,7 +528,9 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         respuesta: subReclamo.respuesta,
         subId: subReclamo.id,
         material: subReclamo.material,
-        downloadUrl: subReclamo.downloadUrl
+        downloadUrl: subReclamo.downloadUrl,
+        estadoRemito: subReclamo.estadoRemito, // Asegurarse de incluir este campo
+        problemaRemito: subReclamo.problemaRemito // Asegurarse de incluir este campo
       }))
     );
     res.json(reclamos);
@@ -535,9 +540,12 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   }
 });
 
+
+
+
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen, remito, estadoRemito, problemaRemito } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen, remito } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -551,8 +559,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.respuesta = respuesta || subReclamo.respuesta;
             subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
             subReclamo.remito = remito;
-            subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
-            subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
             found = true;
           }
           return subReclamo;
@@ -572,10 +578,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

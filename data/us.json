@@ -44,6 +44,11 @@
         "username": "MatiasG",
         "password": "123456G",
         "role": "deposito"
+      },
+      {
+        "username": "CarlosCristino",
+        "password": "123456C",
+        "role": "administrativo"
       }
     ]
   }
