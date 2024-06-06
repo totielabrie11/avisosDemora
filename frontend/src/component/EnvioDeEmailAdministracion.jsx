@@ -20,8 +20,8 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
   }, [reclamo.cliente, fetchEmail]);
 
   useEffect(() => {
-    setMessage(`Estimado cliente, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
-  }, []);
+    setMessage(`Estimado cliente ${reclamo.cliente}, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
+  }, [reclamo.cliente]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);

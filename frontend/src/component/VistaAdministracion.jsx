@@ -155,4 +155,3 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 
 export default VistaAdministracion;
 
-
