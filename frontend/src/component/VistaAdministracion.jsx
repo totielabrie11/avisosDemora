@@ -18,10 +18,8 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       });
       const data = response.data;
 
-      // Verifica la estructura de los datos recibidos
       console.log('Datos recibidos:', data);
 
-      // Filtrar directamente en el nivel del reclamo principal
       const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto');
 
       setReclamos(reclamosFiltrados);
@@ -57,8 +55,18 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     const confirmed = window.confirm('¿Está seguro de que desea desbloquear al cliente?');
     if (confirmed) {
       try {
-        // Lógica para manejar el desbloqueo del cliente
+        const subReclamoId = reclamo.subId; // Asegúrate de que este campo está disponible
+        await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, 
+          { estadoRemito: 'resuelto', subId: subReclamoId }, 
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
         alert('Cliente desbloqueado exitosamente');
+
+        // Refresca la lista de reclamos
+        await fetchReclamos();
       } catch (error) {
         console.error('Error desbloqueando al cliente:', error);
         alert('No se pudo desbloquear al cliente. Por favor, intente de nuevo.');

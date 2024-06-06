@@ -20,7 +20,7 @@
           }
         ],
         "problemaRemito": "crédito",
-        "estadoRemito": "conflicto"
+        "estadoRemito": "resuelto"
       }
     ]
   },
@@ -44,8 +44,8 @@
             "fechaVencimiento": "20/05/2024"
           }
         ],
-        "problemaRemito": "otro",
-        "estadoRemito": "conflicto"
+        "problemaRemito": "crédito",
+        "estadoRemito": "resuelto"
       }
     ]
   },
@@ -76,7 +76,9 @@
           }
         ],
         "respuesta": "Se entregará en la fecha 13/6/2024",
-        "usernameAlmacen": "FernanditoG"
+        "usernameAlmacen": "FernanditoG",
+        "problemaRemito": "otro",
+        "estadoRemito": "resuelto"
       }
     ]
   }
