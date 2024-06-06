@@ -26,13 +26,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = (to, subject, text, html) => {
+const sendEmail = (to, subject, text, html, attachments) => {
   const mailOptions = {
     from: 'cotizaciones@dosivac.com',
     to,
     subject,
     text,
     html,
+    attachments,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -83,7 +84,7 @@ const storage = multer.diskStorage({
     cb(null, filePaths.document);
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, Date.now() + '-' + file.originalname);  // Asegura nombres de archivo únicos
   }
 });
 
@@ -169,6 +170,20 @@ app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
   res.status(200).json({ message: 'Correo enviado con éxito' });
 });
 
+app.post('/api/v1/sendEmailWithAttachment', authenticateToken, upload.single('file'), (req, res) => {
+  const { to, subject, text } = req.body;
+  const file = req.file;
+
+  if (!to || !subject || !text) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  const attachments = file ? [{ path: file.path }] : [];
+
+  sendEmail(to, subject, text, null, attachments);
+  res.status(200).json({ message: 'Correo enviado con éxito' });
+});
+
 const formatDate = (date) => {
   return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
 };
@@ -194,7 +209,6 @@ app.get('/api/v1/getEmail', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error obteniendo el correo', message: error.message });
   }
 });
-
 
 app.post('/api/v1/login', (req, res) => {
   const { username, password } = req.body;
@@ -342,7 +356,6 @@ app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
   }
 });
 
-
 app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
   try {
     if (req.role !== 'administrador') {
@@ -385,7 +398,6 @@ app.get('/api/v1/estadisticas', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error generando estadísticas', message: err.message });
   }
 });
-
 
 app.get('/api/v1/historico', authenticateToken, (req, res) => {
   try {
@@ -508,7 +520,6 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   }
 });
 
-
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
     if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor' && req.role !== 'administrativo') {
@@ -539,9 +550,6 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
     res.status(500).json({ error: 'Error obteniendo reclamos', message: err.message });
   }
 });
-
-
-
 
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
@@ -580,7 +588,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

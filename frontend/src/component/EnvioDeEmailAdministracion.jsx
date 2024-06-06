@@ -7,6 +7,7 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
   const [deuda, setDeuda] = useState('');
   const [subject, setSubject] = useState('Deuda a revisar');
   const [message, setMessage] = useState('');
+  const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -22,15 +23,26 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
     setMessage(`Estimado cliente, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
   }, []);
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSendEmail = async () => {
     setLoading(true);
+    const formData = new FormData();
+    formData.append('to', email);
+    formData.append('subject', subject);
+    formData.append('text', `${message}\n\nMonto de la deuda: ${deuda}`);
+    if (file) {
+      formData.append('file', file);
+    }
+
     try {
-      await axios.post('http://localhost:3000/api/v1/sendEmail', {
-        to: email,
-        subject,
-        text: `${message}\n\nMonto de la deuda: ${deuda}`
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
+      await axios.post('http://localhost:3000/api/v1/sendEmailWithAttachment', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
+        }
       });
       onSaveEmail(email);
       alert('Correo enviado exitosamente');
@@ -90,6 +102,13 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
                 disabled
               />
             </Form.Group>
+            <Form.Group controlId="file">
+              <Form.Label>Adjuntar archivo (opcional)</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={handleFileChange}
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -106,3 +125,4 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
 };
 
 export default EnvioDeEmailAdministracion;
+
