@@ -3,12 +3,13 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserState from './UserState';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
-import ProblemaRemitoButton from './ProblemaRemitoButton';
+import EnvioDeEmailAdministracion from './EnvioDeEmailAdministracion';
 
 const VistaAdministracion = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [showDetalleModal, setShowDetalleModal] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchReclamos = useCallback(async () => {
     try {
@@ -27,6 +28,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     } catch (error) {
       console.error('Error fetching reclamos:', error);
       setReclamos([]);
+      setError('Error al obtener reclamos.');
     }
   }, [token]);
 
@@ -34,9 +36,45 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     fetchReclamos();
   }, [fetchReclamos]);
 
+  const fetchEmail = async (cliente) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/v1/getEmail?cliente=${cliente}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data.email || '';
+    } catch (error) {
+      console.error('Error fetching email:', error);
+      return '';
+    }
+  };
+
   const handleVerDetalle = reclamo => {
     setSelectedReclamo(reclamo);
     setShowDetalleModal(true);
+  };
+
+  const handleClienteDesbloqueado = async (reclamo) => {
+    const confirmed = window.confirm('¿Está seguro de que desea desbloquear al cliente?');
+    if (confirmed) {
+      try {
+        // Lógica para manejar el desbloqueo del cliente
+        alert('Cliente desbloqueado exitosamente');
+      } catch (error) {
+        console.error('Error desbloqueando al cliente:', error);
+        alert('No se pudo desbloquear al cliente. Por favor, intente de nuevo.');
+      }
+    }
+  };
+
+  const handleSaveEmail = (reclamoId, newEmail) => {
+    setReclamos(prevReclamos =>
+      prevReclamos.map(r => {
+        if (r.id === reclamoId) {
+          return { ...r, email: newEmail };
+        }
+        return r;
+      })
+    );
   };
 
   if (role !== 'administrativo') {
@@ -69,18 +107,23 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
           <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
             Ver Detalle
           </button>
-          <ProblemaRemitoButton
-            reclamo={reclamo}
-            token={token}
-            onProblemaReportado={(updatedReclamo) => {
-              const updatedReclamos = reclamos.map(r => r.id === updatedReclamo.id ? updatedReclamo : r);
-              setReclamos(updatedReclamos);
-            }}
+          <button className="btn btn-primary mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
+            Cliente Desbloqueado
+          </button>
+          <EnvioDeEmailAdministracion 
+            reclamo={reclamo} 
+            token={token} 
+            onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)} 
+            fetchEmail={fetchEmail} 
           />
         </div>
       </div>
     </div>
   );
+
+  if (error) {
+    return <div className="alert alert-danger" role="alert">{error}</div>;
+  }
 
   return (
     <div className="container mt-5">
@@ -111,4 +154,5 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 };
 
 export default VistaAdministracion;
+
 
