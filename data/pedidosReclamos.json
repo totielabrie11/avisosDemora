@@ -6,7 +6,7 @@
     "reclamos": [
       {
         "id": "sub-1717677013261",
-        "estado": "no vencido",
+        "estado": "remito enviado",
         "prioridad": "Normal",
         "mensaje": "Vamos a poder cumplir con este pedido?",
         "fecha": "06-06-2024 a las 09:30 hs",
@@ -20,7 +20,11 @@
           }
         ],
         "problemaRemito": "crédito",
-        "estadoRemito": "resuelto"
+        "estadoRemito": "resuelto",
+        "remito": "155877",
+        "downloadUrl": "http://localhost:3000/document/1717690869220-Blue Stationery A4 Document.docx",
+        "respuesta": "Remito enviado con número 155877",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -31,7 +35,7 @@
     "reclamos": [
       {
         "id": "sub-1717677027108",
-        "estado": "vencido",
+        "estado": "remito enviado",
         "prioridad": "Regular",
         "mensaje": "Tenemos una demora de entrega en este pedido.",
         "fecha": "06-06-2024 a las 09:30 hs",
@@ -44,8 +48,12 @@
             "fechaVencimiento": "20/05/2024"
           }
         ],
-        "problemaRemito": "crédito",
-        "estadoRemito": "resuelto"
+        "problemaRemito": "otro",
+        "estadoRemito": "resuelto",
+        "remito": "111111",
+        "downloadUrl": "http://localhost:3000/document/1717690856253-Mapa-empatia1.png",
+        "respuesta": "Remito enviado con número 111111",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   },
@@ -56,7 +64,7 @@
     "reclamos": [
       {
         "id": "sub-1717677296037",
-        "estado": "respondido",
+        "estado": "remito enviado",
         "prioridad": "Normal",
         "mensaje": "Vamos a poder cumplir con este pedido?",
         "fecha": "06-06-2024 a las 09:34 hs",
@@ -75,10 +83,41 @@
             "fechaVencimiento": "07/06/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 13/6/2024",
+        "respuesta": "Remito enviado con número 105201",
         "usernameAlmacen": "FernanditoG",
-        "problemaRemito": "otro",
-        "estadoRemito": "resuelto"
+        "problemaRemito": "crédito",
+        "estadoRemito": "resuelto",
+        "remito": "105201",
+        "downloadUrl": "http://localhost:3000/document/1717690846110-Mapa-empatia1.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": 38658,
+    "cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
+    "reclamos": [
+      {
+        "id": "sub-1717689819602",
+        "estado": "remito enviado",
+        "prioridad": "Regular",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "06-06-2024 a las 13:03 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "043301T-MNT0",
+            "cantidad": 1,
+            "descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
+            "fechaVencimiento": "24/05/2024"
+          }
+        ],
+        "problemaRemito": "crédito",
+        "estadoRemito": "resuelto",
+        "remito": "158782",
+        "downloadUrl": "http://localhost:3000/document/1717690892229-TransferenciaTercero-30796516_30796516_10-01-2024.pdf",
+        "respuesta": "Remito enviado con número 158782",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }

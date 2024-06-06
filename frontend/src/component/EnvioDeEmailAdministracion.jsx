@@ -32,7 +32,7 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
     const formData = new FormData();
     formData.append('to', email);
     formData.append('subject', subject);
-    formData.append('text', `${message}\n\nMonto de la deuda: ${deuda}`);
+    formData.append('text', `${message}\n\nMonto de la deuda: ${deuda}\n\n Puede realizar la transferencia en la siguiente cuenta del banco HSBC \n\nTitular: Dosivac S.A. \n\nCUIT: 33-59920506-9\n\nProducto: Cuenta Corriente ARS\n\nCuenta: 0863307074\n\nCBU: 1500040400008633070746\n\nSaludos equipo de soporte administrativo.`);
     if (file) {
       formData.append('file', file);
     }

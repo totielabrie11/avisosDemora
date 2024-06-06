@@ -245,17 +245,20 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         {validarFecha(reclamo.respuesta) && (
           <strong><p className="text-danger">La respuesta enviada se encuentra vencida</p></strong>
         )}
-        <p className="card-text">
+        <div className="card-text">
           {reclamo.estado === 'no vencido' && reclamo.material.some(m => new Date(m.fechaVencimiento) > new Date()) && (
-            <span className="text-dark">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</span>
+            <div className="text-dark">La fecha de entrega vence pronto: {reclamo.material.find(m => new Date(m.fechaVencimiento) > new Date()).fechaVencimiento}</div>
           )}
           {reclamo.estado === 'vencido' && (
-            <span className="text-dark">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</span>
+            <div className="text-dark">La fecha de entrega ha vencido: {reclamo.material.map(m => m.fechaVencimiento).join(', ')}</div>
           )}
           {reclamo.estadoRemito === 'conflicto' && (
-            <span className="text-dark">Ha reportado inconveniente en la confección del remito, espere mientras administración lo libere.</span>
+            <div className="text-dark">Ha reportado inconveniente en la confección del remito, espere mientras administración lo libere.</div>
           )}
-        </p>
+          {reclamo.estadoRemito === 'resuelto' && (
+            <div className="text-dark">Administración ha desbloqueado al cliente por lo cual puede proceder a confeccionar el remito.</div>
+          )}
+        </div>
         <div className="d-flex flex-column">
           {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
             <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
