@@ -20,10 +20,8 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       // Verifica la estructura de los datos recibidos
       console.log('Datos recibidos:', data);
 
-      // Asegurarse de que `reclamos` esté definido antes de intentar acceder a `some`
-      const reclamosFiltrados = data.filter(reclamo => 
-        reclamo.reclamos && reclamo.reclamos.some(subReclamo => subReclamo.estadoRemito === 'conflicto')
-      );
+      // Filtrar directamente en el nivel del reclamo principal
+      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto');
 
       setReclamos(reclamosFiltrados);
     } catch (error) {

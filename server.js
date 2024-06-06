@@ -545,7 +545,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
 
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen, remito } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -558,7 +558,9 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.estado = estado || subReclamo.estado;
             subReclamo.respuesta = respuesta || subReclamo.respuesta;
             subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
-            subReclamo.remito = remito;
+            subReclamo.remito = remito || subReclamo.remito;
+            subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
+            subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
             found = true;
           }
           return subReclamo;
@@ -578,6 +580,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
