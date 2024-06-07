@@ -1,54 +1,10 @@
 [
   {
     "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
-    "mail": "nidaw20449@lapeds.com"
-  },
-  {
-    "Cliente": "YPF SOCIEDAD ANONIMA",
     "mail": ""
   },
   {
-    "Cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
-    "mail": ""
-  },
-  {
-    "Cliente": "DOSIVAC S A",
-    "mail": ""
-  },
-  {
-    "Cliente": "MAROLA ATILIO SRL",
-    "mail": ""
-  },
-  {
-    "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "mail": ""
-  },
-  {
-    "Cliente": "DIMOTEC SA",
-    "mail": ""
-  },
-  {
-    "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
-    "mail": ""
-  },
-  {
-    "Cliente": "SERVIBOM S.A.",
-    "mail": ""
-  },
-  {
-    "Cliente": "TERNIUM ARGENTINA S A",
-    "mail": ""
-  },
-  {
-    "Cliente": "SIMTECH LTDA.",
-    "mail": ""
-  },
-  {
-    "Cliente": "PARANA MEDIO MAQUINAS Y SERVICIOS S.A.",
-    "mail": ""
-  },
-  {
-    "Cliente": "BSI GROUP S.A.S.",
+    "Cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
     "mail": ""
   },
   {
@@ -56,63 +12,7 @@
     "mail": ""
   },
   {
-    "Cliente": "DOSIBOM SRL",
-    "mail": ""
-  },
-  {
-    "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
-    "mail": ""
-  },
-  {
-    "Cliente": "TECNICA DE FLUIDOS SRL",
-    "mail": ""
-  },
-  {
-    "Cliente": "INGENIERIA Y DESARROLLO DE FLUIDOS RM SA DE CV",
-    "mail": ""
-  },
-  {
-    "Cliente": "DOSISUR S.R.L",
-    "mail": ""
-  },
-  {
-    "Cliente": "SAL PARK S R L",
-    "mail": ""
-  },
-  {
-    "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
-    "mail": ""
-  },
-  {
-    "Cliente": "YAC. AREA CUENCA AUSTRAL 1 TIERRA DEL FUEGO",
-    "mail": ""
-  },
-  {
-    "Cliente": "SACDE SOCIEDAD ARGENTINA DE CONSTRUCCION Y DESARROLLO ESTRAT",
-    "mail": ""
-  },
-  {
-    "Cliente": "ORTOLOCHIPI HUGO CARLOS",
-    "mail": ""
-  },
-  {
-    "Cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
-    "mail": ""
-  },
-  {
-    "Cliente": "COMPANIA GENERAL DE COMBUSTIBLES SOCIEDAD ANONIMA",
-    "mail": ""
-  },
-  {
-    "Cliente": "MAQUINAS Y MOTORES SC",
-    "mail": ""
-  },
-  {
-    "Cliente": "ECOLAB ARGENTINA SRL",
-    "mail": ""
-  },
-  {
-    "Cliente": "PROVIN EQUIPOS Y SERVICIOS SA",
+    "Cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
     "mail": ""
   },
   {
@@ -120,63 +20,7 @@
     "mail": ""
   },
   {
-    "Cliente": "GOMEZ ROCO Y CIA S R L",
-    "mail": ""
-  },
-  {
-    "Cliente": "RIMOLO NORBERTO Y ORUETA RAUL SH",
-    "mail": ""
-  },
-  {
-    "Cliente": "AGUAS DE CORRIENTES S.A.",
-    "mail": ""
-  },
-  {
-    "Cliente": "PECOM SERVICIOS ENERGIA S A",
-    "mail": ""
-  },
-  {
-    "Cliente": "HIDROMECANICA LESA SA",
-    "mail": ""
-  },
-  {
-    "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
-    "mail": ""
-  },
-  {
-    "Cliente": "LOPEZ RICARDO GABRIEL",
-    "mail": ""
-  },
-  {
-    "Cliente": "MAROLA ATILIO ROBERTO",
-    "mail": ""
-  },
-  {
-    "Cliente": "WATER TECHNOLOGIES & SOLUTIONS ARGENTINA SC",
-    "mail": ""
-  },
-  {
-    "Cliente": "GAS Y PETROLEO DEL NEUQUEN SA -MEDANITO SA - O&G DEVELOPMENTS LTD SA - UTE SIERR",
-    "mail": ""
-  },
-  {
-    "Cliente": "TROBBIANI DANIEL RAMON",
-    "mail": ""
-  },
-  {
-    "Cliente": "INSUMOS S.R.L.",
-    "mail": ""
-  },
-  {
-    "Cliente": "PPE ARGENTINA SA",
-    "mail": ""
-  },
-  {
-    "Cliente": "CIA ENTRERRIANA DE RODAMIENTOS SA",
-    "mail": ""
-  },
-  {
-    "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
+    "Cliente": "SAL PARK S R L",
     "mail": ""
   },
   {
@@ -185,10 +29,14 @@
   },
   {
     "Cliente": "PRUMINIR S.A.",
-    "mail": "nidaw20449@lapeds.com"
+    "mail": ""
   },
   {
-    "Cliente": "SCHMUKLER ARIEL BENJAMIN",
+    "Cliente": "PARANA MEDIO MAQUINAS Y SERVICIOS S.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "ORTOLOCHIPI HUGO CARLOS",
     "mail": ""
   },
   {
@@ -196,23 +44,11 @@
     "mail": ""
   },
   {
+    "Cliente": "DOSISUR S.R.L",
+    "mail": ""
+  },
+  {
     "Cliente": "TECMEC SRL",
-    "mail": ""
-  },
-  {
-    "Cliente": "MARTINEZ ALEJANDRO LUIS",
-    "mail": ""
-  },
-  {
-    "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
-    "mail": ""
-  },
-  {
-    "Cliente": "GLACCO COMP PETRO SA - ROCH SA - AREAS CHOR PALE AIKE CA BRE MOY",
-    "mail": ""
-  },
-  {
-    "Cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
     "mail": ""
   },
   {
@@ -224,11 +60,67 @@
     "mail": ""
   },
   {
+    "Cliente": "HIDROMECANICA LESA SA",
+    "mail": ""
+  },
+  {
+    "Cliente": "DOSIBOM SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "COMPANIA GENERAL DE COMBUSTIBLES SOCIEDAD ANONIMA",
+    "mail": ""
+  },
+  {
+    "Cliente": "MARTINEZ ALEJANDRO LUIS",
+    "mail": ""
+  },
+  {
+    "Cliente": "GOMEZ ROCO Y CIA S R L",
+    "mail": ""
+  },
+  {
+    "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+    "mail": ""
+  },
+  {
+    "Cliente": "SIMTECH LTDA.",
+    "mail": ""
+  },
+  {
+    "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "INSUMOS S.R.L.",
+    "mail": ""
+  },
+  {
     "Cliente": "CHEVRON ARGENTINA SOCIEDAD DE RESPONSABILIDAD LIMITADA",
     "mail": ""
   },
   {
     "Cliente": "CASA BERNABE S.C.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "MAROLA ATILIO SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
+    "mail": ""
+  },
+  {
+    "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "mail": ""
+  },
+  {
+    "Cliente": "GLACCO COMP PETRO SA - ROCH SA - AREAS CHOR PALE AIKE CA BRE MOY",
     "mail": ""
   },
   {
@@ -240,6 +132,10 @@
     "mail": ""
   },
   {
+    "Cliente": "DIMOTEC SA",
+    "mail": ""
+  },
+  {
     "Cliente": "HIDROCENTRO SERVICIOS SRL",
     "mail": ""
   },
@@ -248,11 +144,23 @@
     "mail": ""
   },
   {
-    "Cliente": "AERATION ARGENTINA S.A.",
+    "Cliente": "MAQUINAS Y MOTORES SC",
     "mail": ""
   },
   {
-    "Cliente": "DOSIVAC DO BRASIL PROJETOS E EC.N.P.J 33.715.551/0001-90",
+    "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "SCHMUKLER ARIEL BENJAMIN",
+    "mail": ""
+  },
+  {
+    "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
+    "mail": ""
+  },
+  {
+    "Cliente": "AERATION ARGENTINA S.A.",
     "mail": ""
   },
   {
@@ -260,15 +168,63 @@
     "mail": ""
   },
   {
-    "Cliente": "YPF SA - SPM ARGENTINA SA - AREA BANDURRIA UTE",
+    "Cliente": "WATER TECHNOLOGIES & SOLUTIONS ARGENTINA SC",
+    "mail": ""
+  },
+  {
+    "Cliente": "ESTISOL S A C I F",
+    "mail": ""
+  },
+  {
+    "Cliente": "YPF SOCIEDAD ANONIMA",
+    "mail": ""
+  },
+  {
+    "Cliente": "E-INTRA S. R. L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "MAROLA ATILIO ROBERTO",
+    "mail": ""
+  },
+  {
+    "Cliente": "BSI GROUP S.A.S.",
+    "mail": ""
+  },
+  {
+    "Cliente": "PINTO AGROALIMENTOS SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "YAC. AREA CUENCA AUSTRAL 1 TIERRA DEL FUEGO",
+    "mail": ""
+  },
+  {
+    "Cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
+    "mail": ""
+  },
+  {
+    "Cliente": "RIMOLO NORBERTO Y ORUETA RAUL SH",
+    "mail": ""
+  },
+  {
+    "Cliente": "AGUAS DE CORRIENTES S.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "LOPEZ RICARDO GABRIEL",
+    "mail": ""
+  },
+  {
+    "Cliente": "GAS Y PETROLEO DEL NEUQUEN SA -MEDANITO SA - O&G DEVELOPMENTS LTD SA - UTE SIERR",
+    "mail": ""
+  },
+  {
+    "Cliente": "SERVIBOM S.A.",
     "mail": ""
   },
   {
     "Cliente": "YPF SA - CIA DE HIDROCARBUROS NO CONVENCIONAL SRL AREA LOMA CAMPANA UTE",
-    "mail": ""
-  },
-  {
-    "Cliente": "SABIC INNOVATIVE PLASTICS ARGENTINA S.R.L.",
     "mail": ""
   },
   {
@@ -277,10 +233,6 @@
   },
   {
     "Cliente": "CGC ENERGIA S. A. U.",
-    "mail": ""
-  },
-  {
-    "Cliente": "PETROFARO SA",
     "mail": ""
   },
   {
@@ -313,6 +265,38 @@
   },
   {
     "Cliente": "METALURGICA COLLA S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "DOSIVAC S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "TECNICA DE FLUIDOS SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "TERNIUM ARGENTINA S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "SACDE SOCIEDAD ARGENTINA DE CONSTRUCCION Y DESARROLLO ESTRAT",
+    "mail": ""
+  },
+  {
+    "Cliente": "ECOLAB ARGENTINA SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "YPF SA - SPM ARGENTINA SA - AREA BANDURRIA UTE",
+    "mail": ""
+  },
+  {
+    "Cliente": "SABIC INNOVATIVE PLASTICS ARGENTINA S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "PETROFARO SA",
     "mail": ""
   }
 ]

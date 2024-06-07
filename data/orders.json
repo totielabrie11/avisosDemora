@@ -7111,7 +7111,7 @@
                 {
                     "Item": 1,
                     "Codigo": "0S015JT-NCA",
-                    "Descripcion": NaN,
+                    "Descripcion": "NaN",
                     "Cantidad": 1,
                     "Fecha_vencida": "2024-06-20 00:00:00",
                     "Inicio": "2024-06-06 00:00:00"
@@ -7371,7 +7371,7 @@
                 {
                     "Item": 1,
                     "Codigo": "0S180VX-MCAH",
-                    "Descripcion": NaN,
+                    "Descripcion": "NaN",
                     "Cantidad": 1,
                     "Fecha_vencida": "2024-06-18 00:00:00",
                     "Inicio": "2024-06-06 00:00:00"
