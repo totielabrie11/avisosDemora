@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
+const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
   const [email, setEmail] = useState('');
   const [deuda, setDeuda] = useState('');
-  const [subject, setSubject] = useState('Deuda a revisar');
   const [message, setMessage] = useState('');
   const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
@@ -20,8 +19,10 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
   }, [reclamo.cliente, fetchEmail]);
 
   useEffect(() => {
-    setMessage(`Estimado cliente ${reclamo.cliente}, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
-  }, [reclamo.cliente]);
+    if (reclamo.estadoRemito === 'conflicto') {
+      setMessage(`Estimado cliente ${reclamo.cliente}, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
+    }
+  }, [reclamo.cliente, reclamo.estadoRemito]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -31,7 +32,7 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
     setLoading(true);
     const formData = new FormData();
     formData.append('to', email);
-    formData.append('subject', subject);
+    formData.append('subject', 'Deuda a revisar');
     formData.append('text', `${message}\n\nMonto de la deuda: ${deuda}\n\n Puede realizar la transferencia en la siguiente cuenta del banco HSBC \n\nTitular: Dosivac S.A. \n\nCUIT: 33-59920506-9\n\nProducto: Cuenta Corriente ARS\n\nCuenta: 0863307074\n\nCBU: 1500040400008633070746\n\nSaludos equipo de soporte administrativo.`);
     if (file) {
       formData.append('file', file);
@@ -75,33 +76,28 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="deuda">
-              <Form.Label>Ingrese monto de la deuda</Form.Label>
-              <Form.Control
-                type="number"
-                value={deuda}
-                onChange={(e) => setDeuda(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="subject">
-              <Form.Label>Asunto</Form.Label>
-              <Form.Control
-                type="text"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                disabled
-              />
-            </Form.Group>
-            <Form.Group controlId="message">
-              <Form.Label>Mensaje</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                disabled
-              />
-            </Form.Group>
+            {reclamo.estadoRemito === 'conflicto' && (
+              <>
+                <Form.Group controlId="deuda">
+                  <Form.Label>Ingrese monto de la deuda</Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={deuda}
+                    onChange={(e) => setDeuda(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group controlId="message">
+                  <Form.Label>Mensaje</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    disabled
+                  />
+                </Form.Group>
+              </>
+            )}
             <Form.Group controlId="file">
               <Form.Label>Adjuntar archivo (opcional)</Form.Label>
               <Form.Control
@@ -124,5 +120,6 @@ const EnvioDeEmailAdministracion = ({ reclamo, token, onSaveEmail, fetchEmail })
   );
 };
 
-export default EnvioDeEmailAdministracion;
+export default EnvioDeEmailVentasContraReclamo;
+
 

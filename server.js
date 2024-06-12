@@ -473,7 +473,7 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje, material, estadoRemito, problemaRemito } = req.body;
+    const { pedido, cliente, estado, prioridad, mensaje, material, estadoRemito, problemaRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior } = req.body;
 
     if (!pedido || !cliente || !estado || !prioridad || !mensaje || !material || !Array.isArray(material)) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
@@ -492,8 +492,13 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
       fecha,
       username,
       material,
-      estadoRemito, // Asegurarse de incluir este campo
-      problemaRemito // Asegurarse de incluir este campo
+      estadoRemito,
+      problemaRemito,
+      pedidoEstado,
+      codigoInterno,
+      cantidad,
+      codigoAnterior,
+      codigoPosterior
     };
 
     let reclamoExistente = reclamos.find((reclamo) => reclamo.pedido === pedido);
@@ -540,8 +545,13 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
         subId: subReclamo.id,
         material: subReclamo.material,
         downloadUrl: subReclamo.downloadUrl,
-        estadoRemito: subReclamo.estadoRemito, // Asegurarse de incluir este campo
-        problemaRemito: subReclamo.problemaRemito // Asegurarse de incluir este campo
+        estadoRemito: subReclamo.estadoRemito,
+        problemaRemito: subReclamo.problemaRemito,
+        pedidoEstado: subReclamo.pedidoEstado, // Asegurarse de incluir este campo
+        codigoInterno: subReclamo.codigoInterno, // Asegurarse de incluir este campo
+        cantidad: subReclamo.cantidad, // Asegurarse de incluir este campo
+        codigoAnterior: subReclamo.codigoAnterior, // Asegurarse de incluir este campo
+        codigoPosterior: subReclamo.codigoPosterior // Asegurarse de incluir este campo
       }))
     );
     res.json(reclamos);
@@ -551,9 +561,10 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   }
 });
 
+
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -564,11 +575,16 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
         reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
           if (subReclamo.id === subId) {
             subReclamo.estado = estado || subReclamo.estado;
-            subReclamo.respuesta = respuesta || subReclamo.respuesta;
+            subReclamo.respuesta = respuesta || '';
             subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
-            subReclamo.remito = remito || subReclamo.remito;
-            subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
-            subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
+            subReclamo.remito = remito || '';
+            subReclamo.problemaRemito = problemaRemito || '';
+            subReclamo.estadoRemito = estadoRemito || '';
+            subReclamo.pedidoEstado = pedidoEstado || '';
+            subReclamo.codigoInterno = codigoInterno || '';
+            subReclamo.cantidad = cantidad || '';
+            subReclamo.codigoAnterior = codigoAnterior || '';
+            subReclamo.codigoPosterior = codigoPosterior || '';
             found = true;
           }
           return subReclamo;
@@ -588,6 +604,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

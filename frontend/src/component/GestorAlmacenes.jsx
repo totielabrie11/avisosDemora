@@ -10,6 +10,7 @@ import { parse, isBefore, startOfDay } from 'date-fns';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeRemito from './EnvioDeRemito';
 import ProblemaRemitoButton from './ProblemaRemitoButton';
+import LiberarPedidoButton from './LiberarPedidoButton';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -255,6 +256,18 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           {reclamo.estadoRemito === 'conflicto' && (
             <div className="text-dark">Ha reportado inconveniente en la confección del remito, espere mientras administración lo libere.</div>
           )}
+          {reclamo.bloqueado === 'crédito' && (
+            <div className="text-dark">Ha reportado un problema de liberación de elementos dentro de este pedido, aguarde mientras ventas lo resuelve.</div>
+          )}
+          {reclamo.pedidoEstado === 'activacionTotal' && (
+            <div className="text-dark">Ha solicitado a ventas la liberación del pedido completo, aguarde hasta que se resuelva para avanzar.</div>
+          )}
+          {reclamo.pedidoEstado === 'activacionParcial' && (
+            <div className="text-dark">Ha solicitado a ventas la activación parcial del pedido, aguarde hasta que se resuelva para avanzar.</div>
+          )}
+          {reclamo.pedidoEstado === 'cambioCodigoInterno' && (
+            <div className="text-dark">Ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.</div>
+          )}
           {reclamo.estadoRemito === 'resuelto' && (
             <div className="text-dark">Administración ha desbloqueado al cliente por lo cual puede proceder a confeccionar el remito.</div>
           )}
@@ -278,10 +291,16 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             token={token}
             onProblemaReportado={handleProblemaReportado}
           />
+          <LiberarPedidoButton
+            reclamo={reclamo}
+            token={token}
+            onProblemaReportado={handleProblemaReportado}
+          />
         </div>
       </div>
     </div>
   );
+  
   
   const reclamosFiltrados = filtrarReclamos();
   console.log('Reclamos filtrados:', reclamosFiltrados);
@@ -441,4 +460,3 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 };
 
 export default GestorAlmacenes;
-

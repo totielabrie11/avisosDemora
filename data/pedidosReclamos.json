@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "id": 1,
+    "pedido": "35428",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "reclamos": [
+      {
+        "id": "sub-1718213765138",
+        "estado": "vencido",
+        "prioridad": "Urgente",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "12-06-2024 a las 14:36 hs",
+        "username": "LeonardoD",
+        "material": [
+          {
+            "codigo": "R19101T-B020",
+            "cantidad": 3,
+            "descripcion": "DEC 10/70 \"REC\" MOT TRIF C/EMPAQ. ASIENTOS ELASTOMERO",
+            "fechaVencimiento": "12/04/2023"
+          }
+        ],
+        "pedidoEstado": "",
+        "codigoAnterior": "",
+        "codigoPosterior": "",
+        "respuesta": "",
+        "remito": "",
+        "problemaRemito": "",
+        "estadoRemito": "",
+        "codigoInterno": "",
+        "cantidad": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": "38588",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "reclamos": [
+      {
+        "id": "sub-1718213851347",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "12-06-2024 a las 14:37 hs",
+        "username": "LeonardoD",
+        "material": [
+          {
+            "codigo": "Q142403652",
+            "cantidad": "1",
+            "descripcion": "EQ 500L DE 20/140 (X2) TANQUE INOX",
+            "fechaVencimiento": "17/05/2024"
+          }
+        ],
+        "pedidoEstado": "",
+        "problemaRemito": "crédito",
+        "estadoRemito": "conflicto"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": "37991",
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "reclamos": [
+      {
+        "id": "sub-1718213944447",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "12-06-2024 a las 14:39 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "B1693/1",
+            "cantidad": "4",
+            "descripcion": "DISTRIBUIDOR DEN/S      (BIELA S",
+            "fechaVencimiento": "20/05/2024"
+          },
+          {
+            "codigo": "0161010-AT20",
+            "cantidad": "5",
+            "descripcion": "DEN/S 10 - CARRERA RED-BAJA FREC.C/EMPAQ. ASIENTOS PTFE",
+            "fechaVencimiento": "20/05/2024"
+          }
+        ],
+        "pedidoEstado": "",
+        "codigoInterno": "",
+        "cantidad": "",
+        "respuesta": "",
+        "remito": "",
+        "problemaRemito": "",
+        "estadoRemito": "",
+        "codigoAnterior": "",
+        "codigoPosterior": ""
+      }
+    ]
+  }
+]

@@ -3,7 +3,6 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserState from './UserState';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
-import EnvioDeEmailAdministracion from './EnvioDeEmailAdministracion';
 
 const VistaAdministracion = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -34,18 +33,6 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     fetchReclamos();
   }, [fetchReclamos]);
 
-  const fetchEmail = async (cliente) => {
-    try {
-      const response = await axios.get(`http://localhost:3000/api/v1/getEmail?cliente=${cliente}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return response.data.email || '';
-    } catch (error) {
-      console.error('Error fetching email:', error);
-      return '';
-    }
-  };
-
   const handleVerDetalle = reclamo => {
     setSelectedReclamo(reclamo);
     setShowDetalleModal(true);
@@ -72,17 +59,6 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
         alert('No se pudo desbloquear al cliente. Por favor, intente de nuevo.');
       }
     }
-  };
-
-  const handleSaveEmail = (reclamoId, newEmail) => {
-    setReclamos(prevReclamos =>
-      prevReclamos.map(r => {
-        if (r.id === reclamoId) {
-          return { ...r, email: newEmail };
-        }
-        return r;
-      })
-    );
   };
 
   if (role !== 'administrativo') {
@@ -118,12 +94,6 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
           <button className="btn btn-primary mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
             Cliente Desbloqueado
           </button>
-          <EnvioDeEmailAdministracion 
-            reclamo={reclamo} 
-            token={token} 
-            onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)} 
-            fetchEmail={fetchEmail} 
-          />
         </div>
       </div>
     </div>
@@ -162,4 +132,3 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 };
 
 export default VistaAdministracion;
-

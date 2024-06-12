@@ -4,6 +4,7 @@ import { parse, isBefore, startOfDay } from 'date-fns';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeEmail from './EnvioDeEmail';
+import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -162,6 +163,34 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     );
   };
 
+  const handleHecho = async (reclamo) => {
+    const updatedReclamo = {
+      ...reclamo,
+      pedidoEstado: '',
+      codigoAnterior: '',
+      codigoPosterior: '',
+      codigoInterno: '',
+      cantidad: '',
+      respuesta: ''
+    };
+
+    try {
+      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.status === 200) {
+        setReclamos(prev =>
+          prev.map(r => (r.id === reclamo.id ? { ...r, ...updatedReclamo } : r))
+        );
+        setSelectedReclamo(null);
+      }
+    } catch (error) {
+      console.error('Error actualizando el reclamo:', error);
+      alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
+    }
+  };
+
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;
   }
@@ -229,6 +258,27 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     </strong>
                   </small>
                 </p>
+                {reclamo.estadoRemito === 'conflicto' && (
+                  <div className="text-warning">Este remito está en conflicto. Comuníquese con administración para resolver.</div>
+                )}
+                {reclamo.pedidoEstado === 'cambioCodigoInterno' && (
+                  <div className="text-warning">
+                    Han solicitado desde almacenes, la corrección del código {reclamo.codigoAnterior} a el siguiente código {reclamo.codigoPosterior}
+                    <button className="btn btn-sm btn-light ms-2" onClick={() => handleHecho(reclamo)}>Hecho</button>
+                  </div>
+                )}
+                {reclamo.pedidoEstado === 'activacionTotal' && (
+                  <div className="text-warning">
+                    Han solicitado desde almacenes, la activación del pedido total
+                    <button className="btn btn-sm btn-light ms-2" onClick={() => handleHecho(reclamo)}>Hecho</button>
+                  </div>
+                )}
+                {reclamo.pedidoEstado === 'activacionParcial' && (
+                  <div className="text-warning">
+                    Han solicitado desde almacenes, la activación del pedido parcial {reclamo.codigoInterno} {reclamo.cantidad}
+                    <button className="btn btn-sm btn-light ms-2" onClick={() => handleHecho(reclamo)}>Hecho</button>
+                  </div>
+                )}
                 {reclamo.estado === 'remito enviado' && (
                   <>
                     <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" rel="noopener noreferrer" download>Descargar Remito</a>
@@ -236,12 +286,21 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                 )}
                 <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
                 <button className="btn btn-danger w-100 d-block mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
-                <EnvioDeEmail 
-                  reclamo={reclamo} 
-                  token={token} 
-                  onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)} 
-                  fetchEmail={fetchEmail} 
-                />
+                {reclamo.estadoRemito === 'conflicto' ? (
+                  <EnvioDeEmailVentasContraReclamo
+                    reclamo={reclamo}
+                    token={token}
+                    onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)}
+                    fetchEmail={fetchEmail}
+                  />
+                ) : (
+                  <EnvioDeEmail
+                    reclamo={reclamo}
+                    token={token}
+                    onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)}
+                    fetchEmail={fetchEmail}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -260,3 +319,4 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 };
 
 export default ManejadorReclamosVentas;
+
