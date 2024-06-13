@@ -11,6 +11,7 @@ import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeRemito from './EnvioDeRemito';
 import ProblemaRemitoButton from './ProblemaRemitoButton';
 import LiberarPedidoButton from './LiberarPedidoButton';
+import MostrarTareasPendientes from './MostrarTareasPendientes';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -27,6 +28,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [showDetalleModal, setShowDetalleModal] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
   const [showEnvioModal, setShowEnvioModal] = useState(false);
+  const [tareasPendientes, setTareasPendientes] = useState([]);
 
   const generateId = () => {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -70,6 +72,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 
         setReclamos(reclamosConId);
         actualizarContadores(reclamosConId);
+        // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
+        const tareas = reclamosConId.filter(r => r.pedidoEstado === '' && r.respuesta);
+        setTareasPendientes(tareas);
       } catch (error) {
         console.error('Error fetching reclamos:', error);
         setReclamos([]); // Asegúrate de que `reclamos` no sea undefined
@@ -111,6 +116,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setFechaEntrega(null);
+          // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
+          const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
+          setTareasPendientes(tareas);
         }
       } catch (error) {
         console.error('Error enviando la respuesta:', error);
@@ -134,7 +142,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     console.log('Reclamo seleccionado para ver detalle:', reclamo);
     setSelectedReclamo(reclamo);
     setShowDetalleModal(true);
-    console.log(reclamo)
+    console.log(reclamo);
   };
 
   const handleCategoriaClick = categoria => {
@@ -193,6 +201,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setShowEnvioModal(false);
+          // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
+          const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
+          setTareasPendientes(tareas);
         }
       } catch (error) {
         console.error('Error actualizando el reclamo:', error);
@@ -207,6 +218,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     );
     setReclamos(updatedReclamos);
     actualizarContadores(updatedReclamos);
+    // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
+    const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
+    setTareasPendientes(tareas);
   };
 
   const ReclamoCard = ({ reclamo }) => (
@@ -268,8 +282,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           {reclamo.pedidoEstado === 'cambioCodigoInterno' && (
             <div className="text-dark">Ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.</div>
           )}
-          {reclamo.estadoRemito === 'resuelto' && (
-            <div className="text-dark">Administración ha desbloqueado al cliente por lo cual puede proceder a confeccionar el remito.</div>
+          {reclamo.pedidoEstado === '' && (
+            <div className="text-dark">Tarea Finalizada</div>
           )}
         </div>
         <div className="d-flex flex-column">
@@ -300,14 +314,14 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       </div>
     </div>
   );
-  
-  
+
   const reclamosFiltrados = filtrarReclamos();
   console.log('Reclamos filtrados:', reclamosFiltrados);
 
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
+      < MostrarTareasPendientes tareasPendientes={tareasPendientes} />
       <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
       <div className="mb-4">
         <h3>Prioridad:</h3>
@@ -460,3 +474,4 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 };
 
 export default GestorAlmacenes;
+

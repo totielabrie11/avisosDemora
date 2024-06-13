@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeEmail from './EnvioDeEmail';
 import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
+import MostrarTareasPendientes from './MostrarTareasPendientes';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -197,6 +198,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 
   return (
     <div className="container mt-5">
+      < MostrarTareasPendientes token={token} username={username} role={role}/>
       <h1>En situación de Reclamo</h1>
       <div className="mb-4">
         <div className="row text-center">
@@ -319,4 +321,3 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 };
 
 export default ManejadorReclamosVentas;
-
