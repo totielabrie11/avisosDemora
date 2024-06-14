@@ -184,13 +184,16 @@ const writeHistoricoReclamos = async (historico) => {
 
 app.get('/api/v1/historicoReclamos', authenticateToken, (req, res) => {
   try {
+    const pedidoId = req.query.pedidoId;
     const historico = readHistoricoReclamos();
-    res.json(historico);
+    const historialFiltrado = historico.filter(entry => entry.pedido == pedidoId);
+    res.json(historialFiltrado);
   } catch (error) {
     console.error('Error obteniendo el historial de reclamos:', error.message);
     res.status(500).json({ error: 'Error obteniendo el historial de reclamos', message: error.message });
   }
 });
+
 
 app.post('/api/v1/historicoReclamos', authenticateToken, async (req, res) => {
   try {
@@ -660,11 +663,11 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.remito = remito || subReclamo.remito;
             subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
             subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
-            subReclamo.pedidoEstado = pedidoEstado || subReclamo.pedidoEstado;
-            subReclamo.codigoInterno = codigoInterno || subReclamo.codigoInterno;
-            subReclamo.cantidad = cantidad || subReclamo.cantidad;
-            subReclamo.codigoAnterior = codigoAnterior || subReclamo.codigoAnterior;
-            subReclamo.codigoPosterior = codigoPosterior || subReclamo.codigoPosterior;
+            subReclamo.pedidoEstado = pedidoEstado !== undefined ? pedidoEstado : subReclamo.pedidoEstado;
+            subReclamo.codigoInterno = codigoInterno !== undefined ? codigoInterno : subReclamo.codigoInterno;
+            subReclamo.cantidad = cantidad !== undefined ? cantidad : subReclamo.cantidad;
+            subReclamo.codigoAnterior = codigoAnterior !== undefined ? codigoAnterior : subReclamo.codigoAnterior;
+            subReclamo.codigoPosterior = codigoPosterior !== undefined ? codigoPosterior : subReclamo.codigoPosterior;
             mensaje = subReclamo.mensaje;
             fecha = subReclamo.fecha;
             found = true;

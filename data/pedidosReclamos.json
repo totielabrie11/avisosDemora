@@ -6,7 +6,7 @@
     "reclamos": [
       {
         "id": "sub-1718386001400",
-        "estado": "respondido",
+        "estado": "remito enviado",
         "prioridad": "Normal",
         "mensaje": "Vamos a poder cumplir con este pedido?",
         "fecha": "14-06-2024 a las 14:26 hs",
@@ -43,8 +43,72 @@
             "fechaVencimiento": "14/06/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 5/7/2024",
-        "usernameAlmacen": "FernanditoG"
+        "respuesta": "Remito enviado con número 16",
+        "usernameAlmacen": "FernanditoG",
+        "remito": "16",
+        "downloadUrl": "http://localhost:3000/document/1718388790509-Comprobante_de_Deuda.pdf"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 38494,
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "reclamos": [
+      {
+        "id": "sub-1718388585774",
+        "estado": "remito enviado",
+        "prioridad": "Regular",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "14-06-2024 a las 15:09 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "014061T-MEHH",
+            "cantidad": 10,
+            "descripcion": "DE-AP 06/140 MOT TRIF EMPAQ. \"HARD TYPE\"",
+            "fechaVencimiento": "06/05/2024"
+          }
+        ],
+        "respuesta": "Remito enviado con número 15",
+        "usernameAlmacen": "FernanditoG",
+        "pedidoEstado": "",
+        "problemaRemito": "crédito",
+        "estadoRemito": "resuelto",
+        "codigoAnterior": "",
+        "codigoPosterior": "",
+        "remito": "15",
+        "downloadUrl": "http://localhost:3000/document/1718388780296-Comprobante_de_Deuda.pdf",
+        "codigoInterno": "",
+        "cantidad": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 38519,
+    "cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
+    "reclamos": [
+      {
+        "id": "sub-1718388924284",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "Tenemos una demora de entrega en este pedido.",
+        "fecha": "14-06-2024 a las 15:15 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "A222760-110OI",
+            "cantidad": 2,
+            "descripcion": "BOQUILLA DE INYECCION C/BRIDA 1 1/2\" # 600 HASTA Ø10\"",
+            "fechaVencimiento": "10/06/2024"
+          }
+        ],
+        "pedidoEstado": "",
+        "codigoInterno": "",
+        "cantidad": "",
+        "codigoAnterior": "",
+        "codigoPosterior": ""
       }
     ]
   }
