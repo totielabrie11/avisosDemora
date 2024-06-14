@@ -660,11 +660,11 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.remito = remito || subReclamo.remito;
             subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
             subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
-            subReclamo.pedidoEstado = pedidoEstado || '';
-            subReclamo.codigoInterno = codigoInterno || '';
-            subReclamo.cantidad = cantidad || '';
-            subReclamo.codigoAnterior = codigoAnterior || '';
-            subReclamo.codigoPosterior = codigoPosterior || '';
+            subReclamo.pedidoEstado = pedidoEstado || subReclamo.pedidoEstado;
+            subReclamo.codigoInterno = codigoInterno || subReclamo.codigoInterno;
+            subReclamo.cantidad = cantidad || subReclamo.cantidad;
+            subReclamo.codigoAnterior = codigoAnterior || subReclamo.codigoAnterior;
+            subReclamo.codigoPosterior = codigoPosterior || subReclamo.codigoPosterior;
             mensaje = subReclamo.mensaje;
             fecha = subReclamo.fecha;
             found = true;
@@ -679,6 +679,8 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la activación parcial del pedido, aguarde hasta que se resuelva para avanzar.`;
               } else if (pedidoEstado === 'cambioCodigoInterno') {
                 nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.`;
+              } else if (estado === 'respondido' && respuesta) {
+                nuevoMensaje = `El operador de almacén ${usernameAlmacen} informa que podrá preparar el pedido para la fecha ${respuesta}.`;
               }
 
               const nuevoHistoricoReclamo = {
@@ -694,9 +696,9 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 remito: subReclamo.remito,
                 problemaRemito: subReclamo.problemaRemito,
                 estadoRemito: subReclamo.estadoRemito,
-                pedidoEstado: '',
-                codigoInterno: '',
-                cantidad: '',
+                pedidoEstado: subReclamo.pedidoEstado,
+                codigoInterno: subReclamo.codigoInterno,
+                cantidad: subReclamo.cantidad,
                 codigoAnterior: subReclamo.codigoAnterior,
                 codigoPosterior: subReclamo.codigoPosterior
               };

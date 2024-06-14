@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sub-1718386001400",
+    "pedido": 38800,
+    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "estado": "no vencido",
+    "mensaje": "Vamos a poder cumplir con este pedido?",
+    "fecha": "14-06-2024 a las 14:26 hs",
+    "timestamp": "14-06-2024 a las 14:26 hs"
+  },
+  {
+    "id": "sub-1718386001400",
+    "pedido": 38800,
+    "cliente": "ORTOLOCHIPI HUGO CARLOS",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 5/7/2024.",
+    "fecha": "14-06-2024 a las 14:26 hs",
+    "timestamp": "14-06-2024 14:26:49",
+    "respuesta": "Se entregará en la fecha 5/7/2024",
+    "usernameAlmacen": "FernanditoG"
+  }
+]
