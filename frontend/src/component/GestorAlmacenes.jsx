@@ -12,6 +12,7 @@ import EnvioDeRemito from './EnvioDeRemito';
 import ProblemaRemitoButton from './ProblemaRemitoButton';
 import LiberarPedidoButton from './LiberarPedidoButton';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
+import HistorialReclamos from './HistorialReclamos';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -29,6 +30,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
   const [showEnvioModal, setShowEnvioModal] = useState(false);
   const [tareasPendientes, setTareasPendientes] = useState([]);
+  const [showHistorialModal, setShowHistorialModal] = useState(false);
+  const [pedidoId, setPedidoId] = useState(null);
 
   const generateId = () => {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -72,12 +75,11 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 
         setReclamos(reclamosConId);
         actualizarContadores(reclamosConId);
-        // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
         const tareas = reclamosConId.filter(r => r.pedidoEstado === '' && r.respuesta);
         setTareasPendientes(tareas);
       } catch (error) {
         console.error('Error fetching reclamos:', error);
-        setReclamos([]); // Asegúrate de que `reclamos` no sea undefined
+        setReclamos([]);
       }
     };
 
@@ -116,7 +118,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setFechaEntrega(null);
-          // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
           const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
           setTareasPendientes(tareas);
         }
@@ -201,7 +202,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setShowEnvioModal(false);
-          // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
           const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
           setTareasPendientes(tareas);
         }
@@ -218,7 +218,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
     );
     setReclamos(updatedReclamos);
     actualizarContadores(updatedReclamos);
-    // Actualizar tareas pendientes solo si `pedidoEstado` es un string vacío y el reclamo tiene `respuesta`
     const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
     setTareasPendientes(tareas);
   };
@@ -313,11 +312,13 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             token={token}
             onProblemaReportado={handleProblemaReportado}
           />
+          <button className="btn btn-info mb-2" onClick={() => { setPedidoId(reclamo.pedido); setShowHistorialModal(true); }}>
+            Ver Historial
+          </button>
         </div>
       </div>
     </div>
   );
-  
 
   const reclamosFiltrados = filtrarReclamos();
   console.log('Reclamos filtrados:', reclamosFiltrados);
@@ -468,6 +469,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         </Modal.Footer>
       </Modal>
 
+      <HistorialReclamos pedidoId={pedidoId} token={token} showModal={showHistorialModal} handleClose={() => setShowHistorialModal(false)} />
+
       <VistaDetalleAlmacen
         show={showDetalleModal}
         onHide={() => setShowDetalleModal(false)}
@@ -478,4 +481,5 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 };
 
 export default GestorAlmacenes;
+
 

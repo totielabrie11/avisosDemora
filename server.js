@@ -51,6 +51,7 @@ const filePaths = {
   users: path.join(process.cwd(), 'data/us.json'),
   document: path.join(process.cwd(), 'data/document'),
   historico: path.join(process.cwd(), 'data/datosHistoricos.json'),
+  historicoReclamos: path.join(process.cwd(), 'data/historicoReclamos.json'),
   mails: path.join(process.cwd(), 'data/dbMails.json'),
 };
 
@@ -68,6 +69,9 @@ const initializeFiles = () => {
   }
   if (!fs.existsSync(filePaths.historico)) {
     fs.writeFileSync(filePaths.historico, '[]', 'utf8');
+  }
+  if (!fs.existsSync(filePaths.historicoReclamos)) {
+    fs.writeFileSync(filePaths.historicoReclamos, '[]', 'utf8');
   }
   if (!fs.existsSync(filePaths.mails)) {
     fs.writeFileSync(filePaths.mails, '[]', 'utf8');
@@ -158,6 +162,65 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+// Rutas para el historial de reclamos
+const readHistoricoReclamos = () => {
+  try {
+    return JSON.parse(fs.readFileSync(filePaths.historicoReclamos, 'utf8'));
+  } catch (error) {
+    console.error('Error leyendo historicoReclamos.json:', error.message, error.stack);
+    return [];
+  }
+};
+
+const writeHistoricoReclamos = async (historico) => {
+  try {
+    await fs.promises.writeFile(filePaths.historicoReclamos, JSON.stringify(historico, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error escribiendo historicoReclamos.json:', error.message);
+    throw error;
+  }
+};
+
+app.get('/api/v1/historicoReclamos', authenticateToken, (req, res) => {
+  try {
+    const historico = readHistoricoReclamos();
+    res.json(historico);
+  } catch (error) {
+    console.error('Error obteniendo el historial de reclamos:', error.message);
+    res.status(500).json({ error: 'Error obteniendo el historial de reclamos', message: error.message });
+  }
+});
+
+app.post('/api/v1/historicoReclamos', authenticateToken, async (req, res) => {
+  try {
+    const { id, pedido, cliente, estado, mensaje, fecha } = req.body;
+
+    if (!id || !pedido || !cliente || !estado || !mensaje || !fecha) {
+      return res.status(400).json({ error: 'Faltan campos obligatorios' });
+    }
+
+    const historico = readHistoricoReclamos();
+
+    const nuevoRegistro = {
+      id,
+      pedido,
+      cliente,
+      estado,
+      mensaje,
+      fecha,
+      timestamp: moment().format('DD-MM-YYYY HH:mm:ss')
+    };
+
+    historico.push(nuevoRegistro);
+    await writeHistoricoReclamos(historico);
+
+    res.status(201).json(nuevoRegistro);
+  } catch (error) {
+    console.error('Error guardando el historial de reclamos:', error.message, error.stack);
+    res.status(500).json({ error: 'Error guardando el historial de reclamos', message: error.message });
+  }
+});
 
 app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
   const { to, subject, text } = req.body;
@@ -518,6 +581,20 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
 
     await writeReclamos(reclamos);
 
+    // Agregar al historial de reclamos
+    const historicoReclamos = readHistoricoReclamos();
+    const nuevoHistoricoReclamo = {
+      id: nuevoSubReclamo.id,
+      pedido,
+      cliente,
+      estado,
+      mensaje,
+      fecha,
+      timestamp: nuevoSubReclamo.fecha
+    };
+    historicoReclamos.push(nuevoHistoricoReclamo);
+    await writeHistoricoReclamos(historicoReclamos);
+
     res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoSubReclamo });
   } catch (err) {
     console.error('Error al recibir el reclamo:', err.message, err.stack);
@@ -561,7 +638,6 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   }
 });
 
-
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
   const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior } = req.body;
@@ -569,23 +645,64 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   try {
     let reclamos = await readReclamos();
     let found = false;
+    let pedido, cliente, mensaje, fecha;
 
     reclamos = reclamos.map(reclamo => {
       if (reclamo.id === parseInt(id)) {
+        pedido = reclamo.pedido;
+        cliente = reclamo.cliente;
+
         reclamo.reclamos = reclamo.reclamos.map(subReclamo => {
           if (subReclamo.id === subId) {
             subReclamo.estado = estado || subReclamo.estado;
-            subReclamo.respuesta = respuesta || '';
+            subReclamo.respuesta = respuesta || subReclamo.respuesta;
             subReclamo.usernameAlmacen = usernameAlmacen || subReclamo.usernameAlmacen;
-            subReclamo.remito = remito || '';
-            subReclamo.problemaRemito = problemaRemito || '';
-            subReclamo.estadoRemito = estadoRemito || '';
+            subReclamo.remito = remito || subReclamo.remito;
+            subReclamo.problemaRemito = problemaRemito || subReclamo.problemaRemito;
+            subReclamo.estadoRemito = estadoRemito || subReclamo.estadoRemito;
             subReclamo.pedidoEstado = pedidoEstado || '';
             subReclamo.codigoInterno = codigoInterno || '';
             subReclamo.cantidad = cantidad || '';
             subReclamo.codigoAnterior = codigoAnterior || '';
             subReclamo.codigoPosterior = codigoPosterior || '';
+            mensaje = subReclamo.mensaje;
+            fecha = subReclamo.fecha;
             found = true;
+
+            // Agregar al historial de reclamos
+            (async () => {
+              const historicoReclamos = await readHistoricoReclamos();
+              let nuevoMensaje = subReclamo.mensaje;
+              if (pedidoEstado === 'activacionTotal') {
+                nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la liberación del pedido completo, aguarde hasta que se resuelva para avanzar.`;
+              } else if (pedidoEstado === 'activacionParcial') {
+                nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la activación parcial del pedido, aguarde hasta que se resuelva para avanzar.`;
+              } else if (pedidoEstado === 'cambioCodigoInterno') {
+                nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.`;
+              }
+
+              const nuevoHistoricoReclamo = {
+                id: subId,
+                pedido,
+                cliente,
+                estado: subReclamo.estado,
+                mensaje: nuevoMensaje,
+                fecha: subReclamo.fecha,
+                timestamp: moment().format('DD-MM-YYYY HH:mm:ss'),
+                respuesta: subReclamo.respuesta,
+                usernameAlmacen: subReclamo.usernameAlmacen,
+                remito: subReclamo.remito,
+                problemaRemito: subReclamo.problemaRemito,
+                estadoRemito: subReclamo.estadoRemito,
+                pedidoEstado: '',
+                codigoInterno: '',
+                cantidad: '',
+                codigoAnterior: subReclamo.codigoAnterior,
+                codigoPosterior: subReclamo.codigoPosterior
+              };
+              historicoReclamos.push(nuevoHistoricoReclamo);
+              await writeHistoricoReclamos(historicoReclamos);
+            })();
           }
           return subReclamo;
         });
@@ -598,12 +715,14 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     }
 
     await writeReclamos(reclamos);
+
     res.status(200).json({ message: 'Reclamo actualizado exitosamente!' });
   } catch (error) {
     console.error('Error al procesar la solicitud:', error);
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 
 app.listen(PORT, () => {
