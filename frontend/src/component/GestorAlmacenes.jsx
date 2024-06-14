@@ -282,8 +282,11 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           {reclamo.pedidoEstado === 'cambioCodigoInterno' && (
             <div className="text-dark">Ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.</div>
           )}
+          {reclamo.estadoRemito === 'resuelto' && (
+            <div className="text-dark">Tarea finalizada por administración</div>
+          )}
           {reclamo.pedidoEstado === '' && (
-            <div className="text-dark">Tarea Finalizada</div>
+            <div className="text-dark">Tarea finalizada por ventas</div>
           )}
         </div>
         <div className="d-flex flex-column">
@@ -314,6 +317,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       </div>
     </div>
   );
+  
 
   const reclamosFiltrados = filtrarReclamos();
   console.log('Reclamos filtrados:', reclamosFiltrados);

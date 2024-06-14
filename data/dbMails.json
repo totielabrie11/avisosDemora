@@ -302,5 +302,17 @@
   {
     "Cliente": "METALURGICA COLLA S A",
     "mail": ""
+  },
+  {
+    "Cliente": "REPARACIONES VARIAS **** NO REMITIR ***** PRUEBA",
+    "mail": ""
+  },
+  {
+    "Cliente": "FALMET S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "ARGENCRAFT S.A.",
+    "mail": ""
   }
 ]
