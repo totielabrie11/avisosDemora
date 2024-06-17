@@ -136,7 +136,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
       codigoPosterior: '',
       codigoInterno: '',
       cantidad: '',
-      respuesta: ''
+      respuesta: `El operador ${username} ha procedido con la solicitud de almacenes.`,
+      usernameAlmacen: username
     };
 
     try {

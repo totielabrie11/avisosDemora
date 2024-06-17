@@ -676,7 +676,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             // Agregar al historial de reclamos
             (async () => {
               const historicoReclamos = await readHistoricoReclamos();
-              let nuevoMensaje = subReclamo.mensaje;
+              let nuevoMensaje = '';
 
               if (pedidoEstado === 'activacionTotal') {
                 nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la liberación del pedido completo, aguarde hasta que se resuelva para avanzar.`;
@@ -692,6 +692,8 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `El operador ${usernameAlmacen} informa que existe un inconveniente al preparar el remito. Tipo de problema: ${problemaRemito}.`;
               } else if (estado === 'cerrado') {
                 nuevoMensaje = `El usuario ${usernameAlmacen} ha dado por cerrado el reclamo.`;
+              } else if (pedidoEstado === '') {
+                nuevoMensaje = `El operador ${usernameAlmacen} ha procedido con la solicitud de almacenes.`;
               }
 
               const nuevoHistoricoReclamo = {
