@@ -65,6 +65,19 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
+      // Registrar en el historial de reclamos
+      const historicoData = {
+        id: reclamo.subId,
+        pedido: reclamo.pedido,
+        cliente: reclamo.cliente,
+        estado: 'email enviado',
+        mensaje: `Correo enviado a ${email}`,
+        fecha: reclamo.fecha
+      };
+      await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
       await guardarCorreo(); // Guardar el correo solo después de enviar
 
       alert('Correo enviado con éxito');

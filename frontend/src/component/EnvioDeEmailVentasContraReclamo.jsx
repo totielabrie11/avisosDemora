@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button, Form } from 'react-bootstrap';
+import moment from 'moment';
 
 const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
   const [email, setEmail] = useState('');
@@ -45,11 +46,25 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
           'Authorization': `Bearer ${token}`
         }
       });
+
+      // Registrar en el historial de reclamos
+      const historicoData = {
+        id: reclamo.subId,
+        pedido: reclamo.pedido,
+        cliente: reclamo.cliente,
+        estado: 'email enviado',
+        mensaje: `Correo enviado a ${email} con deuda pendiente`,
+        fecha: moment().format('DD-MM-YYYY HH:mm:ss')
+      };
+      await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
       onSaveEmail(email);
       alert('Correo enviado exitosamente');
       setShow(false);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error enviando el correo:', error);
       alert('Error enviando el correo. Por favor, intente de nuevo.');
     } finally {
       setLoading(false);
@@ -121,5 +136,3 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
 };
 
 export default EnvioDeEmailVentasContraReclamo;
-
-

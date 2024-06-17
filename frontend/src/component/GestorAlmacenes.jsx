@@ -306,7 +306,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             reclamo={reclamo}
             token={token}
             onProblemaReportado={handleProblemaReportado}
+            username={username}  // Pasamos el nombre del usuario logueado
           />
+
           <LiberarPedidoButton
             reclamo={reclamo}
             token={token}

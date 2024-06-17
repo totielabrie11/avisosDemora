@@ -1,44 +1,52 @@
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { Button, Modal, Form } from 'react-bootstrap';
 
-const ProblemaRemitoButton = ({ reclamo, token, onProblemaReportado }) => {
+const ProblemaRemitoButton = ({ reclamo, token, onProblemaReportado, username }) => {
   const [show, setShow] = useState(false);
-  const [tipoProblema, setTipoProblema] = useState('');
+  const [problemaRemito, setProblemaRemito] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = async () => {
-    try {
-      const updatedReclamo = {
-        ...reclamo,
-        problemaRemito: tipoProblema,
-        estadoRemito: 'conflicto'
-      };
+  const handleProblemaRemitoChange = (e) => {
+    setProblemaRemito(e.target.value);
+  };
 
-      const response = await axios.put(
-        `http://localhost:3000/api/v1/reclamos/${reclamo.id}`,
-        updatedReclamo,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  const handleReportarProblema = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, {
+        estadoRemito: 'conflicto',
+        problemaRemito: problemaRemito,
+        subId: reclamo.subId,
+        usernameAlmacen: username,  // Aquí usamos el nombre del usuario logueado
+      }, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       if (response.status === 200) {
+        const updatedReclamo = {
+          ...reclamo,
+          estadoRemito: 'conflicto',
+          problemaRemito: problemaRemito,
+        };
         onProblemaReportado(updatedReclamo);
         handleClose();
       }
     } catch (error) {
       console.error('Error reportando problema con remito:', error);
+      alert('No se pudo reportar el problema. Por favor, intente de nuevo.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <Button variant="light" onClick={handleShow}>
-        Problema con el Remito
+      <Button variant="warning" onClick={handleShow}>
+        Reportar Problema con Remito
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -46,28 +54,23 @@ const ProblemaRemitoButton = ({ reclamo, token, onProblemaReportado }) => {
           <Modal.Title>Reportar Problema con Remito</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="mb-3">
-            <label htmlFor="tipoProblema" className="form-label">
-              Tipo de Problema
-            </label>
-            <select
-              id="tipoProblema"
-              className="form-select"
-              value={tipoProblema}
-              onChange={(e) => setTipoProblema(e.target.value)}
-            >
-              <option value="">Seleccione un tipo de problema</option>
-              <option value="crédito">Crédito</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
+          <Form>
+            <Form.Group controlId="problemaRemito">
+              <Form.Label>Descripción del Problema</Form.Label>
+              <Form.Control
+                type="text"
+                value={problemaRemito}
+                onChange={handleProblemaRemitoChange}
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleSubmit} disabled={!tipoProblema}>
-            Enviar
+          <Button variant="primary" onClick={handleReportarProblema} disabled={loading}>
+            {loading ? 'Reportando...' : 'Reportar Problema'}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -76,10 +79,4 @@ const ProblemaRemitoButton = ({ reclamo, token, onProblemaReportado }) => {
 };
 
 export default ProblemaRemitoButton;
-
-
-
-
-
-
 
