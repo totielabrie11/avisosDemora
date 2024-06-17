@@ -6,6 +6,7 @@ import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeEmail from './EnvioDeEmail';
 import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
+import CerrarReclamoButton from './CerrarReclamoButton'; // Importa el nuevo botón
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -73,43 +74,6 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     }
   };
 
-  const cerrarReclamo = async (reclamo) => {
-    const remito = prompt("Indique número de remito que cierra el reclamo:");
-    if (!remito) {
-      alert("No se ingresó ningún número de remito.");
-      return;
-    }
-
-    const remitoNumero = Number(remito);
-    if (isNaN(remitoNumero)) {
-      alert("El valor ingresado no es un número válido.");
-      return;
-    }
-
-    const updatedReclamo = {
-      estado: 'cerrado',
-      respuesta: `Reclamo cerrado con remito número: ${remitoNumero}`,
-      subId: reclamo.subId
-    };
-
-    try {
-      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-
-      if (response.status === 200) {
-        setReclamos(prev =>
-          prev.map(r => (r.id === reclamo.id ? { ...r, ...updatedReclamo } : r))
-        );
-        setSelectedReclamo(null);
-        alert("Reclamo cerrado exitosamente");
-      }
-    } catch (error) {
-      console.error('Error cerrando el reclamo:', error);
-      alert('No se pudo cerrar el reclamo. Por favor, intente de nuevo.');
-    }
-  };
-
   const handleCategoriaClick = (categoria) => {
     setCategoriaSeleccionada(categoria);
   };
@@ -174,12 +138,12 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
       cantidad: '',
       respuesta: ''
     };
-  
+
     try {
       const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
         headers: { Authorization: `Bearer ${token}` }
       });
-  
+
       if (response.status === 200) {
         setReclamos(prev =>
           prev.map(r => (r.id === reclamo.id ? { ...r, ...updatedReclamo } : r))
@@ -191,7 +155,6 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
       alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
     }
   };
-  
 
   const handleVerHistorial = (pedidoId) => {
     setPedidoSeleccionado(pedidoId);
@@ -209,7 +172,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 
   return (
     <div className="container mt-5">
-      < MostrarTareasPendientes token={token} username={username} role={role}/>
+      <MostrarTareasPendientes token={token} username={username} role={role} />
       <h1>En situación de Reclamo</h1>
       <div className="mb-4">
         <div className="row text-center">
@@ -298,7 +261,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   </>
                 )}
                 <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
-                <button className="btn btn-danger w-100 d-block mt-2" onClick={() => cerrarReclamo(reclamo)}>Cerrar Reclamo</button>
+                <CerrarReclamoButton
+                  reclamo={reclamo}
+                  token={token}
+                  onReclamoCerrado={(updatedReclamo) => {
+                    setReclamos(prev => prev.map(r => (r.id === updatedReclamo.id ? updatedReclamo : r)));
+                  }}
+                  username={username}
+                />
                 <button className="btn btn-info w-100 d-block mt-2" onClick={() => handleVerHistorial(reclamo.pedido)}>Ver Historial</button>
                 {reclamo.estadoRemito === 'conflicto' ? (
                   <EnvioDeEmailVentasContraReclamo

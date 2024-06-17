@@ -644,7 +644,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
 
 app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior, comentarioProblema } = req.body;
+  const { estado, respuesta, subId, usernameAlmacen, remito, problemaRemito, estadoRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior } = req.body;
 
   try {
     let reclamos = await readReclamos();
@@ -669,7 +669,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             subReclamo.cantidad = cantidad !== undefined ? cantidad : subReclamo.cantidad;
             subReclamo.codigoAnterior = codigoAnterior !== undefined ? codigoAnterior : subReclamo.codigoAnterior;
             subReclamo.codigoPosterior = codigoPosterior !== undefined ? codigoPosterior : subReclamo.codigoPosterior;
-            subReclamo.comentarioProblema = comentarioProblema || subReclamo.comentarioProblema;
             mensaje = subReclamo.mensaje;
             fecha = subReclamo.fecha;
             found = true;
@@ -678,6 +677,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
             (async () => {
               const historicoReclamos = await readHistoricoReclamos();
               let nuevoMensaje = subReclamo.mensaje;
+
               if (pedidoEstado === 'activacionTotal') {
                 nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la liberación del pedido completo, aguarde hasta que se resuelva para avanzar.`;
               } else if (pedidoEstado === 'activacionParcial') {
@@ -688,8 +688,10 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `El operador de almacén ${usernameAlmacen} informa que podrá preparar el pedido para la fecha ${respuesta}.`;
               } else if (estadoRemito === 'resuelto') {
                 nuevoMensaje = `Administración ha informado que el pedido quedó desbloqueado para poder avanzar con el proceso de impresión de remito.`;
-              } else if (estadoRemito === 'conflicto') {
-                nuevoMensaje = `El operador ${usernameAlmacen} informa que existe un inconveniente al preparar el remito. Tipo de problema: ${problemaRemito}. ${comentarioProblema}`;
+              } else if (problemaRemito) {
+                nuevoMensaje = `El operador ${usernameAlmacen} informa que existe un inconveniente al preparar el remito. Tipo de problema: ${problemaRemito}.`;
+              } else if (estado === 'cerrado') {
+                nuevoMensaje = `El usuario ${usernameAlmacen} ha dado por cerrado el reclamo.`;
               }
 
               const nuevoHistoricoReclamo = {

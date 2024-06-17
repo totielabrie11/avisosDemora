@@ -1,30 +1,27 @@
 [
   {
     "id": 1,
-    "pedido": 38836,
+    "pedido": 38825,
     "cliente": "R C CONSULTORES S R L",
     "reclamos": [
       {
-        "id": "sub-1718640703785",
-        "estado": "remito enviado",
+        "id": "sub-1718642419457",
+        "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "Vamos a poder cumplir con este pedido?",
-        "fecha": "17-06-2024 a las 13:11 hs",
-        "username": "CarlosR",
+        "fecha": "17-06-2024 a las 13:40 hs",
+        "username": "CarlosM",
         "material": [
           {
-            "codigo": "035ET0A-DVT0",
-            "cantidad": 2,
-            "descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
+            "codigo": "067025T-00B0",
+            "cantidad": 1,
+            "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
             "fechaVencimiento": "18/06/2024"
           }
         ],
-        "usernameAlmacen": "FernanditoG",
-        "problemaRemito": "no me deja imprimir el remito bloqueado credito",
-        "estadoRemito": "resuelto",
-        "remito": "1",
-        "downloadUrl": "http://localhost:3000/document/1718640766581-armado emd.jpg",
-        "respuesta": "Remito enviado con número 1"
+        "respuesta": "El usuario CarlosM ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosM",
+        "remito": "10254878"
       }
     ]
   }
