@@ -19,7 +19,8 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 
       console.log('Datos recibidos:', data);
 
-      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto');
+      // Filtramos por estadoRemito en conflicto o resuelto
+      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'resuelto');
 
       setReclamos(reclamosFiltrados);
     } catch (error) {
@@ -61,12 +62,17 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     }
   };
 
+  const handleRemitoRetenido = (reclamo) => {
+    alert(`Remito retenido para el reclamo con id: ${reclamo.id}`);
+    // Aquí puedes añadir la lógica adicional que necesites
+  };
+
   if (role !== 'administrativo') {
     return <div>No tienes acceso a esta vista.</div>;
   }
 
   const ReclamoCard = ({ reclamo }) => (
-    <div className={`col-md-4 mb-4 card bg-warning text-white`}>
+    <div className={`col-md-4 mb-4 card ${reclamo.estadoRemito === 'resuelto' ? 'bg-warning text-dark' : 'bg-danger text-white'}`}>
       <div className="card-body">
         <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
         <p className="card-text">
@@ -91,9 +97,16 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
           <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
             Ver Detalle
           </button>
-          <button className="btn btn-primary mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
-            Cliente Desbloqueado
-          </button>
+          {reclamo.estadoRemito === 'conflicto' && (
+            <button className="btn btn-primary mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
+              Cliente Desbloqueado
+            </button>
+          )}
+          {reclamo.estadoRemito === 'resuelto' && (
+            <button className="btn btn-danger mb-2" onClick={() => handleRemitoRetenido(reclamo)}>
+              Remito Retenido
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -109,7 +122,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       <h1 className="mb-4">Gestor de Reclamos - Administración</h1>
       <div className="row">
         {reclamos.length === 0 ? (
-          <p>No hay reclamos con estado de remito en conflicto.</p>
+          <p>No hay reclamos con estado de remito en conflicto o resuelto.</p>
         ) : (
           reclamos.map((reclamo, idx) => (
             <ReclamoCard

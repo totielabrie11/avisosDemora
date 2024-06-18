@@ -692,6 +692,8 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `Almacenes ha enviado el remito con el material en reclamo.`;
               } else if (estadoRemito === 'resuelto') {
                 nuevoMensaje = `Administración ha informado que el pedido quedó desbloqueado para poder avanzar con el proceso de impresión de remito.`;
+              } else if (estadoRemito === 'retenido deuda') {
+                nuevoMensaje = `Administración ha retenido el remito ${remito} por deuda.`;
               } else if (problemaRemito) {
                 nuevoMensaje = `El operador ${usernameAlmacen} informa que existe un inconveniente al preparar el remito. Tipo de problema: ${problemaRemito}.`;
               } else if (estado === 'cerrado') {
@@ -741,6 +743,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 
 // Función para contar fechas de entrega por pedido
