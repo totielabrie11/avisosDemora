@@ -197,9 +197,9 @@ app.get('/api/v1/historicoReclamos', authenticateToken, (req, res) => {
 
 app.post('/api/v1/historicoReclamos', authenticateToken, async (req, res) => {
   try {
-    const { id, pedido, cliente, estado, mensaje, fecha } = req.body;
+    const { id, pedido, cliente, estado, mensaje, fecha, tipoMensaje } = req.body;
 
-    if (!id || !pedido || !cliente || !estado || !mensaje || !fecha) {
+    if (!id || !pedido || !cliente || !estado || !mensaje || !fecha || !tipoMensaje) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
     }
 
@@ -212,6 +212,7 @@ app.post('/api/v1/historicoReclamos', authenticateToken, async (req, res) => {
       estado,
       mensaje,
       fecha,
+      tipoMensaje, // Incluye el tipo de mensaje
       timestamp: moment().format('DD-MM-YYYY HH:mm:ss')
     };
 
@@ -224,6 +225,7 @@ app.post('/api/v1/historicoReclamos', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error guardando el historial de reclamos', message: error.message });
   }
 });
+
 
 app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
   const { to, subject, text } = req.body;

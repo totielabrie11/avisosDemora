@@ -37,6 +37,9 @@ const HistorialReclamos = ({ pedidoId, token, showModal, handleClose }) => {
               <p><strong>Estado:</strong> {entry.estado}</p>
               <p><strong>Mensaje:</strong> {entry.mensaje}</p>
               <p><strong>Timestamp:</strong> {entry.timestamp}</p>
+              {entry.tipoMensaje && entry.tipoMensaje.trim() !== '' && (
+                <p><strong>Tipo de Mensaje:</strong> {entry.tipoMensaje}</p>
+              )}
             </li>
           ))}
         </ul>

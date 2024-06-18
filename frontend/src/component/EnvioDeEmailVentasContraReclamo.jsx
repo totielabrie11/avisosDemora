@@ -54,7 +54,8 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
         cliente: reclamo.cliente,
         estado: 'email enviado',
         mensaje: `Correo enviado a ${email} con deuda pendiente`,
-        fecha: moment().format('DD-MM-YYYY HH:mm:ss')
+        fecha: moment().format('DD-MM-YYYY HH:mm:ss'),
+        tipoMensaje: 'deudaPendiente' // Incluye el tipo de mensaje
       };
       await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
         headers: { Authorization: `Bearer ${token}` }

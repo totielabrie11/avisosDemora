@@ -50,7 +50,7 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
   };
 
   return (
-    <Button variant="danger" onClick={handleCerrarReclamo} disabled={loading}>
+    <Button className="w-100 mt-2" variant="danger" onClick={handleCerrarReclamo} disabled={loading}>
       {loading ? 'Cerrando...' : 'Cerrar Reclamo'}
     </Button>
   );

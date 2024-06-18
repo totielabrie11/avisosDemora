@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "pedido": 38825,
+    "cliente": "R C CONSULTORES S R L",
+    "reclamos": [
+      {
+        "id": "sub-1718669449270",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "Vamos a poder cumplir con este pedido?",
+        "fecha": "17-06-2024 a las 21:10 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "067025T-00B0",
+            "cantidad": 1,
+            "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
+            "fechaVencimiento": "18/06/2024"
+          }
+        ],
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
+        "remito": "00140154"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 39031,
+    "cliente": "FALMET S.R.L.",
+    "reclamos": [
+      {
+        "id": "sub-1718669546109",
+        "estado": "remito enviado",
+        "prioridad": "Normal",
+        "mensaje": "Vamos a poder cumplir con este pedido?",
+        "fecha": "17-06-2024 a las 21:12 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "031DC0A-MET0",
+            "cantidad": 1,
+            "descripcion": "EMD  10005 (LED) 220 V -  PP-PVDF-EPDM   ARG",
+            "fechaVencimiento": "18/06/2024"
+          }
+        ],
+        "respuesta": "Remito enviado con número 102102",
+        "usernameAlmacen": "FernanditoG",
+        "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
+        "estadoRemito": "resuelto",
+        "remito": "102102",
+        "downloadUrl": "http://localhost:3000/document/1718670522307-1705588937-The.Elder.Scrolls.V.Skyrim.Special.Edition.v1.6.1170-P2P.torrent"
+      }
+    ]
+  }
+]

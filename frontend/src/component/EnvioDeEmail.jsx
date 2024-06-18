@@ -32,39 +32,44 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
       setEmailError('Por favor, ingrese un correo electrónico válido.');
       return;
     }
-
+  
     const descripcionMaterial = reclamo.material && reclamo.material.length > 0
-                                ? reclamo.material[0].descripcion
-                                : 'el material solicitado';
-
+                               ? reclamo.material[0].descripcion
+                               : 'el material solicitado';
+  
     let subject = `Actualización de Reclamo - Pedido ${reclamo.pedido}`;
     let text = '';
-
+    let tipoMensaje = '';
+  
     const respuestaLower = reclamo.respuesta ? reclamo.respuesta.toLowerCase() : '';
     const remitoNumero = reclamo.respuesta ? extraerNumeroRemito(reclamo.respuesta) : '';
-
+  
     if (!reclamo.respuesta) {
       text = `Estimado cliente,\n\nEstamos trabajando de forma urgente en atender su reclamo. Le informaremos tan pronto como tengamos una actualización.\n\nSaludos,\nEquipo de Soporte.`;
+      tipoMensaje = 'inicioReclamo';
     } else if (respuestaLower.includes('remito')) {
       text = `Estimado cliente,\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
+      tipoMensaje = 'remitoPreparado';
     } else if (respuestaLower.includes('fecha')) {
       text = `Estimado cliente,\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\n Compromiso de Nueva Fecha de entrega: ${reclamo.respuesta}.\n\nSaludos,\nEquipo de Soporte.`;
+      tipoMensaje = 'cambioFechaEntrega';
     } else {
       text = `Estimado cliente,\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
+      tipoMensaje = 'fechaModificada';
     }
-
+  
     const emailData = {
       to: email,
       subject: subject,
       text: text,
       html: `<p>${text.replace(/\n/g, '<br>')}</p>`,
     };
-
+  
     try {
       await axios.post('http://localhost:3000/api/v1/sendEmail', emailData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
+  
       // Registrar en el historial de reclamos
       const historicoData = {
         id: reclamo.subId,
@@ -72,14 +77,15 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
         cliente: reclamo.cliente,
         estado: 'email enviado',
         mensaje: `Correo enviado a ${email}`,
-        fecha: reclamo.fecha
+        fecha: reclamo.fecha,
+        tipoMensaje // Incluye el tipo de mensaje
       };
       await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
         headers: { Authorization: `Bearer ${token}` }
       });
-
+  
       await guardarCorreo(); // Guardar el correo solo después de enviar
-
+  
       alert('Correo enviado con éxito');
       setEditMode(false);
     } catch (error) {
@@ -87,6 +93,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
       alert('No se pudo enviar el correo. Por favor, intente de nuevo.');
     }
   };
+  
 
   const guardarCorreo = async () => {
     try {
