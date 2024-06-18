@@ -76,7 +76,7 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
 
   return (
     <>
-      <Button variant="info" onClick={() => setShow(true)}>
+      <Button className="mt-2 mb-2" variant="info" onClick={() => setShow(true)}>
         Enviar Correo
       </Button>
 

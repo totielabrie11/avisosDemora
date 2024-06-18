@@ -114,5 +114,31 @@
     "fecha": "18-06-2024 a las 14:44 hs",
     "tipoMensaje": "remitoPreparado",
     "timestamp": "18-06-2024 15:03:05"
+  },
+  {
+    "id": "sub-1718732678874",
+    "pedido": 38825,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "18-06-2024 a las 14:44 hs",
+    "timestamp": "18-06-2024 15:07:56",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "102108",
+    "problemaRemito": "existe inconvenientes en el remito",
+    "estadoRemito": "desbloqueado"
+  },
+  {
+    "id": "sub-1718733477392",
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "estado": "no vencido",
+    "mensaje": "Administración ha procedido al desbloqueo del remito, mercancía pasa a despacho.",
+    "fecha": "18-06-2024 a las 14:57 hs",
+    "timestamp": "18-06-2024 15:16:01",
+    "usernameAlmacen": "FernanditoG",
+    "problemaRemito": "no me permite imprimir el mismo",
+    "estadoRemito": "desbloqueado"
   }
 ]
