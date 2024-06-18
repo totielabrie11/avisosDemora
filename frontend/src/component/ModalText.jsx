@@ -11,7 +11,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
   useEffect(() => {
     if (show) {
       setPrioridad(estado === 'no vencido' ? 'Normal' : 'Regular');
-      setMensaje(estado === 'no vencido' ? `El operador ${usuario}, consulta si Vamos a poder cumplir con este pedido?` : 'Tenemos una demora de entrega en este pedido.');
+      setMensaje(estado === 'no vencido' ? `El operador ${usuario}, consulta si Vamos a poder cumplir con este pedido?` : `El operador ${usuario}, indica que tenemos una demora de entrega en este pedido.`);
       setError('');
 
       if (estado === 'no vencido') {

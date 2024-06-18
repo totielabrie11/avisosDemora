@@ -43,16 +43,16 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     const confirmed = window.confirm('¿Está seguro de que desea desbloquear al cliente?');
     if (confirmed) {
       try {
-        const subReclamoId = reclamo.subId; // Asegúrate de que este campo está disponible
+        const subReclamoId = reclamo.subId; // Asegúrate de que este campo esté disponible
         await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, 
-          { estadoRemito: 'resuelto', subId: subReclamoId }, 
+          { estadoRemito: 'desbloqueado', subId: subReclamoId }, 
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-
+  
         alert('Cliente desbloqueado exitosamente');
-
+  
         // Refresca la lista de reclamos
         await fetchReclamos();
       } catch (error) {
@@ -61,7 +61,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       }
     }
   };
-
+  
   const handleRemitoRetenido = async (reclamo) => {
     const confirmed = window.confirm(`¿Está seguro de que desea retener el remito para el reclamo con id: ${reclamo.id}?`);
     if (confirmed) {
@@ -122,14 +122,20 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
             </button>
           )}
           {reclamo.estadoRemito === 'resuelto' && (
-            <button className="btn btn-warning mb-2" onClick={() => handleRemitoRetenido(reclamo)}>
+            <button className="btn btn-danger mb-2" onClick={() => handleRemitoRetenido(reclamo)}>
               Remito Retenido
+            </button>
+          )}
+          {reclamo.estadoRemito === 'retenido deuda' && (
+            <button className="btn btn-info mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
+              Cliente Desbloqueado
             </button>
           )}
         </div>
       </div>
     </div>
   );
+  
   
 
   if (error) {
@@ -142,7 +148,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       <h1 className="mb-4">Gestor de Reclamos - Administración</h1>
       <div className="row">
         {reclamos.length === 0 ? (
-          <p>No hay reclamos con estado de remito en conflicto o resuelto.</p>
+          <p>No hay reclamos con estado de remito en conflicto o que exista remito en algún reclamo.</p>
         ) : (
           reclamos.map((reclamo, idx) => (
             <ReclamoCard
