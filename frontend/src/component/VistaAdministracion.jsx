@@ -19,8 +19,10 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 
       console.log('Datos recibidos:', data);
 
-      // Filtramos por estadoRemito en conflicto o resuelto
-      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'resuelto' || reclamo.estadoRemito === 'retenido deuda');
+      // Filtramos por los estados relevantes
+      const reclamosFiltrados = data.filter(reclamo => 
+        ['conflicto', 'resuelto', 'retenido deuda', 'remito enviado'].includes(reclamo.estadoRemito)
+      );
 
       setReclamos(reclamosFiltrados);
     } catch (error) {
@@ -84,7 +86,6 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       }
     }
   };
-  
 
   if (role !== 'administrativo') {
     return <div>No tienes acceso a esta vista.</div>;
@@ -112,6 +113,9 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
         <p className="card-text">
           <strong>Tipo de problema informado: </strong>{reclamo.problemaRemito}
         </p>
+        <p className="card-text">
+          <strong>Estado Remito:</strong> {reclamo.estadoRemito}
+        </p>
         <div className="d-flex flex-column">
           <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
             Ver Detalle
@@ -135,8 +139,6 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       </div>
     </div>
   );
-  
-  
 
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;
