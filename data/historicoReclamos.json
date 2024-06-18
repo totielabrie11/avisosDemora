@@ -128,5 +128,40 @@
     "fecha": "17-06-2024 a las 21:12 hs",
     "tipoMensaje": "remitoPreparado",
     "timestamp": "17-06-2024 21:29:29"
+  },
+  {
+    "id": "sub-1718669546109",
+    "pedido": 39031,
+    "cliente": "FALMET S.R.L.",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "17-06-2024 a las 21:12 hs",
+    "timestamp": "17-06-2024 21:34:59",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "102102",
+    "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
+    "estadoRemito": "resuelto"
+  },
+  {
+    "id": "sub-1718671024338",
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "estado": "no vencido",
+    "mensaje": "Vamos a poder cumplir con este pedido?",
+    "fecha": "17-06-2024 a las 21:37 hs",
+    "timestamp": "17-06-2024 a las 21:37 hs"
+  },
+  {
+    "id": "sub-1718671024338",
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "17-06-2024 a las 21:37 hs",
+    "timestamp": "17-06-2024 21:38:41",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "101211"
   }
 ]

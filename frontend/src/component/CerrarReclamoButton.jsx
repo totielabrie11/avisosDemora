@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => {
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [remito, setRemito] = useState('');
+  const [error, setError] = useState('');
+
+  const handleClose = () => {
+    setShow(false);
+    setRemito('');
+    setError('');
+  };
+
+  const handleShow = () => setShow(true);
+
+  const handleRemitoChange = (e) => {
+    const { value } = e.target;
+    if (/^\d{0,6}$/.test(value)) {
+      setRemito(value);
+      setError('');
+    } else {
+      setError('El número de remito debe ser un número de 6 dígitos.');
+    }
+  };
 
   const handleCerrarReclamo = async () => {
-    const remito = prompt("Indique número de remito de 8 dígitos que cierra el reclamo:");
-    if (!remito) {
-      alert("No se ingresó ningún número de remito.");
-      return;
-    }
-
-    if (!/^\d{8}$/.test(remito)) {
-      alert("El número de remito debe ser un número de 8 dígitos.");
+    if (!/^\d{6}$/.test(remito)) {
+      setError('El número de remito debe ser un número de 6 dígitos.');
       return;
     }
 
@@ -39,6 +54,7 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
           };
           onReclamoCerrado(updatedReclamo);
           alert('Reclamo cerrado exitosamente');
+          handleClose();
         }
       } catch (error) {
         console.error('Error cerrando el reclamo:', error);
@@ -50,10 +66,43 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
   };
 
   return (
-    <Button className="w-100 mt-2" variant="danger" onClick={handleCerrarReclamo} disabled={loading}>
-      {loading ? 'Cerrando...' : 'Cerrar Reclamo'}
-    </Button>
+    <>
+      <Button className="w-100 mt-2" variant="danger" onClick={handleShow} disabled={loading}>
+        {loading ? 'Cerrando...' : 'Cerrar Reclamo'}
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Cerrar Reclamo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formRemito">
+              <Form.Label>Indique número de remito de 6 dígitos que cierra el reclamo:</Form.Label>
+              <Form.Control
+                type="text"
+                value={remito}
+                onChange={handleRemitoChange}
+                isInvalid={!!error}
+              />
+              <Form.Control.Feedback type="invalid">
+                {error}
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={handleCerrarReclamo} disabled={loading}>
+            {loading ? 'Cerrando...' : 'Cerrar Reclamo'}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
 export default CerrarReclamoButton;
+

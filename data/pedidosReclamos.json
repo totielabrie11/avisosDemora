@@ -32,7 +32,7 @@
     "reclamos": [
       {
         "id": "sub-1718669546109",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "Vamos a poder cumplir con este pedido?",
         "fecha": "17-06-2024 a las 21:12 hs",
@@ -45,12 +45,38 @@
             "fechaVencimiento": "18/06/2024"
           }
         ],
-        "respuesta": "Remito enviado con número 102102",
-        "usernameAlmacen": "FernanditoG",
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
         "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
         "estadoRemito": "resuelto",
         "remito": "102102",
         "downloadUrl": "http://localhost:3000/document/1718670522307-1705588937-The.Elder.Scrolls.V.Skyrim.Special.Edition.v1.6.1170-P2P.torrent"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "reclamos": [
+      {
+        "id": "sub-1718671024338",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "Vamos a poder cumplir con este pedido?",
+        "fecha": "17-06-2024 a las 21:37 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "0S006GT-TEA",
+            "cantidad": 1,
+            "descripcion": "EQ SOPLADOR DS 60 / 2550 RPM C/MOTOR 1.5 KW  (2CV) SPF DSBH",
+            "fechaVencimiento": "19/06/2024"
+          }
+        ],
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
+        "remito": "101211"
       }
     ]
   }
