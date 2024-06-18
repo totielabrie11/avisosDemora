@@ -21,7 +21,7 @@
   },
   {
     "Cliente": "R C CONSULTORES S R L",
-    "mail": ""
+    "mail": "sivico8607@exeneli.com"
   },
   {
     "Cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
@@ -169,6 +169,10 @@
   },
   {
     "Cliente": "SIMTECH LTDA.",
+    "mail": ""
+  },
+  {
+    "Cliente": "E-INTRA S. R. L.",
     "mail": ""
   }
 ]

@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import moment from 'moment';
 
-const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
+const EnvioDeRemito = ({ id, subId, token, cliente }) => {
   const [file, setFile] = useState(null);
   const [numeroRemito, setNumeroRemito] = useState('');
   const [message, setMessage] = useState('');
+  const [remitoExistente, setRemitoExistente] = useState(false);
+
+  useEffect(() => {
+    // Función para verificar si ya existe un remito para este subId
+    const verificarRemito = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/v1/reclamos/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const reclamo = response.data.reclamos.find(subReclamo => subReclamo.id === subId);
+        if (reclamo && reclamo.remito && reclamo.downloadUrl) {
+          setRemitoExistente(true);
+        }
+      } catch (error) {
+        console.error('Error al verificar el remito:', error.response ? error.response.data : error.message);
+      }
+    };
+
+    verificarRemito();
+  }, [id, subId, token]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -30,6 +50,13 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
       formData.append('id', id);
       formData.append('subId', subId);
 
+      console.log("Form Data:", {
+        file,
+        numeroRemito,
+        id,
+        subId
+      });
+
       const uploadResponse = await axios.post('http://localhost:3000/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -45,9 +72,10 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
           estado: 'remito enviado',
           respuesta: `Remito enviado con número ${numeroRemito}`,
           subId,
-          usernameAlmacen: cliente, // Usar el nombre del cliente pasado como prop
+          usernameAlmacen: cliente,
           remito: numeroRemito,
-          estadoRemito: 'resuelto'
+          estadoRemito: 'resuelto',
+          downloadUrl // Incluir downloadUrl en la actualización
         };
 
         const updateResponse = await axios.put(`http://localhost:3000/api/v1/reclamos/${id}`, updateData, {
@@ -55,25 +83,10 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
         });
 
         if (updateResponse.status === 200) {
-          // Registrar en el historial de reclamos
-          const historicoData = {
-            id: subId,
-            pedido: id,
-            cliente: cliente,
-            estado: 'remito enviado',
-            mensaje: `Se ha impreso el remito y enviado al personal de ventas con número ${numeroRemito}`,
-            fecha: moment().format('DD-MM-YYYY HH:mm:ss')
-          };
-          await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
-            headers: { Authorization: `Bearer ${token}` }
-          });
-
           setMessage('Archivo enviado con éxito.');
           setFile(null);
           setNumeroRemito('');
-          if (onRemitoEnviado) {
-            onRemitoEnviado(numeroRemito, downloadUrl);
-          }
+          setRemitoExistente(true); // Actualizar estado a true
         } else {
           setMessage('Error al actualizar el reclamo.');
         }
@@ -81,7 +94,7 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
         setMessage('Error al enviar el archivo.');
       }
     } catch (error) {
-      console.error('Error al enviar el archivo:', error);
+      console.error('Error al enviar el archivo:', error.response ? error.response.data : error.message);
       setMessage('Error al enviar el archivo.');
     }
   };
@@ -89,21 +102,26 @@ const EnvioDeRemito = ({ id, subId, onRemitoEnviado, token, cliente }) => {
   return (
     <div className="container mt-5">
       <h1>Enviar Remito</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="file" className="form-label">Archivo</label>
-          <input type="file" className="form-control" id="file" onChange={handleFileChange} />
+      {remitoExistente ? (
+        <div className="alert alert-success">
+          El remito ya ha sido enviado.
         </div>
-        <div className="mb-3">
-          <label htmlFor="numeroRemito" className="form-label">Número de Remito</label>
-          <input type="number" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
-        </div>
-        <button type="submit" className="btn btn-primary">Enviar</button>
-      </form>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="file" className="form-label">Archivo</label>
+            <input type="file" className="form-control" id="file" onChange={handleFileChange} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="numeroRemito" className="form-label">Número de Remito</label>
+            <input type="number" className="form-control" id="numeroRemito" value={numeroRemito} onChange={handleNumeroRemitoChange} />
+          </div>
+          <button type="submit" className="btn btn-primary">Enviar</button>
+        </form>
+      )}
       {message && <div className="mt-3 alert alert-info">{message}</div>}
     </div>
   );
 };
 
 export default EnvioDeRemito;
-

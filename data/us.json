@@ -2,37 +2,32 @@
     "users": [
       {
         "username": "CarlosR",
-        "password": "123456R",
+        "password": "123456R11",
         "role": "administrador"
       },
       {
         "username": "RodrigoP",
-        "password": "123456P",
+        "password": "123456P11",
         "role": "administrador"
       },
       {
         "username": "CarlosM",
-        "password": "123456M",
+        "password": "123456M11",
         "role": "vendedor"
       },
       {
         "username": "LeonardoD",
-        "password": "123456D",
+        "password": "123456D11",
         "role": "vendedor"
       },
       {
         "username": "PabloU",
-        "password": "123456U",
+        "password": "123456U11",
         "role": "vendedor"
       },
       {
         "username": "MelinaC",
         "password": "123456C",
-        "role": "vendedor"
-      },
-      {
-        "username": "HugoV",
-        "password": "123456V",
         "role": "vendedor"
       },
       {
@@ -43,6 +38,11 @@
       {
         "username": "MatiasG",
         "password": "123456G",
+        "role": "deposito"
+      },
+      {
+        "username": "JhonaS",
+        "password": "123456S",
         "role": "deposito"
       },
       {
