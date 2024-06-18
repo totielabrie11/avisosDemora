@@ -40,5 +40,18 @@
     "usernameAlmacen": "FernanditoG",
     "problemaRemito": "no puedo imprimir el remito, cliente bloqueado",
     "estadoRemito": "conflicto"
+  },
+  {
+    "id": "sub-1718717016027",
+    "pedido": 38825,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "remito enviado",
+    "mensaje": "Administración ha retenido el remito undefined por deuda.",
+    "fecha": "18-06-2024 a las 10:23 hs",
+    "timestamp": "18-06-2024 11:32:22",
+    "respuesta": "Remito enviado con número 101105",
+    "remito": "101105",
+    "estadoRemito": "retenido deuda",
+    "tipoCard": "rojo"
   }
 ]

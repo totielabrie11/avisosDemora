@@ -20,7 +20,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       console.log('Datos recibidos:', data);
 
       // Filtramos por estadoRemito en conflicto o resuelto
-      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'resuelto');
+      const reclamosFiltrados = data.filter(reclamo => reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'resuelto' || reclamo.estadoRemito === 'retenido deuda');
 
       setReclamos(reclamosFiltrados);
     } catch (error) {
@@ -62,17 +62,36 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     }
   };
 
-  const handleRemitoRetenido = (reclamo) => {
-    alert(`Remito retenido para el reclamo con id: ${reclamo.id}`);
-    // Aquí puedes añadir la lógica adicional que necesites
+  const handleRemitoRetenido = async (reclamo) => {
+    const confirmed = window.confirm(`¿Está seguro de que desea retener el remito para el reclamo con id: ${reclamo.id}?`);
+    if (confirmed) {
+      try {
+        const subReclamoId = reclamo.subId; // Asegúrate de que este campo está disponible
+        await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, 
+          { estadoRemito: 'retenido deuda', subId: subReclamoId }, 
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+  
+        alert('Remito retenido exitosamente');
+  
+        // Refresca la lista de reclamos
+        await fetchReclamos();
+      } catch (error) {
+        console.error('Error reteniendo el remito:', error);
+        alert('No se pudo retener el remito. Por favor, intente de nuevo.');
+      }
+    }
   };
+  
 
   if (role !== 'administrativo') {
     return <div>No tienes acceso a esta vista.</div>;
   }
 
   const ReclamoCard = ({ reclamo }) => (
-    <div className={`col-md-4 mb-4 card ${reclamo.estadoRemito === 'resuelto' ? 'bg-warning text-dark' : 'bg-danger text-white'}`}>
+    <div className={`col-md-4 mb-4 card ${reclamo.estadoRemito === 'resuelto' ? 'bg-warning text-dark' : (reclamo.estadoRemito === 'retenido deuda' ? 'bg-danger text-white' : 'bg-primary text-white')}`}>
       <div className="card-body">
         <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
         <p className="card-text">
@@ -98,12 +117,12 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
             Ver Detalle
           </button>
           {reclamo.estadoRemito === 'conflicto' && (
-            <button className="btn btn-primary mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
+            <button className="btn btn-danger mb-2" onClick={() => handleClienteDesbloqueado(reclamo)}>
               Cliente Desbloqueado
             </button>
           )}
           {reclamo.estadoRemito === 'resuelto' && (
-            <button className="btn btn-danger mb-2" onClick={() => handleRemitoRetenido(reclamo)}>
+            <button className="btn btn-warning mb-2" onClick={() => handleRemitoRetenido(reclamo)}>
               Remito Retenido
             </button>
           )}
@@ -111,6 +130,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
       </div>
     </div>
   );
+  
 
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;

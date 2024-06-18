@@ -694,6 +694,9 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `Administración ha informado que el pedido quedó desbloqueado para poder avanzar con el proceso de impresión de remito.`;
               } else if (estadoRemito === 'retenido deuda') {
                 nuevoMensaje = `Administración ha retenido el remito ${remito} por deuda.`;
+
+                // Aquí puedes añadir lógica para cambiar el tipo de card a "rojo"
+                subReclamo.tipoCard = 'rojo';
               } else if (problemaRemito) {
                 nuevoMensaje = `El operador ${usernameAlmacen} informa que existe un inconveniente al preparar el remito. Tipo de problema: ${problemaRemito}.`;
               } else if (estado === 'cerrado') {
@@ -708,7 +711,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 cliente,
                 estado: subReclamo.estado,
                 mensaje: nuevoMensaje,
-                fecha: subReclamo.fecha,
+                fecha,
                 timestamp: moment().format('DD-MM-YYYY HH:mm:ss'),
                 respuesta: subReclamo.respuesta,
                 usernameAlmacen: subReclamo.usernameAlmacen,
@@ -719,7 +722,8 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 codigoInterno: subReclamo.codigoInterno,
                 cantidad: subReclamo.cantidad,
                 codigoAnterior: subReclamo.codigoAnterior,
-                codigoPosterior: subReclamo.codigoPosterior
+                codigoPosterior: subReclamo.codigoPosterior,
+                tipoCard: subReclamo.tipoCard // Asegúrate de guardar el tipo de card actualizado
               };
               historicoReclamos.push(nuevoHistoricoReclamo);
               await writeHistoricoReclamos(historicoReclamos);
