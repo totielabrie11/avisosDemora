@@ -747,7 +747,6 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
 });
 
 
-
 // Función para contar fechas de entrega por pedido
 const contarFechasDeEntregaPorPedido = (pedidoId) => {
   let cantidadFechas = 0;

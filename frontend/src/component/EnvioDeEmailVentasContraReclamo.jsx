@@ -22,6 +22,8 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
   useEffect(() => {
     if (reclamo.estadoRemito === 'conflicto') {
       setMessage(`Estimado cliente ${reclamo.cliente}, al intentar liberar la mercancía para su despacho o que se encontraba en reclamo de liberación, identificamos una deuda pendiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted. Y en los casos que tuviera iniciado un reclamo por, fecha pendiente de entrega, se procederá a dar de baja dicho reclamo.`);
+    } else if (reclamo.estadoRemito === 'retenido deuda') {
+      setMessage(`Estimado cliente ${reclamo.cliente}, hemos identificado una deuda pendiente y hemos retenido el remito correspondiente. El plazo para recibir una confirmación, envío de orden de pago y retenciones correspondientes, es de 72 horas hábiles, bajo perjuicio de perder la asignación de mercancías destinadas hacia Usted.`);
     }
   }, [reclamo.cliente, reclamo.estadoRemito]);
 
@@ -55,7 +57,7 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
         estado: 'email enviado',
         mensaje: `Correo enviado a ${email} con deuda pendiente`,
         fecha: moment().format('DD-MM-YYYY HH:mm:ss'),
-        tipoMensaje: 'deudaPendiente' // Incluye el tipo de mensaje
+        tipoMensaje: 'deudaPendiente'
       };
       await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
         headers: { Authorization: `Bearer ${token}` }
@@ -92,7 +94,7 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            {reclamo.estadoRemito === 'conflicto' && (
+            {(reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'retenido deuda') && (
               <>
                 <Form.Group controlId="deuda">
                   <Form.Label>Ingrese monto de la deuda</Form.Label>

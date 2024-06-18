@@ -6,8 +6,8 @@ import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 import EnvioDeEmail from './EnvioDeEmail';
 import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
-import CerrarReclamoButton from './CerrarReclamoButton'; // Importa el nuevo botón
-import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido'; // Importa el nuevo componente
+import CerrarReclamoButton from './CerrarReclamoButton';
+import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -237,7 +237,10 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   </small>
                 </p>
                 {reclamo.estadoRemito === 'conflicto' && (
-                  <div className="text-warning">Este remito está en conflicto. Comuníquese con administración para resolver.</div>
+                  <div className="text-warning">La generación del remito está en conflicto. Comuníquese con almacenes y administracion para conocer la situación.</div>
+                )}
+                {reclamo.estadoRemito === 'retenido deuda' && (
+                  <div className="text-warning">Este remito está retenido por deuda. Comuníquese con administración para resolver.</div>
                 )}
                 {reclamo.pedidoEstado === 'cambioCodigoInterno' && (
                   <div className="text-warning">
@@ -272,7 +275,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   username={username}
                 />
                 <button className="btn btn-info w-100 d-block mt-2" onClick={() => handleVerHistorial(reclamo.pedido)}>Ver Historial</button>
-                {reclamo.estadoRemito === 'conflicto' ? (
+                {(reclamo.estadoRemito === 'conflicto' || reclamo.estadoRemito === 'retenido deuda') ? (
                   <EnvioDeEmailVentasContraReclamo
                     reclamo={reclamo}
                     token={token}
