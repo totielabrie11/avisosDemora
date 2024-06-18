@@ -19,7 +19,32 @@
             "fechaVencimiento": "18/06/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 27/6/2024",
+        "respuesta": "Se entregará en la fecha 18/12/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 38836,
+    "cliente": "R C CONSULTORES S R L",
+    "reclamos": [
+      {
+        "id": "sub-1718673921429",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "17-06-2024 a las 22:25 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "035ET0A-DVT0",
+            "cantidad": 2,
+            "descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
+            "fechaVencimiento": "18/06/2024"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/8/2024",
         "usernameAlmacen": "FernanditoG"
       }
     ]

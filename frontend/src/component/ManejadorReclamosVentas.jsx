@@ -7,6 +7,7 @@ import EnvioDeEmail from './EnvioDeEmail';
 import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import CerrarReclamoButton from './CerrarReclamoButton'; // Importa el nuevo botón
+import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido'; // Importa el nuevo componente
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -286,6 +287,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     fetchEmail={fetchEmail}
                   />
                 )}
+                <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} />
               </div>
             </div>
           </div>

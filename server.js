@@ -740,8 +740,35 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
   }
 });
 
+// Función para contar fechas de entrega por pedido
+const contarFechasDeEntregaPorPedido = (pedidoId) => {
+  let cantidadFechas = 0;
 
+  try {
+    const historico = JSON.parse(fs.readFileSync(filePaths.historicoReclamos, 'utf8'));
+    historico.forEach(entry => {
+      if (entry.pedido == pedidoId && entry.respuesta && /Se entregará en la fecha \d{1,2}\/\d{1,2}\/\d{4}/.test(entry.respuesta)) {
+        cantidadFechas++;
+      }
+    });
+  } catch (error) {
+    console.error('Error leyendo el archivo historicoReclamos.json:', error.message);
+  }
 
+  return cantidadFechas;
+};
+
+app.get('/api/v1/cantidadFechasEntrega/:pedidoId', (req, res) => {
+  const { pedidoId } = req.params;
+
+  try {
+    const cantidadFechas = contarFechasDeEntregaPorPedido(pedidoId);
+    res.json({ cantidadFechas });
+  } catch (error) {
+    console.error('Error obteniendo la cantidad de fechas de entrega:', error.message);
+    res.status(500).json({ error: 'Error obteniendo la cantidad de fechas de entrega', message: error.message });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

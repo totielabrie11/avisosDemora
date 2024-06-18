@@ -13,6 +13,7 @@ import ProblemaRemitoButton from './ProblemaRemitoButton';
 import LiberarPedidoButton from './LiberarPedidoButton';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import HistorialReclamos from './HistorialReclamos';
+import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido'; // Importa el componente
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -289,11 +290,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           )}
         </div>
         <div className="d-flex flex-column">
-          {!reclamo.respuesta && reclamo.estado !== 'remito enviado' && (
-            <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
-              Responder
-            </button>
-          )}
+          <button className="btn btn-primary mb-2" onClick={() => handleResponder(reclamo)}>
+            Responder
+          </button>
           <button className="btn btn-secondary mb-2" onClick={() => handleVerDetalle(reclamo)}>
             Ver Detalle
           </button>
@@ -317,6 +316,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           <button className="btn btn-info mb-2" onClick={() => { setPedidoId(reclamo.pedido); setShowHistorialModal(true); }}>
             Ver Historial
           </button>
+          <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} /> {/* Añadir el componente */}
         </div>
       </div>
     </div>

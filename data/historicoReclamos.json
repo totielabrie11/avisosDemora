@@ -18,5 +18,78 @@
     "timestamp": "17-06-2024 21:50:54",
     "respuesta": "Se entregará en la fecha 27/6/2024",
     "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1718673921429",
+    "pedido": 38836,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "17-06-2024 a las 22:25 hs",
+    "timestamp": "17-06-2024 a las 22:25 hs"
+  },
+  {
+    "id": "sub-1718673921429",
+    "pedido": 38836,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 28/6/2024.",
+    "fecha": "17-06-2024 a las 22:25 hs",
+    "timestamp": "17-06-2024 22:25:30",
+    "respuesta": "Se entregará en la fecha 28/6/2024",
+    "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1718673921429",
+    "pedido": 38836,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 5/7/2024.",
+    "fecha": "17-06-2024 a las 22:25 hs",
+    "timestamp": "17-06-2024 22:40:05",
+    "respuesta": "Se entregará en la fecha 5/7/2024",
+    "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1718673921429",
+    "pedido": 38836,
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 30/8/2024.",
+    "fecha": "17-06-2024 a las 22:25 hs",
+    "timestamp": "17-06-2024 22:41:00",
+    "respuesta": "Se entregará en la fecha 30/8/2024",
+    "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1718671829921",
+    "pedido": 39031,
+    "cliente": "FALMET S.R.L.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a vepof75194@exeneli.com",
+    "fecha": "17-06-2024 a las 21:50 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "17-06-2024 22:42:09"
+  },
+  {
+    "id": "sub-1718671829921",
+    "pedido": 39031,
+    "cliente": "FALMET S.R.L.",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 18/12/2024.",
+    "fecha": "17-06-2024 a las 21:50 hs",
+    "timestamp": "17-06-2024 22:42:35",
+    "respuesta": "Se entregará en la fecha 18/12/2024",
+    "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1718671829921",
+    "pedido": 39031,
+    "cliente": "FALMET S.R.L.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a vepof75194@exeneli.com",
+    "fecha": "17-06-2024 a las 21:50 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "17-06-2024 22:42:48"
   }
 ]
