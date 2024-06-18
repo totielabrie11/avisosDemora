@@ -1,41 +1,15 @@
 [
   {
     "id": 1,
-    "pedido": 38825,
-    "cliente": "R C CONSULTORES S R L",
-    "reclamos": [
-      {
-        "id": "sub-1718669449270",
-        "estado": "cerrado",
-        "prioridad": "Normal",
-        "mensaje": "Vamos a poder cumplir con este pedido?",
-        "fecha": "17-06-2024 a las 21:10 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "067025T-00B0",
-            "cantidad": 1,
-            "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
-            "fechaVencimiento": "18/06/2024"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "remito": "00140154"
-      }
-    ]
-  },
-  {
-    "id": 2,
     "pedido": 39031,
     "cliente": "FALMET S.R.L.",
     "reclamos": [
       {
-        "id": "sub-1718669546109",
-        "estado": "cerrado",
+        "id": "sub-1718671829921",
+        "estado": "respondido",
         "prioridad": "Normal",
-        "mensaje": "Vamos a poder cumplir con este pedido?",
-        "fecha": "17-06-2024 a las 21:12 hs",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "17-06-2024 a las 21:50 hs",
         "username": "CarlosR",
         "material": [
           {
@@ -45,38 +19,8 @@
             "fechaVencimiento": "18/06/2024"
           }
         ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
-        "estadoRemito": "resuelto",
-        "remito": "102102",
-        "downloadUrl": "http://localhost:3000/document/1718670522307-1705588937-The.Elder.Scrolls.V.Skyrim.Special.Edition.v1.6.1170-P2P.torrent"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "pedido": 39004,
-    "cliente": "COMBE POWER SA",
-    "reclamos": [
-      {
-        "id": "sub-1718671024338",
-        "estado": "cerrado",
-        "prioridad": "Normal",
-        "mensaje": "Vamos a poder cumplir con este pedido?",
-        "fecha": "17-06-2024 a las 21:37 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "0S006GT-TEA",
-            "cantidad": 1,
-            "descripcion": "EQ SOPLADOR DS 60 / 2550 RPM C/MOTOR 1.5 KW  (2CV) SPF DSBH",
-            "fechaVencimiento": "19/06/2024"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "remito": "101211"
+        "respuesta": "Se entregará en la fecha 27/6/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }

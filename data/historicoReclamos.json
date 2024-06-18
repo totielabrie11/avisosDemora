@@ -1,167 +1,22 @@
 [
   {
-    "id": "sub-1718669449270",
-    "pedido": 38825,
-    "cliente": "R C CONSULTORES S R L",
-    "estado": "no vencido",
-    "mensaje": "Vamos a poder cumplir con este pedido?",
-    "fecha": "17-06-2024 a las 21:10 hs",
-    "timestamp": "17-06-2024 a las 21:10 hs"
-  },
-  {
-    "id": "sub-1718669449270",
-    "pedido": 38825,
-    "cliente": "R C CONSULTORES S R L",
-    "estado": "cerrado",
-    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "fecha": "17-06-2024 a las 21:10 hs",
-    "timestamp": "17-06-2024 21:12:11",
-    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "usernameAlmacen": "CarlosR",
-    "remito": "00140154"
-  },
-  {
-    "id": "sub-1718669546109",
+    "id": "sub-1718671829921",
     "pedido": 39031,
     "cliente": "FALMET S.R.L.",
     "estado": "no vencido",
-    "mensaje": "Vamos a poder cumplir con este pedido?",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 a las 21:12 hs"
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "17-06-2024 a las 21:50 hs",
+    "timestamp": "17-06-2024 a las 21:50 hs"
   },
   {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a vepof75194@exeneli.com",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:12:34"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a vepof75194@exeneli.com",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "tipoMensaje": "inicioReclamo",
-    "timestamp": "17-06-2024 21:21:05"
-  },
-  {
-    "id": "sub-1718669546109",
+    "id": "sub-1718671829921",
     "pedido": 39031,
     "cliente": "FALMET S.R.L.",
     "estado": "respondido",
-    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 28/6/2024.",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:24:54",
-    "respuesta": "Se entregará en la fecha 28/6/2024",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 27/6/2024.",
+    "fecha": "17-06-2024 a las 21:50 hs",
+    "timestamp": "17-06-2024 21:50:54",
+    "respuesta": "Se entregará en la fecha 27/6/2024",
     "usernameAlmacen": "FernanditoG"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a vepof75194@exeneli.com",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "tipoMensaje": "cambioFechaEntrega",
-    "timestamp": "17-06-2024 21:25:01"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "respondido",
-    "mensaje": "El operador FernanditoG informa que existe un inconveniente al preparar el remito. Tipo de problema: no me deja imprimir el remito . cliente bloqueado.",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:25:51",
-    "respuesta": "Se entregará en la fecha 28/6/2024",
-    "usernameAlmacen": "FernanditoG",
-    "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
-    "estadoRemito": "conflicto"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a vepof75194@exeneli.com con deuda pendiente",
-    "fecha": "17-06-2024 21:26:47",
-    "tipoMensaje": "deudaPendiente",
-    "timestamp": "17-06-2024 21:26:47"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "respondido",
-    "mensaje": "Administración ha informado que el pedido quedó desbloqueado para poder avanzar con el proceso de impresión de remito.",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:28:29",
-    "respuesta": "Se entregará en la fecha 28/6/2024",
-    "usernameAlmacen": "FernanditoG",
-    "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
-    "estadoRemito": "resuelto"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "remito enviado",
-    "mensaje": "Administración ha informado que el pedido quedó desbloqueado para poder avanzar con el proceso de impresión de remito.",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:28:42",
-    "respuesta": "Remito enviado con número 102102",
-    "usernameAlmacen": "FernanditoG",
-    "remito": "102102",
-    "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
-    "estadoRemito": "resuelto"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a vepof75194@exeneli.com",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "tipoMensaje": "remitoPreparado",
-    "timestamp": "17-06-2024 21:29:29"
-  },
-  {
-    "id": "sub-1718669546109",
-    "pedido": 39031,
-    "cliente": "FALMET S.R.L.",
-    "estado": "cerrado",
-    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "fecha": "17-06-2024 a las 21:12 hs",
-    "timestamp": "17-06-2024 21:34:59",
-    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "usernameAlmacen": "CarlosR",
-    "remito": "102102",
-    "problemaRemito": "no me deja imprimir el remito . cliente bloqueado",
-    "estadoRemito": "resuelto"
-  },
-  {
-    "id": "sub-1718671024338",
-    "pedido": 39004,
-    "cliente": "COMBE POWER SA",
-    "estado": "no vencido",
-    "mensaje": "Vamos a poder cumplir con este pedido?",
-    "fecha": "17-06-2024 a las 21:37 hs",
-    "timestamp": "17-06-2024 a las 21:37 hs"
-  },
-  {
-    "id": "sub-1718671024338",
-    "pedido": 39004,
-    "cliente": "COMBE POWER SA",
-    "estado": "cerrado",
-    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "fecha": "17-06-2024 a las 21:37 hs",
-    "timestamp": "17-06-2024 21:38:41",
-    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-    "usernameAlmacen": "CarlosR",
-    "remito": "101211"
   }
 ]

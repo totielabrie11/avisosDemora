@@ -267,14 +267,15 @@ const App = () => {
       <Leyenda />
 
       {pedidoSeleccionado && (
-        <ModalText
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          pedido={pedidoSeleccionado}
-          estado={estadoReclamo} 
-          onSubmit={handleModalSubmit}
-          token={token}
-        />
+      <ModalText
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        pedido={pedidoSeleccionado}
+        estado={estadoReclamo} 
+        onSubmit={handleModalSubmit}
+        token={token}
+        usuario={username} // Añadir el nombre de usuario como prop
+      />
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 
-const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
+const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) => {
   const [prioridad, setPrioridad] = useState(estado === 'no vencido' ? 'Normal' : 'Regular');
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
@@ -11,7 +11,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
   useEffect(() => {
     if (show) {
       setPrioridad(estado === 'no vencido' ? 'Normal' : 'Regular');
-      setMensaje(estado === 'no vencido' ? 'Vamos a poder cumplir con este pedido?' : 'Tenemos una demora de entrega en este pedido.');
+      setMensaje(estado === 'no vencido' ? `El operador ${usuario}, consulta si Vamos a poder cumplir con este pedido?` : 'Tenemos una demora de entrega en este pedido.');
       setError('');
 
       if (estado === 'no vencido') {
@@ -24,7 +24,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
         setSelectedItems({});
       }
     }
-  }, [show, estado, pedido.Items]);
+  }, [show, estado, pedido.Items, usuario]);
 
   const handlePrioridadChange = (e) => {
     setPrioridad(e.target.value);
@@ -165,5 +165,3 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token }) => {
 };
 
 export default ModalText;
-
-
