@@ -441,5 +441,45 @@
     "fecha": "19-06-2024 a las 10:07 hs",
     "tipoMensaje": "remitoPreparado",
     "timestamp": "19-06-2024 10:21:01"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "19-06-2024 10:36:21"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "19-06-2024 10:36:42"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "19-06-2024 10:43:25"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "19-06-2024 10:51:06"
   }
 ]

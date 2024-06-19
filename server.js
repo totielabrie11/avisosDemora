@@ -156,7 +156,7 @@ const addOrUpdateMail = async (newMailEntry) => {
   const existingMailIndex = mails.findIndex(mail => mail.Cliente === newMailEntry.Cliente);
 
   if (existingMailIndex !== -1) {
-    mails[existingMailIndex] = newMailEntry;
+    mails[existingMailIndex].mail = newMailEntry.mail;
   } else {
     mails.push(newMailEntry);
   }
@@ -177,6 +177,23 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
+  const { cliente, email } = req.body;
+
+  if (!cliente || !email) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios' });
+  }
+
+  try {
+    const newMailEntry = { Cliente: cliente, mail: email };
+    await addOrUpdateMail(newMailEntry);
+    res.status(200).json({ message: 'Correo guardado con éxito' });
+  } catch (error) {
+    console.error('Error guardando el correo:', error.message);
+    res.status(500).json({ error: 'Error guardando el correo', message: error.message });
+  }
+});
 
 // Rutas para el historial de reclamos
 const readHistoricoReclamos = () => {

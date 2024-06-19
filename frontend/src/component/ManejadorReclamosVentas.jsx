@@ -8,6 +8,7 @@ import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import CerrarReclamoButton from './CerrarReclamoButton';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
+import { FaEdit } from 'react-icons/fa';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -21,6 +22,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [showModal, setShowModal] = useState(false);
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
+  const [editingEmailReclamoId, setEditingEmailReclamoId] = useState(null);
+  const [newEmail, setNewEmail] = useState('');
 
   useEffect(() => {
     const fetchReclamos = async () => {
@@ -118,15 +121,28 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     setShowModal(false);
   };
 
-  const handleSaveEmail = (reclamoId, newEmail) => {
-    setReclamos(prevReclamos =>
-      prevReclamos.map(r => {
-        if (r.id === reclamoId) {
-          return { ...r, email: newEmail };
-        }
-        return r;
-      })
-    );
+  const handleSaveEmail = async (reclamoId, newEmail) => {
+    try {
+      const reclamo = reclamos.find(r => r.id === reclamoId);
+      const response = await axios.post('http://localhost:3000/api/v1/saveEmail', { cliente: reclamo.cliente, email: newEmail }, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.status === 200) {
+        setReclamos(prevReclamos =>
+          prevReclamos.map(r => {
+            if (r.id === reclamoId) {
+              return { ...r, email: newEmail };
+            }
+            return r;
+          })
+        );
+        setEditingEmailReclamoId(null);
+      }
+    } catch (error) {
+      console.error('Error guardando el correo:', error);
+      alert('No se pudo guardar el correo. Por favor, intente de nuevo.');
+    }
   };
 
   const handleHecho = async (reclamo) => {
@@ -289,6 +305,16 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     onSaveEmail={(newEmail) => handleSaveEmail(reclamo.id, newEmail)}
                     fetchEmail={fetchEmail}
                   />
+                )}
+                <div className="email-section mt-2">
+                  <span>{reclamo.email}</span>
+                  <FaEdit className="mb-2" onClick={() => { setEditingEmailReclamoId(reclamo.id); setNewEmail(reclamo.email || ''); }} style={{ cursor: 'pointer', marginLeft: '10px' }} />
+                </div>
+                {editingEmailReclamoId === reclamo.id && (
+                  <div className="mt-2">
+                    <input type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} className="form-control" />
+                    <button className="btn btn-primary mt-2 mb-2" onClick={() => handleSaveEmail(reclamo.id, newEmail)}>Guardar</button>
+                  </div>
                 )}
                 <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} />
               </div>
