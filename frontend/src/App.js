@@ -11,6 +11,7 @@ import ModalText from './component/ModalText';
 import GestorAlmacenes from './component/GestorAlmacenes';
 import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 import VistaAdministracion from './component/VistaAdministracion';
+import AdminFileUpload from './component/AdminFileUpload'; // Ajusta la ruta según tu estructura de archivos
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -178,6 +179,7 @@ const App = () => {
         <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
         <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
       </div>
+      {role === 'administrador' && <AdminFileUpload token={token} />} {/* Componente para subir archivo solo visible para administradores */}
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 

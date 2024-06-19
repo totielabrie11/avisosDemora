@@ -777,6 +777,47 @@ app.get('/api/v1/cantidadFechasEntrega/:pedidoId', (req, res) => {
   }
 });
 
+// Ruta para subir y reemplazar orders.json
+app.post('/api/v1/uploadOrders', authenticateToken, upload.single('file'), async (req, res) => {
+  if (req.role !== 'administrador') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+
+  if (!req.file) {
+    return res.status(400).send('No se ha subido ningún archivo.');
+  }
+
+  const newFilePath = path.join(filePaths.document, req.file.filename);
+  const ordersFilePath = filePaths.orders;
+
+  try {
+    // Leer el archivo subido como texto
+    let fileContent = fs.readFileSync(newFilePath, 'utf8');
+
+    // Reemplazar todos los NaN con "NaN"
+    fileContent = fileContent.replace(/NaN/g, '"NaN"');
+
+    // Parsear el archivo JSON corregido
+    let newOrdersData = JSON.parse(fileContent);
+
+    // Verificar y corregir la fecha de actualización
+    if (newOrdersData.Fecha_actualizacion) {
+      const fecha = moment(newOrdersData.Fecha_actualizacion, ['DD-MM-YYYY', 'YYYY-MM-DD']);
+      newOrdersData.Fecha_actualizacion = fecha.format('DD-MM-YYYY');
+    }
+
+    // Escribir el archivo corregido en orders.json
+    await fs.promises.writeFile(ordersFilePath, JSON.stringify(newOrdersData, null, 2), 'utf8');
+
+    res.status(200).json({ message: 'Archivo orders.json reemplazado y verificado con éxito.' });
+  } catch (error) {
+    console.error('Error procesando el archivo subido:', error.message);
+    res.status(500).json({ error: 'Error procesando el archivo subido', message: error.message });
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
