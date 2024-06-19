@@ -35,7 +35,7 @@
     "reclamos": [
       {
         "id": "sub-1718733477392",
-        "estado": "no vencido",
+        "estado": "remito enviado",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
         "fecha": "18-06-2024 a las 14:57 hs",
@@ -48,9 +48,17 @@
             "fechaVencimiento": "19/06/2024"
           }
         ],
-        "usernameAlmacen": "FernanditoG",
+        "usernameAlmacen": "CarlosR",
         "problemaRemito": "no me permite imprimir el mismo",
-        "estadoRemito": "desbloqueado"
+        "estadoRemito": "desbloqueado",
+        "respuesta": "Remito enviado con número 454654",
+        "pedidoEstado": "",
+        "codigoInterno": "",
+        "cantidad": "",
+        "codigoAnterior": "",
+        "codigoPosterior": "",
+        "remito": "454654",
+        "downloadUrl": "http://localhost:3000/document/1718803150217-TransferenciaTercero-30796516_30796516_06-06-2024.pdf"
       }
     ]
   },
@@ -61,7 +69,7 @@
     "reclamos": [
       {
         "id": "sub-1718802212137",
-        "estado": "no vencido",
+        "estado": "respondido",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
         "fecha": "19-06-2024 a las 10:03 hs",
@@ -115,7 +123,11 @@
             "descripcion": "EQ 1000L 2XDPMSWA24/0.7-IV CPVC 204-PQ-008",
             "fechaVencimiento": "21/06/2024"
           }
-        ]
+        ],
+        "respuesta": "Se entregará en la fecha 5/7/2024",
+        "usernameAlmacen": "FernanditoG",
+        "problemaRemito": "no me deja imprimir ",
+        "estadoRemito": "desbloqueado"
       }
     ]
   },
@@ -126,7 +138,7 @@
     "reclamos": [
       {
         "id": "sub-1718802448081",
-        "estado": "no vencido",
+        "estado": "remito enviado",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
         "fecha": "19-06-2024 a las 10:07 hs",
@@ -138,7 +150,12 @@
             "descripcion": "NaN",
             "fechaVencimiento": "20/06/2024"
           }
-        ]
+        ],
+        "respuesta": "Remito enviado con número 102121",
+        "usernameAlmacen": "FernanditoG",
+        "remito": "102121",
+        "downloadUrl": "http://localhost:3000/document/1718803099529-orders.json",
+        "estadoRemito": "desbloqueado"
       }
     ]
   }
