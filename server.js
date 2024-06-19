@@ -150,6 +150,21 @@ const writeMails = async (mails) => {
   }
 };
 
+// Función para agregar o actualizar un correo
+const addOrUpdateMail = async (newMailEntry) => {
+  const mails = readMails();
+  const existingMailIndex = mails.findIndex(mail => mail.Cliente === newMailEntry.Cliente);
+
+  if (existingMailIndex !== -1) {
+    mails[existingMailIndex] = newMailEntry;
+  } else {
+    mails.push(newMailEntry);
+  }
+
+  await writeMails(mails);
+};
+
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -367,6 +382,7 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
     });
 
     const mails = readMails();
+    const updatedMails = [...mails];
 
     filteredPedidos.forEach((order) => {
       if (order.hasOwnProperty('Inicio')) {
@@ -382,7 +398,7 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
       const cliente = order.Cliente;
       const mailEntry = mails.find(mail => mail.Cliente === cliente);
       if (!mailEntry) {
-        mails.push({ Cliente: cliente, mail: '' });
+        updatedMails.push({ Cliente: cliente, mail: '' });
         order.needsEmail = true;
       } else if (!mailEntry.mail) {
         order.needsEmail = true;
@@ -391,7 +407,10 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
       }
     });
 
-    writeMails(mails);
+    // Actualizar la base de datos de correos si es necesario
+    if (updatedMails.length > mails.length) {
+      writeMails(updatedMails);
+    }
 
     res.json({ Fecha_actualizacion, Pedidos: filteredPedidos });
   } catch (err) {
@@ -400,6 +419,7 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
   }
 });
 
+// Ruta para guardar o actualizar correos electrónicos
 app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
   const { cliente, email } = req.body;
 
@@ -408,16 +428,8 @@ app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
   }
 
   try {
-    const mails = readMails();
-    const mailEntry = mails.find(mail => mail.Cliente === cliente);
-
-    if (mailEntry) {
-      mailEntry.mail = email;
-    } else {
-      mails.push({ Cliente: cliente, mail: email });
-    }
-
-    await writeMails(mails);
+    const newMailEntry = { Cliente: cliente, mail: email };
+    await addOrUpdateMail(newMailEntry);
     res.status(200).json({ message: 'Correo guardado con éxito' });
   } catch (error) {
     console.error('Error guardando el correo:', error.message);

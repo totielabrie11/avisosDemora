@@ -140,5 +140,73 @@
     "usernameAlmacen": "FernanditoG",
     "problemaRemito": "no me permite imprimir el mismo",
     "estadoRemito": "desbloqueado"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "timestamp": "19-06-2024 a las 10:03 hs"
+  },
+  {
+    "id": "sub-1718733477392",
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "18-06-2024 a las 14:57 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "19-06-2024 10:03:52"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "19-06-2024 10:03:58"
+  },
+  {
+    "id": "sub-1718733477392",
+    "pedido": 39004,
+    "cliente": "COMBE POWER SA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "18-06-2024 a las 14:57 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "19-06-2024 10:06:52"
+  },
+  {
+    "id": "sub-1718802212137",
+    "pedido": 38505,
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:03 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "19-06-2024 10:06:56"
+  },
+  {
+    "id": "sub-1718802448081",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "19-06-2024 a las 10:07 hs",
+    "timestamp": "19-06-2024 a las 10:07 hs"
+  },
+  {
+    "id": "sub-1718802448081",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sivico8607@exeneli.com",
+    "fecha": "19-06-2024 a las 10:07 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "19-06-2024 10:07:40"
   }
 ]
