@@ -1,3 +1,5 @@
+// src/App.js
+
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -11,7 +13,8 @@ import ModalText from './component/ModalText';
 import GestorAlmacenes from './component/GestorAlmacenes';
 import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 import VistaAdministracion from './component/VistaAdministracion';
-import AdminFileUpload from './component/AdminFileUpload'; // Ajusta la ruta según tu estructura de archivos
+import AdminFileUpload from './component/AdminFileUpload';
+import VistaCasosCerrados from './component/VistaCasosCerrados';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -28,6 +31,7 @@ const App = () => {
   const [estadoReclamo, setEstadoReclamo] = useState('');
   const [showEstadisticas, setShowEstadisticas] = useState(false);
   const [showManejadorReclamos, setShowManejadorReclamos] = useState(false);
+  const [showCasosCerrados, setShowCasosCerrados] = useState(false);
 
   const handleShowManejadorReclamos = () => {
     setShowManejadorReclamos(true);
@@ -57,8 +61,15 @@ const App = () => {
     setShowEstadisticas(false);
   };
 
+  const handleShowCasosCerrados = () => {
+    setShowCasosCerrados(true);
+  };
+
+  const handleHideCasosCerrados = () => {
+    setShowCasosCerrados(false);
+  };
+
   const fetchPedidos = useCallback(() => {
-    console.log(`Fetching pedidos: diasPrevios=${diasPrevios}, cliente=${cliente}, numeroPedido=${numeroPedido}, material=${material}`);
     axios
       .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -138,7 +149,6 @@ const App = () => {
   };
 
   const handleModalSubmit = (reclamo) => {
-    console.log('Reclamo enviado:', reclamo);
     fetchPedidos();
   };
 
@@ -172,12 +182,22 @@ const App = () => {
     );
   }
 
+  if (showCasosCerrados) {
+    return (
+      <div>
+        <button className="btn btn-secondary" onClick={handleHideCasosCerrados}>Volver al Menú Principal</button>
+        <VistaCasosCerrados token={token} role={role} />
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
         <UserState username={username} role={role} onLogout={handleLogout} />
         <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
         <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
+        <button className="btn btn-warning" onClick={handleShowCasosCerrados}>Ver Casos Cerrados</button>
       </div>
       {role === 'administrador' && <AdminFileUpload token={token} />} {/* Componente para subir archivo solo visible para administradores */}
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
@@ -284,5 +304,3 @@ const App = () => {
 };
 
 export default App;
-
-

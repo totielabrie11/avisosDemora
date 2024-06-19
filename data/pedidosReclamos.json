@@ -1,79 +1,16 @@
 [
   {
     "id": 1,
-    "pedido": 38825,
-    "cliente": "R C CONSULTORES S R L",
-    "reclamos": [
-      {
-        "id": "sub-1718732678874",
-        "estado": "cerrado",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "18-06-2024 a las 14:44 hs",
-        "username": "CarlosM",
-        "material": [
-          {
-            "codigo": "067025T-00B0",
-            "cantidad": 1,
-            "descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
-            "fechaVencimiento": "18/06/2024"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "problemaRemito": "existe inconvenientes en el remito",
-        "estadoRemito": "desbloqueado",
-        "remito": "102108",
-        "downloadUrl": "http://localhost:3000/document/1718732864680-Comprobante_de_Deuda.pdf"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "pedido": 39004,
-    "cliente": "COMBE POWER SA",
-    "reclamos": [
-      {
-        "id": "sub-1718733477392",
-        "estado": "remito enviado",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "18-06-2024 a las 14:57 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "0S006GT-TEA",
-            "cantidad": 1,
-            "descripcion": "EQ SOPLADOR DS 60 / 2550 RPM C/MOTOR 1.5 KW  (2CV) SPF DSBH",
-            "fechaVencimiento": "19/06/2024"
-          }
-        ],
-        "usernameAlmacen": "CarlosR",
-        "problemaRemito": "no me permite imprimir el mismo",
-        "estadoRemito": "desbloqueado",
-        "respuesta": "Remito enviado con número 454654",
-        "pedidoEstado": "",
-        "codigoInterno": "",
-        "cantidad": "",
-        "codigoAnterior": "",
-        "codigoPosterior": "",
-        "remito": "454654",
-        "downloadUrl": "http://localhost:3000/document/1718803150217-TransferenciaTercero-30796516_30796516_06-06-2024.pdf"
-      }
-    ]
-  },
-  {
-    "id": 3,
     "pedido": 38505,
     "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
     "reclamos": [
       {
-        "id": "sub-1718802212137",
-        "estado": "respondido",
+        "id": "sub-1718822924401",
+        "estado": "cerrado",
         "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "19-06-2024 a las 10:03 hs",
-        "username": "CarlosR",
+        "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "19-06-2024 a las 15:48 hs",
+        "username": "CarlosM",
         "material": [
           {
             "codigo": "Q122312634",
@@ -124,38 +61,11 @@
             "fechaVencimiento": "21/06/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 5/7/2024",
-        "usernameAlmacen": "FernanditoG",
-        "problemaRemito": "no me deja imprimir ",
-        "estadoRemito": "desbloqueado"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "pedido": 38984,
-    "cliente": "E-INTRA S. R. L.",
-    "reclamos": [
-      {
-        "id": "sub-1718802448081",
-        "estado": "remito enviado",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "19-06-2024 a las 10:07 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "0S015JT-NCA",
-            "cantidad": 1,
-            "descripcion": "NaN",
-            "fechaVencimiento": "20/06/2024"
-          }
-        ],
-        "respuesta": "Remito enviado con número 102121",
-        "usernameAlmacen": "FernanditoG",
-        "remito": "102121",
-        "downloadUrl": "http://localhost:3000/document/1718803099529-orders.json",
-        "estadoRemito": "desbloqueado"
+        "respuesta": "El usuario CarlosM ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosM",
+        "remito": "101050",
+        "downloadUrl": "http://localhost:3000/document/1718822945244-orders.json",
+        "estadoRemito": "resuelto"
       }
     ]
   }

@@ -34,7 +34,7 @@ const MostrarTareasPendientes = ({ token, username, role }) => {
       {tareasPendientes.map((tarea, index) => (
         <div key={index} className="card mb-3">
           <div className="card-body">
-            <h5 className="card-title">{tarea.pedido}</h5>
+            <h5 className="card-title">{tarea.pedido} - {tarea.cliente}</h5>
             <p className="card-text">{tarea.descripcion}</p>
             <p className="card-text"><strong>Estado:</strong> {tarea.pedidoEstado}</p>
             {/* Mostrar más detalles de la tarea pendiente si es necesario */}

@@ -1,0 +1,101 @@
+import React, { useEffect, useState, useCallback } from 'react';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HistorialReclamos from './HistorialReclamos';
+import VistaDetalleAlmacen from './VistaDetalleAlmacen';
+
+const VistaCasosCerrados = ({ token, role }) => {
+  const [casosCerrados, setCasosCerrados] = useState([]);
+  const [error, setError] = useState('');
+  const [showDetalleModal, setShowDetalleModal] = useState(false);
+  const [selectedCaso, setSelectedCaso] = useState(null);
+  const [mostrarHistorial, setMostrarHistorial] = useState(false);
+  const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
+
+  const fetchCasosCerrados = useCallback(() => {
+    axios
+      .get('http://localhost:3000/api/v1/reclamos', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        const data = response.data.filter((reclamo) => reclamo.estado === 'cerrado');
+        setCasosCerrados(data);
+      })
+      .catch((error) => setError('Error fetching closed cases'));
+  }, [token]);
+
+  useEffect(() => {
+    fetchCasosCerrados();
+  }, [fetchCasosCerrados]);
+
+  const handleShowDetalle = (caso) => {
+    setSelectedCaso(caso);
+    setShowDetalleModal(true);
+  };
+
+  const handleCloseDetalle = () => {
+    setShowDetalleModal(false);
+    setSelectedCaso(null);
+  };
+
+  const handleVerHistorial = (pedidoId) => {
+    setPedidoSeleccionado(pedidoId);
+    setMostrarHistorial(true);
+  };
+
+  const handleCloseHistorial = () => {
+    setMostrarHistorial(false);
+    setPedidoSeleccionado(null);
+  };
+
+  if (role !== 'administrador' && role !== 'vendedor') {
+    return <div className="alert alert-danger">No tienes acceso a esta sección</div>;
+  }
+
+  return (
+    <div className="container mt-5">
+      <h1>Casos Cerrados</h1>
+      {error && <div className="alert alert-danger">{error}</div>}
+      <div className="row">
+        {casosCerrados.map((caso, idx) => (
+          <div key={idx} className="col-md-4 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h3 className="card-title">{caso.cliente}</h3>
+                <h4 className="card-subtitle mb-2 text-muted">Pedido: {caso.pedido}</h4>
+                <p className="card-text">Mensaje: {caso.mensaje}</p>
+                <p className="card-text">Fecha: {caso.fecha}</p>
+                <p className="card-text">Usuario: {caso.username}</p>
+                <button className="btn btn-primary w-100 mb-2" onClick={() => handleShowDetalle(caso)}>
+                  Ver Detalle
+                </button>
+                <button className="btn btn-info w-100" onClick={() => handleVerHistorial(caso.pedido)}>
+                  Ver Historial
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedCaso && (
+        <VistaDetalleAlmacen
+          show={showDetalleModal}
+          onHide={handleCloseDetalle}
+          reclamo={selectedCaso}
+        />
+      )}
+
+      {mostrarHistorial && pedidoSeleccionado && (
+        <HistorialReclamos
+          pedidoId={pedidoSeleccionado}
+          token={token}
+          showModal={mostrarHistorial}
+          handleClose={handleCloseHistorial}
+        />
+      )}
+    </div>
+  );
+};
+
+export default VistaCasosCerrados;
