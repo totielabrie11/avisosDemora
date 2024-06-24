@@ -91,5 +91,65 @@
     "fecha": "24-06-2024 a las 13:15 hs",
     "tipoMensaje": "cambioFechaEntrega",
     "timestamp": "24-06-2024 13:19:18"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 15:53:19"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 15:57:59"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 15:58:12"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 16:00:26"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 16:00:44"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "24-06-2024 16:10:03"
   }
 ]

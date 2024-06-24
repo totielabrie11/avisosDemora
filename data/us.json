@@ -1,54 +1,66 @@
 {
-    "users": [
-      {
-        "username": "CarlosR",
-        "password": "123456R11",
-        "role": "administrador"
-      },
-      {
-        "username": "RodrigoP",
-        "password": "123456P11",
-        "role": "administrador"
-      },
-      {
-        "username": "CarlosM",
-        "password": "123456M11",
-        "role": "vendedor"
-      },
-      {
-        "username": "LeonardoD",
-        "password": "123456D11",
-        "role": "vendedor"
-      },
-      {
-        "username": "PabloU",
-        "password": "123456U11",
-        "role": "vendedor"
-      },
-      {
-        "username": "MelinaC",
-        "password": "123456C",
-        "role": "vendedor"
-      },
-      {
-        "username": "FernanditoG",
-        "password": "123456G",
-        "role": "deposito"
-      },
-      {
-        "username": "MatiasG",
-        "password": "123456G",
-        "role": "deposito"
-      },
-      {
-        "username": "JhonaS",
-        "password": "123456S",
-        "role": "deposito"
-      },
-      {
-        "username": "CarlosCristino",
-        "password": "123456C",
-        "role": "administrativo"
-      }
-    ]
-  }
+  "users": [
+    {
+      "username": "CarlosR",
+      "password": "123456R11",
+      "role": "administrador",
+      "email": "comercial@dosivac.com",
+      "smtpPassword": "smtpPasswordCarlosR"
+    },
+    {
+      "username": "RodrigoP",
+      "password": "123456P11",
+      "role": "administrador",
+      "email": "",
+      "smtpPassword": ""
+    },
+    {
+      "username": "CarlosM",
+      "password": "123456M11",
+      "role": "vendedor",
+      "email": "cotizaciones@dosivac.com",
+      "smtpPassword": "kzsu mdmt tkrl ngzr"
+    },
+    {
+      "username": "LeonardoD",
+      "password": "123456D11",
+      "role": "vendedor",
+      "email": "repuestos@dosivac.com",
+      "smtpPassword": "jatf lakm npwo yeqt"
+    },
+    {
+      "username": "PabloU",
+      "password": "123456U11",
+      "role": "vendedor",
+      "email": "pablou@example.com",
+      "smtpPassword": "smtpPasswordPabloU"
+    },
+    {
+      "username": "MelinaC",
+      "password": "123456C",
+      "role": "vendedor",
+      "email": "ventas@dosivac.com",
+      "smtpPassword": "smtpPasswordMelinaC"
+    },
+    {
+      "username": "FernanditoG",
+      "password": "123456G",
+      "role": "deposito"
+    },
+    {
+      "username": "MatiasG",
+      "password": "123456G",
+      "role": "deposito"
+    },
+    {
+      "username": "JhonaS",
+      "password": "123456S",
+      "role": "deposito"
+    },
+    {
+      "username": "CarlosCristino",
+      "password": "123456C",
+      "role": "administrativo"
+    }
+  ]
+}

@@ -16,7 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-const transporter = nodemailer.createTransport({
+
+const defaultTransporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
@@ -26,24 +27,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = (to, subject, text, html, attachments) => {
-  const mailOptions = {
-    from: 'cotizaciones@dosivac.com',
-    to,
-    subject,
-    text,
-    html,
-    attachments,
-  };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error enviando el correo:', error);
-    } else {
-      console.log('Correo enviado:', info.response);
-    }
-  });
-};
 
 const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
@@ -185,6 +169,40 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+const sendEmail = (req, to, subject, text, html, attachments) => {
+  
+  const user = req.user;
+  const email = user.email;
+  const smtpPassword = user.smtpPassword;
+
+  const transporter = email && smtpPassword ? nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: email,
+      pass: smtpPassword,
+    },
+  }) : defaultTransporter;
+
+  const mailOptions = {
+    from: email || 'cotizaciones@dosivac.com',
+    to,
+    subject,
+    text,
+    html,
+    attachments,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error enviando el correo:', error);
+    } else {
+      console.log('Correo enviado:', info.response);
+    }
+  });
+};
+
 app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
   const { cliente, email } = req.body;
 
@@ -273,7 +291,7 @@ app.post('/api/v1/sendEmail', authenticateToken, (req, res) => {
     return res.status(400).json({ error: 'Faltan campos obligatorios' });
   }
 
-  sendEmail(to, subject, text);
+  sendEmail(req, to, subject, text);
   res.status(200).json({ message: 'Correo enviado con éxito' });
 });
 
@@ -287,7 +305,7 @@ app.post('/api/v1/sendEmailWithAttachment', authenticateToken, upload.single('fi
 
   const attachments = file ? [{ path: file.path }] : [];
 
-  sendEmail(to, subject, text, null, attachments);
+  sendEmail(req, to, subject, text, null, attachments);
   res.status(200).json({ message: 'Correo enviado con éxito' });
 });
 

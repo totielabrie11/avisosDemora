@@ -22,6 +22,22 @@
         ],
         "respuesta": "Se entregará en la fecha 4/7/2024",
         "usernameAlmacen": "FernanditoG"
+      },
+      {
+        "id": "sub-1719255185254",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador LeonardoD, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "24-06-2024 a las 15:53 hs",
+        "username": "LeonardoD",
+        "material": [
+          {
+            "codigo": "046301T-PTT0",
+            "cantidad": 1,
+            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "25/06/2024"
+          }
+        ]
       }
     ]
   },
