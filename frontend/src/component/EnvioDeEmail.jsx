@@ -12,6 +12,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
       const emailAlmacenado = await fetchEmail(reclamo.cliente);
       setEmail(emailAlmacenado);
       setLoading(false);
+      console.log(reclamo)
     };
 
     verificarEmail();
@@ -37,7 +38,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
                                ? reclamo.material[0].descripcion
                                : 'el material solicitado';
   
-    let subject = `Actualización de Reclamo - Pedido ${reclamo.pedido}`;
+    let subject = `Actualización de Reclamo - Orden de Compra ${reclamo.oc}`; //aquí se imprime la orden de compra
     let text = '';
     let tipoMensaje = '';
   
@@ -45,16 +46,16 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
     const remitoNumero = reclamo.respuesta ? extraerNumeroRemito(reclamo.respuesta) : '';
   
     if (!reclamo.respuesta) {
-      text = `Estimado cliente,\n\nEstamos trabajando de forma urgente en atender su reclamo. Le informaremos tan pronto como tengamos una actualización.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nEstamos trabajando de forma urgente en atender su reclamo. Le informaremos tan pronto como tengamos una actualización.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'inicioReclamo';
     } else if (respuestaLower.includes('remito')) {
-      text = `Estimado cliente,\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'remitoPreparado';
     } else if (respuestaLower.includes('fecha')) {
-      text = `Estimado cliente,\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\n Compromiso de Nueva Fecha de entrega: ${reclamo.respuesta}.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\n Compromiso de Nueva Fecha de entrega: ${reclamo.respuesta}.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'cambioFechaEntrega';
     } else {
-      text = `Estimado cliente,\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'fechaModificada';
     }
   
@@ -147,7 +148,6 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
 };
 
 export default EnvioDeEmail;
-
 
 
 

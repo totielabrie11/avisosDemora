@@ -1,71 +1,79 @@
 [
   {
     "id": 1,
-    "pedido": 38505,
-    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "oc": "026916",
     "reclamos": [
       {
-        "id": "sub-1718822924401",
-        "estado": "cerrado",
+        "id": "sub-1719243821277",
+        "estado": "respondido",
         "prioridad": "Normal",
-        "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "19-06-2024 a las 15:48 hs",
-        "username": "CarlosM",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "24-06-2024 a las 12:43 hs",
+        "username": "CarlosR",
         "material": [
           {
-            "codigo": "Q122312634",
+            "codigo": "046301T-PTT0",
             "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA3.6/0.7-II INOX 201-PQ-001",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312635",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA2.4/0.7-II INOX 201-PQ-002",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312636",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA2.0/8.7-II INOX 201-PQ-003",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312637",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA2.0/8.7-II INOX 201-PQ-004",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312638",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA0.6/0.7-IV CPVC 204-PQ-005",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312639",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA3.6/0.7-IV CPVC 204-PQ-006",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312640",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWAK2.4/0.7-IV CPVC 204-PQ-007",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "Q122312641",
-            "cantidad": 1,
-            "descripcion": "EQ 1000L 2XDPMSWA24/0.7-IV CPVC 204-PQ-008",
-            "fechaVencimiento": "21/06/2024"
+            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "25/06/2024"
           }
         ],
-        "respuesta": "El usuario CarlosM ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosM",
-        "remito": "101050",
-        "downloadUrl": "http://localhost:3000/document/1718822945244-orders.json",
-        "estadoRemito": "resuelto"
+        "respuesta": "Se entregará en la fecha 4/7/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": 38875,
+    "cliente": "MAROLA ATILIO SRL",
+    "oc": "0988",
+    "reclamos": [
+      {
+        "id": "sub-1719244592848",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "24-06-2024 a las 12:56 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "RS006FI",
+            "cantidad": 4,
+            "descripcion": "FILTRO P/ DS 60",
+            "fechaVencimiento": "24/06/2024"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 5/7/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": 37880,
+    "cliente": "DOSISUR S.R.L",
+    "oc": "02185",
+    "reclamos": [
+      {
+        "id": "sub-1719245726987",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "24-06-2024 a las 13:15 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "RBO49101982",
+            "cantidad": 10,
+            "descripcion": "POTENCIOMETRO MOTOR BODINE TYPE 34B4BEBL/SR-WX3 CI DII",
+            "fechaVencimiento": "22/01/2024"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 4/7/2024",
+        "usernameAlmacen": "FernanditoG"
       }
     ]
   }

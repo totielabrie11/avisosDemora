@@ -17,7 +17,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
       if (estado === 'no vencido') {
         const allItems = {};
         pedido.Items.forEach((item) => {
-          allItems[item.Codigo] = { ...item, cantidad: item.Cantidad }; // Guardar el objeto del item completo
+          allItems[item.Codigo] = { ...item, cantidad: item.Cantidad };
         });
         setSelectedItems(allItems);
       } else {
@@ -37,14 +37,14 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
   const handleItemChange = (item, cantidad) => {
     setSelectedItems((prevSelectedItems) => ({
       ...prevSelectedItems,
-      [item.Codigo]: { ...item, cantidad }, // Guardar el objeto del item completo
+      [item.Codigo]: { ...item, cantidad },
     }));
   };
 
   const handleSelectAll = () => {
     const allItems = {};
     pedido.Items.forEach((item) => {
-      allItems[item.Codigo] = { ...item, cantidad: item.Cantidad }; // Guardar el objeto del item completo
+      allItems[item.Codigo] = { ...item, cantidad: item.Cantidad };
     });
     setSelectedItems(allItems);
   };
@@ -56,18 +56,19 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
         codigo: item.Codigo,
         cantidad: item.cantidad,
         descripcion: item.Descripcion,
-        fechaVencimiento: item.Fecha_vencida // Incluir la fecha de vencimiento
+        fechaVencimiento: item.Fecha_vencida
       }));
-  
+
     const reclamo = {
       pedido: pedido.Pedido,
       cliente: pedido.Cliente,
+      oc: pedido.oc, // Incluye el valor de OC en el reclamo
       estado,
       prioridad,
       mensaje,
       material
     };
-  
+
     try {
       const response = await axios.post(
         'http://localhost:3000/api/v1/reclamos',
@@ -84,7 +85,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
       setError(`Error enviando el reclamo: ${error.response ? error.response.data.error : 'Desconocido'}`);
     }
   };
-  
+
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>

@@ -103,6 +103,13 @@ const readOrders = () => {
   }
 };
 
+const getOrderOC = (pedidoId) => {
+  const orders = readOrders();
+  const order = orders.Pedidos.find(order => order.Pedido === pedidoId);
+  return order ? order.oc : null;
+};
+
+
 const readUsers = () => {
   try {
     return JSON.parse(fs.readFileSync(filePaths.users, 'utf8'));
@@ -571,7 +578,7 @@ const getNextReclamoID = () => {
 
 app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
   try {
-    const { pedido, cliente, estado, prioridad, mensaje, material, estadoRemito, problemaRemito, pedidoEstado, codigoInterno, cantidad, codigoAnterior, codigoPosterior } = req.body;
+    const { pedido, cliente, estado, prioridad, mensaje, material, oc } = req.body;
 
     if (!pedido || !cliente || !estado || !prioridad || !mensaje || !material || !Array.isArray(material)) {
       return res.status(400).json({ error: 'Faltan campos obligatorios' });
@@ -579,7 +586,6 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
 
     const reclamos = readReclamos();
     const username = req.user.username;
-
     const fecha = moment().format('DD-MM-YYYY [a las] HH:mm [hs]');
 
     const nuevoSubReclamo = {
@@ -589,14 +595,7 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
       mensaje,
       fecha,
       username,
-      material,
-      estadoRemito,
-      problemaRemito,
-      pedidoEstado,
-      codigoInterno,
-      cantidad,
-      codigoAnterior,
-      codigoPosterior
+      material
     };
 
     let reclamoExistente = reclamos.find((reclamo) => reclamo.pedido === pedido);
@@ -608,6 +607,7 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
         id: getNextReclamoID(),
         pedido,
         cliente,
+        oc,  // Incluye el valor de OC en el nuevo reclamo
         reclamos: [nuevoSubReclamo]
       };
 
@@ -616,26 +616,13 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
 
     await writeReclamos(reclamos);
 
-    // Agregar al historial de reclamos
-    const historicoReclamos = readHistoricoReclamos();
-    const nuevoHistoricoReclamo = {
-      id: nuevoSubReclamo.id,
-      pedido,
-      cliente,
-      estado,
-      mensaje,
-      fecha,
-      timestamp: nuevoSubReclamo.fecha
-    };
-    historicoReclamos.push(nuevoHistoricoReclamo);
-    await writeHistoricoReclamos(historicoReclamos);
-
     res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoSubReclamo });
   } catch (err) {
     console.error('Error al recibir el reclamo:', err.message, err.stack);
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
   }
 });
+
 
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
@@ -646,6 +633,7 @@ app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
       reclamo.reclamos.map(subReclamo => ({
         id: reclamo.id,
         pedido: reclamo.pedido,
+        oc: reclamo.oc,
         cliente: reclamo.cliente,
         prioridad: subReclamo.prioridad,
         estado: subReclamo.estado,
