@@ -57,6 +57,22 @@
             "fechaVencimiento": "25/06/2024"
           }
         ]
+      },
+      {
+        "id": "sub-1719333668805",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "25-06-2024 a las 13:41 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "046301T-PTT0",
+            "cantidad": 1,
+            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "25/06/2024"
+          }
+        ]
       }
     ]
   },

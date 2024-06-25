@@ -15,6 +15,7 @@ import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 import VistaAdministracion from './component/VistaAdministracion';
 import AdminFileUpload from './component/AdminFileUpload';
 import VistaCasosCerrados from './component/VistaCasosCerrados';
+import ExportPDF from './component/Export';
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -250,6 +251,7 @@ const App = () => {
           </label>
         </div>
         <button type="submit" className="btn btn-primary mt-2">Buscar</button>
+        <ExportPDF pedidos={pedidos}/>
       </form>
 
       <ul className="list-group mt-3">
@@ -257,6 +259,7 @@ const App = () => {
           <li key={idx} className="list-group-item">
             <h3>{pedido.Cliente}</h3>
             <h4>Pedido interno: {pedido.Pedido}</h4>
+            <h4>Orden de compra: {pedido.oc}</h4>
             <h4>Fecha de carga: {pedido.Inicio}</h4>
             <ul>
               {pedido.Items.map((item, itemIdx) => (
