@@ -17,7 +17,7 @@
   },
   {
     "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "mail": ""
+    "mail": "martinezcarlosmanuel.1@gmail.com"
   },
   {
     "Cliente": "E-INTRA S. R. L.",
@@ -369,6 +369,30 @@
   },
   {
     "Cliente": "TECNICA DE FLUIDOS SRL",
+    "mail": ""
+  },
+  {
+    "Cliente": "AGROFINA SA",
+    "mail": ""
+  },
+  {
+    "Cliente": "ROARFI S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "BIOPRO SUR S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "ELECTROMECANICA SASSO S.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "AGUAS DE CORRIENTES S.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "TERMINAL BAHIA BLANCA SA",
     "mail": ""
   }
 ]

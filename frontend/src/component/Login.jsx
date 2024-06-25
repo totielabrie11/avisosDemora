@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Login.css';  // Asegúrate de que la ruta sea correcta
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -22,30 +23,32 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="container">
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit} className="form-inline mb-3">
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Nombre de usuario"
-          className="form-control ml-2 mr-2"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Contraseña"
-          className="form-control ml-2 mr-2"
-        />
-        <button type="submit" className="btn btn-primary ml-2">
-          Ingresar
-        </button>
-      </form>
-      {error && <div className="alert alert-danger">{error}</div>}
+    <div className="login-background">
+      <div className="login-content">
+        <h2>Iniciar sesión</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Nombre de usuario"
+            className="form-control"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Contraseña"
+            className="form-control"
+          />
+          <button type="submit" className="btn btn-primary">
+            Ingresar
+          </button>
+        </form>
+        {error && <div className="alert alert-danger">{error}</div>}
+      </div>
     </div>
   );
 };
 
-export default Login
+export default Login;

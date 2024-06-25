@@ -27,8 +27,6 @@ const defaultTransporter = nodemailer.createTransport({
   },
 });
 
-
-
 const filePaths = {
   reclamos: path.join(process.cwd(), 'data/pedidosReclamos.json'),
   orders: path.join(process.cwd(), 'data/orders.json'),

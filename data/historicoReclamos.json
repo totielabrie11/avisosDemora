@@ -191,5 +191,71 @@
     "fecha": "25-06-2024 a las 09:52 hs",
     "tipoMensaje": "inicioReclamo",
     "timestamp": "25-06-2024 09:52:32"
+  },
+  {
+    "id": "sub-1719323419254",
+    "pedido": 38930,
+    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a ventas@dosivac.com",
+    "fecha": "25-06-2024 a las 10:50 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 10:50:35"
+  },
+  {
+    "id": "sub-1719323419254",
+    "pedido": 38930,
+    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "25-06-2024 a las 10:50 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 10:51:19"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "timestamp": "25-06-2024 11:01:12",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "102566"
+  },
+  {
+    "id": "sub-1719323419254",
+    "pedido": 38930,
+    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "25-06-2024 a las 10:50 hs",
+    "timestamp": "25-06-2024 11:01:40",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "548741"
+  },
+  {
+    "id": "sub-1719245726987",
+    "pedido": 37880,
+    "cliente": "DOSISUR S.R.L",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "24-06-2024 a las 13:15 hs",
+    "timestamp": "25-06-2024 11:01:51",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "456878"
+  },
+  {
+    "id": "sub-1719319945168",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "25-06-2024 a las 09:52 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 11:55:49"
   }
 ]

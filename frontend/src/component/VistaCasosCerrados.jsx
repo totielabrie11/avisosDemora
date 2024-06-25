@@ -6,11 +6,14 @@ import VistaDetalleAlmacen from './VistaDetalleAlmacen';
 
 const VistaCasosCerrados = ({ token, role }) => {
   const [casosCerrados, setCasosCerrados] = useState([]);
+  const [filteredCasos, setFilteredCasos] = useState([]);
   const [error, setError] = useState('');
   const [showDetalleModal, setShowDetalleModal] = useState(false);
   const [selectedCaso, setSelectedCaso] = useState(null);
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
+  const [filtroCliente, setFiltroCliente] = useState('');
+  const [filtroPedido, setFiltroPedido] = useState('');
 
   const fetchCasosCerrados = useCallback(() => {
     axios
@@ -20,6 +23,7 @@ const VistaCasosCerrados = ({ token, role }) => {
       .then((response) => {
         const data = response.data.filter((reclamo) => reclamo.estado === 'cerrado');
         setCasosCerrados(data);
+        setFilteredCasos(data);
       })
       .catch((error) => setError('Error fetching closed cases'));
   }, [token]);
@@ -48,6 +52,27 @@ const VistaCasosCerrados = ({ token, role }) => {
     setPedidoSeleccionado(null);
   };
 
+  const handleFiltroClienteChange = (e) => {
+    const value = e.target.value;
+    setFiltroCliente(value);
+    filtrarCasos(value, filtroPedido);
+  };
+
+  const handleFiltroPedidoChange = (e) => {
+    const value = e.target.value;
+    setFiltroPedido(value);
+    filtrarCasos(filtroCliente, value);
+  };
+
+  const filtrarCasos = (cliente, pedido) => {
+    const filtrados = casosCerrados.filter(
+      (caso) =>
+        String(caso.cliente).toLowerCase().includes(cliente.toLowerCase()) &&
+        String(caso.pedido).toLowerCase().includes(pedido.toLowerCase())
+    );
+    setFilteredCasos(filtrados);
+  };
+
   if (role !== 'administrador' && role !== 'vendedor') {
     return <div className="alert alert-danger">No tienes acceso a esta sección</div>;
   }
@@ -56,8 +81,28 @@ const VistaCasosCerrados = ({ token, role }) => {
     <div className="container mt-5">
       <h1>Casos Cerrados</h1>
       {error && <div className="alert alert-danger">{error}</div>}
+      <div className="row mb-4">
+        <div className="col-md-6">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Filtrar por Cliente"
+            value={filtroCliente}
+            onChange={handleFiltroClienteChange}
+          />
+        </div>
+        <div className="col-md-6">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Filtrar por Pedido"
+            value={filtroPedido}
+            onChange={handleFiltroPedidoChange}
+          />
+        </div>
+      </div>
       <div className="row">
-        {casosCerrados.map((caso, idx) => (
+        {filteredCasos.map((caso, idx) => (
           <div key={idx} className="col-md-4 mb-4">
             <div className="card">
               <div className="card-body">
