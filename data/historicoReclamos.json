@@ -151,5 +151,45 @@
     "fecha": "24-06-2024 a las 15:53 hs",
     "tipoMensaje": "inicioReclamo",
     "timestamp": "24-06-2024 16:10:03"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 09:05:47"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 09:07:49"
+  },
+  {
+    "id": "sub-1719255185254",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "24-06-2024 a las 15:53 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 09:50:58"
+  },
+  {
+    "id": "sub-1719319945168",
+    "pedido": 38795,
+    "cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "25-06-2024 a las 09:52 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 09:52:32"
   }
 ]

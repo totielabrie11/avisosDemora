@@ -163,30 +163,33 @@ const authenticateToken = (req, res, next) => {
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
-    req.user = user;
+
+    // Buscar el usuario en la base de datos
+    const users = readUsers().users;
+    const authenticatedUser = users.find(u => u.username === user.username);
+
+    if (!authenticatedUser) return res.sendStatus(404);
+
+    req.user = authenticatedUser;
     req.role = user.role;
     next();
   });
 };
 
 const sendEmail = (req, to, subject, text, html, attachments) => {
-  
-  const user = req.user;
-  const email = user.email;
-  const smtpPassword = user.smtpPassword;
-
-  const transporter = email && smtpPassword ? nodemailer.createTransport({
+  const user = req.user; // asegúrate de que 'user' tiene 'email' y 'smtpPassword'
+  const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
-      user: email,
-      pass: smtpPassword,
+      user: user.email, // Usa el correo electrónico del usuario
+      pass: user.smtpPassword, // Usa la contraseña SMTP del usuario
     },
-  }) : defaultTransporter;
+  });
 
   const mailOptions = {
-    from: email || 'cotizaciones@dosivac.com',
+    from: user.email, // El correo del usuario autenticado como remitente
     to,
     subject,
     text,
@@ -197,11 +200,14 @@ const sendEmail = (req, to, subject, text, html, attachments) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Error enviando el correo:', error);
+      return { success: false, message: 'Error enviando el correo' };
     } else {
       console.log('Correo enviado:', info.response);
+      return { success: true, message: 'Correo enviado con éxito' };
     }
   });
 };
+
 
 app.post('/api/v1/saveEmail', authenticateToken, async (req, res) => {
   const { cliente, email } = req.body;
