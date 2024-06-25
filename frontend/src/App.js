@@ -1,5 +1,4 @@
 // src/App.js
-
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -250,7 +249,7 @@ const App = () => {
             />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary mt-2">Buscar</button>
+        <button type="submit" className="btn btn-primary me-2">Buscar</button>
         <ExportPDF pedidos={pedidos}/>
       </form>
 

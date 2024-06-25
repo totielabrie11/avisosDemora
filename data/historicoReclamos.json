@@ -257,5 +257,47 @@
     "fecha": "25-06-2024 a las 09:52 hs",
     "tipoMensaje": "inicioReclamo",
     "timestamp": "25-06-2024 11:55:49"
+  },
+  {
+    "id": "sub-1719339357152",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sopladores@dosivac.com",
+    "fecha": "25-06-2024 a las 15:15 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "25-06-2024 15:16:22"
+  },
+  {
+    "id": "sub-1719339357152",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 4/7/2024.",
+    "fecha": "25-06-2024 a las 15:15 hs",
+    "timestamp": "25-06-2024 15:17:14",
+    "respuesta": "Se entregará en la fecha 4/7/2024",
+    "usernameAlmacen": "FernanditoG"
+  },
+  {
+    "id": "sub-1719339357152",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a sopladores@dosivac.com",
+    "fecha": "25-06-2024 a las 15:15 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "25-06-2024 15:17:33"
+  },
+  {
+    "id": "sub-1719339357152",
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén FernanditoG informa que podrá preparar el pedido para la fecha Se entregará en la fecha 7/8/2024.",
+    "fecha": "25-06-2024 a las 15:15 hs",
+    "timestamp": "25-06-2024 15:18:37",
+    "respuesta": "Se entregará en la fecha 7/8/2024",
+    "usernameAlmacen": "FernanditoG"
   }
 ]

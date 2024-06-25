@@ -167,5 +167,31 @@
         "remito": "548741"
       }
     ]
+  },
+  {
+    "id": 5,
+    "pedido": 38984,
+    "cliente": "E-INTRA S. R. L.",
+    "oc": "01057",
+    "reclamos": [
+      {
+        "id": "sub-1719339357152",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador PabloU, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "25-06-2024 a las 15:15 hs",
+        "username": "PabloU",
+        "material": [
+          {
+            "codigo": "0S015JT-NCA",
+            "cantidad": 1,
+            "descripcion": "EQ SOPLADOR DS150 / 1750 RPM C/MOTOR 4HP SSPFH DSBH",
+            "fechaVencimiento": "20/06/2024"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 7/8/2024",
+        "usernameAlmacen": "FernanditoG"
+      }
+    ]
   }
 ]
