@@ -1,8 +1,8 @@
 {
-  "Fecha_actualizacion": "25-06-2024",
+  "Fecha_actualizacion": "26-06-2024",
   "Pedidos": [
     {
-      "Pedido": 32505,
+      "Pedido": "32505",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": 4505835368,
       "Items": [
@@ -18,7 +18,7 @@
       "Inicio": "2022-05-23 00:00:00"
     },
     {
-      "Pedido": 33317,
+      "Pedido": "33317",
       "Cliente": "DOSISUR S.R.L",
       "oc": "01803",
       "Items": [
@@ -34,7 +34,7 @@
       "Inicio": "2022-09-16 00:00:00"
     },
     {
-      "Pedido": 33728,
+      "Pedido": "33728",
       "Cliente": "CHEVRON ARGENTINA SOCIEDAD DE RESPONSABILIDAD LIMITADA",
       "oc": "78079 R3",
       "Items": [
@@ -58,7 +58,7 @@
       "Inicio": "2024-01-10 00:00:00"
     },
     {
-      "Pedido": 34089,
+      "Pedido": "34089",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "383",
       "Items": [
@@ -74,7 +74,7 @@
       "Inicio": "2022-10-13 00:00:00"
     },
     {
-      "Pedido": 34190,
+      "Pedido": "34190",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "376",
       "Items": [
@@ -90,7 +90,7 @@
       "Inicio": "2022-10-24 00:00:00"
     },
     {
-      "Pedido": 34192,
+      "Pedido": "34192",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "384",
       "Items": [
@@ -106,7 +106,7 @@
       "Inicio": "2022-10-24 00:00:00"
     },
     {
-      "Pedido": 34640,
+      "Pedido": "34640",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "388 VALIJA",
       "Items": [
@@ -122,7 +122,7 @@
       "Inicio": "2022-12-12 00:00:00"
     },
     {
-      "Pedido": 35205,
+      "Pedido": "35205",
       "Cliente": "DOSISUR S.R.L",
       "oc": "01949",
       "Items": [
@@ -138,7 +138,7 @@
       "Inicio": "2023-02-17 00:00:00"
     },
     {
-      "Pedido": 35293,
+      "Pedido": "35293",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "424",
       "Items": [
@@ -154,7 +154,7 @@
       "Inicio": "2023-03-02 00:00:00"
     },
     {
-      "Pedido": 35428,
+      "Pedido": "35428",
       "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
       "oc": "22",
       "Items": [
@@ -170,7 +170,7 @@
       "Inicio": "2023-03-15 00:00:00"
     },
     {
-      "Pedido": 35547,
+      "Pedido": "35547",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "401",
       "Items": [
@@ -186,7 +186,7 @@
       "Inicio": "2023-03-28 00:00:00"
     },
     {
-      "Pedido": 35878,
+      "Pedido": "35878",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4506696163",
       "Items": [
@@ -202,7 +202,7 @@
       "Inicio": "2023-04-27 00:00:00"
     },
     {
-      "Pedido": 35927,
+      "Pedido": "35927",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "404",
       "Items": [
@@ -226,7 +226,7 @@
       "Inicio": "2023-07-05 00:00:00"
     },
     {
-      "Pedido": 36056,
+      "Pedido": "36056",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02009",
       "Items": [
@@ -242,7 +242,7 @@
       "Inicio": "2023-05-15 00:00:00"
     },
     {
-      "Pedido": 36108,
+      "Pedido": "36108",
       "Cliente": "YPF SA - SPM ARGENTINA SA - AREA BANDURRIA UTE",
       "oc": "4506747164",
       "Items": [
@@ -258,7 +258,7 @@
       "Inicio": "2023-05-19 00:00:00"
     },
     {
-      "Pedido": 36214,
+      "Pedido": "36214",
       "Cliente": "YPF SA - SPM ARGENTINA SA - AREA BANDURRIA UTE",
       "oc": "4506177896",
       "Items": [
@@ -282,7 +282,7 @@
       "Inicio": "2023-06-02 00:00:00"
     },
     {
-      "Pedido": 36215,
+      "Pedido": "36215",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02020/1",
       "Items": [
@@ -298,7 +298,7 @@
       "Inicio": "2023-06-02 00:00:00"
     },
     {
-      "Pedido": 36344,
+      "Pedido": "36344",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4506814116",
       "Items": [
@@ -338,7 +338,7 @@
       "Inicio": "2023-06-30 00:00:00"
     },
     {
-      "Pedido": 36384,
+      "Pedido": "36384",
       "Cliente": "YPF SA - CIA DE HIDROCARBUROS NO CONVENCIONAL SRL AREA LOMA CAMPANA UTE",
       "oc": "4506822981",
       "Items": [
@@ -354,7 +354,7 @@
       "Inicio": "2023-06-23 00:00:00"
     },
     {
-      "Pedido": 36473,
+      "Pedido": "36473",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100205446",
       "Items": [
@@ -370,7 +370,7 @@
       "Inicio": "2023-07-03 00:00:00"
     },
     {
-      "Pedido": 36560,
+      "Pedido": "36560",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100206779",
       "Items": [
@@ -386,7 +386,7 @@
       "Inicio": "2023-07-12 00:00:00"
     },
     {
-      "Pedido": 36609,
+      "Pedido": "36609",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "408",
       "Items": [
@@ -410,7 +410,7 @@
       "Inicio": "2023-07-17 00:00:00"
     },
     {
-      "Pedido": 36610,
+      "Pedido": "36610",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02047",
       "Items": [
@@ -426,7 +426,7 @@
       "Inicio": "2023-07-17 00:00:00"
     },
     {
-      "Pedido": 36718,
+      "Pedido": "36718",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4506937389",
       "Items": [
@@ -442,7 +442,7 @@
       "Inicio": "2023-07-27 00:00:00"
     },
     {
-      "Pedido": 36792,
+      "Pedido": "36792",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "AGO2023",
       "Items": [
@@ -466,7 +466,7 @@
       "Inicio": "2023-08-07 00:00:00"
     },
     {
-      "Pedido": 36855,
+      "Pedido": "36855",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02062",
       "Items": [
@@ -482,7 +482,7 @@
       "Inicio": "2023-08-08 00:00:00"
     },
     {
-      "Pedido": 36884,
+      "Pedido": "36884",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "6121",
       "Items": [
@@ -498,7 +498,7 @@
       "Inicio": "2023-08-11 00:00:00"
     },
     {
-      "Pedido": 36920,
+      "Pedido": "36920",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4506979957",
       "Items": [
@@ -514,7 +514,7 @@
       "Inicio": "2023-08-16 00:00:00"
     },
     {
-      "Pedido": 36921,
+      "Pedido": "36921",
       "Cliente": "YPF SA - CIA DE HIDROCARBUROS NO CONVENCIONAL SRL AREA LOMA CAMPANA UTE",
       "oc": "4506982510",
       "Items": [
@@ -530,7 +530,7 @@
       "Inicio": "2023-08-16 00:00:00"
     },
     {
-      "Pedido": 36968,
+      "Pedido": "36968",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "413",
       "Items": [
@@ -554,7 +554,7 @@
       "Inicio": "2024-04-11 00:00:00"
     },
     {
-      "Pedido": 36970,
+      "Pedido": "36970",
       "Cliente": "YPF SA - PETRONAS E&P ARGENTINA SA UTE",
       "oc": "4507001858",
       "Items": [
@@ -570,7 +570,7 @@
       "Inicio": "2023-08-23 00:00:00"
     },
     {
-      "Pedido": 37019,
+      "Pedido": "37019",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "6128",
       "Items": [
@@ -586,7 +586,7 @@
       "Inicio": "2023-08-28 00:00:00"
     },
     {
-      "Pedido": 37070,
+      "Pedido": "37070",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4507028561",
       "Items": [
@@ -610,7 +610,7 @@
       "Inicio": "2023-09-01 00:00:00"
     },
     {
-      "Pedido": 37131,
+      "Pedido": "37131",
       "Cliente": "COMPANIA GENERAL DE COMBUSTIBLES SOCIEDAD ANONIMA",
       "oc": "48263",
       "Items": [
@@ -626,7 +626,7 @@
       "Inicio": "2023-09-11 00:00:00"
     },
     {
-      "Pedido": 37132,
+      "Pedido": "37132",
       "Cliente": "COMPANIA GENERAL DE COMBUSTIBLES SOCIEDAD ANONIMA",
       "oc": "48214",
       "Items": [
@@ -674,7 +674,7 @@
       "Inicio": "2023-09-12 00:00:00"
     },
     {
-      "Pedido": 37147,
+      "Pedido": "37147",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02086",
       "Items": [
@@ -690,7 +690,7 @@
       "Inicio": "2023-09-13 00:00:00"
     },
     {
-      "Pedido": 37166,
+      "Pedido": "37166",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "491B",
       "Items": [
@@ -706,7 +706,7 @@
       "Inicio": "2023-09-18 00:00:00"
     },
     {
-      "Pedido": 37333,
+      "Pedido": "37333",
       "Cliente": "CGC ENERGIA S. A. U.",
       "oc": "85353",
       "Items": [
@@ -722,7 +722,7 @@
       "Inicio": "2023-10-06 00:00:00"
     },
     {
-      "Pedido": 37388,
+      "Pedido": "37388",
       "Cliente": "DOSIBOM SRL",
       "oc": "0540/2",
       "Items": [
@@ -738,7 +738,7 @@
       "Inicio": "2023-10-12 00:00:00"
     },
     {
-      "Pedido": 37413,
+      "Pedido": "37413",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "418",
       "Items": [
@@ -754,7 +754,7 @@
       "Inicio": "2023-10-18 00:00:00"
     },
     {
-      "Pedido": 37455,
+      "Pedido": "37455",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02134",
       "Items": [
@@ -770,7 +770,7 @@
       "Inicio": "2023-10-25 00:00:00"
     },
     {
-      "Pedido": 37463,
+      "Pedido": "37463",
       "Cliente": "PETROFARO SA",
       "oc": "4500331307",
       "Items": [
@@ -794,7 +794,7 @@
       "Inicio": "2023-10-26 00:00:00"
     },
     {
-      "Pedido": 37514,
+      "Pedido": "37514",
       "Cliente": "BIOMAS SA",
       "oc": "018221",
       "Items": [
@@ -826,7 +826,7 @@
       "Inicio": "2023-11-06 00:00:00"
     },
     {
-      "Pedido": 37619,
+      "Pedido": "37619",
       "Cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
       "oc": "4700787756",
       "Items": [
@@ -842,7 +842,7 @@
       "Inicio": "2023-11-21 00:00:00"
     },
     {
-      "Pedido": 37625,
+      "Pedido": "37625",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "20947",
       "Items": [
@@ -858,7 +858,7 @@
       "Inicio": "2023-11-22 00:00:00"
     },
     {
-      "Pedido": 37627,
+      "Pedido": "37627",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02164",
       "Items": [
@@ -874,7 +874,7 @@
       "Inicio": "2023-11-23 00:00:00"
     },
     {
-      "Pedido": 37635,
+      "Pedido": "37635",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02165",
       "Items": [
@@ -890,7 +890,7 @@
       "Inicio": "2023-11-24 00:00:00"
     },
     {
-      "Pedido": 37694,
+      "Pedido": "37694",
       "Cliente": "ALMACEN DE BOMBAS S.A.",
       "oc": "500/16",
       "Items": [
@@ -906,7 +906,7 @@
       "Inicio": "2023-12-04 00:00:00"
     },
     {
-      "Pedido": 37702,
+      "Pedido": "37702",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100218350",
       "Items": [
@@ -922,7 +922,7 @@
       "Inicio": "2023-12-05 00:00:00"
     },
     {
-      "Pedido": 37721,
+      "Pedido": "37721",
       "Cliente": "YACIMIENTO LINDERO ATRAVESADO",
       "oc": "4100218418",
       "Items": [
@@ -938,7 +938,7 @@
       "Inicio": "2023-12-07 00:00:00"
     },
     {
-      "Pedido": 37728,
+      "Pedido": "37728",
       "Cliente": "BIOMAS SA",
       "oc": "018402",
       "Items": [
@@ -962,7 +962,7 @@
       "Inicio": "2023-12-11 00:00:00"
     },
     {
-      "Pedido": 37729,
+      "Pedido": "37729",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000027427",
       "Items": [
@@ -978,7 +978,7 @@
       "Inicio": "2024-05-27 00:00:00"
     },
     {
-      "Pedido": 37770,
+      "Pedido": "37770",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02180",
       "Items": [
@@ -1018,7 +1018,7 @@
       "Inicio": "2023-12-14 00:00:00"
     },
     {
-      "Pedido": 37771,
+      "Pedido": "37771",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "427-9-08-390",
       "Items": [
@@ -1034,7 +1034,7 @@
       "Inicio": "2023-12-27 00:00:00"
     },
     {
-      "Pedido": 37859,
+      "Pedido": "37859",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700808126",
       "Items": [
@@ -1050,7 +1050,7 @@
       "Inicio": "2024-01-02 00:00:00"
     },
     {
-      "Pedido": 37880,
+      "Pedido": "37880",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02185",
       "Items": [
@@ -1066,7 +1066,7 @@
       "Inicio": "2024-01-09 00:00:00"
     },
     {
-      "Pedido": 37904,
+      "Pedido": "37904",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100221762",
       "Items": [
@@ -1082,7 +1082,7 @@
       "Inicio": "2024-01-10 00:00:00"
     },
     {
-      "Pedido": 37905,
+      "Pedido": "37905",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100221763",
       "Items": [
@@ -1098,7 +1098,7 @@
       "Inicio": "2024-01-10 00:00:00"
     },
     {
-      "Pedido": 37906,
+      "Pedido": "37906",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100221766",
       "Items": [
@@ -1114,7 +1114,7 @@
       "Inicio": "2024-01-10 00:00:00"
     },
     {
-      "Pedido": 37924,
+      "Pedido": "37924",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02191",
       "Items": [
@@ -1130,7 +1130,7 @@
       "Inicio": "2024-01-11 00:00:00"
     },
     {
-      "Pedido": 37940,
+      "Pedido": "37940",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4507374649",
       "Items": [
@@ -1146,7 +1146,7 @@
       "Inicio": "2024-01-15 00:00:00"
     },
     {
-      "Pedido": 37942,
+      "Pedido": "37942",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02192",
       "Items": [
@@ -1162,7 +1162,7 @@
       "Inicio": "2024-01-15 00:00:00"
     },
     {
-      "Pedido": 37944,
+      "Pedido": "37944",
       "Cliente": "PLUSPETROL S.A.YSUR ENERGIA AR",
       "oc": "3100117418",
       "Items": [
@@ -1178,7 +1178,7 @@
       "Inicio": "2024-01-15 00:00:00"
     },
     {
-      "Pedido": 37951,
+      "Pedido": "37951",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "430-431",
       "Items": [
@@ -1210,23 +1210,7 @@
       "Inicio": "2024-01-16 00:00:00"
     },
     {
-      "Pedido": 37967,
-      "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 26,
-          "Codigo": "B422961-DV00",
-          "Descripcion": "VALVULA DE PIE  DD PVDF C/FILTRO",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-01-17 00:00:00",
-          "Inicio": "2024-01-17 00:00:00"
-        }
-      ],
-      "Inicio": "2024-01-17 00:00:00"
-    },
-    {
-      "Pedido": 37991,
+      "Pedido": "37991",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4507378293",
       "Items": [
@@ -1258,7 +1242,7 @@
       "Inicio": "2024-01-22 00:00:00"
     },
     {
-      "Pedido": 37999,
+      "Pedido": "37999",
       "Cliente": "GAS Y PETROLEO DEL NEUQUEN S.A.- MADALENA AUSTRAL S.A.- PAN",
       "oc": "4100221767",
       "Items": [
@@ -1274,7 +1258,7 @@
       "Inicio": "2024-01-22 00:00:00"
     },
     {
-      "Pedido": 38001,
+      "Pedido": "38001",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11293",
       "Items": [
@@ -1290,7 +1274,7 @@
       "Inicio": "2024-01-22 00:00:00"
     },
     {
-      "Pedido": 38010,
+      "Pedido": "38010",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "434",
       "Items": [
@@ -1314,7 +1298,7 @@
       "Inicio": "2024-01-23 00:00:00"
     },
     {
-      "Pedido": 38042,
+      "Pedido": "38042",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "435",
       "Items": [
@@ -1333,7 +1317,15 @@
           "Cantidad": 50,
           "Fecha_vencida": "2024-01-29 00:00:00",
           "Inicio": "2024-01-29 00:00:00"
-        },
+        }
+      ],
+      "Inicio": "2024-01-29 00:00:00"
+    },
+    {
+      "Pedido": "38042",
+      "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+      "oc": "435 -452",
+      "Items": [
         {
           "Item": 3,
           "Codigo": "C04626",
@@ -1343,10 +1335,10 @@
           "Inicio": "2024-06-19 00:00:00"
         }
       ],
-      "Inicio": "2024-01-29 00:00:00"
+      "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 38044,
+      "Pedido": "38044",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700820309",
       "Items": [
@@ -1370,7 +1362,7 @@
       "Inicio": "2024-01-29 00:00:00"
     },
     {
-      "Pedido": 38058,
+      "Pedido": "38058",
       "Cliente": "HIDROMECANICA MEDITERRANEA S.R.L.",
       "oc": "240130",
       "Items": [
@@ -1386,7 +1378,7 @@
       "Inicio": "2024-02-01 00:00:00"
     },
     {
-      "Pedido": 38067,
+      "Pedido": "38067",
       "Cliente": "COMPANIA INVERSORA INDUSTRIAL",
       "oc": "01-033845",
       "Items": [
@@ -1402,23 +1394,7 @@
       "Inicio": "2024-02-02 00:00:00"
     },
     {
-      "Pedido": 38068,
-      "Cliente": "ARAUCO ARGENTINA S.A",
-      "oc": "8000029143",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031QQ0A-MET0",
-          "Descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-03-01 00:00:00",
-          "Inicio": "2024-05-16 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-16 00:00:00"
-    },
-    {
-      "Pedido": 38104,
+      "Pedido": "38104",
       "Cliente": "PRINCZ S A I C F E I",
       "oc": "M07/02/24",
       "Items": [
@@ -1434,7 +1410,7 @@
       "Inicio": "2024-02-08 00:00:00"
     },
     {
-      "Pedido": 38107,
+      "Pedido": "38107",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "439",
       "Items": [
@@ -1458,7 +1434,7 @@
       "Inicio": "2024-02-08 00:00:00"
     },
     {
-      "Pedido": 38125,
+      "Pedido": "38125",
       "Cliente": "HIDROMECANICA MEDITERRANEA S.R.L.",
       "oc": "240117",
       "Items": [
@@ -1474,7 +1450,7 @@
       "Inicio": "2024-02-14 00:00:00"
     },
     {
-      "Pedido": 38157,
+      "Pedido": "38157",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4507442924",
       "Items": [
@@ -1506,7 +1482,7 @@
       "Inicio": "2024-02-16 00:00:00"
     },
     {
-      "Pedido": 38158,
+      "Pedido": "38158",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": "4507442926",
       "Items": [
@@ -1562,7 +1538,7 @@
       "Inicio": "2024-02-16 00:00:00"
     },
     {
-      "Pedido": 38202,
+      "Pedido": "38202",
       "Cliente": "ESTEBAN CORDERO S R L",
       "oc": "M24-02-22",
       "Items": [
@@ -1578,7 +1554,7 @@
       "Inicio": "2024-02-23 00:00:00"
     },
     {
-      "Pedido": 38212,
+      "Pedido": "38212",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "441",
       "Items": [
@@ -1594,7 +1570,7 @@
       "Inicio": "2024-02-23 00:00:00"
     },
     {
-      "Pedido": 38213,
+      "Pedido": "38213",
       "Cliente": "METALURGICA COLLA S A",
       "oc": "MC-641-058",
       "Items": [
@@ -1610,7 +1586,7 @@
       "Inicio": "2024-02-23 00:00:00"
     },
     {
-      "Pedido": 38228,
+      "Pedido": "38228",
       "Cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
       "oc": "4100225278",
       "Items": [
@@ -1674,7 +1650,7 @@
       "Inicio": "2024-02-26 00:00:00"
     },
     {
-      "Pedido": 38252,
+      "Pedido": "38252",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "7100217340",
       "Items": [
@@ -1690,23 +1666,7 @@
       "Inicio": "2024-02-29 00:00:00"
     },
     {
-      "Pedido": 38271,
-      "Cliente": "DOSIVAC S A",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "032",
-          "Descripcion": "EMD MAX",
-          "Cantidad": 30,
-          "Fecha_vencida": "2024-04-30 00:00:00",
-          "Inicio": "2024-03-04 00:00:00"
-        }
-      ],
-      "Inicio": "2024-03-04 00:00:00"
-    },
-    {
-      "Pedido": 38289,
+      "Pedido": "38289",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "442",
       "Items": [
@@ -1722,7 +1682,7 @@
       "Inicio": "2024-03-06 00:00:00"
     },
     {
-      "Pedido": 38292,
+      "Pedido": "38292",
       "Cliente": "MAROLA ATILIO SRL",
       "oc": "0955",
       "Items": [
@@ -1754,23 +1714,7 @@
       "Inicio": "2024-03-07 00:00:00"
     },
     {
-      "Pedido": 38295,
-      "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "020071T-AT20",
-          "Descripcion": "DECI  7/25 C/MOT TRIF - ASIENTO PTFE",
-          "Cantidad": 15,
-          "Fecha_vencida": "2024-03-07 00:00:00",
-          "Inicio": "2024-03-07 00:00:00"
-        }
-      ],
-      "Inicio": "2024-03-07 00:00:00"
-    },
-    {
-      "Pedido": 38314,
+      "Pedido": "38314",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "558",
       "Items": [
@@ -1786,7 +1730,7 @@
       "Inicio": "2024-03-11 00:00:00"
     },
     {
-      "Pedido": 38322,
+      "Pedido": "38322",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "6195",
       "Items": [
@@ -1810,7 +1754,7 @@
       "Inicio": "2024-03-11 00:00:00"
     },
     {
-      "Pedido": 38340,
+      "Pedido": "38340",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02239",
       "Items": [
@@ -1826,31 +1770,7 @@
       "Inicio": "2024-03-14 00:00:00"
     },
     {
-      "Pedido": 38363,
-      "Cliente": "VICENTE MURILLO E HIJOS Y CIA.",
-      "oc": "08-03-24",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-04-15 00:00:00",
-          "Inicio": "2024-03-15 00:00:00"
-        },
-        {
-          "Item": 2,
-          "Codigo": "031CS0A-MET0",
-          "Descripcion": "EMD  05075 (LED) 220 V -  PP-PVDF-EPDM    ARG",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-04-15 00:00:00",
-          "Inicio": "2024-03-15 00:00:00"
-        }
-      ],
-      "Inicio": "2024-03-15 00:00:00"
-    },
-    {
-      "Pedido": 38370,
+      "Pedido": "38370",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "301635",
       "Items": [
@@ -1882,7 +1802,7 @@
       "Inicio": "2024-03-18 00:00:00"
     },
     {
-      "Pedido": 38375,
+      "Pedido": "38375",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029177",
       "Items": [
@@ -1898,7 +1818,7 @@
       "Inicio": "2024-03-19 00:00:00"
     },
     {
-      "Pedido": 38379,
+      "Pedido": "38379",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029150",
       "Items": [
@@ -1914,7 +1834,7 @@
       "Inicio": "2024-03-19 00:00:00"
     },
     {
-      "Pedido": 38380,
+      "Pedido": "38380",
       "Cliente": "SAL PARK S R L",
       "oc": "1503",
       "Items": [
@@ -1930,7 +1850,7 @@
       "Inicio": "2024-03-19 00:00:00"
     },
     {
-      "Pedido": 38381,
+      "Pedido": "38381",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "569",
       "Items": [
@@ -1954,7 +1874,7 @@
       "Inicio": "2024-03-19 00:00:00"
     },
     {
-      "Pedido": 38397,
+      "Pedido": "38397",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "443",
       "Items": [
@@ -1970,7 +1890,7 @@
       "Inicio": "2024-03-20 00:00:00"
     },
     {
-      "Pedido": 38426,
+      "Pedido": "38426",
       "Cliente": "DOSISUR S.R.L",
       "oc": "INTERCAMBIO",
       "Items": [
@@ -1986,7 +1906,7 @@
       "Inicio": "2024-03-22 00:00:00"
     },
     {
-      "Pedido": 38440,
+      "Pedido": "38440",
       "Cliente": "TECNICA DE FLUIDOS SRL",
       "oc": "08-04096",
       "Items": [
@@ -2002,7 +1922,7 @@
       "Inicio": "2024-03-22 00:00:00"
     },
     {
-      "Pedido": 38465,
+      "Pedido": "38465",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700836867",
       "Items": [
@@ -2018,7 +1938,7 @@
       "Inicio": "2024-03-27 00:00:00"
     },
     {
-      "Pedido": 38467,
+      "Pedido": "38467",
       "Cliente": "YACIMIENTO LINDERO ATRAVESADO",
       "oc": "4700839034",
       "Items": [
@@ -2034,7 +1954,7 @@
       "Inicio": "2024-03-27 00:00:00"
     },
     {
-      "Pedido": 38469,
+      "Pedido": "38469",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02016",
       "Items": [
@@ -2050,7 +1970,7 @@
       "Inicio": "2024-03-27 00:00:00"
     },
     {
-      "Pedido": 38484,
+      "Pedido": "38484",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700848170",
       "Items": [
@@ -2066,7 +1986,7 @@
       "Inicio": "2024-04-04 00:00:00"
     },
     {
-      "Pedido": 38494,
+      "Pedido": "38494",
       "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
       "oc": "61",
       "Items": [
@@ -2082,7 +2002,7 @@
       "Inicio": "2024-04-04 00:00:00"
     },
     {
-      "Pedido": 38505,
+      "Pedido": "38505",
       "Cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
       "oc": "0662",
       "Items": [
@@ -2154,7 +2074,7 @@
       "Inicio": "2024-04-05 00:00:00"
     },
     {
-      "Pedido": 38515,
+      "Pedido": "38515",
       "Cliente": "TECNICA DE FLUIDOS SRL",
       "oc": "08-04105",
       "Items": [
@@ -2170,7 +2090,7 @@
       "Inicio": "2024-04-08 00:00:00"
     },
     {
-      "Pedido": 38518,
+      "Pedido": "38518",
       "Cliente": "YACIMIENTO LINDERO ATRAVESADO",
       "oc": "4100231439",
       "Items": [
@@ -2186,7 +2106,7 @@
       "Inicio": "2024-04-08 00:00:00"
     },
     {
-      "Pedido": 38519,
+      "Pedido": "38519",
       "Cliente": "PAN AMERICAN ENERGY LLC SUCURSAL ARGENTINA - YPF S.A. - TOTA",
       "oc": "4100231440",
       "Items": [
@@ -2202,7 +2122,7 @@
       "Inicio": "2024-04-08 00:00:00"
     },
     {
-      "Pedido": 38535,
+      "Pedido": "38535",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "570",
       "Items": [
@@ -2242,7 +2162,7 @@
       "Inicio": "2024-04-09 00:00:00"
     },
     {
-      "Pedido": 38537,
+      "Pedido": "38537",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "444",
       "Items": [
@@ -2330,7 +2250,7 @@
       "Inicio": "2024-04-09 00:00:00"
     },
     {
-      "Pedido": 38554,
+      "Pedido": "38554",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014386/2",
       "Items": [
@@ -2346,7 +2266,7 @@
       "Inicio": "2024-04-11 00:00:00"
     },
     {
-      "Pedido": 38566,
+      "Pedido": "38566",
       "Cliente": "SAL PARK S R L",
       "oc": "1515",
       "Items": [
@@ -2370,23 +2290,7 @@
       "Inicio": "2024-04-12 00:00:00"
     },
     {
-      "Pedido": 38569,
-      "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
-      "oc": "0286",
-      "Items": [
-        {
-          "Item": 2,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-05-17 00:00:00",
-          "Inicio": "2024-04-15 00:00:00"
-        }
-      ],
-      "Inicio": "2024-04-15 00:00:00"
-    },
-    {
-      "Pedido": 38582,
+      "Pedido": "38582",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700849091",
       "Items": [
@@ -2402,7 +2306,7 @@
       "Inicio": "2024-04-16 00:00:00"
     },
     {
-      "Pedido": 38583,
+      "Pedido": "38583",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100231769",
       "Items": [
@@ -2418,23 +2322,7 @@
       "Inicio": "2024-04-16 00:00:00"
     },
     {
-      "Pedido": 38584,
-      "Cliente": "DIMOTEC SA",
-      "oc": "01-029240",
-      "Items": [
-        {
-          "Item": 2,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 6,
-          "Fecha_vencida": "2024-05-17 00:00:00",
-          "Inicio": "2024-04-16 00:00:00"
-        }
-      ],
-      "Inicio": "2024-04-16 00:00:00"
-    },
-    {
-      "Pedido": 38586,
+      "Pedido": "38586",
       "Cliente": "YAC. AREA CUENCA AUSTRAL 1 TIERRA DEL FUEGO",
       "oc": "4500123689",
       "Items": [
@@ -2450,7 +2338,7 @@
       "Inicio": "2024-04-16 00:00:00"
     },
     {
-      "Pedido": 38587,
+      "Pedido": "38587",
       "Cliente": "SACDE SOCIEDAD ARGENTINA DE CONSTRUCCION Y DESARROLLO ESTRAT",
       "oc": "4500119146",
       "Items": [
@@ -2466,7 +2354,7 @@
       "Inicio": "2024-04-16 00:00:00"
     },
     {
-      "Pedido": 38594,
+      "Pedido": "38594",
       "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
       "oc": "64",
       "Items": [
@@ -2490,7 +2378,7 @@
       "Inicio": "2024-04-17 00:00:00"
     },
     {
-      "Pedido": 38595,
+      "Pedido": "38595",
       "Cliente": "SAL PARK S R L",
       "oc": "1517",
       "Items": [
@@ -2514,7 +2402,7 @@
       "Inicio": "2024-04-17 00:00:00"
     },
     {
-      "Pedido": 38596,
+      "Pedido": "38596",
       "Cliente": "BSI GROUP S.A.S.",
       "oc": "01-02587",
       "Items": [
@@ -2530,7 +2418,7 @@
       "Inicio": "2024-04-17 00:00:00"
     },
     {
-      "Pedido": 38599,
+      "Pedido": "38599",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11366",
       "Items": [
@@ -2546,7 +2434,7 @@
       "Inicio": "2024-04-17 00:00:00"
     },
     {
-      "Pedido": 38617,
+      "Pedido": "38617",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02256",
       "Items": [
@@ -2578,7 +2466,7 @@
       "Inicio": "2024-04-18 00:00:00"
     },
     {
-      "Pedido": 38618,
+      "Pedido": "38618",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02257",
       "Items": [
@@ -2618,23 +2506,7 @@
       "Inicio": "2024-04-18 00:00:00"
     },
     {
-      "Pedido": 38658,
-      "Cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
-      "oc": "001113425/ 2",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "043301T-MNT0",
-          "Descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-04-24 00:00:00"
-        }
-      ],
-      "Inicio": "2024-04-24 00:00:00"
-    },
-    {
-      "Pedido": 38672,
+      "Pedido": "38672",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014423",
       "Items": [
@@ -2658,7 +2530,7 @@
       "Inicio": "2024-04-25 00:00:00"
     },
     {
-      "Pedido": 38680,
+      "Pedido": "38680",
       "Cliente": "PITUELLI EDGARDO JOSE LUDOVIC",
       "oc": "01113426/ 2",
       "Items": [
@@ -2674,7 +2546,7 @@
       "Inicio": "2024-04-26 00:00:00"
     },
     {
-      "Pedido": 38689,
+      "Pedido": "38689",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014429",
       "Items": [
@@ -2690,7 +2562,7 @@
       "Inicio": "2024-04-26 00:00:00"
     },
     {
-      "Pedido": 38691,
+      "Pedido": "38691",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02267",
       "Items": [
@@ -2770,23 +2642,7 @@
       "Inicio": "2024-04-26 00:00:00"
     },
     {
-      "Pedido": 38700,
-      "Cliente": "DOSIBOM SRL",
-      "oc": "0564",
-      "Items": [
-        {
-          "Item": 4,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 4,
-          "Fecha_vencida": "2024-05-31 00:00:00",
-          "Inicio": "2024-04-29 00:00:00"
-        }
-      ],
-      "Inicio": "2024-04-29 00:00:00"
-    },
-    {
-      "Pedido": 38701,
+      "Pedido": "38701",
       "Cliente": "DOSIBOM SRL",
       "oc": "0565",
       "Items": [
@@ -2802,7 +2658,7 @@
       "Inicio": "2024-04-29 00:00:00"
     },
     {
-      "Pedido": 38704,
+      "Pedido": "38704",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02271",
       "Items": [
@@ -2818,7 +2674,7 @@
       "Inicio": "2024-04-30 00:00:00"
     },
     {
-      "Pedido": 38708,
+      "Pedido": "38708",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02272",
       "Items": [
@@ -2850,7 +2706,7 @@
       "Inicio": "2024-05-02 00:00:00"
     },
     {
-      "Pedido": 38720,
+      "Pedido": "38720",
       "Cliente": "GOMEZ ROCO Y CIA S R L",
       "oc": "18985",
       "Items": [
@@ -2866,7 +2722,7 @@
       "Inicio": "2024-05-03 00:00:00"
     },
     {
-      "Pedido": 38721,
+      "Pedido": "38721",
       "Cliente": "GOMEZ ROCO Y CIA S R L",
       "oc": "18986",
       "Items": [
@@ -2882,7 +2738,7 @@
       "Inicio": "2024-05-03 00:00:00"
     },
     {
-      "Pedido": 38723,
+      "Pedido": "38723",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02267/1",
       "Items": [
@@ -2906,7 +2762,7 @@
       "Inicio": "2024-05-03 00:00:00"
     },
     {
-      "Pedido": 38725,
+      "Pedido": "38725",
       "Cliente": "EROSTARBE INGENIERIA SRL",
       "oc": "05945",
       "Items": [
@@ -2917,124 +2773,12 @@
           "Cantidad": 2,
           "Fecha_vencida": "2024-06-07 00:00:00",
           "Inicio": "2024-05-06 00:00:00"
-        },
-        {
-          "Item": 4,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-06-07 00:00:00",
-          "Inicio": "2024-05-06 00:00:00"
         }
       ],
       "Inicio": "2024-05-06 00:00:00"
     },
     {
-      "Pedido": 38730,
-      "Cliente": "PRUMINIR S.A.",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "067025T-00B0",
-          "Descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-06-07 00:00:00",
-          "Inicio": "2024-05-06 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-06 00:00:00"
-    },
-    {
-      "Pedido": 38735,
-      "Cliente": "PARANA MEDIO MAQUINAS Y SERVICIOS S.A.",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "035ET0A-DVT0",
-          "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-          "Cantidad": 10,
-          "Fecha_vencida": "2024-06-07 00:00:00",
-          "Inicio": "2024-05-07 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-07 00:00:00"
-    },
-    {
-      "Pedido": 38742,
-      "Cliente": "ORTOLOCHIPI HUGO CARLOS",
-      "oc": "11384/1",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-06-07 00:00:00",
-          "Inicio": "2024-05-07 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-07 00:00:00"
-    },
-    {
-      "Pedido": 38749,
-      "Cliente": "RIMOLO NORBERTO Y ORUETA RAUL SH",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "C331700/6",
-          "Descripcion": "INSERTO MANCHON \"DVR\"",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        },
-        {
-          "Item": 3,
-          "Codigo": "57211/1",
-          "Descripcion": "PALETA  2ª ETAPA CHICA DVR",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        },
-        {
-          "Item": 4,
-          "Codigo": "57216",
-          "Descripcion": "PALETA 1ª ETAPA DVR 140",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        },
-        {
-          "Item": 5,
-          "Codigo": "57210",
-          "Descripcion": "FLAPETA 2ª ETAPA CHICA - DVR",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        },
-        {
-          "Item": 6,
-          "Codigo": "57209",
-          "Descripcion": "FLAPETA DVR",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        },
-        {
-          "Item": 7,
-          "Codigo": "C0412F/14",
-          "Descripcion": "TAPA ROSCA FLARE 1/4\" C/O RING Y PRESILLA",
-          "Cantidad": 12,
-          "Fecha_vencida": "2024-05-24 00:00:00",
-          "Inicio": "2024-05-08 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-08 00:00:00"
-    },
-    {
-      "Pedido": 38754,
+      "Pedido": "38754",
       "Cliente": "UNILEVER DE ARGENTINA S.A.",
       "oc": "PO15538563",
       "Items": [
@@ -3050,7 +2794,7 @@
       "Inicio": "2024-05-08 00:00:00"
     },
     {
-      "Pedido": 38756,
+      "Pedido": "38756",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02281",
       "Items": [
@@ -3074,7 +2818,7 @@
       "Inicio": "2024-05-09 00:00:00"
     },
     {
-      "Pedido": 38759,
+      "Pedido": "38759",
       "Cliente": "TECMEC SRL",
       "oc": "62784",
       "Items": [
@@ -3090,7 +2834,7 @@
       "Inicio": "2024-05-09 00:00:00"
     },
     {
-      "Pedido": 38762,
+      "Pedido": "38762",
       "Cliente": "GAS Y PETROLEO DEL NEUQUEN S.A.- MADALENA AUSTRAL S.A.- PAN",
       "oc": "4100235390",
       "Items": [
@@ -3114,7 +2858,7 @@
       "Inicio": "2024-05-10 00:00:00"
     },
     {
-      "Pedido": 38763,
+      "Pedido": "38763",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100234160",
       "Items": [
@@ -3146,7 +2890,7 @@
       "Inicio": "2024-05-10 00:00:00"
     },
     {
-      "Pedido": 38783,
+      "Pedido": "38783",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02282",
       "Items": [
@@ -3170,7 +2914,7 @@
       "Inicio": "2024-05-10 00:00:00"
     },
     {
-      "Pedido": 38789,
+      "Pedido": "38789",
       "Cliente": "SAL PARK S R L",
       "oc": "1528",
       "Items": [
@@ -3202,7 +2946,7 @@
       "Inicio": "2024-05-13 00:00:00"
     },
     {
-      "Pedido": 38795,
+      "Pedido": "38795",
       "Cliente": "ARGEAVE SOCIEDAD DE RESPONSABILIDAD LIMITADA",
       "oc": "026916",
       "Items": [
@@ -3218,7 +2962,7 @@
       "Inicio": "2024-06-04 00:00:00"
     },
     {
-      "Pedido": 38800,
+      "Pedido": "38800",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11390",
       "Items": [
@@ -3266,7 +3010,7 @@
       "Inicio": "2024-05-14 00:00:00"
     },
     {
-      "Pedido": 38801,
+      "Pedido": "38801",
       "Cliente": "HIDROMECANICA LESA SA",
       "oc": "587B",
       "Items": [
@@ -3362,7 +3106,7 @@
       "Inicio": "2024-05-14 00:00:00"
     },
     {
-      "Pedido": 38802,
+      "Pedido": "38802",
       "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
       "oc": "7423/1",
       "Items": [
@@ -3378,7 +3122,7 @@
       "Inicio": "2024-05-14 00:00:00"
     },
     {
-      "Pedido": 38808,
+      "Pedido": "38808",
       "Cliente": "LOPEZ RICARDO GABRIEL",
       "oc": "PER14/05/24",
       "Items": [
@@ -3394,7 +3138,7 @@
       "Inicio": "2024-05-14 00:00:00"
     },
     {
-      "Pedido": 38809,
+      "Pedido": "38809",
       "Cliente": "DOSIBOM SRL",
       "oc": "0566",
       "Items": [
@@ -3410,7 +3154,7 @@
       "Inicio": "2024-05-14 00:00:00"
     },
     {
-      "Pedido": 38814,
+      "Pedido": "38814",
       "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
       "oc": "0338",
       "Items": [
@@ -3426,7 +3170,7 @@
       "Inicio": "2024-05-15 00:00:00"
     },
     {
-      "Pedido": 38815,
+      "Pedido": "38815",
       "Cliente": "COMPANIA GENERAL DE COMBUSTIBLES SOCIEDAD ANONIMA",
       "oc": "151727",
       "Items": [
@@ -3442,7 +3186,7 @@
       "Inicio": "2024-05-22 00:00:00"
     },
     {
-      "Pedido": 38816,
+      "Pedido": "38816",
       "Cliente": "MARTINEZ ALEJANDRO LUIS",
       "oc": "240515-1",
       "Items": [
@@ -3466,7 +3210,7 @@
       "Inicio": "2024-05-15 00:00:00"
     },
     {
-      "Pedido": 38825,
+      "Pedido": "38825",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014464",
       "Items": [
@@ -3482,7 +3226,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38827,
+      "Pedido": "38827",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   2",
       "Items": [
@@ -3498,7 +3242,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38828,
+      "Pedido": "38828",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   3",
       "Items": [
@@ -3514,7 +3258,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38829,
+      "Pedido": "38829",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   4",
       "Items": [
@@ -3530,7 +3274,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38830,
+      "Pedido": "38830",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   5",
       "Items": [
@@ -3546,7 +3290,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38831,
+      "Pedido": "38831",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   6",
       "Items": [
@@ -3562,7 +3306,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38832,
+      "Pedido": "38832",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   7",
       "Items": [
@@ -3578,7 +3322,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38833,
+      "Pedido": "38833",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   8",
       "Items": [
@@ -3594,7 +3338,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38834,
+      "Pedido": "38834",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797   9",
       "Items": [
@@ -3610,7 +3354,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38835,
+      "Pedido": "38835",
       "Cliente": "COMPANIAS ASOCIADAS PETROLERAS S A",
       "oc": "32797  10",
       "Items": [
@@ -3626,7 +3370,7 @@
       "Inicio": "2024-05-16 00:00:00"
     },
     {
-      "Pedido": 38836,
+      "Pedido": "38836",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014470",
       "Items": [
@@ -3642,7 +3386,7 @@
       "Inicio": "2024-05-17 00:00:00"
     },
     {
-      "Pedido": 38850,
+      "Pedido": "38850",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "Y009-450",
       "Items": [
@@ -3658,7 +3402,7 @@
       "Inicio": "2024-05-21 00:00:00"
     },
     {
-      "Pedido": 38851,
+      "Pedido": "38851",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "Y009-451",
       "Items": [
@@ -3674,7 +3418,7 @@
       "Inicio": "2024-05-21 00:00:00"
     },
     {
-      "Pedido": 38852,
+      "Pedido": "38852",
       "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
       "oc": "Y009-452",
       "Items": [
@@ -3890,7 +3634,7 @@
       "Inicio": "2024-05-21 00:00:00"
     },
     {
-      "Pedido": 38854,
+      "Pedido": "38854",
       "Cliente": "SIMTECH LTDA.",
       "oc": "50987",
       "Items": [
@@ -3922,7 +3666,7 @@
       "Inicio": "2024-05-21 00:00:00"
     },
     {
-      "Pedido": 38855,
+      "Pedido": "38855",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "170524",
       "Items": [
@@ -4050,39 +3794,7 @@
       "Inicio": "2024-05-21 00:00:00"
     },
     {
-      "Pedido": 38856,
-      "Cliente": "INSUMOS S.R.L.",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031QQ0A-MET0",
-          "Descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-06-24 00:00:00",
-          "Inicio": "2024-05-21 00:00:00"
-        },
-        {
-          "Item": 2,
-          "Codigo": "035QQ0A-DVT0",
-          "Descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-06-24 00:00:00",
-          "Inicio": "2024-05-21 00:00:00"
-        },
-        {
-          "Item": 3,
-          "Codigo": "066012T-00B0",
-          "Descripcion": "DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-06-24 00:00:00",
-          "Inicio": "2024-05-21 00:00:00"
-        }
-      ],
-      "Inicio": "2024-05-21 00:00:00"
-    },
-    {
-      "Pedido": 38864,
+      "Pedido": "38864",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02296",
       "Items": [
@@ -4114,7 +3826,7 @@
       "Inicio": "2024-05-22 00:00:00"
     },
     {
-      "Pedido": 38868,
+      "Pedido": "38868",
       "Cliente": "CHEVRON ARGENTINA SOCIEDAD DE RESPONSABILIDAD LIMITADA",
       "oc": "0060978215",
       "Items": [
@@ -4130,7 +3842,7 @@
       "Inicio": "2024-05-23 00:00:00"
     },
     {
-      "Pedido": 38869,
+      "Pedido": "38869",
       "Cliente": "GAS Y PETROLEO DEL NEUQUEN SA -MEDANITO SA - O&G DEVELOPMENTS LTD SA - UTE SIERR",
       "oc": "4514210317",
       "Items": [
@@ -4146,7 +3858,7 @@
       "Inicio": "2024-05-23 00:00:00"
     },
     {
-      "Pedido": 38870,
+      "Pedido": "38870",
       "Cliente": "DOSIBOM SRL",
       "oc": "0567",
       "Items": [
@@ -4226,7 +3938,7 @@
       "Inicio": "2024-05-22 00:00:00"
     },
     {
-      "Pedido": 38873,
+      "Pedido": "38873",
       "Cliente": "CASA BERNABE S.C.A.",
       "oc": "78161",
       "Items": [
@@ -4250,7 +3962,7 @@
       "Inicio": "2024-05-23 00:00:00"
     },
     {
-      "Pedido": 38874,
+      "Pedido": "38874",
       "Cliente": "MAROLA ATILIO SRL",
       "oc": "0989",
       "Items": [
@@ -4306,7 +4018,7 @@
       "Inicio": "2024-05-22 00:00:00"
     },
     {
-      "Pedido": 38875,
+      "Pedido": "38875",
       "Cliente": "MAROLA ATILIO SRL",
       "oc": "0988",
       "Items": [
@@ -4322,7 +4034,7 @@
       "Inicio": "2024-05-22 00:00:00"
     },
     {
-      "Pedido": 38881,
+      "Pedido": "38881",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02301",
       "Items": [
@@ -4370,7 +4082,7 @@
       "Inicio": "2024-05-24 00:00:00"
     },
     {
-      "Pedido": 38882,
+      "Pedido": "38882",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02300",
       "Items": [
@@ -4418,7 +4130,7 @@
       "Inicio": "2024-05-24 00:00:00"
     },
     {
-      "Pedido": 38885,
+      "Pedido": "38885",
       "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
       "oc": "7435/2",
       "Items": [
@@ -4434,7 +4146,7 @@
       "Inicio": "2024-05-24 00:00:00"
     },
     {
-      "Pedido": 38886,
+      "Pedido": "38886",
       "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
       "oc": "0456",
       "Items": [
@@ -4506,7 +4218,7 @@
       "Inicio": "2024-05-24 00:00:00"
     },
     {
-      "Pedido": 38895,
+      "Pedido": "38895",
       "Cliente": "GLACCO COMP PETRO SA - ROCH SA - AREAS CHOR PALE AIKE CA BRE MOY",
       "oc": "0679",
       "Items": [
@@ -4522,7 +4234,7 @@
       "Inicio": "2024-05-24 00:00:00"
     },
     {
-      "Pedido": 38897,
+      "Pedido": "38897",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4100235416",
       "Items": [
@@ -4538,7 +4250,7 @@
       "Inicio": "2024-05-27 00:00:00"
     },
     {
-      "Pedido": 38900,
+      "Pedido": "38900",
       "Cliente": "INSUMOS S.R.L.",
       "oc": "27-05-24",
       "Items": [
@@ -4570,7 +4282,7 @@
       "Inicio": "2024-05-27 00:00:00"
     },
     {
-      "Pedido": 38903,
+      "Pedido": "38903",
       "Cliente": "VICENTE MURILLO E HIJOS Y CIA.",
       "oc": "27-05-24",
       "Items": [
@@ -4658,7 +4370,7 @@
       "Inicio": "2024-05-28 00:00:00"
     },
     {
-      "Pedido": 38906,
+      "Pedido": "38906",
       "Cliente": "HIDROPLAST S A",
       "oc": "2024-483401",
       "Items": [
@@ -4722,7 +4434,7 @@
       "Inicio": "2024-05-28 00:00:00"
     },
     {
-      "Pedido": 38908,
+      "Pedido": "38908",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029334",
       "Items": [
@@ -4786,7 +4498,7 @@
       "Inicio": "2024-05-28 00:00:00"
     },
     {
-      "Pedido": 38909,
+      "Pedido": "38909",
       "Cliente": "DOSIBOM SRL",
       "oc": "0568",
       "Items": [
@@ -4898,7 +4610,7 @@
       "Inicio": "2024-05-28 00:00:00"
     },
     {
-      "Pedido": 38918,
+      "Pedido": "38918",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014482",
       "Items": [
@@ -5002,7 +4714,7 @@
       "Inicio": "2024-05-29 00:00:00"
     },
     {
-      "Pedido": 38930,
+      "Pedido": "38930",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "302660",
       "Items": [
@@ -5034,7 +4746,7 @@
       "Inicio": "2024-05-30 00:00:00"
     },
     {
-      "Pedido": 38933,
+      "Pedido": "38933",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029341",
       "Items": [
@@ -5050,7 +4762,7 @@
       "Inicio": "2024-05-31 00:00:00"
     },
     {
-      "Pedido": 38934,
+      "Pedido": "38934",
       "Cliente": "SERVIBOM S.A.",
       "oc": "04074",
       "Items": [
@@ -5074,7 +4786,7 @@
       "Inicio": "2024-05-31 00:00:00"
     },
     {
-      "Pedido": 38936,
+      "Pedido": "38936",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11407/3",
       "Items": [
@@ -5130,7 +4842,7 @@
       "Inicio": "2024-05-31 00:00:00"
     },
     {
-      "Pedido": 38937,
+      "Pedido": "38937",
       "Cliente": "HIDROCENTRO SERVICIOS SRL",
       "oc": "3550/24",
       "Items": [
@@ -5170,7 +4882,7 @@
       "Inicio": "2024-05-31 00:00:00"
     },
     {
-      "Pedido": 38938,
+      "Pedido": "38938",
       "Cliente": "HIDROMECANICA MEDITERRANEA S.R.L.",
       "oc": "240529",
       "Items": [
@@ -5258,7 +4970,7 @@
       "Inicio": "2024-05-31 00:00:00"
     },
     {
-      "Pedido": 38939,
+      "Pedido": "38939",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": "4700871084",
       "Items": [
@@ -5274,103 +4986,7 @@
       "Inicio": "2024-06-03 00:00:00"
     },
     {
-      "Pedido": 38941,
-      "Cliente": "MAQUINAS Y MOTORES SC",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031QQ0A-MET0",
-          "Descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 10,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 2,
-          "Codigo": "031TD0A-MET0",
-          "Descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 3,
-          "Codigo": "031CS0A-MET0",
-          "Descripcion": "EMD  05075 (LED) 220 V -  PP-PVDF-EPDM    ARG",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 4,
-          "Codigo": "043301T-MNT0",
-          "Descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 5,
-          "Codigo": "043601T-MNT0",
-          "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
-          "Cantidad": 2,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 6,
-          "Codigo": "046151T-PTT0",
-          "Descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PP",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 7,
-          "Codigo": "046301T-PTT0",
-          "Descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 8,
-          "Codigo": "B312962-DE00",
-          "Descripcion": "VALVULA DE PIE C/FILTRO EMD PVDF/EPDM PESO INC. (NVO)",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 9,
-          "Codigo": "B311792-DE00",
-          "Descripcion": "VALVULA PUNTO INY. ELECTROM PVDF/EPDM   (NVO)",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 10,
-          "Codigo": "A4422",
-          "Descripcion": "VALVULA PUNTO DE INYECCION - DD MED",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        },
-        {
-          "Item": 11,
-          "Codigo": "A4423",
-          "Descripcion": "VALVULA DE PIE- DD MEDIANA",
-          "Cantidad": 5,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-03 00:00:00"
-        }
-      ],
-      "Inicio": "2024-06-03 00:00:00"
-    },
-    {
-      "Pedido": 38948,
+      "Pedido": "38948",
       "Cliente": "DOSIBOM SRL",
       "oc": "0569",
       "Items": [
@@ -5402,7 +5018,7 @@
       "Inicio": "2024-06-03 00:00:00"
     },
     {
-      "Pedido": 38949,
+      "Pedido": "38949",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014507",
       "Items": [
@@ -5434,7 +5050,7 @@
       "Inicio": "2024-06-03 00:00:00"
     },
     {
-      "Pedido": 38952,
+      "Pedido": "38952",
       "Cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
       "oc": "71",
       "Items": [
@@ -5466,23 +5082,7 @@
       "Inicio": "2024-06-03 00:00:00"
     },
     {
-      "Pedido": 38954,
-      "Cliente": "SCHMUKLER ARIEL BENJAMIN",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "066012T-00B0",
-          "Descripcion": "DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-07-05 00:00:00",
-          "Inicio": "2024-06-04 00:00:00"
-        }
-      ],
-      "Inicio": "2024-06-04 00:00:00"
-    },
-    {
-      "Pedido": 38955,
+      "Pedido": "38955",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "6207",
       "Items": [
@@ -5610,7 +5210,7 @@
       "Inicio": "2024-06-04 00:00:00"
     },
     {
-      "Pedido": 38956,
+      "Pedido": "38956",
       "Cliente": "SAL PARK S R L",
       "oc": "1542",
       "Items": [
@@ -5634,7 +5234,7 @@
       "Inicio": "2024-06-04 00:00:00"
     },
     {
-      "Pedido": 38960,
+      "Pedido": "38960",
       "Cliente": "AERATION ARGENTINA S.A.",
       "oc": "4642",
       "Items": [
@@ -5650,7 +5250,7 @@
       "Inicio": "2024-06-04 00:00:00"
     },
     {
-      "Pedido": 38966,
+      "Pedido": "38966",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "6223",
       "Items": [
@@ -5698,7 +5298,7 @@
       "Inicio": "2024-06-05 00:00:00"
     },
     {
-      "Pedido": 38967,
+      "Pedido": "38967",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11410",
       "Items": [
@@ -5714,7 +5314,7 @@
       "Inicio": "2024-06-05 00:00:00"
     },
     {
-      "Pedido": 38974,
+      "Pedido": "38974",
       "Cliente": "WATER TECHNOLOGIES & SOLUTIONS ARGENTINA SC",
       "oc": "4504217324",
       "Items": [
@@ -5730,7 +5330,7 @@
       "Inicio": "2024-06-05 00:00:00"
     },
     {
-      "Pedido": 38976,
+      "Pedido": "38976",
       "Cliente": "ESTISOL S A C I F",
       "oc": "068762",
       "Items": [
@@ -5754,23 +5354,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38977,
-      "Cliente": "YPF SOCIEDAD ANONIMA",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "A1234-A",
-          "Descripcion": "MDN ST (RADAR) C/COM ANALOGICA 4-20 MA",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-06-27 00:00:00",
-          "Inicio": "2024-06-06 00:00:00"
-        }
-      ],
-      "Inicio": "2024-06-06 00:00:00"
-    },
-    {
-      "Pedido": 38980,
+      "Pedido": "38980",
       "Cliente": "SAL PARK S R L",
       "oc": "1544",
       "Items": [
@@ -5786,7 +5370,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38984,
+      "Pedido": "38984",
       "Cliente": "E-INTRA S. R. L.",
       "oc": "01057",
       "Items": [
@@ -5802,7 +5386,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38985,
+      "Pedido": "38985",
       "Cliente": "MAROLA ATILIO ROBERTO",
       "oc": "04887",
       "Items": [
@@ -5834,7 +5418,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38986,
+      "Pedido": "38986",
       "Cliente": "DOSISUR S.R.L",
       "oc": "02316",
       "Items": [
@@ -5882,7 +5466,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38987,
+      "Pedido": "38987",
       "Cliente": "BSI GROUP S.A.S.",
       "oc": "01-02660",
       "Items": [
@@ -5962,7 +5546,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38988,
+      "Pedido": "38988",
       "Cliente": "PINTO AGROALIMENTOS SRL",
       "oc": "717",
       "Items": [
@@ -5978,7 +5562,7 @@
       "Inicio": "2024-06-06 00:00:00"
     },
     {
-      "Pedido": 38989,
+      "Pedido": "38989",
       "Cliente": "SAL PARK S R L",
       "oc": "1545",
       "Items": [
@@ -6002,7 +5586,7 @@
       "Inicio": "2024-06-07 00:00:00"
     },
     {
-      "Pedido": 38992,
+      "Pedido": "38992",
       "Cliente": "BSI GROUP S.A.S.",
       "oc": "01-02618/1",
       "Items": [
@@ -6018,23 +5602,7 @@
       "Inicio": "2024-06-07 00:00:00"
     },
     {
-      "Pedido": 38993,
-      "Cliente": "PARANA MEDIO MAQUINAS Y SERVICIOS S.A.",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "035ET0A-DVT0",
-          "Descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-          "Cantidad": 10,
-          "Fecha_vencida": "2024-06-28 00:00:00",
-          "Inicio": "2024-06-07 00:00:00"
-        }
-      ],
-      "Inicio": "2024-06-07 00:00:00"
-    },
-    {
-      "Pedido": 38994,
+      "Pedido": "38994",
       "Cliente": "PROVIN EQUIPOS Y SERVICIOS SA",
       "oc": "07386",
       "Items": [
@@ -6082,7 +5650,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 38995,
+      "Pedido": "38995",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029369",
       "Items": [
@@ -6106,7 +5674,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 38996,
+      "Pedido": "38996",
       "Cliente": "TERMINAL DE FERTILIZANTES ARGENTINOS S.A.",
       "oc": "4103378142",
       "Items": [
@@ -6122,7 +5690,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 38997,
+      "Pedido": "38997",
       "Cliente": "ARES ELECTRONICA INDUSTRIAL S.",
       "oc": "7463/2",
       "Items": [
@@ -6138,7 +5706,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 38998,
+      "Pedido": "38998",
       "Cliente": "DOSIBOM SRL",
       "oc": "0570",
       "Items": [
@@ -6162,7 +5730,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 39005,
+      "Pedido": "39005",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000030116",
       "Items": [
@@ -6178,7 +5746,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 39006,
+      "Pedido": "39006",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000030422",
       "Items": [
@@ -6194,7 +5762,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 39007,
+      "Pedido": "39007",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000031483",
       "Items": [
@@ -6210,7 +5778,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 39008,
+      "Pedido": "39008",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11415",
       "Items": [
@@ -6234,7 +5802,7 @@
       "Inicio": "2024-06-10 00:00:00"
     },
     {
-      "Pedido": 39019,
+      "Pedido": "39019",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029177/1",
       "Items": [
@@ -6250,7 +5818,7 @@
       "Inicio": "2024-06-11 00:00:00"
     },
     {
-      "Pedido": 39020,
+      "Pedido": "39020",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014523",
       "Items": [
@@ -6298,7 +5866,7 @@
       "Inicio": "2024-06-11 00:00:00"
     },
     {
-      "Pedido": 39021,
+      "Pedido": "39021",
       "Cliente": "SAL PARK S R L",
       "oc": "1546",
       "Items": [
@@ -6330,7 +5898,7 @@
       "Inicio": "2024-06-12 00:00:00"
     },
     {
-      "Pedido": 39025,
+      "Pedido": "39025",
       "Cliente": "RUSSO MOSCHINO RAMON SALVADOR",
       "oc": "0544",
       "Items": [
@@ -6354,7 +5922,7 @@
       "Inicio": "2024-06-12 00:00:00"
     },
     {
-      "Pedido": 39027,
+      "Pedido": "39027",
       "Cliente": "ORTOLOCHIPI HUGO CARLOS",
       "oc": "11416/1",
       "Items": [
@@ -6378,7 +5946,7 @@
       "Inicio": "2024-06-12 00:00:00"
     },
     {
-      "Pedido": 39028,
+      "Pedido": "39028",
       "Cliente": "EHULECH SERGIO A. Y GONZALEZ ADRIAN O. S.H.",
       "oc": "59",
       "Items": [
@@ -6482,31 +6050,7 @@
       "Inicio": "2024-06-13 00:00:00"
     },
     {
-      "Pedido": 39033,
-      "Cliente": "REPARACIONES VARIAS **** NO REMITIR ***** PRUEBA",
-      "oc": "NaN",
-      "Items": [
-        {
-          "Item": 1,
-          "Codigo": "031VWSB-IVT0",
-          "Descripcion": "EMD G0525 PLUS 0.5 GPH @ 250 PSI  110V/60HZ  INOX-VITON-CER",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-06-13 00:00:00",
-          "Inicio": "2024-06-13 00:00:00"
-        },
-        {
-          "Item": 2,
-          "Codigo": "0201510-BT2E-SR",
-          "Descripcion": "DECI 15/70 SIN MOTOR NI REGULADOR - ASIENTO PTFE",
-          "Cantidad": 1,
-          "Fecha_vencida": "2024-06-13 00:00:00",
-          "Inicio": "2024-06-13 00:00:00"
-        }
-      ],
-      "Inicio": "2024-06-13 00:00:00"
-    },
-    {
-      "Pedido": 39043,
+      "Pedido": "39043",
       "Cliente": "PRINCZ S A I C F E I",
       "oc": "M2024-06-14",
       "Items": [
@@ -6522,7 +6066,7 @@
       "Inicio": "2024-06-14 00:00:00"
     },
     {
-      "Pedido": 39044,
+      "Pedido": "39044",
       "Cliente": "TECMEC SRL",
       "oc": "62807",
       "Items": [
@@ -6594,7 +6138,7 @@
       "Inicio": "2024-06-18 00:00:00"
     },
     {
-      "Pedido": 39047,
+      "Pedido": "39047",
       "Cliente": "CECAR ESTERILIZACION S.A.",
       "oc": "01-02597",
       "Items": [
@@ -6618,7 +6162,7 @@
       "Inicio": "2024-06-18 00:00:00"
     },
     {
-      "Pedido": 39048,
+      "Pedido": "39048",
       "Cliente": "SIMTECH LTDA.",
       "oc": "51177",
       "Items": [
@@ -6642,7 +6186,7 @@
       "Inicio": "2024-06-18 00:00:00"
     },
     {
-      "Pedido": 39052,
+      "Pedido": "39052",
       "Cliente": "LMA SERVICIOS INDUSTRIALES SOC",
       "oc": "06-0816",
       "Items": [
@@ -6658,7 +6202,7 @@
       "Inicio": "2024-06-18 00:00:00"
     },
     {
-      "Pedido": 39053,
+      "Pedido": "39053",
       "Cliente": "DIMOTEC SA",
       "oc": "01-029387",
       "Items": [
@@ -6682,7 +6226,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39054,
+      "Pedido": "39054",
       "Cliente": "TECMEC SRL",
       "oc": 62799,
       "Items": [
@@ -6698,7 +6242,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39055,
+      "Pedido": "39055",
       "Cliente": "YPF SOCIEDAD ANONIMA",
       "oc": 4000183478,
       "Items": [
@@ -6714,7 +6258,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39056,
+      "Pedido": "39056",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": 4100239574,
       "Items": [
@@ -6730,7 +6274,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39057,
+      "Pedido": "39057",
       "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
       "oc": 4700875289,
       "Items": [
@@ -6746,7 +6290,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39058,
+      "Pedido": "39058",
       "Cliente": "R C CONSULTORES S R L",
       "oc": "01-014539",
       "Items": [
@@ -6786,7 +6330,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39059,
+      "Pedido": "39059",
       "Cliente": "MAROLA ATILIO SRL",
       "oc": 1012,
       "Items": [
@@ -6802,7 +6346,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39060,
+      "Pedido": "39060",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": 1806,
       "Items": [
@@ -6818,7 +6362,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39063,
+      "Pedido": "39063",
       "Cliente": "ROARFI S.R.L.",
       "oc": 13,
       "Items": [
@@ -6906,7 +6450,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39064,
+      "Pedido": "39064",
       "Cliente": "HIDROPLAST S A",
       "oc": "2024-489201",
       "Items": [
@@ -6930,7 +6474,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39065,
+      "Pedido": "39065",
       "Cliente": "BIOPRO SUR S.R.L.",
       "oc": "M2024-06-18",
       "Items": [
@@ -6954,7 +6498,7 @@
       "Inicio": "2024-06-19 00:00:00"
     },
     {
-      "Pedido": 39066,
+      "Pedido": "39066",
       "Cliente": "AGROFINA SA",
       "oc": "5500021930",
       "Items": [
@@ -6970,7 +6514,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39067,
+      "Pedido": "39067",
       "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
       "oc": "ED22101",
       "Items": [
@@ -7114,7 +6658,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39068,
+      "Pedido": "39068",
       "Cliente": "DOSIBOM SRL",
       "oc": "0571",
       "Items": [
@@ -7234,7 +6778,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39069,
+      "Pedido": "39069",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000030877",
       "Items": [
@@ -7250,7 +6794,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39070,
+      "Pedido": "39070",
       "Cliente": "ARAUCO ARGENTINA S.A",
       "oc": "8000024453",
       "Items": [
@@ -7274,7 +6818,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39071,
+      "Pedido": "39071",
       "Cliente": "ELECTROMECANICA SASSO S.A.",
       "oc": "08617",
       "Items": [
@@ -7290,7 +6834,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39072,
+      "Pedido": "39072",
       "Cliente": "AGUAS DE CORRIENTES S.A.",
       "oc": "37894",
       "Items": [
@@ -7306,7 +6850,7 @@
       "Inicio": "2024-06-24 00:00:00"
     },
     {
-      "Pedido": 39082,
+      "Pedido": "39082",
       "Cliente": "TERMINAL BAHIA BLANCA SA",
       "oc": "4103383835",
       "Items": [
@@ -7320,6 +6864,110 @@
         }
       ],
       "Inicio": "2024-06-24 00:00:00"
+    },
+    {
+      "Pedido": "39083",
+      "Cliente": "R C CONSULTORES S R L",
+      "oc": "01-014550",
+      "Items": [
+        {
+          "Item": 1,
+          "Codigo": "035TD0A-DVT0",
+          "Descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON",
+          "Cantidad": 2,
+          "Fecha_vencida": "2024-07-26 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 2,
+          "Codigo": "067025T-00B0",
+          "Descripcion": "DSHC 2500 C/MOT TRIF FUND GRIS/BRONCE",
+          "Cantidad": 1,
+          "Fecha_vencida": "2024-07-26 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 3,
+          "Codigo": "R460100-CTT0",
+          "Descripcion": "KIT CABEZAL COMPL DD 150-300 PVC/PTFE",
+          "Cantidad": 2,
+          "Fecha_vencida": "2024-07-26 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 4,
+          "Codigo": "043601T-MNT0",
+          "Descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+          "Cantidad": 2,
+          "Fecha_vencida": "2024-07-26 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        }
+      ],
+      "Inicio": "2024-06-25 00:00:00"
+    },
+    {
+      "Pedido": "39084",
+      "Cliente": "SAL PARK S R L",
+      "oc": 1548,
+      "Items": [
+        {
+          "Item": 1,
+          "Codigo": "035QQ0A-DVT0",
+          "Descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
+          "Cantidad": 4,
+          "Fecha_vencida": "2024-07-26 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        }
+      ],
+      "Inicio": "2024-06-25 00:00:00"
+    },
+    {
+      "Pedido": "39085",
+      "Cliente": "YPF SOCIEDAD ANONIMA",
+      "oc": "GARANTIA",
+      "Items": [
+        {
+          "Item": 1,
+          "Codigo": "B2094/0-07",
+          "Descripcion": "CONJUNTO CABEZAL DECI 7 C/EMPAQ. AS. ELASTOMERO",
+          "Cantidad": 3,
+          "Fecha_vencida": "2024-06-25 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 2,
+          "Codigo": "13005",
+          "Descripcion": "CILINDRO ALINEADOR DES Ø  7-10 -15",
+          "Cantidad": 3,
+          "Fecha_vencida": "2024-06-25 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 3,
+          "Codigo": "13221",
+          "Descripcion": "TAPA DE CILINDRO ALINEADOR  - DES",
+          "Cantidad": 3,
+          "Fecha_vencida": "2024-06-25 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 4,
+          "Codigo": "C02123/34I",
+          "Descripcion": "TORNILLO ALL. S/C. 1/4\" X 3/4\" INOX.",
+          "Cantidad": 12,
+          "Fecha_vencida": "2024-06-25 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        },
+        {
+          "Item": 5,
+          "Codigo": "C02212/3I",
+          "Descripcion": "TUERCA MARIPOSA BSW 1/4\" INOX",
+          "Cantidad": 6,
+          "Fecha_vencida": "2024-06-25 00:00:00",
+          "Inicio": "2024-06-25 00:00:00"
+        }
+      ],
+      "Inicio": "2024-06-25 00:00:00"
     }
   ]
 }

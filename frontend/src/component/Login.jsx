@@ -1,4 +1,3 @@
-// src/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +23,10 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="login-background">
+      <h1 className="main-title">
+        SIC
+        <span className="subtitle">Sistema de Información Centralizada</span>
+      </h1>
       <div className="login-content">
         <h2>Iniciar sesión</h2>
         <form onSubmit={handleSubmit} className="login-form">
@@ -52,3 +55,5 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+
+

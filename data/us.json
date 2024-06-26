@@ -36,6 +36,13 @@
       "smtpPassword": "pghz ulvq dgtx vqvf"
     },
     {
+      "username": "RicardoG",
+      "password": "123456G11",
+      "role": "vendedor",
+      "email": "rg@dosivac.com",
+      "smtpPassword": ""
+    },
+    {
       "username": "MelinaC",
       "password": "123456C",
       "role": "vendedor",
