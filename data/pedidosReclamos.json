@@ -6,11 +6,11 @@
     "oc": "Y009-450",
     "reclamos": [
       {
-        "id": "sub-1719416783461",
+        "id": "sub-1719420478644",
         "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "26-06-2024 a las 12:46 hs",
+        "fecha": "26-06-2024 a las 13:47 hs",
         "username": "CarlosR",
         "material": [
           {
@@ -22,21 +22,19 @@
         ],
         "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
         "usernameAlmacen": "CarlosR",
-        "problemaRemito": "no puedo imprimir el remito, cliente bloqueado",
-        "estadoRemito": "desbloqueado",
         "pedidoEstado": "",
         "codigoInterno": "",
         "cantidad": "",
         "codigoAnterior": "",
         "codigoPosterior": "",
-        "remito": "102108"
+        "remito": "154878"
       },
       {
-        "id": "sub-1719417248905",
+        "id": "sub-1719421568340",
         "estado": "cerrado",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "26-06-2024 a las 12:54 hs",
+        "fecha": "26-06-2024 a las 14:06 hs",
         "username": "CarlosR",
         "material": [
           {
@@ -48,39 +46,92 @@
         ],
         "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
         "usernameAlmacen": "CarlosR",
-        "remito": "102548"
+        "remito": "147586"
+      },
+      {
+        "id": "sub-1719421686356",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "26-06-2024 a las 14:08 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "0650080-0II0",
+            "cantidad": 2,
+            "descripcion": "DSHC 800 SIN MOT   INOX/INOX",
+            "fechaVencimiento": "28/06/2024"
+          }
+        ]
       }
     ]
   },
   {
     "id": 2,
-    "pedido": "38998",
-    "cliente": "DOSIBOM SRL",
-    "oc": "0570",
+    "pedido": "38505",
+    "cliente": "CENTRAL TERMICA SAN ALONSO S.A.",
+    "oc": "0662",
     "reclamos": [
       {
-        "id": "sub-1719417266255",
-        "estado": "respondido",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "26-06-2024 a las 12:54 hs",
+        "id": "sub-1719420631740",
+        "estado": "cerrado",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "26-06-2024 a las 13:50 hs",
         "username": "CarlosR",
         "material": [
           {
-            "codigo": "R6845B0-03",
+            "codigo": "Q122312634",
             "cantidad": 1,
-            "descripcion": "CONJ. ROTOR BRONCE - DSHC 4500",
-            "fechaVencimiento": "28/06/2024"
+            "descripcion": "EQ 1000L 2XDPMSWA3.6/0.7-II INOX 201-PQ-001",
+            "fechaVencimiento": "21/06/2024"
           },
           {
-            "codigo": "68248/1",
+            "codigo": "Q122312635",
             "cantidad": 1,
-            "descripcion": "TABIQUE - DSHC 3300-4500-6300  (CHAPA)",
-            "fechaVencimiento": "28/06/2024"
+            "descripcion": "EQ 1000L 2XDPMSWA2.4/0.7-II INOX 201-PQ-002",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312636",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWA2.0/8.7-II INOX 201-PQ-003",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312637",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWA2.0/8.7-II INOX 201-PQ-004",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312638",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWA0.6/0.7-IV CPVC 204-PQ-005",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312639",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWA3.6/0.7-IV CPVC 204-PQ-006",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312640",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWAK2.4/0.7-IV CPVC 204-PQ-007",
+            "fechaVencimiento": "21/06/2024"
+          },
+          {
+            "codigo": "Q122312641",
+            "cantidad": 1,
+            "descripcion": "EQ 1000L 2XDPMSWA24/0.7-IV CPVC 204-PQ-008",
+            "fechaVencimiento": "21/06/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 25/7/2024",
-        "usernameAlmacen": "FernanditoG"
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
+        "remito": "102454"
       }
     ]
   }

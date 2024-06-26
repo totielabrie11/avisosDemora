@@ -24,6 +24,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
   const [editingEmailReclamoId, setEditingEmailReclamoId] = useState(null);
   const [newEmail, setNewEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(true); // Estado para cargando...
+  const [noData, setNoData] = useState(false); // Estado para no hay datos
 
   useEffect(() => {
     const fetchReclamos = async () => {
@@ -53,6 +55,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
         setFechaPrometidaVencidaCount(vencidosPrometida.length);
         setRemitoCount(reclamosFiltrados.filter(r => r.estado === 'remito enviado').length);
         setCursoCount(reclamosFiltrados.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido').length);
+        setIsLoading(false); // Termina la carga
+        setNoData(reclamosFiltrados.length === 0); // Verifica si hay datos
       } catch (error) {
         if (error.response && error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver esta información.');
@@ -60,6 +64,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           console.error('Error al obtener reclamos:', error);
           setError('Error al obtener reclamos.');
         }
+        setIsLoading(false); // Termina la carga
       }
     };
 
@@ -186,6 +191,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;
+  }
+
+  if (isLoading) {
+    return <div className="text-center">Cargando...</div>;
+  }
+
+  if (noData) {
+    return <h2 className="text-center">No hay reclamos abiertos para mostrar</h2>;
   }
 
   return (

@@ -638,12 +638,28 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
 
     await writeReclamos(reclamos);
 
+    // Agregar entrada al historial de reclamos
+    const historicoReclamos = readHistoricoReclamos();
+    const nuevoHistoricoReclamo = {
+      id: nuevoSubReclamo.id,
+      pedido,
+      cliente,
+      estado,
+      mensaje,
+      fecha,
+      tipoMensaje: estado === 'no vencido' ? 'vencimiento proximo' : 'alerta demora',
+      timestamp: moment().format('DD-MM-YYYY HH:mm:ss')
+    };
+    historicoReclamos.push(nuevoHistoricoReclamo);
+    await writeHistoricoReclamos(historicoReclamos);
+
     res.status(201).json({ message: 'Reclamo recibido', reclamo: nuevoSubReclamo });
   } catch (err) {
     console.error('Error al recibir el reclamo:', err.message, err.stack);
     res.status(500).json({ error: 'Error al recibir el reclamo', message: err.message });
   }
 });
+
 
 
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
