@@ -483,5 +483,3 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 };
 
 export default GestorAlmacenes;
-
-

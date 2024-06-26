@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const ContadorFechasEntregaPorPedido = ({ token, pedidoId }) => {
+const ContadorFechasEntregaPorPedido = ({ token, pedidoId, tipo }) => {
   const [cantidadFechas, setCantidadFechas] = useState(0);
 
   useEffect(() => {
@@ -22,6 +22,13 @@ const ContadorFechasEntregaPorPedido = ({ token, pedidoId }) => {
   return (
     <div>
       <h6>Cantidad de promesas de entrega: {cantidadFechas}</h6>
+      {cantidadFechas >= 3 && (
+        <p style={{ color: 'red' }}>
+          {tipo === 'ventas'
+            ? 'Se han realizado 3 promesas de entrega en este reclamo'
+            : 'Ha superado la cantidad de promesas máximas permitidas'}
+        </p>
+      )}
     </div>
   );
 };
