@@ -24,3 +24,4 @@ const Leyenda = () => {
 };
 
 export default Leyenda;
+
