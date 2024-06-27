@@ -68,5 +68,29 @@
         "usernameAlmacen": "CarlosM"
       }
     ]
+  },
+  {
+    "id": 3,
+    "pedido": 38850,
+    "cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+    "oc": "Y009-450",
+    "reclamos": [
+      {
+        "id": "sub-1719515069761",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "27-06-2024 a las 16:04 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "0650080-0II0",
+            "cantidad": 2,
+            "descripcion": "DSHC 800 SIN MOT   INOX/INOX",
+            "fechaVencimiento": "28/06/2024"
+          }
+        ]
+      }
+    ]
   }
 ]

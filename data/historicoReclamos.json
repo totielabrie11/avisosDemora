@@ -178,5 +178,25 @@
     "usernameAlmacen": "CarlosM",
     "remito": "100000",
     "estadoRemito": "desbloqueado"
+  },
+  {
+    "id": "sub-1719515069761",
+    "pedido": 38850,
+    "cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "27-06-2024 a las 16:04 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "27-06-2024 16:04:29"
+  },
+  {
+    "id": "sub-1719515069761",
+    "pedido": 38850,
+    "cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a cotizaciones@dosivac.com",
+    "fecha": "27-06-2024 a las 16:04 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "27-06-2024 16:04:43"
   }
 ]
