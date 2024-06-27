@@ -5,7 +5,7 @@
   },
   {
     "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
-    "mail": ""
+    "mail": "cotizaciones@dosivac.com"
   },
   {
     "Cliente": "SUMINISTROS INDUSTRIALES Y SERVICIOS SAS",
@@ -45,7 +45,7 @@
   },
   {
     "Cliente": "CASA BERNABE S.C.A.",
-    "mail": ""
+    "mail": "martinezcarlosmanuel.1@gmail.com"
   },
   {
     "Cliente": "MAROLA ATILIO SRL",
@@ -85,7 +85,7 @@
   },
   {
     "Cliente": "YPF SOCIEDAD ANONIMA",
-    "mail": ""
+    "mail": "martinezcarlosmanuel.1@gmail.com"
   },
   {
     "Cliente": "DOSISUR S.R.L",
@@ -153,7 +153,7 @@
   },
   {
     "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
-    "mail": ""
+    "mail": "etito@paeejemplo.com"
   },
   {
     "Cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
@@ -333,7 +333,7 @@
   },
   {
     "Cliente": "BIOMAS SA",
-    "mail": ""
+    "mail": "martinezcarlosmanuel.1@gmail.com"
   },
   {
     "Cliente": "ALMACEN DE BOMBAS S.A.",
@@ -393,6 +393,14 @@
   },
   {
     "Cliente": "TERMINAL BAHIA BLANCA SA",
+    "mail": ""
+  },
+  {
+    "Cliente": "MAZDEN S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "BOJAGRO S.A.",
     "mail": ""
   }
 ]

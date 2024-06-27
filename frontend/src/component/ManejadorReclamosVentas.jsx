@@ -8,6 +8,7 @@ import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import CerrarReclamoButton from './CerrarReclamoButton';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
+import ContadorCorreosPorTipo from './ContadorCorreosPorTipo'; // Importa el nuevo componente
 import { FaEdit } from 'react-icons/fa';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
@@ -330,6 +331,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   </div>
                 )}
                 <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} />
+                <ContadorCorreosPorTipo token={token} pedidoId={reclamo.pedido} /> {/* Agrega el nuevo componente aquí */}
               </div>
             </div>
           </div>

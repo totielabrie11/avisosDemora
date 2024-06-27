@@ -877,6 +877,39 @@ app.post('/api/v1/uploadOrders', authenticateToken, upload.single('file'), async
   }
 });
 
+// Función para contar correos por tipo de mensaje para un pedido específico
+const contarCorreosPorTipoParaPedido = (pedidoId) => {
+  try {
+    const historicoReclamos = readHistoricoReclamos();
+    const conteoPorTipo = historicoReclamos
+      .filter(entry => entry.pedido == pedidoId && entry.tipoMensaje) // Asegúrate de comparar correctamente
+      .reduce((acc, curr) => {
+        const tipoMensaje = curr.tipoMensaje;
+        if (!acc[tipoMensaje]) {
+          acc[tipoMensaje] = 0;
+        }
+        acc[tipoMensaje]++;
+        return acc;
+      }, {});
+    return conteoPorTipo;
+  } catch (error) {
+    console.error('Error contando correos por tipo para el pedido:', error.message);
+    return {};
+  }
+};
+
+app.get('/api/v1/contarCorreosPorTipo/:pedidoId', authenticateToken, (req, res) => {
+  const { pedidoId } = req.params;
+  try {
+    const conteoPorTipo = contarCorreosPorTipoParaPedido(pedidoId);
+    res.json(conteoPorTipo);
+  } catch (error) {
+    console.error('Error al contar correos por tipo para el pedido:', error.message);
+    res.status(500).json({ error: 'Error al contar correos por tipo para el pedido', message: error.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
