@@ -29,8 +29,8 @@ const filePaths = {
   mails: path.join(process.cwd(), 'data/dbMails.json'),
 };
 
-// Ruta al directorio de backup
-const backupDir = path.join(process.env.HOME || process.env.USERPROFILE, 'Desktop', 'BackupReclamosVentas');
+// Ruta al directorio de backup en la unidad D:
+const backupDir = path.join('D:', '_Backup', 'BackupReclamosVentas');
 
 // Crear el directorio de backup si no existe
 if (!fs.existsSync(backupDir)) {
