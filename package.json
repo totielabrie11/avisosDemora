@@ -7,7 +7,11 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "backup": "node backup.js",
+    "backup-enable": "node backupSincronizado.js enable",
+    "backup-disable": "node backupSincronizado.js disable",
+    "backup-status": "node backupSincronizado.js status"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +28,7 @@
     "nodemailer": "^6.9.13",
     "path": "^0.12.7",
     "pdfkit": "^0.15.0",
-    "react-bootstrap": "^2.10.2"
+    "react-bootstrap": "^2.10.2",
+    "node-cron": "^3.0.0"
   }
 }
