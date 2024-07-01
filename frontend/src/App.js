@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -15,6 +14,7 @@ import VistaAdministracion from './component/VistaAdministracion';
 import AdminFileUpload from './component/AdminFileUpload';
 import VistaCasosCerrados from './component/VistaCasosCerrados';
 import ExportPDF from './component/Export';
+import { BACKEND_URL } from './config'; // Importa la URL del backend desde el archivo de configuración
 
 const App = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -71,7 +71,7 @@ const App = () => {
 
   const fetchPedidos = useCallback(() => {
     axios
-      .get(`http://localhost:3000/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`, {
+      .get(`${BACKEND_URL}/api/v1/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

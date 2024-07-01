@@ -31,7 +31,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   useEffect(() => {
     const fetchReclamos = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+        const response = await axios.get('http://localhost:43000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -74,7 +74,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 
   const fetchEmail = async (cliente) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/getEmail?cliente=${cliente}`, {
+      const response = await axios.get(`http://localhost:43000/api/v1/getEmail?cliente=${cliente}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data.email || '';
@@ -130,7 +130,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const handleSaveEmail = async (reclamoId, newEmail) => {
     try {
       const reclamo = reclamos.find(r => r.id === reclamoId);
-      const response = await axios.post('http://localhost:3000/api/v1/saveEmail', { cliente: reclamo.cliente, email: newEmail }, {
+      const response = await axios.post('http://localhost:43000/api/v1/saveEmail', { cliente: reclamo.cliente, email: newEmail }, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -164,7 +164,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
+      const response = await axios.put(`http://localhost:43000/api/v1/reclamos/${reclamo.id}`, updatedReclamo, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

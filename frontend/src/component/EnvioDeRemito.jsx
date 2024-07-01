@@ -12,7 +12,7 @@ const EnvioDeRemito = ({ id, subId, token, cliente }) => {
     // Función para verificar si ya existe un remito para este subId
     const verificarRemito = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/reclamos/${id}`, {
+        const response = await axios.get(`http://localhost:43000/api/v1/reclamos/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -57,7 +57,7 @@ const EnvioDeRemito = ({ id, subId, token, cliente }) => {
         subId
       });
 
-      const uploadResponse = await axios.post('http://localhost:3000/upload', formData, {
+      const uploadResponse = await axios.post('http://localhost:43000/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
@@ -78,7 +78,7 @@ const EnvioDeRemito = ({ id, subId, token, cliente }) => {
           downloadUrl // Incluir downloadUrl en la actualización
         };
 
-        const updateResponse = await axios.put(`http://localhost:3000/api/v1/reclamos/${id}`, updateData, {
+        const updateResponse = await axios.put(`http://localhost:43000/api/v1/reclamos/${id}`, updateData, {
           headers: { Authorization: `Bearer ${token}` }
         });
 

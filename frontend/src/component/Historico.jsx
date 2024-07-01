@@ -9,7 +9,7 @@ const Historico = ({ token }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/historico', {
+    axios.get('http://localhost:43000/api/v1/historico', {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {

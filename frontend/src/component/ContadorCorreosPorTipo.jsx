@@ -12,7 +12,7 @@ const ContadorCorreosPorTipo = ({ token, pedidoId }) => {
   useEffect(() => {
     const fetchConteoCorreos = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/contarCorreosPorTipo/${pedidoId}`, {
+        const response = await axios.get(`http://localhost:43000/api/v1/contarCorreosPorTipo/${pedidoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data;

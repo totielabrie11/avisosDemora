@@ -10,7 +10,7 @@ const HistorialReclamos = ({ pedidoId, token, showModal, handleClose }) => {
   useEffect(() => {
     const fetchHistorial = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/historicoReclamos?pedidoId=${pedidoId}`, {
+        const response = await axios.get(`http://localhost:43000/api/v1/historicoReclamos?pedidoId=${pedidoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setHistorial(response.data);

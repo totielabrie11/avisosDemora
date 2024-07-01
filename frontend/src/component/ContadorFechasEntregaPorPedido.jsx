@@ -7,7 +7,7 @@ const ContadorFechasEntregaPorPedido = ({ token, pedidoId, tipo }) => {
   useEffect(() => {
     const fetchCantidadFechas = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/cantidadFechasEntrega/${pedidoId}`, {
+        const response = await axios.get(`http://localhost:43000/api/v1/cantidadFechasEntrega/${pedidoId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCantidadFechas(response.data.cantidadFechas);

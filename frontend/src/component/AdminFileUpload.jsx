@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BACKEND_URL } from '../config'; // Importa la URL del backend desde el archivo de configuración
 
 const AdminFileUpload = ({ token }) => {
   const [file, setFile] = useState(null);
@@ -19,7 +20,7 @@ const AdminFileUpload = ({ token }) => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/uploadOrders', formData, {
+      const response = await axios.post(`${BACKEND_URL}/api/v1/uploadOrders`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

@@ -61,7 +61,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   useEffect(() => {
     const fetchReclamos = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+        const response = await axios.get('http://localhost:43000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data;
@@ -106,7 +106,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
       };
 
       try {
-        const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
+        const response = await axios.put(`http://localhost:43000/api/v1/reclamos/${selectedReclamo.id}`, {
           ...updatedReclamo,
           subId: selectedReclamo.subId
         }, {
@@ -178,7 +178,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const handleRemitoSubmitSuccess = async (numeroRemito) => {
     if (selectedReclamo) {
       try {
-        const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${selectedReclamo.id}`, {
+        const response = await axios.put(`http://localhost:43000/api/v1/reclamos/${selectedReclamo.id}`, {
           estado: 'remito enviado',
           respuesta: `Remito enviado con número ${numeroRemito}`,
           subId: selectedReclamo.subId,

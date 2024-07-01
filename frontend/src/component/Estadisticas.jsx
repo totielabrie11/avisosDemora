@@ -13,7 +13,7 @@ const Estadisticas = ({ token }) => {
   const [mesSeleccionado, setMesSeleccionado] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/estadisticas', {
+    axios.get('http://localhost:43000/api/v1/estadisticas', {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
@@ -36,7 +36,7 @@ const Estadisticas = ({ token }) => {
   }, [token]);
 
   const saveCurrentDayData = (data) => {
-    axios.post('http://localhost:3000/api/v1/historico', data, {
+    axios.post('http://localhost:43000/api/v1/historico', data, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => {

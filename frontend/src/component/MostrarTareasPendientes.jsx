@@ -7,7 +7,7 @@ const MostrarTareasPendientes = ({ token, username, role }) => {
   useEffect(() => {
     const fetchTareasPendientes = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+        const response = await axios.get('http://localhost:43000/api/v1/reclamos', {
           headers: { Authorization: `Bearer ${token}` },
         });
         let tareas = response.data;

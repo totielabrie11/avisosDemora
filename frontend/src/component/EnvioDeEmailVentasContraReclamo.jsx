@@ -42,7 +42,7 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
     }
 
     try {
-      await axios.post('http://localhost:3000/api/v1/sendEmailWithAttachment', formData, {
+      await axios.post('http://localhost:43000/api/v1/sendEmailWithAttachment', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
@@ -59,7 +59,7 @@ const EnvioDeEmailVentasContraReclamo = ({ reclamo, token, onSaveEmail, fetchEma
         fecha: moment().format('DD-MM-YYYY HH:mm:ss'),
         tipoMensaje: 'deudaPendiente'
       };
-      await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
+      await axios.post('http://localhost:43000/api/v1/historicoReclamos', historicoData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

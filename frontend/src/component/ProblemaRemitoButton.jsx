@@ -17,7 +17,7 @@ const ProblemaRemitoButton = ({ reclamo, token, onProblemaReportado, username })
   const handleReportarProblema = async () => {
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, {
+      const response = await axios.put(`http://localhost:43000/api/v1/reclamos/${reclamo.id}`, {
         estadoRemito: 'conflicto',
         problemaRemito: problemaRemito,
         subId: reclamo.subId,

@@ -35,7 +35,7 @@ const LiberarPedidoButton = ({ reclamo, token, onProblemaReportado }) => {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/api/v1/reclamos/${reclamo.id}`,
+        `http://localhost:43000/api/v1/reclamos/${reclamo.id}`,
         updatedReclamo,
         {
           headers: { Authorization: `Bearer ${token}` },

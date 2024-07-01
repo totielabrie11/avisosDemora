@@ -67,7 +67,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
     };
   
     try {
-      await axios.post('http://localhost:3000/api/v1/sendEmail', emailData, {
+      await axios.post('http://localhost:43000/api/v1/sendEmail', emailData, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
@@ -81,7 +81,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
         fecha: reclamo.fecha,
         tipoMensaje // Incluye el tipo de mensaje
       };
-      await axios.post('http://localhost:3000/api/v1/historicoReclamos', historicoData, {
+      await axios.post('http://localhost:43000/api/v1/historicoReclamos', historicoData, {
         headers: { Authorization: `Bearer ${token}` }
       });
   
@@ -98,7 +98,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
 
   const guardarCorreo = async () => {
     try {
-      await axios.post('http://localhost:3000/api/v1/saveEmail', { cliente: reclamo.cliente, email }, {
+      await axios.post('http://localhost:43000/api/v1/saveEmail', { cliente: reclamo.cliente, email }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onSaveEmail(email);

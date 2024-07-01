@@ -17,7 +17,7 @@ const VistaCasosCerrados = ({ token, role }) => {
 
   const fetchCasosCerrados = useCallback(() => {
     axios
-      .get('http://localhost:3000/api/v1/reclamos', {
+      .get('http://localhost:43000/api/v1/reclamos', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

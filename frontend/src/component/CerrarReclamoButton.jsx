@@ -36,7 +36,7 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
     if (confirmed) {
       setLoading(true);
       try {
-        const response = await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, {
+        const response = await axios.put(`http://localhost:43000/api/v1/reclamos/${reclamo.id}`, {
           estado: 'cerrado',
           subId: reclamo.subId,
           usernameAlmacen: username,

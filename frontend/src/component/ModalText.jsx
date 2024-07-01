@@ -71,7 +71,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/v1/reclamos',
+        'http://localhost:43000/api/v1/reclamos',
         reclamo,
         {
           headers: { Authorization: `Bearer ${token}` },

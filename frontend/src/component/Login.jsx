@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';  // Asegúrate de que la ruta sea correcta
+import { BACKEND_URL } from '../config'; // Ruta corregida
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/login', {
+      const response = await axios.post(`${BACKEND_URL}/api/v1/login`, {
         username,
         password,
       });
@@ -55,5 +56,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
-

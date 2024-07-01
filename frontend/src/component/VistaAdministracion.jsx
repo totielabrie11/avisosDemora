@@ -12,7 +12,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
 
   const fetchReclamos = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/reclamos', {
+      const response = await axios.get('http://localhost:43000/api/v1/reclamos', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = response.data;
@@ -46,7 +46,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     if (confirmed) {
       try {
         const subReclamoId = reclamo.subId; // Asegúrate de que este campo esté disponible
-        await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, 
+        await axios.put(`http://localhost:43000/api/v1/reclamos/${reclamo.id}`, 
           { estadoRemito: 'desbloqueado', subId: subReclamoId }, 
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -69,7 +69,7 @@ const VistaAdministracion = ({ token, username, role, onLogout }) => {
     if (confirmed) {
       try {
         const subReclamoId = reclamo.subId; // Asegúrate de que este campo está disponible
-        await axios.put(`http://localhost:3000/api/v1/reclamos/${reclamo.id}`, 
+        await axios.put(`http://localhost:43000/api/v1/reclamos/${reclamo.id}`, 
           { estadoRemito: 'retenido deuda', subId: subReclamoId }, 
           {
             headers: { Authorization: `Bearer ${token}` },
