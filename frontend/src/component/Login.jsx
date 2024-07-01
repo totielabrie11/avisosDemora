@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';  // Asegúrate de que la ruta sea correcta
 import { BACKEND_URL } from '../config'; // Ruta corregida
+console.log("🚀 ~ BACKEND_URL:", BACKEND_URL)
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
