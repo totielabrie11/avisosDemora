@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": 1,
+    "pedido": 38762,
+    "cliente": "GAS Y PETROLEO DEL NEUQUEN S.A.- MADALENA AUSTRAL S.A.- PAN",
+    "oc": "4100235390",
+    "reclamos": [
+      {
+        "id": "sub-1719851168511",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "01-07-2024 a las 13:26 hs",
+        "username": "CarlosM",
+        "material": [
+          {
+            "codigo": "46070",
+            "cantidad": 2,
+            "descripcion": "DIAFRAGMA EN PTFE - DD 150/300/600",
+            "fechaVencimiento": "01/07/2024"
+          },
+          {
+            "codigo": "044301V-ITT0-11",
+            "cantidad": 2,
+            "descripcion": "DD 300 SIMPLE MOT ANTIEXPL CAB INOX SFC/ROD",
+            "fechaVencimiento": "01/07/2024"
+          }
+        ]
+      }
+    ]
+  }
+]

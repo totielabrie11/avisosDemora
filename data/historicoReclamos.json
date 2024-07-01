@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "sub-1719851168511",
+    "pedido": 38762,
+    "cliente": "GAS Y PETROLEO DEL NEUQUEN S.A.- MADALENA AUSTRAL S.A.- PAN",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosM, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "01-07-2024 a las 13:26 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "01-07-2024 13:26:08"
+  },
+  {
+    "id": "sub-1719851168511",
+    "pedido": 38762,
+    "cliente": "GAS Y PETROLEO DEL NEUQUEN S.A.- MADALENA AUSTRAL S.A.- PAN",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "01-07-2024 a las 13:26 hs",
+    "tipoMensaje": "inicioReclamo",
+    "timestamp": "01-07-2024 13:26:23"
+  }
+]
