@@ -1,0 +1,38 @@
+{
+  "name": "avisosdemora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "npm start --prefix frontend",
+    "backup": "node backup.js",
+    "backup-enable": "node backupSincronizado.js enable",
+    "backup-disable": "node backupSincronizado.js disable",
+    "backup-status": "node backupSincronizado.js status"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "install": "^0.13.0",
+    "json-2-csv": "^5.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.0",
+    "nodemailer": "^6.9.13",
+    "npm": "^10.8.1",
+    "path": "^0.12.7",
+    "pdfkit": "^0.15.0",
+    "react-bootstrap": "^2.10.2",
+    "xlsx": "^0.18.5"
+  }
+}

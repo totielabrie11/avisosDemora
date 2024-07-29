@@ -1,0 +1,116 @@
+/* General App Styles */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pedidos Vencidos y Próximos a Vencer */
+.item-amarillo {
+  background-color: #f6ff00;
+}
+
+.item-naranja {
+  background-color: #ff9412;
+}
+
+.item-rojo {
+  background-color: #ff0a0a;
+}
+
+.item-verde {
+  background-color: #ccffcc;
+}
+
+/* Botones de Alerta Demora y Vencimiento Próximo */
+.btn-alerta-demora {
+  background-color: #ff6666;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-alerta-demora:hover {
+  background-color: #ff5050;
+}
+
+.btn-vencimiento-proximo {
+  background-color: #28a745;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-vencimiento-proximo:hover {
+  background-color: #218838;
+}
+
+
+/* App.css */
+.item-verde {
+  background-color: rgb(31, 232, 31);
+}
+.item-amarillo {
+  background-color: #f6ff00;
+}
+.item-naranja {
+  background-color:#ff9412;
+}
+.item-rojo {
+  background-color:  #ff0a0a;
+}
+.btn-alerta-demora {
+  background-color: orange;
+  color: white;
+}
+.btn-vencimiento-proximo {
+  background-color: yellowgreen;
+  color: white;
+}
+.estadisticas {
+  margin-top: 30px;
+}
+
+.item-rojo {
+  background-color: red;
+  color: white; /* Este cambio asegura que el texto será blanco */
+}

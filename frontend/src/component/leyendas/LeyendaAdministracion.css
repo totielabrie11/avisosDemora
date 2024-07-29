@@ -1,0 +1,50 @@
+.leyenda {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    z-index: 1000;
+    margin-left: auto;
+  }
+  
+  .leyenda h4 {
+    margin-top: 0;
+  }
+  
+  .leyenda ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .leyenda li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .reclamo .circle {
+    background-color: #FFC107;
+  }
+  
+  .retenido .circle {
+    background-color: #DC3545;
+  }
+  
+  .conflicto .circle {
+    background-color: #0D6EFD;
+  }
+  

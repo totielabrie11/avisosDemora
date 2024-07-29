@@ -1,0 +1,84 @@
+/* Leyenda */
+.leyenda {
+  position: fixed;
+  top: 80px; /* Ajusta este valor según donde quieres que se posicione */
+  right: 10px; /* Ajusta este valor según donde quieres que se posicione */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1000; /* Asegura que se superponga a otros elementos */
+  margin-left: auto; /* Asegura que se alinee correctamente dentro de su contenedor */
+}
+
+.leyenda h4 {
+  margin-top: 0;
+}
+
+.leyenda ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leyenda li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.circle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.verde .circle {
+  background-color: rgb(31, 232, 31);
+}
+
+.amarillo .circle {
+  background-color: #f6ff00;
+}
+
+.naranja .circle {
+  background-color: #ff9412;
+}
+
+.rojo .circle {
+  background-color: #ff0a0a;
+}
+
+/* App.css */
+.item-verde {
+  background-color: rgb(31, 232, 31);
+}
+.item-amarillo {
+  background-color: #f6ff00;
+}
+.item-naranja {
+  background-color:#ff9412;
+}
+.item-rojo {
+  background-color:  #ff0a0a;
+}
+.btn-alerta-demora {
+  background-color: orange;
+  color: white;
+}
+.btn-vencimiento-proximo {
+  background-color: yellowgreen;
+  color: white;
+}
+.estadisticas {
+  margin-top: 30px;
+}
+
+.item-rojo {
+  background-color: red;
+  color: white; /* Este cambio asegura que el texto será blanco */
+}
