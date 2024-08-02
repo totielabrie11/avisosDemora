@@ -13,7 +13,7 @@
   },
   {
     "Cliente": "SIMTECH LTDA.",
-    "mail": ""
+    "mail": "comex@simtech.cl"
   },
   {
     "Cliente": "RECORD ELECTRIC S.A.E.C.A.",
@@ -485,6 +485,42 @@
   },
   {
     "Cliente": "SABIC INNOVATIVE PLASTICS ARGENTINA S.R.L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "DOSIVAC DO BRASIL PROJETOS E EC.N.P.J 33.715.551/0001-90",
+    "mail": ""
+  },
+  {
+    "Cliente": "CALZETTA SA",
+    "mail": ""
+  },
+  {
+    "Cliente": "CAGNOLI S.A.",
+    "mail": ""
+  },
+  {
+    "Cliente": "PLASTIFERRO TUBOS",
+    "mail": ""
+  },
+  {
+    "Cliente": "VIAL A S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "CITROMAX SACI",
+    "mail": ""
+  },
+  {
+    "Cliente": "AGUAS Y PROCESOS S A",
+    "mail": ""
+  },
+  {
+    "Cliente": "CIRCULO FERTIL RIEGOS S. R. L.",
+    "mail": ""
+  },
+  {
+    "Cliente": "ZEROX SRL",
     "mail": ""
   }
 ]
