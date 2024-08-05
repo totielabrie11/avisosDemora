@@ -1,201 +1,30 @@
 [
   {
     "id": 1,
-    "pedido": "039048",
-    "cliente": "SIMTECH LTDA.",
-    "oc": "51177",
+    "pedido": "039182",
+    "cliente": "R C CONSULTORES S R L",
+    "oc": "01-014585",
     "reclamos": [
       {
-        "id": "sub-1722273722114",
-        "estado": "respondido",
-        "prioridad": "Urgente",
-        "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "29-07-2024 a las 14:22 hs",
-        "username": "MelinaC",
+        "id": "sub-1722861953740",
+        "estado": "remito enviado",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "05-08-2024 a las 09:45 hs",
+        "username": "CarlosR",
         "material": [
           {
-            "codigo": "046151T-CTT0",
-            "cantidad": 4,
-            "descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PVC",
-            "fechaVencimiento": "17/07/2024"
-          },
-          {
-            "codigo": "R420104-DVT0",
-            "cantidad": 4,
-            "descripcion": "KIT CABEZAL COMPL DD CH 95 PVDF",
-            "fechaVencimiento": "17/07/2024"
+            "codigo": "031QQ0A-MET0",
+            "cantidad": 1,
+            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
+            "fechaVencimiento": "05/08/2024"
           }
         ],
-        "respuesta": "Se entregará en la fecha 19/8/2024",
-        "usernameAlmacen": "GuadaF"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "pedido": "038855",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "oc": "170524",
-    "reclamos": [
-      {
-        "id": "sub-1722343492547",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "30-07-2024 a las 09:44 hs",
-        "username": "MelinaC",
-        "material": [
-          {
-            "codigo": "046301T-PTT0",
-            "cantidad": 5,
-            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "043301T-MNT0",
-            "cantidad": 5,
-            "descripcion": "DDI 30 SIMPLE C/MOT TRIF CAB MIX",
-            "fechaVencimiento": "21/06/2024"
-          },
-          {
-            "codigo": "035ET0P-DVT0",
-            "cantidad": 2,
-            "descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON - PARAGUAY",
-            "fechaVencimiento": "21/06/2024"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "pedido": "039067",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "oc": "ED22101",
-    "reclamos": [
-      {
-        "id": "sub-1722343521069",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "30-07-2024 a las 09:45 hs",
-        "username": "MelinaC",
-        "material": [
-          {
-            "codigo": "46070",
-            "cantidad": 6,
-            "descripcion": "DIAFRAGMA EN PTFE - DD 150/300/600",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "031CSSP-MET0",
-            "cantidad": 5,
-            "descripcion": "EMD PLUS  05075 SEGUIDORA (DISPLAY) 220V  PP-PVDF-EPDM PARY",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "031CS0P-DVT0",
-            "cantidad": 30,
-            "descripcion": "EMD  05075 (LED) 220 V - PVDF-VITON - PARAGUAY",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "031DC0P-MET0",
-            "cantidad": 10,
-            "descripcion": "EMD  10005 (LED) 220 V -  PP-PVDF-EPDM - PARAGUAY",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "046301T-PTT0",
-            "cantidad": 1,
-            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "035QQ0A-DVT0",
-            "cantidad": 2,
-            "descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "035TD0A-DVT0",
-            "cantidad": 3,
-            "descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "035ET0A-DVT0",
-            "cantidad": 5,
-            "descripcion": "MI-EMD  16003 (LED) 220 V -  PVDF-VITON",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "067025Q-00BH-07",
-            "cantidad": 2,
-            "descripcion": "DSHC 2500 MOT IE2 7,5 CV 220/380/440 V 60 HZ FUND GRIS",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "A4422",
-            "cantidad": 2,
-            "descripcion": "VALVULA PUNTO DE INYECCION - DD MED",
-            "fechaVencimiento": "26/07/2024"
-          },
-          {
-            "codigo": "A4423",
-            "cantidad": 1,
-            "descripcion": "VALVULA DE PIE- DD MEDIANA",
-            "fechaVencimiento": "26/07/2024"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "pedido": "037625",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "oc": "20947",
-    "reclamos": [
-      {
-        "id": "sub-1722343549662",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "30-07-2024 a las 09:45 hs",
-        "username": "MelinaC",
-        "material": [
-          {
-            "codigo": "046151T-PTT0",
-            "cantidad": 2,
-            "descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PP",
-            "fechaVencimiento": "22/11/2023"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "pedido": "037967",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "oc": "falta oc",
-    "reclamos": [
-      {
-        "id": "sub-1722343560517",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "30-07-2024 a las 09:46 hs",
-        "username": "MelinaC",
-        "material": [
-          {
-            "codigo": "B422961-DV00",
-            "cantidad": 1,
-            "descripcion": "VALVULA DE PIE  DD PVDF C/FILTRO",
-            "fechaVencimiento": "17/01/2024"
-          }
-        ]
+        "respuesta": "Remito enviado con número 111111",
+        "usernameAlmacen": "GuadaF",
+        "remito": "111111",
+        "downloadUrl": "http://localhost:43000/data/document/1722862987129-EMD-PLUS.png",
+        "estadoRemito": "resuelto"
       }
     ]
   }

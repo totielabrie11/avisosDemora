@@ -15,6 +15,7 @@ import MostrarTareasPendientes from './MostrarTareasPendientes';
 import HistorialReclamos from './HistorialReclamos';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido'; // Importa el componente
 import LeyendaAlmacen from './leyendas/LeyendaAlmacen'; // Importa el componente LeyendaAlmacen
+import RespuestaMaterialListo from './RespuestaMaterialListo'; // Asegúrate de importar el nuevo componente
 import { BACKEND_URL } from '../config'; // Ruta corregida
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
@@ -35,6 +36,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [tareasPendientes, setTareasPendientes] = useState([]);
   const [showHistorialModal, setShowHistorialModal] = useState(false);
   const [pedidoId, setPedidoId] = useState(null);
+  const [tipoRespuesta, setTipoRespuesta] = useState('fecha'); // Nuevo estado para el tipo de respuesta
 
   const generateId = () => {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -100,12 +102,24 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
 
   const handleEnviarRespuesta = async () => {
     setShowModal(false);
-    if (selectedReclamo && fechaEntrega) {
-      const updatedReclamo = {
-        estado: 'respondido',
-        respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`,
-        usernameAlmacen: username
-      };
+    if (selectedReclamo) {
+      let updatedReclamo;
+
+      if (tipoRespuesta === 'fecha' && fechaEntrega) {
+        updatedReclamo = {
+          estado: 'respondido',
+          respuesta: `Se entregará en la fecha ${fechaEntrega.toLocaleDateString()}`,
+          usernameAlmacen: username
+        };
+      } else if (tipoRespuesta === 'material_sin_remito') {
+        updatedReclamo = {
+          estado: 'respondido',
+          respuesta: 'Material preparado pero sin remito',
+          usernameAlmacen: username
+        };
+      } else {
+        return; // No hacer nada si no se selecciona una opción válida
+      }
 
       try {
         const response = await axios.put(`${BACKEND_URL}/api/v1/reclamos/${selectedReclamo.id}`, {
@@ -436,14 +450,28 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           <Modal.Title>Responder a Reclamo: {selectedReclamo?.pedido}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <DatePicker
-            selected={fechaEntrega}
-            onChange={handleFechaEntregaChange}
-            minDate={new Date()}
-            placeholderText="Selecciona una fecha de entrega"
-            dateFormat="dd-MM-yyyy"
-            className="form-control mb-2"
-          />
+          <div className="form-group mb-2">
+            <label htmlFor="tipoRespuesta">Tipo de Respuesta:</label>
+            <select
+              id="tipoRespuesta"
+              className="form-control"
+              value={tipoRespuesta}
+              onChange={e => setTipoRespuesta(e.target.value)}
+            >
+              <option value="fecha">Fecha de Entrega</option>
+              <option value="material_sin_remito">Material preparado pero sin remito</option>
+            </select>
+          </div>
+          {tipoRespuesta === 'fecha' && (
+            <DatePicker
+              selected={fechaEntrega}
+              onChange={handleFechaEntregaChange}
+              minDate={new Date()}
+              placeholderText="Selecciona una fecha de entrega"
+              dateFormat="dd-MM-yyyy"
+              className="form-control mb-2"
+            />
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>

@@ -1,73 +1,47 @@
 [
   {
-    "id": "sub-1722273722114",
-    "pedido": "039048",
-    "cliente": "SIMTECH LTDA.",
+    "id": "sub-1722861953740",
+    "pedido": "039182",
+    "cliente": "R C CONSULTORES S R L",
     "estado": "vencido",
-    "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-    "fecha": "29-07-2024 a las 14:22 hs",
+    "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+    "fecha": "05-08-2024 a las 09:45 hs",
     "tipoMensaje": "alerta demora",
-    "timestamp": "29-07-2024 14:22:02"
+    "timestamp": "05-08-2024 09:45:53"
   },
   {
-    "id": "sub-1722273722114",
-    "pedido": "039048",
-    "cliente": "SIMTECH LTDA.",
+    "id": "sub-1722861953740",
+    "pedido": "039182",
+    "cliente": "R C CONSULTORES S R L",
     "estado": "respondido",
-    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Se entregará en la fecha 19/8/2024.",
-    "fecha": "29-07-2024 a las 14:22 hs",
-    "timestamp": "30-07-2024 08:46:48",
-    "respuesta": "Se entregará en la fecha 19/8/2024",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Material preparado pero sin remito.",
+    "fecha": "05-08-2024 a las 09:45 hs",
+    "timestamp": "05-08-2024 09:57:48",
+    "respuesta": "Material preparado pero sin remito",
     "usernameAlmacen": "GuadaF"
   },
   {
-    "id": "sub-1722343492547",
-    "pedido": "038855",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "estado": "vencido",
-    "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-    "fecha": "30-07-2024 a las 09:44 hs",
-    "tipoMensaje": "alerta demora",
-    "timestamp": "30-07-2024 09:44:52"
+    "id": "sub-1722861953740",
+    "pedido": "039182",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Se entregará en la fecha 6/8/2024.",
+    "fecha": "05-08-2024 a las 09:45 hs",
+    "timestamp": "05-08-2024 10:02:37",
+    "respuesta": "Se entregará en la fecha 6/8/2024",
+    "usernameAlmacen": "GuadaF"
   },
   {
-    "id": "sub-1722343521069",
-    "pedido": "039067",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "estado": "vencido",
-    "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-    "fecha": "30-07-2024 a las 09:45 hs",
-    "tipoMensaje": "alerta demora",
-    "timestamp": "30-07-2024 09:45:21"
-  },
-  {
-    "id": "sub-1722343549662",
-    "pedido": "037625",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "estado": "vencido",
-    "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-    "fecha": "30-07-2024 a las 09:45 hs",
-    "tipoMensaje": "alerta demora",
-    "timestamp": "30-07-2024 09:45:49"
-  },
-  {
-    "id": "sub-1722343560517",
-    "pedido": "037967",
-    "cliente": "RECORD ELECTRIC S.A.E.C.A.",
-    "estado": "vencido",
-    "mensaje": "El operador MelinaC, indica que tenemos una demora de entrega en este pedido.",
-    "fecha": "30-07-2024 a las 09:46 hs",
-    "tipoMensaje": "alerta demora",
-    "timestamp": "30-07-2024 09:46:00"
-  },
-  {
-    "id": "sub-1722273722114",
-    "pedido": "039048",
-    "cliente": "SIMTECH LTDA.",
-    "estado": "email enviado",
-    "mensaje": "Correo enviado a comex@simtech.cl",
-    "fecha": "29-07-2024 a las 14:22 hs",
-    "tipoMensaje": "cambioFechaEntrega",
-    "timestamp": "31-07-2024 09:09:27"
+    "id": "sub-1722861953740",
+    "pedido": "039182",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "remito enviado",
+    "mensaje": "Almacenes ha enviado el remito con el material en reclamo.",
+    "fecha": "05-08-2024 a las 09:45 hs",
+    "timestamp": "05-08-2024 10:03:07",
+    "respuesta": "Remito enviado con número 111111",
+    "usernameAlmacen": "GuadaF",
+    "remito": "111111",
+    "estadoRemito": "resuelto"
   }
 ]

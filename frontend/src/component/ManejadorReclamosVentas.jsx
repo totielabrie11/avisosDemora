@@ -21,6 +21,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [todosCount, setTodosCount] = useState(0);
   const [remitoCount, setRemitoCount] = useState(0);
   const [cursoCount, setCursoCount] = useState(0);
+  const [preparadoCount, setPreparadoCount] = useState(0); // Nuevo estado para pedidos preparados
   const [showModal, setShowModal] = useState(false);
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
@@ -36,7 +37,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || r.estado === 'remito enviado' || r.estado === 'en curso' || r.estado === 'no vencido' || r.estado === 'vencido');
+        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || r.estado === 'remito enviado' || r.estado === 'en curso' || r.estado === 'no vencido' || r.estado === 'vencido' || r.respuesta === 'Material preparado pero sin remito');
         if (role !== 'administrador') {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
         }
@@ -52,11 +53,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           return false;
         });
 
+        const preparados = reclamosFiltrados.filter(r => r.respuesta === 'Material preparado pero sin remito');
+
         setReclamos(reclamosFiltrados);
         setTodosCount(reclamosFiltrados.length);
         setFechaPrometidaVencidaCount(vencidosPrometida.length);
         setRemitoCount(reclamosFiltrados.filter(r => r.estado === 'remito enviado').length);
         setCursoCount(reclamosFiltrados.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido').length);
+        setPreparadoCount(preparados.length);
         setIsLoading(false); // Termina la carga
         setNoData(reclamosFiltrados.length === 0); // Verifica si hay datos
       } catch (error) {
@@ -99,6 +103,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
         return reclamos.filter(r => r.estado === 'remito enviado');
       case 'en curso':
         return reclamos.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido');
+      case 'preparado':
+        return reclamos.filter(r => r.respuesta === 'Material preparado pero sin remito');
       case 'todos':
       default:
         return reclamos;
@@ -241,12 +247,20 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
               </div>
             </div>
           </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('preparado')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-success text-white">
+              <div className="card-body">
+                <h5 className="card-title">Pedido Preparado</h5>
+                <p className="card-text">{preparadoCount}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="row">
         {filtrarReclamos().map((reclamo, index) => (
           <div key={index} className="col-md-4 mb-4">
-            <div className="card bg-secondary text-white">
+            <div className={`card ${reclamo.respuesta === 'Material preparado pero sin remito' ? 'bg-success' : 'bg-secondary'} text-white`}>
               <div className="card-body">
                 <h5 className="card-title">{reclamo.pedido} - {reclamo.cliente}</h5>
                 <p className="card-text"><strong>Reclamo:</strong> {reclamo.mensaje}</p>
@@ -291,7 +305,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     <button className="btn btn-sm btn-light ms-2" onClick={() => handleHecho(reclamo)}>Hecho</button>
                   </div>
                 )}
-              {reclamo.estado === 'remito enviado' && (
+                {reclamo.estado === 'remito enviado' && (
                 <>
                   <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" rel="noopener noreferrer" download>Descargar Remito</a>
                 </>
@@ -338,6 +352,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           </div>
         ))}
       </div>
+
 
       {selectedReclamo && (
         <VistaDetalleAlmacen

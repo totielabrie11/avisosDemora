@@ -759,6 +759,8 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
                 nuevoMensaje = `${usernameAlmacen} ha solicitado a ventas la corrección del código interno, aguarde hasta que se resuelva para avanzar.`;
               } else if (estado === 'respondido' && respuesta) {
                 nuevoMensaje = `El operador de almacén ${usernameAlmacen} informa que podrá preparar el pedido para la fecha ${respuesta}.`;
+              } else if (estado === 'material preparado') {
+                nuevoMensaje = `El operador de almacén ${usernameAlmacen} informa que el material está preparado pero sin remito.`;
               } else if (estadoRemito === 'resuelto' && estado === 'remito enviado') {
                 nuevoMensaje = `Almacenes ha enviado el remito con el material en reclamo.`;
               } else if (estadoRemito === 'resuelto') {
@@ -816,6 +818,7 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor', message: error.message });
   }
 });
+
 
 
 // Función para contar fechas de entrega por pedido
