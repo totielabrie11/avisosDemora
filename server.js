@@ -1168,26 +1168,27 @@ const validateAndFormatDate = (date) => {
 const validateAndFormatPedido = (pedido) => {
   return {
     Pedido: pedido.Pedido ? String(pedido.Pedido).trim() : "",
-    Cliente: pedido["Nombre Cliente"] ? String(pedido["Nombre Cliente"]).trim() : "",
-    oc: pedido.OC ? String(pedido.OC).trim() : "falta oc",
+    Cliente: pedido.Cliente ? String(pedido.Cliente).trim() : "",
+    oc: pedido.oc ? String(pedido.oc).trim() : "falta oc",
     Items: pedido.Items.map(item => ({
       Item: item.Item ? String(item.Item).trim() : "",
-      Codigo: item.Código ? String(item.Código).trim() : "",
-      Descripcion: item["Descripción Producto"] ? String(item["Descripción Producto"]).trim() : "",
+      Codigo: item.Codigo ? String(item.Codigo).trim() : "",
+      Descripcion: item.Descripcion ? String(item.Descripcion).trim() : "",
       Cantidad: item.Cantidad ? Number(item.Cantidad) : 0,
-      Fecha_vencida: item.Fecha ? validateAndFormatDate(item.Fecha) : "",
+      Fecha_vencida: item.Fecha_vencida ? validateAndFormatDate(item.Fecha_vencida) : "",
       Inicio: item.Inicio ? validateAndFormatDate(item.Inicio) : ""
     })),
     Inicio: pedido.Inicio ? validateAndFormatDate(pedido.Inicio) : ""
   };
 };
 
+
 app.post('/api/v1/uploadPedidos', authenticateToken, upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha subido ningún archivo.');
   }
 
-  const filePath = path.join(filePaths.document, req.file.filename); // Ajuste aquí
+  const filePath = path.join(filePaths.document, req.file.filename);
 
   if (!fs.existsSync(filePath)) {
     return res.status(400).send(`No se encontró el archivo subido: ${filePath}`);
@@ -1201,8 +1202,6 @@ app.post('/api/v1/uploadPedidos', authenticateToken, upload.single('file'), asyn
 
     const pedidosData = readPedidos();
     const newDate = moment().format('DD-MM-YYYY HH:mm:ss');
-    let modifiedCount = 0;
-    let newOrdersCount = 0;
 
     // Agrupar ítems por pedido
     const pedidosMap = new Map();
@@ -1211,11 +1210,11 @@ app.post('/api/v1/uploadPedidos', authenticateToken, upload.single('file'), asyn
       const pedidoKey = excelRow.Pedido;
       const item = {
         Item: excelRow.Item,
-        Código: excelRow.Código,
-        "Descripción Producto": excelRow["Descripción Producto"],
+        Codigo: excelRow.Codigo,
+        Descripcion: excelRow['Descripción Producto'],
         Cantidad: excelRow.Cantidad,
-        Fecha: excelRow.Fecha,
-        Inicio: excelRow.Inicio
+        Fecha_vencida: validateAndFormatDate(excelRow.Fecha),
+        Inicio: validateAndFormatDate(excelRow.Inicio)
       };
 
       if (pedidosMap.has(pedidoKey)) {
@@ -1223,50 +1222,47 @@ app.post('/api/v1/uploadPedidos', authenticateToken, upload.single('file'), asyn
       } else {
         pedidosMap.set(pedidoKey, {
           Pedido: excelRow.Pedido,
-          "Nombre Cliente": excelRow["Nombre Cliente"],
-          OC: excelRow.OC,
+          Cliente: excelRow['Nombre Cliente'],
+          oc: excelRow.OC,
           Items: [item],
-          Inicio: excelRow.Inicio
+          Inicio: validateAndFormatDate(excelRow.Inicio)
         });
       }
     });
 
-    pedidosMap.forEach(excelPedido => {
+    // Procesar y actualizar pedidos
+    const newPedidos = [];
+
+    pedidosMap.forEach((excelPedido, pedidoKey) => {
       const validatedPedido = validateAndFormatPedido(excelPedido);
+      const existingIndex = pedidosData.Pedidos.findIndex(pedido => pedido.Pedido === pedidoKey);
 
-      const index = pedidosData.Pedidos.findIndex(pedido => pedido.Pedido === validatedPedido.Pedido);
-      let modified = false;
-
-      if (index !== -1) {
-        const currentPedido = pedidosData.Pedidos[index];
-        const updatedFields = { ...currentPedido, ...validatedPedido };
-
-        if (JSON.stringify(currentPedido) !== JSON.stringify(updatedFields)) {
-          pedidosData.Pedidos[index] = updatedFields;
-          modified = true;
-        }
-
-        if (modified) {
-          modifiedCount++;
-        }
+      if (existingIndex !== -1) {
+        // Pedido existente, actualizar ítems
+        pedidosData.Pedidos[existingIndex] = validatedPedido;
       } else {
+        // Nuevo pedido
         pedidosData.Pedidos.push(validatedPedido);
-        newOrdersCount++;
       }
     });
+
+    // Eliminar pedidos que no existen en el nuevo archivo Excel
+    const newPedidoKeys = Array.from(pedidosMap.keys());
+    pedidosData.Pedidos = pedidosData.Pedidos.filter(pedido => newPedidoKeys.includes(pedido.Pedido));
 
     pedidosData.Fecha_actualizacion = newDate;
     await writePedidos(pedidosData);
 
     res.status(200).json({ 
-      message: `Datos de pedidos actualizados con éxito. Pedidos modificados: ${modifiedCount}`,
-      newOrdersMessage: newOrdersCount > 0 ? `${newOrdersCount} pedidos inyectados con éxito.` : ''
+      message: `Datos de pedidos actualizados con éxito. Pedidos modificados: ${pedidosData.Pedidos.length}`,
+      newOrdersMessage: `${pedidosData.Pedidos.length} pedidos inyectados con éxito.`
     });
   } catch (error) {
     console.error('Error procesando el archivo subido:', error.message);
     res.status(500).json({ error: 'Error procesando el archivo subido', message: error.message });
   }
 });
+
 
 
 app.listen(PORT, () => {
