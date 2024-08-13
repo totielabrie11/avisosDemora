@@ -189,13 +189,13 @@ const getItemClass = (fechaVencida) => {
 
 const shouldShowDemoraAlert = (fechaVencida) => {
   const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
-  console.log('Demora Alert:', diffInDays < 0, 'Fecha Vencida:', fechaVencida, 'DiffInDays:', diffInDays);
+  
   return diffInDays < 0;
 };
 
 const shouldShowProximoVencimientoAlert = (fechaVencida) => {
   const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
-  console.log('Vencimiento Próximo Alert:', diffInDays > -1 && diffInDays <= 10, 'Fecha Vencida:', fechaVencida, 'DiffInDays:', diffInDays);
+  
   return diffInDays > -1 && diffInDays <= 10;
 };
 
