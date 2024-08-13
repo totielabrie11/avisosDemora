@@ -418,22 +418,25 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
     }
 
     const currentDate = moment();
-    const diasPrevios = parseInt(req.query.diasPrevios) || 1;
+    const diasPrevios = req.query.diasPrevios ? parseInt(req.query.diasPrevios) : null;
     const clienteQuery = req.query.cliente ? req.query.cliente.toLowerCase() : '';
     const numeroPedidoQuery = req.query.numeroPedido ? req.query.numeroPedido.toLowerCase() : '';
     const materialQuery = req.query.material ? req.query.material.toLowerCase() : '';
 
+    // Filtrar por días solo si diasPrevios está presente
     const filteredPedidos = Pedidos.filter((order) => {
-      const hasItemsMatchingDate = order.Items.some((item) => {
-        const fechaVencida = moment(item.Fecha_vencida, 'YYYY-MM-DD');
-        const diffInDays = fechaVencida.diff(currentDate, 'days');
+      const hasItemsMatchingDate = diasPrevios !== null
+        ? order.Items.some((item) => {
+            const fechaVencida = moment(item.Fecha_vencida, 'YYYY-MM-DD');
+            const diffInDays = fechaVencida.diff(currentDate, 'days');
 
-        if (diasPrevios >= 0) {
-          return diffInDays <= diasPrevios && diffInDays >= 0;
-        } else {
-          return diffInDays >= diasPrevios && diffInDays < 0;
-        }
-      });
+            if (diasPrevios >= 0) {
+              return diffInDays <= diasPrevios && diffInDays >= 0;
+            } else {
+              return diffInDays >= diasPrevios && diffInDays < 0;
+            }
+          })
+        : true; // Si diasPrevios es null, no filtra por fechas
 
       const matchesCliente = clienteQuery ? order.Cliente.toLowerCase().includes(clienteQuery) : true;
       const matchesNumeroPedido = numeroPedidoQuery ? order.Pedido.toString().toLowerCase().includes(numeroPedidoQuery) : true;
@@ -441,37 +444,6 @@ app.get('/api/v1/pedidos', authenticateToken, (req, res) => {
 
       return hasItemsMatchingDate && matchesCliente && matchesNumeroPedido && matchesMaterial;
     });
-
-    const mails = readMails();
-    const updatedMails = [...mails];
-
-    filteredPedidos.forEach((order) => {
-      if (order.hasOwnProperty('Inicio')) {
-        order.Inicio = formatDate(order.Inicio);
-      }
-      order.Items.forEach((item) => {
-        item.Fecha_vencida = formatDate(item.Fecha_vencida);
-        if (item.hasOwnProperty('Inicio')) {
-          item.Inicio = formatDate(item.Inicio);
-        }
-      });
-
-      const cliente = order.Cliente;
-      const mailEntry = mails.find(mail => mail.Cliente === cliente);
-      if (!mailEntry) {
-        updatedMails.push({ Cliente: cliente, mail: '' });
-        order.needsEmail = true;
-      } else if (!mailEntry.mail) {
-        order.needsEmail = true;
-      } else {
-        order.email = mailEntry.mail;
-      }
-    });
-
-    // Actualizar la base de datos de correos si es necesario
-    if (updatedMails.length > mails.length) {
-      writeMails(updatedMails);
-    }
 
     res.json({ Fecha_actualizacion, Pedidos: filteredPedidos });
   } catch (err) {

@@ -52,7 +52,7 @@
 }
 
 .item-verde {
-  background-color: #ccffcc;
+  background-color: rgb(31, 232, 31) !important;
 }
 
 /* Botones de Alerta Demora y Vencimiento Próximo */
@@ -113,4 +113,21 @@
 .item-rojo {
   background-color: red;
   color: white; /* Este cambio asegura que el texto será blanco */
+}
+
+ul.list-group li.item-verde {
+  background-color: rgb(31, 232, 31);
+}
+
+ul.list-group li.item-amarillo {
+  background-color: #f6ff00;
+}
+
+ul.list-group li.item-naranja {
+  background-color: #ff9412;
+}
+
+ul.list-group li.item-rojo {
+  background-color: red;
+  color: white; /* Asegura que el texto sea visible en el fondo rojo */
 }

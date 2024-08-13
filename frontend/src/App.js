@@ -13,14 +13,12 @@ import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 import VistaAdministracion from './component/VistaAdministracion';
 import AdminFileUpload from './component/AdminFileUpload';
 import VistaCasosCerrados from './component/VistaCasosCerrados';
-import GestionClientes from './component/GestionClientes'; // Importar el nuevo componente
+import GestionClientes from './component/GestionClientes';
 import ExportPDF from './component/Export';
 import SubirDatosPedidos from './component/SubirDatosPedidos';
 
-// Detectar si estamos en localhost o accediendo desde internet
 const isLocalhost = window.location.hostname === 'localhost';
 
-// Configurar la URL del backend en consecuencia
 const BACKEND_URL = isLocalhost 
   ? 'http://localhost:43000'
   : 'http://dosivac.homeip.net:43000';
@@ -43,8 +41,10 @@ const App = () => {
   const [showEstadisticas, setShowEstadisticas] = useState(false);
   const [showManejadorReclamos, setShowManejadorReclamos] = useState(false);
   const [showCasosCerrados, setShowCasosCerrados] = useState(false);
-  const [showGestionClientes, setShowGestionClientes] = useState(false); // Estado para mostrar el componente de clientes
+  const [showGestionClientes, setShowGestionClientes] = useState(false);
   const [showSubirDatosPedidos, setShowSubirDatosPedidos] = useState(false);
+
+  const [filtroDiasActivo, setFiltroDiasActivo] = useState(true); // Nuevo estado para el checkbox
 
   const apiURL = `${BACKEND_URL}/api/v1`;
 
@@ -104,18 +104,27 @@ const App = () => {
   };
 
   const fetchPedidos = useCallback(() => {
+    let url = `${apiURL}/pedidos?cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`;
+  
+    if (filtroDiasActivo) {
+      url += `&diasPrevios=${diasPrevios}`;
+    }
+  
+    console.log('URL solicitada:', url);
+  
     axios
-      .get(`${apiURL}/pedidos?diasPrevios=${diasPrevios}&cliente=${cliente}&numeroPedido=${numeroPedido}&material=${material}`, {
+      .get(url, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         const data = response.data;
+        console.log('Pedidos recibidos:', data.Pedidos); // Verificación de la respuesta del backend
         setPedidos(data.Pedidos || []);
         setFechaActualizacion(data.Fecha_actualizacion || '');
       })
       .catch((error) => console.error('Error fetching pedidos:', error));
-  }, [diasPrevios, cliente, numeroPedido, material, token, apiURL]);
-
+  }, [filtroDiasActivo, diasPrevios, cliente, numeroPedido, material, token, apiURL]);
+  
   const handleLogin = (accessToken) => {
     setToken(accessToken);
     const payload = JSON.parse(atob(accessToken.split('.')[1]));
@@ -156,21 +165,28 @@ const App = () => {
     fetchPedidos();
   };
 
-  const getItemClass = (fechaVencida) => {
-    const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
+  const formatFecha = (fecha) => {
+    return moment(fecha, 'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
+};
+
+const getItemClass = (fechaVencida) => {
+    const fechaVencidaMoment = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss');
+    const diffInDays = fechaVencidaMoment.diff(moment(), 'days');
+    let className = '';
 
     if (diffInDays > -1 && diffInDays <= 10) {
-      return 'item-verde';
+        className = 'item-verde';
     } else if (diffInDays < 0 && diffInDays > -15) {
-      return 'item-amarillo';
+        className = 'item-amarillo';
     } else if (diffInDays <= -15 && diffInDays > -30) {
-      return 'item-naranja';
+        className = 'item-naranja';
     } else if (diffInDays <= -30) {
-      return 'item-rojo';
-    } else {
-      return '';
+        className = 'item-rojo';
     }
-  };
+
+    return className;
+};
+
 
   const shouldShowDemoraAlert = (fechaVencida) => {
     const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
@@ -229,7 +245,7 @@ const App = () => {
     return (
       <div>
         <button className="btn btn-secondary" onClick={handleHideGestionClientes}>Volver al Menú Principal</button>
-        <GestionClientes token={token} /> {/* Pasar el token como prop */}
+        <GestionClientes token={token} />
       </div>
     );
   }
@@ -238,7 +254,7 @@ const App = () => {
     return (
       <div>
         <button className="btn btn-secondary" onClick={handleHideSubirDatosPedidos}>Volver al Menú Principal</button>
-        <SubirDatosPedidos token={token} /> {/* Pasar el token como prop */}
+        <SubirDatosPedidos token={token} />
       </div>
     );
   }
@@ -251,21 +267,33 @@ const App = () => {
       <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
       <button className="btn btn-warning" onClick={handleShowCasosCerrados}>Ver Casos Cerrados</button>
       <button className="btn btn-primary" onClick={handleShowGestionClientes}>Clientes</button>
-      <button className="btn btn-secondary" onClick={handleShowSubirDatosPedidos}>Actuaizar Db</button> {/* Nuevo botón para mostrar el componente de subir datos de pedidos */}
+      <button className="btn btn-secondary" onClick={handleShowSubirDatosPedidos}>Actualizar Db</button>
     </div>
-      {role === 'administrador' && <AdminFileUpload token={token} />} {/* Componente para subir archivo solo visible para administradores */}
+      {role === 'administrador' && <AdminFileUpload token={token} />}
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
       <form onSubmit={handleSubmit} className="form-inline mb-3">
         <div className='container d-flex'>
-          <label>
+          {/* Checkbox para activar/desactivar el filtro por días */}
+          <label className="ms-4">
+            Filtrar por días:
+            <input
+              type="checkbox"
+              checked={filtroDiasActivo}
+              onChange={() => setFiltroDiasActivo(!filtroDiasActivo)}
+              className="form-check-input ml-2"
+            />
+          </label>
+
+          <label className="ms-4">
             Mostrar pedidos en los próximos o últimos:
             <input
               type="number"
               value={diasPrevios}
               onChange={handleDiasPreviosChange}
               className="form-control ml-2 mr-2"
+              disabled={!filtroDiasActivo} // Deshabilitar el input si el checkbox está desactivado
             />
             días
           </label>
@@ -308,39 +336,39 @@ const App = () => {
       </form>
 
       <ul className="list-group mt-3">
-        {pedidos.map((pedido, idx) => (
-          <li key={idx} className="list-group-item">
+    {pedidos.map((pedido, idx) => (
+        <li key={idx} className="list-group-item">
             <h3>{pedido.Cliente}</h3>
             <h4>Pedido interno: {pedido.Pedido}</h4>
             <h4>Orden de compra: {pedido.oc}</h4>
-            <h4>Fecha de carga: {pedido.Inicio}</h4>
-            <ul>
-              {pedido.Items.map((item, itemIdx) => (
-                <li key={itemIdx} className={`item ${getItemClass(item.Fecha_vencida)}`}>
-                  {item.Descripcion} - Cantidad: {item.Cantidad} - Vence: {item.Fecha_vencida}
-                </li>
-              ))}
+            <h4>Fecha de carga: {formatFecha(pedido.Inicio)}</h4> {/* Cambiado para formatear la fecha */}
+            <ul className="list-group">
+                {pedido.Items.map((item, itemIdx) => (
+                    <li key={itemIdx} className={`list-group-item ${getItemClass(item.Fecha_vencida)}`}>
+                        {item.Descripcion} - Cantidad: {item.Cantidad} - Vence: {formatFecha(item.Fecha_vencida)}
+                    </li>
+                ))}
             </ul>
             {pedido.Items.some((item) => shouldShowDemoraAlert(item.Fecha_vencida)) && (
-              <button
-                className="btn btn-alerta-demora mt-2"
-                onClick={() => handleAlertaDemoraClick(pedido)}
-              >
-                Alerta Demora
-              </button>
+                <button
+                    className="btn btn-alerta-demora mt-2"
+                    onClick={() => handleAlertaDemoraClick(pedido)}
+                >
+                    Alerta Demora
+                </button>
             )}
 
             {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
-              <button
-                className="btn btn-vencimiento-proximo mt-2"
-                onClick={() => handleVencimientoProximoClick(pedido)}
-              >
-                Vencimiento Próximo
-              </button>
+                <button
+                    className="btn btn-vencimiento-proximo mt-2"
+                    onClick={() => handleVencimientoProximoClick(pedido)}
+                >
+                    Vencimiento Próximo
+                </button>
             )}
-          </li>
-        ))}
-      </ul>
+        </li>
+    ))}
+</ul>
 
       <Leyenda />
 
@@ -352,7 +380,7 @@ const App = () => {
           estado={estadoReclamo}
           onSubmit={handleModalSubmit}
           token={token}
-          usuario={username} // Añadir el nombre de usuario como prop
+          usuario={username}
         />
       )}
     </div>
