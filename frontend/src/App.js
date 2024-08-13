@@ -11,7 +11,6 @@ import ModalText from './component/ModalText';
 import GestorAlmacenes from './component/GestorAlmacenes';
 import ManejadorReclamosVentas from './component/ManejadorReclamosVentas';
 import VistaAdministracion from './component/VistaAdministracion';
-import AdminFileUpload from './component/AdminFileUpload';
 import VistaCasosCerrados from './component/VistaCasosCerrados';
 import GestionClientes from './component/GestionClientes';
 import ExportPDF from './component/Export';
@@ -188,15 +187,19 @@ const getItemClass = (fechaVencida) => {
 };
 
 
-  const shouldShowDemoraAlert = (fechaVencida) => {
-    const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
-    return diffInDays < 0;
-  };
+const shouldShowDemoraAlert = (fechaVencida) => {
+  const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
+  console.log('Demora Alert:', diffInDays < 0, 'Fecha Vencida:', fechaVencida, 'DiffInDays:', diffInDays);
+  return diffInDays < 0;
+};
 
-  const shouldShowProximoVencimientoAlert = (fechaVencida) => {
-    const diffInDays = moment(fechaVencida, 'DD/MM/YYYY').diff(moment(), 'days');
-    return diffInDays > -1 && diffInDays <= 10;
-  };
+const shouldShowProximoVencimientoAlert = (fechaVencida) => {
+  const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
+  console.log('Vencimiento Próximo Alert:', diffInDays > -1 && diffInDays <= 10, 'Fecha Vencida:', fechaVencida, 'DiffInDays:', diffInDays);
+  return diffInDays > -1 && diffInDays <= 10;
+};
+
+
 
   const handleModalSubmit = (reclamo) => {
     fetchPedidos();
@@ -269,7 +272,6 @@ const getItemClass = (fechaVencida) => {
       <button className="btn btn-primary" onClick={handleShowGestionClientes}>Clientes</button>
       <button className="btn btn-secondary" onClick={handleShowSubirDatosPedidos}>Actualizar Db</button>
     </div>
-      {role === 'administrador' && <AdminFileUpload token={token} />}
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
@@ -369,7 +371,6 @@ const getItemClass = (fechaVencida) => {
         </li>
     ))}
 </ul>
-
       <Leyenda />
 
       {pedidoSeleccionado && (

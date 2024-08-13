@@ -7,7 +7,7 @@
     "reclamos": [
       {
         "id": "sub-1722861953740",
-        "estado": "remito enviado",
+        "estado": "cerrado",
         "prioridad": "Regular",
         "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
         "fecha": "05-08-2024 a las 09:45 hs",
@@ -20,11 +20,121 @@
             "fechaVencimiento": "05/08/2024"
           }
         ],
-        "respuesta": "Remito enviado con número 111111",
-        "usernameAlmacen": "GuadaF",
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
         "remito": "111111",
         "downloadUrl": "http://localhost:43000/data/document/1722862987129-EMD-PLUS.png",
         "estadoRemito": "resuelto"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "pedido": "039349",
+    "cliente": "SAL PARK S R L",
+    "oc": "falta oc",
+    "reclamos": [
+      {
+        "id": "sub-1723569423359",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "13-08-2024 a las 14:17 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "KIT DIAFRAGMA MILENIO \" M\"",
+            "fechaVencimiento": "2024-08-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "MANGUERA PVC CRISTAL Ø 6.35 X 9.5",
+            "fechaVencimiento": "2024-08-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "MANGUERA DE PEBD C/UV Ø 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA",
+            "fechaVencimiento": "2024-08-14 00:00:00"
+          }
+        ],
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
+        "remito": "151545"
+      },
+      {
+        "id": "sub-1723570746803",
+        "estado": "cerrado",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "13-08-2024 a las 14:39 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "MANGUERA DE PEBD C/UV Ø 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA",
+            "fechaVencimiento": "2024-08-14 00:00:00"
+          }
+        ],
+        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+        "usernameAlmacen": "CarlosR",
+        "remito": "111111"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "pedido": "032505",
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "oc": "4505835368",
+    "reclamos": [
+      {
+        "id": "sub-1723570765777",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "13-08-2024 a las 14:39 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "MDI ALTO CAUDAL(NEW) CON TABLERO Y ACCESORIOS (24VCC)",
+            "fechaVencimiento": "2022-05-18 00:00:00"
+          }
+        ],
+        "respuesta": "Material preparado pero sin remito",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": "039246",
+    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
+    "oc": "651",
+    "reclamos": [
+      {
+        "id": "sub-1723570887371",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "13-08-2024 a las 14:41 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+            "fechaVencimiento": "2024-08-19 00:00:00"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 14/8/2024",
+        "usernameAlmacen": "GuadaF"
       }
     ]
   }

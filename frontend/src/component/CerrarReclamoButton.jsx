@@ -32,7 +32,7 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
       setError('El número de remito debe ser un número de 6 dígitos.');
       return;
     }
-
+  
     const confirmed = window.confirm('¿Está seguro de que desea cerrar el reclamo?');
     if (confirmed) {
       setLoading(true);
@@ -42,19 +42,18 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
           subId: reclamo.subId,
           usernameAlmacen: username,
           remito: remito,
-          respuesta: `El usuario ${username} ha dado por cerrado el reclamo.`, // Mensaje de cierre
+          respuesta: `El usuario ${username} ha dado por cerrado el reclamo.`,
         }, {
           headers: { Authorization: `Bearer ${token}` },
         });
-
+  
         if (response.status === 200) {
           const updatedReclamo = {
             ...reclamo,
             estado: 'cerrado',
             remito: remito,
           };
-          onReclamoCerrado(updatedReclamo);
-          alert('Reclamo cerrado exitosamente');
+          onReclamoCerrado(updatedReclamo); // Aquí se actualiza el estado en ManejadorReclamosVentas
           handleClose();
         }
       } catch (error) {
@@ -65,6 +64,7 @@ const CerrarReclamoButton = ({ reclamo, token, onReclamoCerrado, username }) => 
       }
     }
   };
+  
 
   return (
     <>

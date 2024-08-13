@@ -8,12 +8,13 @@ import EnvioDeEmailVentasContraReclamo from './EnvioDeEmailVentasContraReclamo';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import CerrarReclamoButton from './CerrarReclamoButton';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
-import ContadorCorreosPorTipo from './ContadorCorreosPorTipo'; // Importa el nuevo componente
+import ContadorCorreosPorTipo from './ContadorCorreosPorTipo';
 import { FaEdit } from 'react-icons/fa';
-import { BACKEND_URL } from '../config'; // Importa la URL del backend desde config
+import { BACKEND_URL } from '../config';
 
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
+  const [reclamosConRespuesta, setReclamosConRespuesta] = useState([]);
   const [selectedReclamo, setSelectedReclamo] = useState(null);
   const [error, setError] = useState(null);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
@@ -21,14 +22,27 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [todosCount, setTodosCount] = useState(0);
   const [remitoCount, setRemitoCount] = useState(0);
   const [cursoCount, setCursoCount] = useState(0);
-  const [preparadoCount, setPreparadoCount] = useState(0); // Nuevo estado para pedidos preparados
+  const [preparadoCount, setPreparadoCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
   const [pedidoSeleccionado, setPedidoSeleccionado] = useState(null);
   const [editingEmailReclamoId, setEditingEmailReclamoId] = useState(null);
   const [newEmail, setNewEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Estado para cargando...
-  const [noData, setNoData] = useState(false); // Estado para no hay datos
+  const [isLoading, setIsLoading] = useState(true);
+  const [noData, setNoData] = useState(false);
+
+  // Definición de fetchEmail
+  const fetchEmail = async (cliente) => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/v1/getEmail?cliente=${cliente}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data.email || '';
+    } catch (error) {
+      console.error('Error fetching email:', error);
+      return '';
+    }
+  };
 
   useEffect(() => {
     const fetchReclamos = async () => {
@@ -37,9 +51,12 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        let reclamosFiltrados = response.data.filter(r => r.estado === 'respondido' || r.estado === 'remito enviado' || r.estado === 'en curso' || r.estado === 'no vencido' || r.estado === 'vencido' || r.respuesta === 'Material preparado pero sin remito');
+        let reclamosFiltrados = response.data.filter(r => r.estado !== 'cerrado');
+        let reclamosConResp = reclamosFiltrados.filter(r => r.respuesta && r.respuesta.trim() !== '');
+
         if (role !== 'administrador') {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
+          reclamosConResp = reclamosConResp.filter(r => r.username === username);
         }
 
         const fechaActual = new Date().setHours(0, 0, 0, 0);
@@ -56,13 +73,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
         const preparados = reclamosFiltrados.filter(r => r.respuesta === 'Material preparado pero sin remito');
 
         setReclamos(reclamosFiltrados);
+        setReclamosConRespuesta(reclamosConResp);
         setTodosCount(reclamosFiltrados.length);
         setFechaPrometidaVencidaCount(vencidosPrometida.length);
         setRemitoCount(reclamosFiltrados.filter(r => r.estado === 'remito enviado').length);
         setCursoCount(reclamosFiltrados.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido').length);
         setPreparadoCount(preparados.length);
-        setIsLoading(false); // Termina la carga
-        setNoData(reclamosFiltrados.length === 0); // Verifica si hay datos
+        setIsLoading(false);
+        setNoData(reclamosFiltrados.length === 0);
       } catch (error) {
         if (error.response && error.response.status === 403) {
           setError('Acceso denegado. No tiene permiso para ver esta información.');
@@ -70,24 +88,12 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           console.error('Error al obtener reclamos:', error);
           setError('Error al obtener reclamos.');
         }
-        setIsLoading(false); // Termina la carga
+        setIsLoading(false);
       }
     };
 
     fetchReclamos();
   }, [token, username, role]);
-
-  const fetchEmail = async (cliente) => {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/api/v1/getEmail?cliente=${cliente}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      return response.data.email || '';
-    } catch (error) {
-      console.error('Error fetching email:', error);
-      return '';
-    }
-  };
 
   const handleCategoriaClick = (categoria) => {
     setCategoriaSeleccionada(categoria);
@@ -105,6 +111,8 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
         return reclamos.filter(r => r.estado === 'en curso' || r.estado === 'respondido' || r.estado === 'no vencido' || r.estado === 'vencido');
       case 'preparado':
         return reclamos.filter(r => r.respuesta === 'Material preparado pero sin remito');
+      case 'con respuesta':
+        return reclamosConRespuesta;
       case 'todos':
       default:
         return reclamos;
@@ -255,6 +263,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
               </div>
             </div>
           </div>
+          <div className="col-md-2" onClick={() => handleCategoriaClick('con respuesta')} style={{ cursor: 'pointer' }}>
+            <div className="card bg-info text-white">
+              <div className="card-body">
+                <h5 className="card-title">Con Respuesta</h5>
+                <p className="card-text">{reclamosConRespuesta.length}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="row">
@@ -316,6 +332,10 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   token={token}
                   onReclamoCerrado={(updatedReclamo) => {
                     setReclamos(prev => prev.map(r => (r.id === updatedReclamo.id ? updatedReclamo : r)));
+                    // También actualizamos reclamosConRespuesta si es necesario
+                    if (updatedReclamo.respuesta && updatedReclamo.respuesta.trim() !== '') {
+                      setReclamosConRespuesta(prev => prev.map(r => (r.id === updatedReclamo.id ? updatedReclamo : r)));
+                    }
                   }}
                   username={username}
                 />
@@ -346,13 +366,12 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   </div>
                 )}
                 <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} />
-                <ContadorCorreosPorTipo token={token} pedidoId={reclamo.pedido} /> {/* Agrega el nuevo componente aquí */}
+                <ContadorCorreosPorTipo token={token} pedidoId={reclamo.pedido} />
               </div>
             </div>
           </div>
         ))}
       </div>
-
 
       {selectedReclamo && (
         <VistaDetalleAlmacen
