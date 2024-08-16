@@ -12,6 +12,7 @@ const RespuestaContenidoParcial = ({ reclamo, onConfirm }) => {
   })) : [];
 
   const [selectedItems, setSelectedItems] = useState(initialItems);
+  const [fechaError, setFechaError] = useState(false);
 
   if (!reclamo || !reclamo.material) {
     return <div>No hay materiales para mostrar en este reclamo.</div>;
@@ -37,7 +38,27 @@ const RespuestaContenidoParcial = ({ reclamo, onConfirm }) => {
 
   const handleConfirm = () => {
     const itemsSeleccionados = selectedItems.filter(item => item.selected);
+
+    // Verificar si todos los items seleccionados tienen una fecha asignada
+    const fechaValida = itemsSeleccionados.every(item => item.fechaEntrega);
+
+    if (!fechaValida) {
+      setFechaError(true);
+      return;
+    }
+
+    setFechaError(false);
     onConfirm(itemsSeleccionados);
+  };
+
+  const handleAsignarFechaATodos = () => {
+    const fechaComun = selectedItems.find(item => item.selected && item.fechaEntrega)?.fechaEntrega;
+    if (fechaComun) {
+      const updatedItems = selectedItems.map(item =>
+        item.selected ? { ...item, fechaEntrega: fechaComun } : item
+      );
+      setSelectedItems(updatedItems);
+    }
   };
 
   return (
@@ -89,13 +110,28 @@ const RespuestaContenidoParcial = ({ reclamo, onConfirm }) => {
           )}
         </div>
       ))}
-      <button
-        className="btn btn-success"
-        onClick={handleConfirm}
-        disabled={selectedItems.every(item => !item.selected)}
-      >
-        Enviar Respuesta Parcial
-      </button>
+      
+      {fechaError && (
+        <div className="text-danger mb-3">Al menos un item seleccionado no cuenta con una fecha asignada.</div>
+      )}
+
+      <div className="d-flex justify-content-between">
+        <button
+          className="btn btn-sm btn-link p-0"
+          onClick={handleAsignarFechaATodos}
+          disabled={selectedItems.every(item => !item.selected)}
+        >
+          Asignar la misma fecha a todos
+        </button>
+
+        <button
+          className="btn btn-success"
+          onClick={handleConfirm}
+          disabled={selectedItems.every(item => !item.selected)}
+        >
+          Enviar Respuesta Parcial
+        </button>
+      </div>
     </div>
   );
 };
