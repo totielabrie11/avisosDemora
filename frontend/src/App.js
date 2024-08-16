@@ -42,8 +42,8 @@ const App = () => {
   const [showCasosCerrados, setShowCasosCerrados] = useState(false);
   const [showGestionClientes, setShowGestionClientes] = useState(false);
   const [showSubirDatosPedidos, setShowSubirDatosPedidos] = useState(false);
-
   const [filtroDiasActivo, setFiltroDiasActivo] = useState(true); // Nuevo estado para el checkbox
+  const [successMessage, setSuccessMessage] = useState(''); // Estado para el mensaje de éxito
 
   const apiURL = `${BACKEND_URL}/api/v1`;
 
@@ -166,43 +166,45 @@ const App = () => {
 
   const formatFecha = (fecha) => {
     return moment(fecha, 'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
-};
+  };
 
-const getItemClass = (fechaVencida) => {
+  const getItemClass = (fechaVencida) => {
     const fechaVencidaMoment = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss');
     const diffInDays = fechaVencidaMoment.diff(moment(), 'days');
     let className = '';
 
     if (diffInDays > -1 && diffInDays <= 10) {
-        className = 'item-verde';
+      className = 'item-verde';
     } else if (diffInDays < 0 && diffInDays > -15) {
-        className = 'item-amarillo';
+      className = 'item-amarillo';
     } else if (diffInDays <= -15 && diffInDays > -30) {
-        className = 'item-naranja';
+      className = 'item-naranja';
     } else if (diffInDays <= -30) {
-        className = 'item-rojo';
+      className = 'item-rojo';
     }
 
     return className;
-};
+  };
 
+  const shouldShowDemoraAlert = (fechaVencida) => {
+    const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
+    return diffInDays < 0;
+  };
 
-const shouldShowDemoraAlert = (fechaVencida) => {
-  const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
-  
-  return diffInDays < 0;
-};
-
-const shouldShowProximoVencimientoAlert = (fechaVencida) => {
-  const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
-  
-  return diffInDays > -1 && diffInDays <= 10;
-};
-
-
+  const shouldShowProximoVencimientoAlert = (fechaVencida) => {
+    const diffInDays = moment(fechaVencida, 'YYYY-MM-DD HH:mm:ss').diff(moment(), 'days');
+    return diffInDays > -1 && diffInDays <= 10;
+  };
 
   const handleModalSubmit = (reclamo) => {
     fetchPedidos();
+    setSuccessMessage('Reclamo enviado con éxito'); // Mostrar el mensaje de éxito
+    setShowModal(false);
+
+    // Ocultar el mensaje después de 3 segundos
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, 3000);
   };
 
   if (!token) {
@@ -262,16 +264,24 @@ const shouldShowProximoVencimientoAlert = (fechaVencida) => {
     );
   }
 
- return (
-  <div className="container">
-    <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-      <UserState username={username} role={role} onLogout={handleLogout} />
-      <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
-      <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
-      <button className="btn btn-warning" onClick={handleShowCasosCerrados}>Ver Casos Cerrados</button>
-      <button className="btn btn-primary" onClick={handleShowGestionClientes}>Clientes</button>
-      <button className="btn btn-secondary" onClick={handleShowSubirDatosPedidos}>Actualizar Db</button>
-    </div>
+  return (
+    <div className="container">
+      <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
+        <UserState username={username} role={role} onLogout={handleLogout} />
+        <button className="btn btn-info" onClick={handleShowEstadisticas}>Estadísticas</button>
+        <button className="btn btn-success" onClick={handleShowManejadorReclamos}>Administrar Reclamos</button>
+        <button className="btn btn-warning" onClick={handleShowCasosCerrados}>Ver Casos Cerrados</button>
+        <button className="btn btn-primary" onClick={handleShowGestionClientes}>Clientes</button>
+        <button className="btn btn-secondary" onClick={handleShowSubirDatosPedidos}>Actualizar Db</button>
+      </div>
+
+      {/* Mensaje de éxito temporal */}
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
+        </div>
+      )}
+
       <h1>Pedidos Próximos a Vencer o Vencidos</h1>
       <h2>Fecha de actualización: {fechaActualizacion}</h2>
 
@@ -338,39 +348,40 @@ const shouldShowProximoVencimientoAlert = (fechaVencida) => {
       </form>
 
       <ul className="list-group mt-3">
-    {pedidos.map((pedido, idx) => (
-        <li key={idx} className="list-group-item">
+        {pedidos.map((pedido, idx) => (
+          <li key={idx} className="list-group-item">
             <h3>{pedido.Cliente}</h3>
             <h4>Pedido interno: {pedido.Pedido}</h4>
             <h4>Orden de compra: {pedido.oc}</h4>
             <h4>Fecha de carga: {formatFecha(pedido.Inicio)}</h4> {/* Cambiado para formatear la fecha */}
             <ul className="list-group">
-                {pedido.Items.map((item, itemIdx) => (
-                    <li key={itemIdx} className={`list-group-item ${getItemClass(item.Fecha_vencida)}`}>
-                        {item.Descripcion} - Cantidad: {item.Cantidad} - Vence: {formatFecha(item.Fecha_vencida)}
-                    </li>
-                ))}
+              {pedido.Items.map((item, itemIdx) => (
+                <li key={itemIdx} className={`list-group-item ${getItemClass(item.Fecha_vencida)}`}>
+                  {item.Descripcion} - Cantidad: {item.Cantidad} - Vence: {formatFecha(item.Fecha_vencida)}
+                </li>
+              ))}
             </ul>
             {pedido.Items.some((item) => shouldShowDemoraAlert(item.Fecha_vencida)) && (
-                <button
-                    className="btn btn-alerta-demora mt-2"
-                    onClick={() => handleAlertaDemoraClick(pedido)}
-                >
-                    Alerta Demora
-                </button>
+              <button
+                className="btn btn-alerta-demora mt-2"
+                onClick={() => handleAlertaDemoraClick(pedido)}
+              >
+                Alerta Demora
+              </button>
             )}
 
             {pedido.Items.some((item) => shouldShowProximoVencimientoAlert(item.Fecha_vencida)) && (
-                <button
-                    className="btn btn-vencimiento-proximo mt-2"
-                    onClick={() => handleVencimientoProximoClick(pedido)}
-                >
-                    Vencimiento Próximo
-                </button>
+              <button
+                className="btn btn-vencimiento-proximo mt-2"
+                onClick={() => handleVencimientoProximoClick(pedido)}
+              >
+                Vencimiento Próximo
+              </button>
             )}
-        </li>
-    ))}
-</ul>
+          </li>
+        ))}
+      </ul>
+
       <Leyenda />
 
       {pedidoSeleccionado && (

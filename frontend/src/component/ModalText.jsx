@@ -82,6 +82,13 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
   };
 
   const handleSubmit = async () => {
+    const selectedCount = Object.values(selectedItems).filter((item) => item.selected && item.cantidad > 0).length;
+
+    if (selectedCount === 0) {
+      setError('Debe marcar al menos 1 cantidad');
+      return;
+    }
+
     const material = Object.values(selectedItems)
       .filter((item) => item.selected && item.cantidad > 0)
       .map((item) => ({
@@ -110,18 +117,24 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
         }
       );
       console.log('Respuesta del servidor:', response.data);
-      onSubmit(reclamo);
-      onHide();
+      onSubmit(reclamo);  // Llamada a onSubmit si el envío es exitoso
+      onHide(); // Cerrar el modal
     } catch (error) {
-      console.error(
-        'Error enviando el reclamo:',
-        error.response ? error.response.data : error
-      );
-      setError(
-        `Error enviando el reclamo: ${
-          error.response ? error.response.data.error : 'Desconocido'
-        }`
-      );
+      let errorMessage = 'Desconocido';
+
+      if (error.response) {
+        // El servidor respondió con un estado que no está en el rango 2xx
+        errorMessage = error.response.data.error || 'Error desconocido en el servidor';
+      } else if (error.request) {
+        // La solicitud fue hecha pero no se recibió respuesta
+        errorMessage = 'Error de red: No se pudo establecer la conexión con el servidor';
+      } else {
+        // Algo sucedió al configurar la solicitud que desencadenó un error
+        errorMessage = error.message;
+      }
+
+      console.error('Error enviando el reclamo:', error);
+      setError(`Error enviando el reclamo: ${errorMessage}`);
     }
   };
 
@@ -133,7 +146,7 @@ const ModalText = ({ show, onHide, pedido, estado, onSubmit, token, usuario }) =
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {error && <p className="text-danger">{error}</p>}
+        {error && <p className="text-danger">{error}</p>} {/* Mostrar mensaje de error si existe */}
         <Form>
           <Form.Group>
             <Form.Label>Cliente</Form.Label>

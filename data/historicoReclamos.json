@@ -153,5 +153,25 @@
     "timestamp": "13-08-2024 14:41:56",
     "respuesta": "Material preparado pero sin remito",
     "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1723813849484",
+    "pedido": "038594",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "estado": "vencido",
+    "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+    "fecha": "16-08-2024 a las 10:10 hs",
+    "tipoMensaje": "alerta demora",
+    "timestamp": "16-08-2024 10:10:49"
+  },
+  {
+    "id": "sub-1723814149049",
+    "pedido": "038271",
+    "cliente": "REPARACIONES VARIAS **** NO REMITIR ***** PRUEBA",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "16-08-2024 a las 10:15 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "16-08-2024 10:15:49"
   }
 ]

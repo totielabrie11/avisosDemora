@@ -137,5 +137,50 @@
         "usernameAlmacen": "GuadaF"
       }
     ]
+  },
+  {
+    "id": 5,
+    "pedido": "038594",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "oc": "64",
+    "reclamos": [
+      {
+        "id": "sub-1723813849484",
+        "estado": "vencido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "16-08-2024 a las 10:10 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "cantidad": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "pedido": "038271",
+    "cliente": "REPARACIONES VARIAS **** NO REMITIR ***** PRUEBA",
+    "oc": "falta oc",
+    "reclamos": [
+      {
+        "id": "sub-1723814149049",
+        "estado": "no vencido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "16-08-2024 a las 10:15 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 30,
+            "descripcion": "EMD MAX  36003  220V - SIN SEÑAL -  PVDF-VITON",
+            "fechaVencimiento": "2024-08-16 00:00:00"
+          }
+        ]
+      }
+    ]
   }
 ]
