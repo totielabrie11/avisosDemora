@@ -29,6 +29,12 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
     return match ? match[1] : '';
   };
 
+  // Función para formatear la respuesta y agregar saltos de línea
+  const formatRespuesta = (respuesta) => {
+    if (!respuesta) return '';
+    return respuesta.split(' | ').map(line => `${line}\n`).join('');
+  };
+
   const enviarCorreo = async () => {
     if (!email || !validarEmail(email)) {
       setEmailError('Por favor, ingrese un correo electrónico válido.');
@@ -53,10 +59,10 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
       text = `Estimado cliente ${reclamo.cliente},\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'remitoPreparado';
     } else if (respuestaLower.includes('fecha')) {
-      text = `Estimado cliente ${reclamo.cliente},\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\n Compromiso de Nueva Fecha de entrega: ${reclamo.respuesta}.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\nCompromiso de Nueva Fecha de entrega:\n${formatRespuesta(reclamo.respuesta)}\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'cambioFechaEntrega';
     } else {
-      text = `Estimado cliente ${reclamo.cliente},\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. Por favor, consulte los detalles actualizados en su cuenta.\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. \n\nDetalles de la actualización:\n${formatRespuesta(reclamo.respuesta)}\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'fechaModificada';
     }
 

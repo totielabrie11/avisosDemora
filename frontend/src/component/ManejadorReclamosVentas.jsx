@@ -12,25 +12,6 @@ import ContadorCorreosPorTipo from './ContadorCorreosPorTipo';
 import { FaEdit } from 'react-icons/fa';
 import { BACKEND_URL } from '../config';
 
-const parseAndSortRespuesta = (respuesta) => {
-  const items = [];
-  const regex = /Item: ([^,]+), Fecha Entrega: (\d{1,2}\/\d{1,2}\/\d{4})/g;
-  let match;
-
-  while ((match = regex.exec(respuesta)) !== null) {
-    items.push({ descripcion: match[1], fechaEntrega: match[2] });
-  }
-
-  // Ordenar los items por fecha
-  items.sort((a, b) => {
-    const dateA = new Date(a.fechaEntrega.split('/').reverse().join('-'));
-    const dateB = new Date(b.fechaEntrega.split('/').reverse().join('-'));
-    return dateA - dateB;
-  });
-
-  return items;
-};
-
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
   const [reclamosConRespuesta, setReclamosConRespuesta] = useState([]);
@@ -76,11 +57,6 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
           reclamosConResp = reclamosConResp.filter(r => r.username === username);
         }
-
-        reclamosFiltrados = reclamosFiltrados.map(r => ({
-          ...r,
-          respuestaParsed: r.respuesta ? parseAndSortRespuesta(r.respuesta) : []
-        }));
 
         const fechaActual = new Date().setHours(0, 0, 0, 0);
         const vencidosPrometida = reclamosFiltrados.filter(r => {
@@ -228,6 +204,14 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
     setPedidoSeleccionado(null);
   };
 
+  // Función para formatear la respuesta y agregar saltos de línea
+  const formatRespuesta = (respuesta) => {
+    if (!respuesta) return '';
+    return respuesta.split(' | ').map((line, idx) => (
+      <span key={idx} style={{ display: 'block' }}>{line}</span>
+    ));
+  };
+
   if (error) {
     return <div className="alert alert-danger" role="alert">{error}</div>;
   }
@@ -311,19 +295,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
                     <strong>
                       Respuesta:
-                      {reclamo.respuestaParsed.length > 0 ? (
-                        <ul className="list-unstyled">
-                          {reclamo.respuestaParsed.map((item, idx) => (
-                            <li key={idx}>
-                              {item.descripcion} - Fecha Entrega: {item.fechaEntrega}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <span className={`card-text ${validarFechaPrometida(reclamo) ? 'text-danger' : ''}`}>
-                          {reclamo.respuesta}
-                        </span>
-                      )}
+                      <div>{formatRespuesta(reclamo.respuesta)}</div>
                       {validarFechaPrometida(reclamo) && (
                         <div className="text-danger" style={{ fontSize: 'larger' }}>
                           La fecha prometida se encuentra vencida
@@ -357,9 +329,9 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                   </div>
                 )}
                 {reclamo.estado === 'remito enviado' && (
-                <>
-                  <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" rel="noopener noreferrer" download>Descargar Remito</a>
-                </>
+                  <>
+                    <a href={reclamo.downloadUrl} className="btn btn-success w-100 d-block mt-2" target="_blank" rel="noopener noreferrer" download>Descargar Remito</a>
+                  </>
                 )}
                 <button className="btn btn-primary w-100 d-block mt-2" onClick={() => handleShowModal(reclamo)}>Ver Detalle</button>
                 <CerrarReclamoButton
@@ -424,3 +396,4 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 };
 
 export default ManejadorReclamosVentas;
+

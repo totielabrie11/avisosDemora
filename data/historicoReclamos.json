@@ -29,5 +29,69 @@
     "fecha": "16-08-2024 a las 12:19 hs",
     "tipoMensaje": "cambioFechaEntrega",
     "timestamp": "16-08-2024 12:26:19"
+  },
+  {
+    "id": "sub-1723821593541",
+    "pedido": "039201",
+    "cliente": "DOSISUR S.R.L",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "16-08-2024 a las 12:19 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "16-08-2024 12:29:59"
+  },
+  {
+    "id": "sub-1723821593541",
+    "pedido": "039201",
+    "cliente": "DOSISUR S.R.L",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a martinezcarlosmanuel.1@gmail.com",
+    "fecha": "16-08-2024 a las 12:19 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "16-08-2024 12:30:11"
+  },
+  {
+    "id": "sub-1723822862520",
+    "pedido": "039363",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "16-08-2024 a las 12:41 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "16-08-2024 12:41:02"
+  },
+  {
+    "id": "sub-1723821593541",
+    "pedido": "039201",
+    "cliente": "DOSISUR S.R.L",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "16-08-2024 a las 12:19 hs",
+    "timestamp": "16-08-2024 14:17:53",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "111111"
+  },
+  {
+    "id": "sub-1723822862520",
+    "pedido": "039363",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "cerrado",
+    "mensaje": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "fecha": "16-08-2024 a las 12:41 hs",
+    "timestamp": "16-08-2024 14:18:00",
+    "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
+    "usernameAlmacen": "CarlosR",
+    "remito": "551151"
+  },
+  {
+    "id": "sub-1723828707720",
+    "pedido": "039363",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "16-08-2024 a las 14:18 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "16-08-2024 14:18:27"
   }
 ]
