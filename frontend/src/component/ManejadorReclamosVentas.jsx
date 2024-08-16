@@ -396,4 +396,3 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
 };
 
 export default ManejadorReclamosVentas;
-

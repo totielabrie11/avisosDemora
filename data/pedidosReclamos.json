@@ -133,7 +133,7 @@
     "reclamos": [
       {
         "id": "sub-1723830285183",
-        "estado": "no vencido",
+        "estado": "respondido",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
         "fecha": "16-08-2024 a las 14:44 hs",
@@ -157,7 +157,47 @@
             "descripcion": "MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA TORNILLO",
             "fechaVencimiento": "2024-08-16 00:00:00"
           }
-        ]
+        ],
+        "respuesta": "Item: EQUIPO 90L MODULAR, DE 20/140 APE TERMOFUSIÓN,BATEA INOX, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA ENGRANAJE, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA TORNILLO, Fecha Entrega: 30/8/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "pedido": "039221",
+    "cliente": "DIMOTEC SA",
+    "oc": "01-029404",
+    "reclamos": [
+      {
+        "id": "sub-1723830534669",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "16-08-2024 a las 14:48 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "KIT SELLO COMPLETO DSHC 800 (DDE 07/11)",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "PLACA EMD S/TRAFO C/BARRA LED 220V     (SIN CIL AL)",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          }
+        ],
+        "respuesta": "Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 22/8/2024 | Item: KIT SELLO COMPLETO DSHC 800 (DDE 07/11), Fecha Entrega: 22/8/2024 | Item: PLACA EMD S/TRAFO C/BARRA LED 220V     (SIN CIL AL), Fecha Entrega: 22/8/2024",
+        "usernameAlmacen": "GuadaF"
       }
     ]
   }

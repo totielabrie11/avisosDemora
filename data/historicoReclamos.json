@@ -114,5 +114,37 @@
     "fecha": "16-08-2024 a las 14:44 hs",
     "tipoMensaje": "vencimiento proximo",
     "timestamp": "16-08-2024 14:44:45"
+  },
+  {
+    "id": "sub-1723830534669",
+    "pedido": "039221",
+    "cliente": "DIMOTEC SA",
+    "estado": "vencido",
+    "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+    "fecha": "16-08-2024 a las 14:48 hs",
+    "tipoMensaje": "alerta demora",
+    "timestamp": "16-08-2024 14:48:54"
+  },
+  {
+    "id": "sub-1723830534669",
+    "pedido": "039221",
+    "cliente": "DIMOTEC SA",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 22/8/2024 | Item: KIT SELLO COMPLETO DSHC 800 (DDE 07/11), Fecha Entrega: 22/8/2024 | Item: PLACA EMD S/TRAFO C/BARRA LED 220V     (SIN CIL AL), Fecha Entrega: 22/8/2024.",
+    "fecha": "16-08-2024 a las 14:48 hs",
+    "timestamp": "16-08-2024 14:49:37",
+    "respuesta": "Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 22/8/2024 | Item: KIT SELLO COMPLETO DSHC 800 (DDE 07/11), Fecha Entrega: 22/8/2024 | Item: PLACA EMD S/TRAFO C/BARRA LED 220V     (SIN CIL AL), Fecha Entrega: 22/8/2024",
+    "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1723830285183",
+    "pedido": "038594",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Item: EQUIPO 90L MODULAR, DE 20/140 APE TERMOFUSIÓN,BATEA INOX, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA ENGRANAJE, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA TORNILLO, Fecha Entrega: 30/8/2024.",
+    "fecha": "16-08-2024 a las 14:44 hs",
+    "timestamp": "16-08-2024 14:50:04",
+    "respuesta": "Item: EQUIPO 90L MODULAR, DE 20/140 APE TERMOFUSIÓN,BATEA INOX, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA ENGRANAJE, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA TORNILLO, Fecha Entrega: 30/8/2024",
+    "usernameAlmacen": "GuadaF"
   }
 ]
