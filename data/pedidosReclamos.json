@@ -1,185 +1,45 @@
 [
   {
     "id": 1,
-    "pedido": "039182",
-    "cliente": "R C CONSULTORES S R L",
-    "oc": "01-014585",
+    "pedido": "039201",
+    "cliente": "DOSISUR S.R.L",
+    "oc": "2338",
     "reclamos": [
       {
-        "id": "sub-1722861953740",
-        "estado": "cerrado",
-        "prioridad": "Regular",
-        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "05-08-2024 a las 09:45 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "031QQ0A-MET0",
-            "cantidad": 1,
-            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
-            "fechaVencimiento": "05/08/2024"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "remito": "111111",
-        "downloadUrl": "http://localhost:43000/data/document/1722862987129-EMD-PLUS.png",
-        "estadoRemito": "resuelto"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "pedido": "039349",
-    "cliente": "SAL PARK S R L",
-    "oc": "falta oc",
-    "reclamos": [
-      {
-        "id": "sub-1723569423359",
-        "estado": "cerrado",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "13-08-2024 a las 14:17 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "",
-            "cantidad": 1,
-            "descripcion": "KIT DIAFRAGMA MILENIO \" M\"",
-            "fechaVencimiento": "2024-08-14 00:00:00"
-          },
-          {
-            "codigo": "",
-            "cantidad": 1,
-            "descripcion": "MANGUERA PVC CRISTAL Ø 6.35 X 9.5",
-            "fechaVencimiento": "2024-08-14 00:00:00"
-          },
-          {
-            "codigo": "",
-            "cantidad": 1,
-            "descripcion": "MANGUERA DE PEBD C/UV Ø 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA",
-            "fechaVencimiento": "2024-08-14 00:00:00"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "remito": "151545"
-      },
-      {
-        "id": "sub-1723570746803",
-        "estado": "cerrado",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "13-08-2024 a las 14:39 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "",
-            "cantidad": 1,
-            "descripcion": "MANGUERA DE PEBD C/UV Ø 6X9 - O - 1/4\"X3/8\"  TRANSLUCIDA",
-            "fechaVencimiento": "2024-08-14 00:00:00"
-          }
-        ],
-        "respuesta": "El usuario CarlosR ha dado por cerrado el reclamo.",
-        "usernameAlmacen": "CarlosR",
-        "remito": "111111"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "pedido": "032505",
-    "cliente": "YPF SOCIEDAD ANONIMA",
-    "oc": "4505835368",
-    "reclamos": [
-      {
-        "id": "sub-1723570765777",
+        "id": "sub-1723821593541",
         "estado": "respondido",
         "prioridad": "Regular",
         "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "13-08-2024 a las 14:39 hs",
+        "fecha": "16-08-2024 a las 12:19 hs",
         "username": "CarlosR",
         "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DES 07 CL.1 DIV.2 - ASIENTOS PTFE",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DES 10 CL.1 DIV.2 - ASIENTOS PTFE",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          },
           {
             "codigo": "",
             "cantidad": 2,
-            "descripcion": "MDI ALTO CAUDAL(NEW) CON TABLERO Y ACCESORIOS (24VCC)",
-            "fechaVencimiento": "2022-05-18 00:00:00"
-          }
-        ],
-        "respuesta": "Material preparado pero sin remito",
-        "usernameAlmacen": "GuadaF"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "pedido": "039246",
-    "cliente": "RUSSO MOSCHINO RAMON SALVADOR",
-    "oc": "651",
-    "reclamos": [
-      {
-        "id": "sub-1723570887371",
-        "estado": "respondido",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "13-08-2024 a las 14:41 hs",
-        "username": "CarlosR",
-        "material": [
+            "descripcion": "DES 10 DUPLEX CL.1 DIV.2",
+            "fechaVencimiento": "2024-08-12 00:00:00"
+          },
           {
             "codigo": "",
             "cantidad": 1,
-            "descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
-            "fechaVencimiento": "2024-08-19 00:00:00"
+            "descripcion": "DES AQ 25 -  CL.1 DIV.2",
+            "fechaVencimiento": "2024-08-12 00:00:00"
           }
         ],
-        "respuesta": "Se entregará en la fecha 14/8/2024",
+        "respuesta": "Item: DES 07 CL.1 DIV.2 - ASIENTOS PTFE, Fecha Entrega: 29/8/2024 | Item: DES 10 CL.1 DIV.2 - ASIENTOS PTFE, Fecha Entrega: 29/8/2024 | Item: DES 10 DUPLEX CL.1 DIV.2, Fecha Entrega: 29/8/2024 | Item: DES AQ 25 -  CL.1 DIV.2, Fecha Entrega: 29/8/2024",
         "usernameAlmacen": "GuadaF"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "pedido": "038594",
-    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
-    "oc": "64",
-    "reclamos": [
-      {
-        "id": "sub-1723813849484",
-        "estado": "vencido",
-        "prioridad": "Regular",
-        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
-        "fecha": "16-08-2024 a las 10:10 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "cantidad": 1
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "pedido": "038271",
-    "cliente": "REPARACIONES VARIAS **** NO REMITIR ***** PRUEBA",
-    "oc": "falta oc",
-    "reclamos": [
-      {
-        "id": "sub-1723814149049",
-        "estado": "no vencido",
-        "prioridad": "Normal",
-        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
-        "fecha": "16-08-2024 a las 10:15 hs",
-        "username": "CarlosR",
-        "material": [
-          {
-            "codigo": "",
-            "cantidad": 30,
-            "descripcion": "EMD MAX  36003  220V - SIN SEÑAL -  PVDF-VITON",
-            "fechaVencimiento": "2024-08-16 00:00:00"
-          }
-        ]
       }
     ]
   }

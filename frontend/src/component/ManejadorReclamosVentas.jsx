@@ -12,6 +12,25 @@ import ContadorCorreosPorTipo from './ContadorCorreosPorTipo';
 import { FaEdit } from 'react-icons/fa';
 import { BACKEND_URL } from '../config';
 
+const parseAndSortRespuesta = (respuesta) => {
+  const items = [];
+  const regex = /Item: ([^,]+), Fecha Entrega: (\d{1,2}\/\d{1,2}\/\d{4})/g;
+  let match;
+
+  while ((match = regex.exec(respuesta)) !== null) {
+    items.push({ descripcion: match[1], fechaEntrega: match[2] });
+  }
+
+  // Ordenar los items por fecha
+  items.sort((a, b) => {
+    const dateA = new Date(a.fechaEntrega.split('/').reverse().join('-'));
+    const dateB = new Date(b.fechaEntrega.split('/').reverse().join('-'));
+    return dateA - dateB;
+  });
+
+  return items;
+};
+
 const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [reclamos, setReclamos] = useState([]);
   const [reclamosConRespuesta, setReclamosConRespuesta] = useState([]);
@@ -31,7 +50,6 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [noData, setNoData] = useState(false);
 
-  // Definición de fetchEmail
   const fetchEmail = async (cliente) => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/v1/getEmail?cliente=${cliente}`, {
@@ -58,6 +76,11 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
           reclamosFiltrados = reclamosFiltrados.filter(r => r.username === username);
           reclamosConResp = reclamosConResp.filter(r => r.username === username);
         }
+
+        reclamosFiltrados = reclamosFiltrados.map(r => ({
+          ...r,
+          respuestaParsed: r.respuesta ? parseAndSortRespuesta(r.respuesta) : []
+        }));
 
         const fechaActual = new Date().setHours(0, 0, 0, 0);
         const vencidosPrometida = reclamosFiltrados.filter(r => {
@@ -288,7 +311,19 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
                     <strong>Atendido por:</strong> {reclamo.usernameAlmacen}<br />
                     <strong>
                       Respuesta:
-                      <span className={`card-text ${validarFechaPrometida(reclamo) ? 'text-danger' : ''}`}> {reclamo.respuesta}</span>
+                      {reclamo.respuestaParsed.length > 0 ? (
+                        <ul className="list-unstyled">
+                          {reclamo.respuestaParsed.map((item, idx) => (
+                            <li key={idx}>
+                              {item.descripcion} - Fecha Entrega: {item.fechaEntrega}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <span className={`card-text ${validarFechaPrometida(reclamo) ? 'text-danger' : ''}`}>
+                          {reclamo.respuesta}
+                        </span>
+                      )}
                       {validarFechaPrometida(reclamo) && (
                         <div className="text-danger" style={{ fontSize: 'larger' }}>
                           La fecha prometida se encuentra vencida

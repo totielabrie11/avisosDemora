@@ -13,10 +13,10 @@ import ProblemaRemitoButton from './ProblemaRemitoButton';
 import LiberarPedidoButton from './LiberarPedidoButton';
 import MostrarTareasPendientes from './MostrarTareasPendientes';
 import HistorialReclamos from './HistorialReclamos';
-import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido'; // Importa el componente
-import LeyendaAlmacen from './leyendas/LeyendaAlmacen'; // Importa el componente LeyendaAlmacen
-import RespuestaMaterialListo from './RespuestaMaterialListo'; // Asegúrate de importar el nuevo componente
-import { BACKEND_URL } from '../config'; // Ruta corregida
+import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
+import LeyendaAlmacen from './leyendas/LeyendaAlmacen';
+import RespuestaContenidoParcial from './RespuestaContenidoParcial';
+import { BACKEND_URL } from '../config';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [reclamos, setReclamos] = useState([]);
@@ -36,7 +36,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   const [tareasPendientes, setTareasPendientes] = useState([]);
   const [showHistorialModal, setShowHistorialModal] = useState(false);
   const [pedidoId, setPedidoId] = useState(null);
-  const [tipoRespuesta, setTipoRespuesta] = useState('fecha'); // Nuevo estado para el tipo de respuesta
+  const [tipoRespuesta, setTipoRespuesta] = useState('fecha'); 
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const generateId = () => {
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
@@ -69,7 +71,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = response.data;
-        console.log('Datos recibidos:', data);
 
         const reclamosConId = data
           .filter(reclamo => reclamo.estado !== 'cerrado')
@@ -101,7 +102,10 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const handleEnviarRespuesta = async () => {
+    setSuccessMessage('');
+    setErrorMessage('');
     setShowModal(false);
+
     if (selectedReclamo) {
       let updatedReclamo;
 
@@ -117,30 +121,99 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           respuesta: 'Material preparado pero sin remito',
           usernameAlmacen: username
         };
+      } else if (tipoRespuesta === 'contenido_parcial') {
+        // Aquí se maneja la lógica para el tipo de respuesta "contenido_parcial"
+        updatedReclamo = {
+          estado: 'respondido',
+          respuesta: 'Contenido parcial enviado',
+          usernameAlmacen: username,
+        };
       } else {
-        return; // No hacer nada si no se selecciona una opción válida
+        return;
       }
 
       try {
-        const response = await axios.put(`${BACKEND_URL}/api/v1/reclamos/${selectedReclamo.id}`, {
-          ...updatedReclamo,
-          subId: selectedReclamo.subId
-        }, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const response = await axios.put(
+          `${BACKEND_URL}/api/v1/reclamos/${selectedReclamo.id}`,
+          { ...updatedReclamo, subId: selectedReclamo.subId },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (response.status === 200) {
-          const updatedReclamos = reclamos.map(r => (r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r));
+          setSuccessMessage('Respuesta enviada exitosamente.');
+          setReclamos((prev) =>
+            prev.map((r) =>
+              r.id === selectedReclamo.id ? { ...r, ...updatedReclamo } : r
+            )
+          );
+        }
+      } catch (error) {
+        console.error('Error enviando la respuesta:', error);
+        setErrorMessage(`Error al enviar la respuesta: ${error.message}`);
+      }
+    }
+  };
+
+  const handleEnviarRespuestaParcial = async (selectedItems) => {
+    setSuccessMessage('');
+    setErrorMessage('');
+    setShowModal(false);
+
+    if (selectedReclamo) {
+      try {
+        const response = await axios.put(
+          `${BACKEND_URL}/api/v1/reclamos/${selectedReclamo.id}`,
+          {
+            estado: 'respondido',
+            respuesta: selectedItems.map(
+              item => `Item: ${item.descripcion}, Fecha Entrega: ${item.fechaEntrega.toLocaleDateString()}`
+            ).join(' | '),
+            usernameAlmacen: username,
+            subId: selectedReclamo.subId,
+            material: selectedItems.map(item => ({
+              codigo: item.codigo,
+              cantidad: item.cantidad,
+              descripcion: item.descripcion,
+              fechaVencimiento: item.fechaEntrega.toLocaleDateString(),
+            }))
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (response.status === 200) {
+          const updatedReclamos = reclamos.map(r =>
+            r.id === selectedReclamo.id
+              ? {
+                ...r,
+                estado: 'respondido',
+                respuesta: selectedItems.map(
+                  item => `Item: ${item.descripcion}, Fecha Entrega: ${item.fechaEntrega.toLocaleDateString()}`
+                ).join(' | '),
+                material: selectedItems.map(item => ({
+                  codigo: item.codigo,
+                  cantidad: item.cantidad,
+                  descripcion: item.descripcion,
+                  fechaVencimiento: item.fechaEntrega.toLocaleDateString(),
+                }))
+              }
+              : r
+          );
           setReclamos(updatedReclamos);
           actualizarContadores(updatedReclamos);
           setSelectedReclamo(null);
           setFechaEntrega(null);
           const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
           setTareasPendientes(tareas);
+
+          setSuccessMessage('Respuesta parcial enviada exitosamente.');
         }
       } catch (error) {
-        console.error('Error enviando la respuesta:', error);
-        alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
+        console.error('Error enviando la respuesta parcial:', error);
+        setErrorMessage(`Error al enviar la respuesta parcial: ${error.message}`);
       }
     }
   };
@@ -157,10 +230,8 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const handleVerDetalle = reclamo => {
-    console.log('Reclamo seleccionado para ver detalle:', reclamo);
     setSelectedReclamo(reclamo);
     setShowDetalleModal(true);
-    console.log(reclamo);
   };
 
   const handleCategoriaClick = categoria => {
@@ -168,7 +239,6 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const filtrarReclamos = () => {
-    console.log('Filtrando reclamos por categoría:', categoriaSeleccionada);
     const reclamosFiltrados = reclamos ? reclamos : [];
     switch (categoriaSeleccionada) {
       case 'urgente':
@@ -192,6 +262,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   };
 
   const handleRemitoSubmitSuccess = async (numeroRemito) => {
+    setSuccessMessage('');
+    setErrorMessage('');
+
     if (selectedReclamo) {
       try {
         const response = await axios.put(`${BACKEND_URL}/api/v1/reclamos/${selectedReclamo.id}`, {
@@ -221,10 +294,12 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           setShowEnvioModal(false);
           const tareas = updatedReclamos.filter(r => r.pedidoEstado === '' && r.respuesta);
           setTareasPendientes(tareas);
+
+          setSuccessMessage('Remito enviado exitosamente.');
         }
       } catch (error) {
-        console.error('Error actualizando el reclamo:', error);
-        alert('No se pudo actualizar el reclamo. Por favor, intente de nuevo.');
+        console.error('Error enviando el remito:', error);
+        setErrorMessage(`Error al enviar el remito: ${error.message}`);
       }
     }
   };
@@ -321,7 +396,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             reclamo={reclamo}
             token={token}
             onProblemaReportado={handleProblemaReportado}
-            username={username}  // Pasamos el nombre del usuario logueado
+            username={username}  
           />
 
           <LiberarPedidoButton
@@ -332,21 +407,20 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
           <button className="btn btn-info mb-2" onClick={() => { setPedidoId(reclamo.pedido); setShowHistorialModal(true); }}>
             Ver Historial
           </button>
-          <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} /> {/* Añadir el componente */}
+          <ContadorFechasEntregaPorPedido token={token} pedidoId={reclamo.pedido} /> 
         </div>
       </div>
     </div>
   );
 
   const reclamosFiltrados = filtrarReclamos();
-  console.log('Reclamos filtrados:', reclamosFiltrados);
 
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
       <MostrarTareasPendientes tareasPendientes={tareasPendientes} />
       <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
-      <LeyendaAlmacen /> {/* Agrega el componente LeyendaAlmacen aquí */}
+      <LeyendaAlmacen /> 
       <div className="mb-4">
         <h3>Prioridad:</h3>
         <div className="row text-center">
@@ -429,6 +503,9 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
         </div>
       </div>
 
+      {successMessage && <div className="alert alert-success">{successMessage}</div>}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+
       <div className="row">
         {reclamosFiltrados.map((reclamo, idx) => (
           <ReclamoCard
@@ -460,6 +537,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
             >
               <option value="fecha">Fecha de Entrega</option>
               <option value="material_sin_remito">Material preparado pero sin remito</option>
+              <option value="contenido_parcial">Contenido Parcial</option>
             </select>
           </div>
           {tipoRespuesta === 'fecha' && (
@@ -472,14 +550,22 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
               className="form-control mb-2"
             />
           )}
+          {tipoRespuesta === 'contenido_parcial' && (
+            <RespuestaContenidoParcial
+              reclamo={selectedReclamo}
+              onConfirm={handleEnviarRespuestaParcial}
+            />
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Cerrar
           </Button>
-          <Button variant="success" onClick={handleEnviarRespuesta}>
-            Enviar Respuesta
-          </Button>
+          {tipoRespuesta !== 'contenido_parcial' && (
+            <Button variant="success" onClick={handleEnviarRespuesta}>
+              Enviar Respuesta
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
 

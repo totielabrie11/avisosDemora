@@ -55,7 +55,7 @@ const LiberarPedidoButton = ({ reclamo, token, onProblemaReportado }) => {
   return (
     <>
       <Button variant="light" onClick={handleShow}>
-        Liberar Pedido
+        Liberar Pedido y Cambio de Código
       </Button>
 
       <Modal show={show} onHide={handleClose}>
