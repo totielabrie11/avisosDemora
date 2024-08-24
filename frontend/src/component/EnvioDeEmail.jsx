@@ -59,7 +59,7 @@ const EnvioDeEmail = ({ reclamo, token, onSaveEmail, fetchEmail }) => {
       text = `Estimado cliente ${reclamo.cliente},\n\nLa mercancía ${descripcionMaterial} se encuentra preparada en nuestro almacén con remito número ${remitoNumero}. Procedemos a coordinar la entrega para que cuente con el material lo antes posible.\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'remitoPreparado';
     } else if (respuestaLower.includes('fecha')) {
-      text = `Estimado cliente ${reclamo.cliente},\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\nCompromiso de Nueva Fecha de entrega:\n${formatRespuesta(reclamo.respuesta)}\n\nSaludos,\nEquipo de Soporte.`;
+      text = `Estimado cliente ${reclamo.cliente},\n\nLamentamos informarle que no podremos entregar ${descripcionMaterial} en la fecha acordada. \n\nCompromiso de Nueva Fecha de entrega (disponible en nuestro almacén):\n${formatRespuesta(reclamo.respuesta)}\n\nSaludos,\nEquipo de Soporte.`;
       tipoMensaje = 'cambioFechaEntrega';
     } else {
       text = `Estimado cliente ${reclamo.cliente},\n\nLe informamos que la fecha de entrega de ${descripcionMaterial} ha sido modificada. \n\nDetalles de la actualización:\n${formatRespuesta(reclamo.respuesta)}\n\nSaludos,\nEquipo de Soporte.`;

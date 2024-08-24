@@ -146,5 +146,15 @@
     "timestamp": "16-08-2024 14:50:04",
     "respuesta": "Item: EQUIPO 90L MODULAR, DE 20/140 APE TERMOFUSIÓN,BATEA INOX, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA ENGRANAJE, Fecha Entrega: 30/8/2024 | Item: MÓDULO DE RECIRCULACIÓN P/E Q142302602/1 CON BOMBA TORNILLO, Fecha Entrega: 30/8/2024",
     "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1723830285183",
+    "pedido": "038594",
+    "cliente": "2 IN FLOW COMPAÑIA DE SERVICIOS S. A.",
+    "estado": "email enviado",
+    "mensaje": "Correo enviado a repuestos@dosivac.com",
+    "fecha": "16-08-2024 a las 14:44 hs",
+    "tipoMensaje": "cambioFechaEntrega",
+    "timestamp": "22-08-2024 16:18:35"
   }
 ]
