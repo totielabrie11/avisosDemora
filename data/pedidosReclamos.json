@@ -200,5 +200,180 @@
         "usernameAlmacen": "GuadaF"
       }
     ]
+  },
+  {
+    "id": 5,
+    "pedido": "032505",
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "oc": "4505835368",
+    "reclamos": [
+      {
+        "id": "sub-1724463197110",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 22:33 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "cantidad": 2
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/8/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "pedido": "033317",
+    "cliente": "DOSISUR S.R.L",
+    "oc": "01803",
+    "reclamos": [
+      {
+        "id": "sub-1724463563591",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 22:39 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "DES AP 09 DUPLEX CL.1 DIV.2",
+            "fechaVencimiento": "2022-08-26 00:00:00"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/8/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "pedido": "036214",
+    "cliente": "YPF SA - SPM ARGENTINA SA - AREA BANDURRIA UTE",
+    "oc": "4506177896",
+    "reclamos": [
+      {
+        "id": "sub-1724463567541",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 22:39 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "DE 15/140 SIMPLE MOT TRIF SERIE \" E \"",
+            "fechaVencimiento": "2023-06-02 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "MDF M5 CON TABLERO Y ACCESORIOS (380VCA)",
+            "fechaVencimiento": "2023-06-02 00:00:00"
+          }
+        ],
+        "respuesta": "Item: DE 15/140 SIMPLE MOT TRIF SERIE \" E \", Fecha Entrega: 30/8/2024 | Item: MDF M5 CON TABLERO Y ACCESORIOS (380VCA), Fecha Entrega: 1/11/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "pedido": "038158",
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "oc": "4507442926",
+    "reclamos": [
+      {
+        "id": "sub-1724463738322",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 22:42 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 10,
+            "descripcion": "KIT CABEZAL COMPL DD 150-300 PVC/PTFE",
+            "fechaVencimiento": "2024-05-16 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 10,
+            "descripcion": "CONJUNTO CABEZAL DECI 10 C/EMPAQ. AS. ELASTOMERO",
+            "fechaVencimiento": "2024-05-16 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 8,
+            "descripcion": "DISTRIBUIDOR DEN/S      (BIELA S",
+            "fechaVencimiento": "2024-05-16 00:00:00"
+          }
+        ],
+        "respuesta": "Item: KIT CABEZAL COMPL DD 150-300 PVC/PTFE, Fecha Entrega: 4/10/2024 | Item: CONJUNTO CABEZAL DECI 10 C/EMPAQ. AS. ELASTOMERO, Fecha Entrega: 30/9/2024 | Item: DISTRIBUIDOR DEN/S      (BIELA S, Fecha Entrega: 19/9/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "pedido": "039268",
+    "cliente": "GOMEZ ROCO Y CIA S R L",
+    "oc": "19172",
+    "reclamos": [
+      {
+        "id": "sub-1724463985288",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "23-08-2024 a las 22:46 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DDI 60 SIMPLE C/MOT TRIF CAB MIX",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 25,
+            "descripcion": "MANGUERA DE PEBD  C/UV Ø 4 X Ø 6 TRANSLUCIDA",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 30,
+            "descripcion": "EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 20,
+            "descripcion": "EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 6,
+            "descripcion": "MI-EMD  01515 (LED) 220 V -  PVDF-VITON",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 10,
+            "descripcion": "MI-EMD  03210 (LED) 220 V -  PVDF-VITON",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          }
+        ],
+        "respuesta": "Item: DDI 60 SIMPLE C/MOT TRIF CAB MIX, Fecha Entrega: 30/8/2024 | Item: MANGUERA DE PEBD  C/UV Ø 4 X Ø 6 TRANSLUCIDA, Fecha Entrega: 24/8/2024 | Item: EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG, Fecha Entrega: 12/9/2024 | Item: EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG, Fecha Entrega: 31/8/2024 | Item: MI-EMD  01515 (LED) 220 V -  PVDF-VITON, Fecha Entrega: 25/9/2024 | Item: MI-EMD  03210 (LED) 220 V -  PVDF-VITON, Fecha Entrega: 28/11/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
   }
 ]

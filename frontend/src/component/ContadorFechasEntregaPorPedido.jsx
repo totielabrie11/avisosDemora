@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BACKEND_URL } from '../config'; // Importa la URL del backend desde config
+import { BACKEND_URL } from '../config';
 
 const ContadorFechasEntregaPorPedido = ({ token, pedidoId, tipo }) => {
   const [cantidadFechas, setCantidadFechas] = useState(0);

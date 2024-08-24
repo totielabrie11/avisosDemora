@@ -796,27 +796,26 @@ app.put('/api/v1/reclamos/:id', authenticateToken, async (req, res) => {
 // Función para contar fechas de entrega por pedido
 const contarFechasDeEntregaPorPedido = (pedidoId) => {
   let cantidadFechas = 0;
-  const fechasEntrega = [];
 
   try {
     const historico = readHistoricoReclamos();
     historico.forEach(entry => {
       if (entry.pedido == pedidoId && entry.respuesta) {
-        const fechaMatch = entry.respuesta.match(/Se entregará en la fecha (\d{1,2}\/\d{1,2}\/\d{4})/);
-        if (fechaMatch) {
-          const fechaEntrega = moment(fechaMatch[1], 'D/M/YYYY');
-          if (fechasEntrega.length === 0 || fechaEntrega.isAfter(fechasEntrega[fechasEntrega.length - 1])) {
-            fechasEntrega.push(fechaEntrega);
-            cantidadFechas++;
-          }
+        // Verificar si la respuesta contiene al menos una fecha
+        const tieneFecha = entry.respuesta.match(/\d{1,2}\/\d{1,2}\/\d{4}/);
+        if (tieneFecha) {
+          // Si la respuesta tiene una fecha, contamos como una promesa de entrega
+          cantidadFechas++;
         }
       }
     });
   } catch (error) {
     console.error('Error leyendo el archivo historicoReclamos.json:', error.message);
   }
+  
   return cantidadFechas;
 };
+
 
 app.get('/api/v1/cantidadFechasEntrega/:pedidoId', authenticateToken, (req, res) => {
   const { pedidoId } = req.params;
