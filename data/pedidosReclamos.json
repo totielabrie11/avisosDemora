@@ -375,5 +375,171 @@
         "usernameAlmacen": "GuadaF"
       }
     ]
+  },
+  {
+    "id": 10,
+    "pedido": "039293",
+    "cliente": "SAL PARK S R L",
+    "oc": "1564",
+    "reclamos": [
+      {
+        "id": "sub-1724464120386",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "23-08-2024 a las 22:48 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/8/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "pedido": "039386",
+    "cliente": "R C CONSULTORES S R L",
+    "oc": "01-014667",
+    "reclamos": [
+      {
+        "id": "sub-1724465022241",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "23-08-2024 a las 23:03 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "CONJ. ROTOR BRONCE - DSHC 4500",
+            "fechaVencimiento": "2024-08-23 00:00:00"
+          }
+        ],
+        "respuesta": "Material preparado pero sin remito",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "pedido": "039391",
+    "cliente": "EROSTARBE INGENIERIA SRL",
+    "oc": "WS2024-08-07",
+    "reclamos": [
+      {
+        "id": "sub-1724465303704",
+        "estado": "respondido",
+        "prioridad": "Normal",
+        "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+        "fecha": "23-08-2024 a las 23:08 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 3,
+            "descripcion": "CORREA SPA LD=1032 MM",
+            "fechaVencimiento": "2024-08-28 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 6,
+            "descripcion": "CORREA SPB LD=1320 MM",
+            "fechaVencimiento": "2024-08-28 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 5,
+            "descripcion": "FILTRO PARA DS 150/300",
+            "fechaVencimiento": "2024-08-28 00:00:00"
+          }
+        ],
+        "respuesta": "Material preparado pero sin remito",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "pedido": "037906",
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "oc": "4100221766",
+    "reclamos": [
+      {
+        "id": "sub-1724465620368",
+        "estado": "respondido",
+        "prioridad": "Urgente",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 23:13 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 3,
+            "descripcion": "MDN LORAWAN CON SOPORTE NUEVO PARA TOTE IBC",
+            "fechaVencimiento": "2024-08-01 00:00:00"
+          }
+        ],
+        "respuesta": "Se entregará en la fecha 30/8/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "pedido": "038801",
+    "cliente": "HIDROMECANICA LESA SA",
+    "oc": "587B",
+    "reclamos": [
+      {
+        "id": "sub-1724465631407",
+        "estado": "respondido",
+        "prioridad": "Regular",
+        "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+        "fecha": "23-08-2024 a las 23:13 hs",
+        "username": "CarlosR",
+        "material": [
+          {
+            "codigo": "",
+            "cantidad": 4,
+            "descripcion": "DDI 150 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "2024-06-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 2,
+            "descripcion": "DDI 300 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "2024-06-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DDI 600 SIMPLE C/MOT TRIF CAB PP",
+            "fechaVencimiento": "2024-06-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 1,
+            "descripcion": "DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE",
+            "fechaVencimiento": "2024-06-14 00:00:00"
+          },
+          {
+            "codigo": "",
+            "cantidad": 3,
+            "descripcion": "VALVULA DE PIE  DD PVDF C/FILTRO",
+            "fechaVencimiento": "2024-06-14 00:00:00"
+          }
+        ],
+        "respuesta": "Item: DDI 150 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 300 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE, Fecha Entrega: 30/8/2024 | Item: VALVULA DE PIE  DD PVDF C/FILTRO, Fecha Entrega: 10/9/2024",
+        "usernameAlmacen": "GuadaF"
+      }
+    ]
   }
 ]

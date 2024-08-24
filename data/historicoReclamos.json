@@ -261,5 +261,110 @@
     "timestamp": "23-08-2024 22:47:16",
     "respuesta": "Item: DDI 60 SIMPLE C/MOT TRIF CAB MIX, Fecha Entrega: 30/8/2024 | Item: MANGUERA DE PEBD  C/UV Ø 4 X Ø 6 TRANSLUCIDA, Fecha Entrega: 24/8/2024 | Item: EMD  01515 (LED) 220 V -  PP-PVDF-EPDM   ARG, Fecha Entrega: 12/9/2024 | Item: EMD  03210 (LED) 220 V -  PP-PVDF-EPDM   ARG, Fecha Entrega: 31/8/2024 | Item: MI-EMD  01515 (LED) 220 V -  PVDF-VITON, Fecha Entrega: 25/9/2024 | Item: MI-EMD  03210 (LED) 220 V -  PVDF-VITON, Fecha Entrega: 28/11/2024",
     "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1724464120386",
+    "pedido": "039293",
+    "cliente": "SAL PARK S R L",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "23-08-2024 a las 22:48 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "23-08-2024 22:48:40"
+  },
+  {
+    "id": "sub-1724464120386",
+    "pedido": "039293",
+    "cliente": "SAL PARK S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Se entregará en la fecha 30/8/2024.",
+    "fecha": "23-08-2024 a las 22:48 hs",
+    "timestamp": "23-08-2024 22:48:54",
+    "respuesta": "Se entregará en la fecha 30/8/2024",
+    "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1724465022241",
+    "pedido": "039386",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "23-08-2024 a las 23:03 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "23-08-2024 23:03:42"
+  },
+  {
+    "id": "sub-1724465022241",
+    "pedido": "039386",
+    "cliente": "R C CONSULTORES S R L",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Material preparado pero sin remito.",
+    "fecha": "23-08-2024 a las 23:03 hs",
+    "timestamp": "23-08-2024 23:03:53",
+    "respuesta": "Material preparado pero sin remito",
+    "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1724465303704",
+    "pedido": "039391",
+    "cliente": "EROSTARBE INGENIERIA SRL",
+    "estado": "no vencido",
+    "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
+    "fecha": "23-08-2024 a las 23:08 hs",
+    "tipoMensaje": "vencimiento proximo",
+    "timestamp": "23-08-2024 23:08:23"
+  },
+  {
+    "id": "sub-1724465303704",
+    "pedido": "039391",
+    "cliente": "EROSTARBE INGENIERIA SRL",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Material preparado pero sin remito.",
+    "fecha": "23-08-2024 a las 23:08 hs",
+    "timestamp": "23-08-2024 23:12:54",
+    "respuesta": "Material preparado pero sin remito",
+    "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1724465620368",
+    "pedido": "037906",
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "estado": "vencido",
+    "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+    "fecha": "23-08-2024 a las 23:13 hs",
+    "tipoMensaje": "alerta demora",
+    "timestamp": "23-08-2024 23:13:40"
+  },
+  {
+    "id": "sub-1724465631407",
+    "pedido": "038801",
+    "cliente": "HIDROMECANICA LESA SA",
+    "estado": "vencido",
+    "mensaje": "El operador CarlosR, indica que tenemos una demora de entrega en este pedido.",
+    "fecha": "23-08-2024 a las 23:13 hs",
+    "tipoMensaje": "alerta demora",
+    "timestamp": "23-08-2024 23:13:51"
+  },
+  {
+    "id": "sub-1724465620368",
+    "pedido": "037906",
+    "cliente": "PAN AMERICAN ENERGY S.L. SUCURSAL ARGENTINA",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Se entregará en la fecha 30/8/2024.",
+    "fecha": "23-08-2024 a las 23:13 hs",
+    "timestamp": "23-08-2024 23:14:06",
+    "respuesta": "Se entregará en la fecha 30/8/2024",
+    "usernameAlmacen": "GuadaF"
+  },
+  {
+    "id": "sub-1724465631407",
+    "pedido": "038801",
+    "cliente": "HIDROMECANICA LESA SA",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Item: DDI 150 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 300 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE, Fecha Entrega: 30/8/2024 | Item: VALVULA DE PIE  DD PVDF C/FILTRO, Fecha Entrega: 10/9/2024.",
+    "fecha": "23-08-2024 a las 23:13 hs",
+    "timestamp": "23-08-2024 23:14:31",
+    "respuesta": "Item: DDI 150 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 300 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DDI 600 SIMPLE C/MOT TRIF CAB PP, Fecha Entrega: 30/8/2024 | Item: DSHC 1250 C/MOT TRIF FUND GRIS/BRONCE, Fecha Entrega: 30/8/2024 | Item: VALVULA DE PIE  DD PVDF C/FILTRO, Fecha Entrega: 10/9/2024",
+    "usernameAlmacen": "GuadaF"
   }
 ]

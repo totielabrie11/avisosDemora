@@ -803,8 +803,12 @@ const contarFechasDeEntregaPorPedido = (pedidoId) => {
       if (entry.pedido == pedidoId && entry.respuesta) {
         // Verificar si la respuesta contiene al menos una fecha
         const tieneFecha = entry.respuesta.match(/\d{1,2}\/\d{1,2}\/\d{4}/);
-        if (tieneFecha) {
-          // Si la respuesta tiene una fecha, contamos como una promesa de entrega
+        
+        // Verificar si la respuesta contiene la frase "Material preparado pero sin remito"
+        const esMaterialSinRemito = entry.respuesta.includes("Material preparado pero sin remito");
+
+        // Si se encuentra una fecha o la frase específica, incrementa el contador en +1
+        if (tieneFecha || esMaterialSinRemito) {
           cantidadFechas++;
         }
       }
@@ -815,6 +819,7 @@ const contarFechasDeEntregaPorPedido = (pedidoId) => {
   
   return cantidadFechas;
 };
+
 
 
 app.get('/api/v1/cantidadFechasEntrega/:pedidoId', authenticateToken, (req, res) => {
