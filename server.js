@@ -651,39 +651,62 @@ app.post('/api/v1/reclamos', authenticateToken, async (req, res) => {
 
 app.get('/api/v1/reclamos', authenticateToken, (req, res) => {
   try {
-    if (req.role !== 'deposito' && req.role !== 'administrador' && req.role !== 'vendedor' && req.role !== 'administrativo') {
+    // Verifica si el usuario tiene un rol autorizado para acceder a los reclamos
+    if (
+      req.role !== 'deposito' &&
+      req.role !== 'administrador' &&
+      req.role !== 'vendedor' &&
+      req.role !== 'administrativo'
+    ) {
       return res.status(403).json({ error: 'Access denied' });
     }
-    const reclamos = readReclamos().flatMap(reclamo =>
-      reclamo.reclamos.map(subReclamo => ({
-        id: reclamo.id,
-        pedido: reclamo.pedido,
-        oc: reclamo.oc,
-        cliente: reclamo.cliente,
-        prioridad: subReclamo.prioridad,
-        estado: subReclamo.estado,
-        mensaje: subReclamo.mensaje,
-        fecha: subReclamo.fecha,
-        username: subReclamo.username,
-        usernameAlmacen: subReclamo.usernameAlmacen,
-        respuesta: subReclamo.respuesta,
-        subId: subReclamo.id,
-        material: subReclamo.material,
-        downloadUrl: subReclamo.downloadUrl,
-        estadoRemito: subReclamo.estadoRemito,
-        problemaRemito: subReclamo.problemaRemito,
-        pedidoEstado: subReclamo.pedidoEstado,
-        codigoInterno: subReclamo.codigoInterno,
-        cantidad: subReclamo.cantidad,
-        codigoAnterior: subReclamo.codigoAnterior,
-        codigoPosterior: subReclamo.codigoPosterior,
-        remito: subReclamo.remito // Asegúrate de incluir este campo
-      }))
+
+    // Leer los reclamos y mapear los subReclamos
+    const reclamos = readReclamos().flatMap((reclamo) =>
+      reclamo.reclamos.map((subReclamo) => {
+        // Calcular la demora basándose en la fecha de inicio del reclamo
+        const fechaInicio = moment(
+          subReclamo.fecha.split(' a las ')[0],
+          'DD-MM-YYYY'
+        );
+        const diasPasados = moment().diff(fechaInicio, 'days');
+        const demora = diasPasados >= 5 && subReclamo.estado !== 'respondido';
+
+        return {
+          id: reclamo.id,
+          pedido: reclamo.pedido,
+          oc: reclamo.oc,
+          cliente: reclamo.cliente,
+          prioridad: subReclamo.prioridad,
+          estado: subReclamo.estado,
+          mensaje: subReclamo.mensaje,
+          fecha: subReclamo.fecha,
+          username: subReclamo.username,
+          usernameAlmacen: subReclamo.usernameAlmacen,
+          respuesta: subReclamo.respuesta,
+          subId: subReclamo.id,
+          material: subReclamo.material,
+          downloadUrl: subReclamo.downloadUrl,
+          estadoRemito: subReclamo.estadoRemito,
+          problemaRemito: subReclamo.problemaRemito,
+          pedidoEstado: subReclamo.pedidoEstado,
+          codigoInterno: subReclamo.codigoInterno,
+          cantidad: subReclamo.cantidad,
+          codigoAnterior: subReclamo.codigoAnterior,
+          codigoPosterior: subReclamo.codigoPosterior,
+          remito: subReclamo.remito, // Asegúrate de incluir este campo
+          demora: demora, // Añade la lógica de detección de demoras
+        };
+      })
     );
+
     res.json(reclamos);
   } catch (err) {
     console.error('Error obteniendo reclamos:', err.message, err.stack);
-    res.status(500).json({ error: 'Error obteniendo reclamos', message: err.message });
+    res.status(500).json({
+      error: 'Error obteniendo reclamos',
+      message: err.message,
+    });
   }
 });
 

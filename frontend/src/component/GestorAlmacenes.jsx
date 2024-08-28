@@ -16,6 +16,7 @@ import HistorialReclamos from './HistorialReclamos';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
 import LeyendaAlmacen from './leyendas/LeyendaAlmacen';
 import RespuestaContenidoParcial from './RespuestaContenidoParcial';
+import MostrarDemoras from './MostrarDemoras'; // Importamos el nuevo componente
 import { BACKEND_URL } from '../config';
 
 const GestorAlmacenes = ({ token, username, role, onLogout }) => {
@@ -418,6 +419,7 @@ const GestorAlmacenes = ({ token, username, role, onLogout }) => {
   return (
     <div className="container mt-5">
       <UserState username={username} role={role} onLogout={onLogout} />
+      <MostrarDemoras token={token} username={username} role={role} /> {/* Incluimos MostrarDemoras aquí */}
       <MostrarTareasPendientes tareasPendientes={tareasPendientes} />
       <h1 className="mb-4">Gestor de Reclamos - Almacenes</h1>
       <LeyendaAlmacen /> 

@@ -9,6 +9,7 @@ import MostrarTareasPendientes from './MostrarTareasPendientes';
 import CerrarReclamoButton from './CerrarReclamoButton';
 import ContadorFechasEntregaPorPedido from './ContadorFechasEntregaPorPedido';
 import ContadorCorreosPorTipo from './ContadorCorreosPorTipo';
+import MostrarDemoras from './MostrarDemoras'; // Importar el componente MostrarDemoras
 import { FaEdit } from 'react-icons/fa';
 import { BACKEND_URL } from '../config';
 
@@ -227,6 +228,7 @@ const ManejadorReclamosVentas = ({ token, username, role }) => {
   return (
     <div className="container mt-5">
       <MostrarTareasPendientes token={token} username={username} role={role} />
+      <MostrarDemoras token={token} username={username} role={role} /> {/* Mostrar aviso de demoras */}
       <h1>En situación de Reclamo</h1>
       <div className="mb-4">
         <div className="row text-center">
