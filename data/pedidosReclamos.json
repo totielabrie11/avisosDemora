@@ -7,7 +7,7 @@
     "reclamos": [
       {
         "id": "sub-1724854223628",
-        "estado": "no vencido",
+        "estado": "respondido",
         "prioridad": "Normal",
         "mensaje": "El operador CarlosR, consulta si Vamos a poder cumplir con este pedido?",
         "fecha": "22-08-2024 a las 11:10 hs",
@@ -25,7 +25,9 @@
             "descripcion": "DEN/S 15 C/EMPAQ. ASIENTOS PTFE",
             "fechaVencimiento": "2024-08-30 00:00:00"
           }
-        ]
+        ],
+        "respuesta": "Item: BASE (SKID) P/EQUIPO Q171407167, Fecha Entrega: 11/9/2024 | Item: DEN/S 15 C/EMPAQ. ASIENTOS PTFE, Fecha Entrega: 18/9/2024",
+        "usernameAlmacen": "GuadaF"
       }
     ]
   }

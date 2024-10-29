@@ -8,5 +8,16 @@
     "fecha": "28-08-2024 a las 11:10 hs",
     "tipoMensaje": "vencimiento proximo",
     "timestamp": "28-08-2024 11:10:23"
+  },
+  {
+    "id": "sub-1724854223628",
+    "pedido": "039223",
+    "cliente": "YPF SOCIEDAD ANONIMA",
+    "estado": "respondido",
+    "mensaje": "El operador de almacén GuadaF informa que podrá preparar el pedido para la fecha Item: BASE (SKID) P/EQUIPO Q171407167, Fecha Entrega: 11/9/2024 | Item: DEN/S 15 C/EMPAQ. ASIENTOS PTFE, Fecha Entrega: 18/9/2024.",
+    "fecha": "22-08-2024 a las 11:10 hs",
+    "timestamp": "02-09-2024 12:10:11",
+    "respuesta": "Item: BASE (SKID) P/EQUIPO Q171407167, Fecha Entrega: 11/9/2024 | Item: DEN/S 15 C/EMPAQ. ASIENTOS PTFE, Fecha Entrega: 18/9/2024",
+    "usernameAlmacen": "GuadaF"
   }
 ]

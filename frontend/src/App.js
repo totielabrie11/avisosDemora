@@ -19,8 +19,8 @@ import SubirDatosPedidos from './component/SubirDatosPedidos';
 const isLocalhost = window.location.hostname === 'localhost';
 
 const BACKEND_URL = isLocalhost 
-  ? 'http://localhost:43000'
-  : 'http://dosivac.homeip.net:43000';
+  ? 'http://localhost:3005'
+  : 'http://dosivac.homeip.net:3005';
 
 console.log("🚀 ~ BACKEND_URL:", BACKEND_URL);
 
